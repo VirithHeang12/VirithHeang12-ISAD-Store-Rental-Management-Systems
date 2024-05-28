@@ -588,14 +588,15 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1782, 953);
+            ControlBox = false;
             Controls.Add(pnlStaffManipulation);
             Controls.Add(pnlRightSide);
             Controls.Add(pnlLeftSide);
             Controls.Add(lblTitle);
             Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmStaff";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormStaff";
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             pnlRightSide.ResumeLayout(false);

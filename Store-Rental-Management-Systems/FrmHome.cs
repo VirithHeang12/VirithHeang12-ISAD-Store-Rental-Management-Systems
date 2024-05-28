@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Store_Rental_Management_Systems
 {
-    public partial class FrmWelcome : Form
+    public partial class FrmHome : Form
     {
-        public FrmWelcome()
+        public FrmHome()
         {
             InitializeComponent();
-
-            btnLogin.Click += handleBtnLoginClick;
-        }
-
-        private void handleBtnLoginClick(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
     }
 }

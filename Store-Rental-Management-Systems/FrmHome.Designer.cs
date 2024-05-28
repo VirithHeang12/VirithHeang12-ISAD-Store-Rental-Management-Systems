@@ -44,11 +44,17 @@
             btnShowStaffForm = new Button();
             btnHome = new Button();
             panel1 = new Panel();
+            btnShowSalaryPaymentForm = new Button();
+            btnShowImportForm = new Button();
+            btnShowMaintenanceForm = new Button();
             pnlSideNav.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSideNav
             // 
+            pnlSideNav.Controls.Add(btnShowMaintenanceForm);
+            pnlSideNav.Controls.Add(btnShowImportForm);
+            pnlSideNav.Controls.Add(btnShowSalaryPaymentForm);
             pnlSideNav.Controls.Add(btnShowPaymentForm);
             pnlSideNav.Controls.Add(btnShowExpenseTypeForm);
             pnlSideNav.Controls.Add(btnShowAppointmentForm);
@@ -273,6 +279,52 @@
             panel1.Size = new Size(1582, 80);
             panel1.TabIndex = 1;
             // 
+            // btnShowSalaryPaymentForm
+            // 
+            btnShowSalaryPaymentForm.BackColor = Color.Transparent;
+            btnShowSalaryPaymentForm.FlatAppearance.BorderSize = 0;
+            btnShowSalaryPaymentForm.FlatStyle = FlatStyle.Flat;
+            btnShowSalaryPaymentForm.Image = (Image)resources.GetObject("btnShowSalaryPaymentForm.Image");
+            btnShowSalaryPaymentForm.ImageAlign = ContentAlignment.MiddleLeft;
+            btnShowSalaryPaymentForm.Location = new Point(3, 702);
+            btnShowSalaryPaymentForm.Name = "btnShowSalaryPaymentForm";
+            btnShowSalaryPaymentForm.Padding = new Padding(5, 0, 0, 0);
+            btnShowSalaryPaymentForm.Size = new Size(194, 41);
+            btnShowSalaryPaymentForm.TabIndex = 13;
+            btnShowSalaryPaymentForm.Text = "ប្រាក់ខែបុគ្គលិក";
+            btnShowSalaryPaymentForm.TextAlign = ContentAlignment.MiddleRight;
+            btnShowSalaryPaymentForm.UseVisualStyleBackColor = false;
+            // 
+            // btnShowImportForm
+            // 
+            btnShowImportForm.BackColor = Color.Transparent;
+            btnShowImportForm.FlatAppearance.BorderSize = 0;
+            btnShowImportForm.FlatStyle = FlatStyle.Flat;
+            btnShowImportForm.Image = (Image)resources.GetObject("btnShowImportForm.Image");
+            btnShowImportForm.ImageAlign = ContentAlignment.MiddleLeft;
+            btnShowImportForm.Location = new Point(3, 749);
+            btnShowImportForm.Name = "btnShowImportForm";
+            btnShowImportForm.Padding = new Padding(5, 0, 0, 0);
+            btnShowImportForm.Size = new Size(194, 41);
+            btnShowImportForm.TabIndex = 14;
+            btnShowImportForm.Text = "នាំចូល";
+            btnShowImportForm.UseVisualStyleBackColor = false;
+            // 
+            // btnShowMaintenanceForm
+            // 
+            btnShowMaintenanceForm.BackColor = Color.Transparent;
+            btnShowMaintenanceForm.FlatAppearance.BorderSize = 0;
+            btnShowMaintenanceForm.FlatStyle = FlatStyle.Flat;
+            btnShowMaintenanceForm.Image = (Image)resources.GetObject("btnShowMaintenanceForm.Image");
+            btnShowMaintenanceForm.ImageAlign = ContentAlignment.MiddleLeft;
+            btnShowMaintenanceForm.Location = new Point(3, 796);
+            btnShowMaintenanceForm.Name = "btnShowMaintenanceForm";
+            btnShowMaintenanceForm.Padding = new Padding(5, 0, 0, 0);
+            btnShowMaintenanceForm.Size = new Size(194, 41);
+            btnShowMaintenanceForm.TabIndex = 15;
+            btnShowMaintenanceForm.Text = "ថែទាំ";
+            btnShowMaintenanceForm.UseVisualStyleBackColor = false;
+            // 
             // FrmHome
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -305,5 +357,8 @@
         private Button btnShowAppointmentForm;
         private Button btnShowExpenseTypeForm;
         private Button btnShowPaymentForm;
+        private Button btnShowMaintenanceForm;
+        private Button btnShowImportForm;
+        private Button btnShowSalaryPaymentForm;
     }
 }

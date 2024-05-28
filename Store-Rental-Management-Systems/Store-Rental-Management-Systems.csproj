@@ -14,12 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="CRUD.Shares">
-      <HintPath>..\HelperLib\bin\Debug\net6.0\CRUD.Shares.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -20,11 +20,11 @@ namespace Store_Rental_Management_Systems
 
         static void ConnectToServer()
         {
-            Helper.ConnectionStringKey = "ConnectionString";
+            StoreRentalLib.Connection.ConnectionStringKey = "ConnectionString";
             try
             {
-                Helper.LoadConfiguration("appsettings.json");
-                Connection = Helper.OpenConnection();
+                StoreRentalLib.Connection.LoadConfiguration("appsettings.json");
+                Connection = StoreRentalLib.Connection.OpenConnection();
             }
             catch (Exception ex)
             {

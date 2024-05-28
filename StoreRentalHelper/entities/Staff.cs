@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store_Rental_Management_Systems.entities
+namespace StoreRentalHelper.entities
 {
     public class Staff
     {
@@ -17,8 +17,8 @@ namespace Store_Rental_Management_Systems.entities
         public string StaffPosition { get; set; } = default!;
         public string HouseNo { get; set; } = default!;
         public string StreetNo { get; set; } = default!;
-        public string Sangkat {  get; set; } = default!;
-        public string Khan {  get; set; } = default!;
+        public string Sangkat { get; set; } = default!;
+        public string Khan { get; set; } = default!;
         public string ProvinceOrCity { get; set; } = default!;
         public string ContactNumber { get; set; } = default!;
         public string PersonalNumber { get; set; } = default!;

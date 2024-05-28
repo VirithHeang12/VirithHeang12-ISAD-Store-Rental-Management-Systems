@@ -34,54 +34,54 @@
             pnlLeftSide = new Panel();
             lbStaff = new ListBox();
             pnlRightSide = new Panel();
+            btnPickStaffPhoto = new Button();
+            pbStaffPhoto = new PictureBox();
+            gbStaffAddress = new GroupBox();
+            cbStaffCityOrProvince = new ComboBox();
+            lblStaffStreetNo = new Label();
+            txtStaffStreetNo = new TextBox();
+            txtStaffHouseNo = new TextBox();
+            lblStaffProvinceOrCity = new Label();
+            lblStaffHouseNo = new Label();
+            lblStaffSangkat = new Label();
+            txtStaffKhan = new TextBox();
+            txtStaffSangkat = new TextBox();
+            lblStaffKhan = new Label();
             gbStaffInformation = new GroupBox();
+            txtStaffPersonalNumber = new TextBox();
+            lblStaffPersonalNumber = new Label();
+            textBox1 = new TextBox();
+            lblStaffContactNumber = new Label();
+            dtpStaffHiredDate = new DateTimePicker();
+            lblStaffHiredDate = new Label();
+            chbStaffStoppedWork = new CheckBox();
+            txtStaffSalary = new TextBox();
+            lblStaffSalary = new Label();
+            rdbFemale = new RadioButton();
+            rdbMale = new RadioButton();
+            cbStaffPosition = new ComboBox();
             lblStaffID = new Label();
+            lblStaffPosition = new Label();
             txtStaffFirstName = new TextBox();
             label1 = new Label();
             txtStaffID = new TextBox();
-            lblStaffProvinceOrCity = new Label();
-            txtStaffKhan = new TextBox();
-            lblStaffKhan = new Label();
-            txtStaffSangkat = new TextBox();
-            lblStaffSangkat = new Label();
-            txtStaffStreetNo = new TextBox();
-            lblStaffStreetNo = new Label();
-            txtStaffHouseNo = new TextBox();
-            lblStaffHouseNo = new Label();
-            cbStaffPosition = new ComboBox();
-            lblStaffPosition = new Label();
-            txtStaffIdentityCardNumber = new TextBox();
-            lblStaffIdentityCardNumber = new Label();
-            dtpStaffBirthDate = new DateTimePicker();
-            lblStaffBirthDate = new Label();
-            lblStaffSex = new Label();
-            txtStaffLastName = new TextBox();
             lblStaffLastName = new Label();
-            rdbMale = new RadioButton();
-            rdbFemale = new RadioButton();
-            gbStaffAddress = new GroupBox();
-            cbStaffCityOrProvince = new ComboBox();
-            pbStaffPhoto = new PictureBox();
-            btnPickStaffPhoto = new Button();
-            lblStaffSalary = new Label();
-            txtStaffSalary = new TextBox();
-            chbStaffStoppedWork = new CheckBox();
-            lblStaffHiredDate = new Label();
-            dtpStaffHiredDate = new DateTimePicker();
-            lblStaffContactNumber = new Label();
-            textBox1 = new TextBox();
-            lblStaffPersonalNumber = new Label();
-            txtStaffPersonalNumber = new TextBox();
+            txtStaffLastName = new TextBox();
+            lblStaffSex = new Label();
+            lblStaffBirthDate = new Label();
+            dtpStaffBirthDate = new DateTimePicker();
+            lblStaffIdentityCardNumber = new Label();
+            txtStaffIdentityCardNumber = new TextBox();
             pnlStaffManipulation = new Panel();
-            btnInsertStaff = new Button();
-            btnUpdateStaff = new Button();
-            btnNewStaff = new Button();
             btnCloseFormStaff = new Button();
+            btnNewStaff = new Button();
+            btnUpdateStaff = new Button();
+            btnInsertStaff = new Button();
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
-            gbStaffInformation.SuspendLayout();
-            gbStaffAddress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
+            gbStaffAddress.SuspendLayout();
+            gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,6 +144,135 @@
             pnlRightSide.Size = new Size(1267, 673);
             pnlRightSide.TabIndex = 4;
             // 
+            // btnPickStaffPhoto
+            // 
+            btnPickStaffPhoto.Location = new Point(998, 364);
+            btnPickStaffPhoto.Name = "btnPickStaffPhoto";
+            btnPickStaffPhoto.Size = new Size(211, 63);
+            btnPickStaffPhoto.TabIndex = 28;
+            btnPickStaffPhoto.Text = "ជ្រើសរើសរូបភាព";
+            btnPickStaffPhoto.UseVisualStyleBackColor = true;
+            // 
+            // pbStaffPhoto
+            // 
+            pbStaffPhoto.BorderStyle = BorderStyle.FixedSingle;
+            pbStaffPhoto.Location = new Point(970, 32);
+            pbStaffPhoto.Name = "pbStaffPhoto";
+            pbStaffPhoto.Size = new Size(258, 299);
+            pbStaffPhoto.TabIndex = 27;
+            pbStaffPhoto.TabStop = false;
+            // 
+            // gbStaffAddress
+            // 
+            gbStaffAddress.Controls.Add(cbStaffCityOrProvince);
+            gbStaffAddress.Controls.Add(lblStaffStreetNo);
+            gbStaffAddress.Controls.Add(txtStaffStreetNo);
+            gbStaffAddress.Controls.Add(txtStaffHouseNo);
+            gbStaffAddress.Controls.Add(lblStaffProvinceOrCity);
+            gbStaffAddress.Controls.Add(lblStaffHouseNo);
+            gbStaffAddress.Controls.Add(lblStaffSangkat);
+            gbStaffAddress.Controls.Add(txtStaffKhan);
+            gbStaffAddress.Controls.Add(txtStaffSangkat);
+            gbStaffAddress.Controls.Add(lblStaffKhan);
+            gbStaffAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbStaffAddress.Location = new Point(45, 479);
+            gbStaffAddress.Name = "gbStaffAddress";
+            gbStaffAddress.Size = new Size(1183, 172);
+            gbStaffAddress.TabIndex = 26;
+            gbStaffAddress.TabStop = false;
+            gbStaffAddress.Text = "អាសយដ្ឋាន";
+            // 
+            // cbStaffCityOrProvince
+            // 
+            cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffCityOrProvince.FormattingEnabled = true;
+            cbStaffCityOrProvince.Location = new Point(540, 105);
+            cbStaffCityOrProvince.Name = "cbStaffCityOrProvince";
+            cbStaffCityOrProvince.Size = new Size(219, 44);
+            cbStaffCityOrProvince.TabIndex = 25;
+            // 
+            // lblStaffStreetNo
+            // 
+            lblStaffStreetNo.AutoSize = true;
+            lblStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffStreetNo.Location = new Point(438, 46);
+            lblStaffStreetNo.Name = "lblStaffStreetNo";
+            lblStaffStreetNo.Size = new Size(81, 36);
+            lblStaffStreetNo.TabIndex = 18;
+            lblStaffStreetNo.Text = "លេខផ្លូវ:";
+            // 
+            // txtStaffStreetNo
+            // 
+            txtStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffStreetNo.Location = new Point(540, 38);
+            txtStaffStreetNo.Name = "txtStaffStreetNo";
+            txtStaffStreetNo.Size = new Size(219, 44);
+            txtStaffStreetNo.TabIndex = 19;
+            // 
+            // txtStaffHouseNo
+            // 
+            txtStaffHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffHouseNo.Location = new Point(108, 38);
+            txtStaffHouseNo.Name = "txtStaffHouseNo";
+            txtStaffHouseNo.Size = new Size(242, 44);
+            txtStaffHouseNo.TabIndex = 17;
+            // 
+            // lblStaffProvinceOrCity
+            // 
+            lblStaffProvinceOrCity.AutoSize = true;
+            lblStaffProvinceOrCity.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffProvinceOrCity.Location = new Point(438, 108);
+            lblStaffProvinceOrCity.Name = "lblStaffProvinceOrCity";
+            lblStaffProvinceOrCity.Size = new Size(95, 36);
+            lblStaffProvinceOrCity.TabIndex = 24;
+            lblStaffProvinceOrCity.Text = "ខេត្ត/ក្រុង:";
+            // 
+            // lblStaffHouseNo
+            // 
+            lblStaffHouseNo.AutoSize = true;
+            lblStaffHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffHouseNo.Location = new Point(18, 46);
+            lblStaffHouseNo.Name = "lblStaffHouseNo";
+            lblStaffHouseNo.Size = new Size(84, 36);
+            lblStaffHouseNo.TabIndex = 16;
+            lblStaffHouseNo.Text = "លេខផ្ទះ:";
+            // 
+            // lblStaffSangkat
+            // 
+            lblStaffSangkat.AutoSize = true;
+            lblStaffSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffSangkat.Location = new Point(797, 46);
+            lblStaffSangkat.Name = "lblStaffSangkat";
+            lblStaffSangkat.Size = new Size(75, 36);
+            lblStaffSangkat.TabIndex = 20;
+            lblStaffSangkat.Text = "សង្កាត់:";
+            // 
+            // txtStaffKhan
+            // 
+            txtStaffKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffKhan.Location = new Point(108, 100);
+            txtStaffKhan.Name = "txtStaffKhan";
+            txtStaffKhan.Size = new Size(242, 44);
+            txtStaffKhan.TabIndex = 23;
+            // 
+            // txtStaffSangkat
+            // 
+            txtStaffSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffSangkat.Location = new Point(878, 38);
+            txtStaffSangkat.Name = "txtStaffSangkat";
+            txtStaffSangkat.Size = new Size(249, 44);
+            txtStaffSangkat.TabIndex = 21;
+            // 
+            // lblStaffKhan
+            // 
+            lblStaffKhan.AutoSize = true;
+            lblStaffKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffKhan.Location = new Point(18, 108);
+            lblStaffKhan.Name = "lblStaffKhan";
+            lblStaffKhan.Size = new Size(62, 36);
+            lblStaffKhan.TabIndex = 22;
+            lblStaffKhan.Text = "ខណ្ឌ:";
+            // 
             // gbStaffInformation
             // 
             gbStaffInformation.Controls.Add(txtStaffPersonalNumber);
@@ -178,6 +307,124 @@
             gbStaffInformation.TabStop = false;
             gbStaffInformation.Text = "ព័ត៌មានបុគ្គលិក";
             // 
+            // txtStaffPersonalNumber
+            // 
+            txtStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPersonalNumber.Location = new Point(596, 351);
+            txtStaffPersonalNumber.Name = "txtStaffPersonalNumber";
+            txtStaffPersonalNumber.Size = new Size(247, 44);
+            txtStaffPersonalNumber.TabIndex = 24;
+            // 
+            // lblStaffPersonalNumber
+            // 
+            lblStaffPersonalNumber.AutoSize = true;
+            lblStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPersonalNumber.Location = new Point(438, 354);
+            lblStaffPersonalNumber.Name = "lblStaffPersonalNumber";
+            lblStaffPersonalNumber.Size = new Size(129, 36);
+            lblStaffPersonalNumber.TabIndex = 23;
+            lblStaffPersonalNumber.Text = "លេខផ្ទាល់ខ្លួន:";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(186, 351);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(230, 44);
+            textBox1.TabIndex = 22;
+            // 
+            // lblStaffContactNumber
+            // 
+            lblStaffContactNumber.AutoSize = true;
+            lblStaffContactNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffContactNumber.Location = new Point(18, 354);
+            lblStaffContactNumber.Name = "lblStaffContactNumber";
+            lblStaffContactNumber.Size = new Size(151, 36);
+            lblStaffContactNumber.TabIndex = 21;
+            lblStaffContactNumber.Text = "លេខទំនាក់ទំនង:";
+            // 
+            // dtpStaffHiredDate
+            // 
+            dtpStaffHiredDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpStaffHiredDate.Format = DateTimePickerFormat.Short;
+            dtpStaffHiredDate.Location = new Point(531, 286);
+            dtpStaffHiredDate.Name = "dtpStaffHiredDate";
+            dtpStaffHiredDate.Size = new Size(312, 44);
+            dtpStaffHiredDate.TabIndex = 20;
+            // 
+            // lblStaffHiredDate
+            // 
+            lblStaffHiredDate.AutoSize = true;
+            lblStaffHiredDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffHiredDate.Location = new Point(284, 292);
+            lblStaffHiredDate.Name = "lblStaffHiredDate";
+            lblStaffHiredDate.Size = new Size(241, 36);
+            lblStaffHiredDate.TabIndex = 19;
+            lblStaffHiredDate.Text = "កាលបរិច្ឆេទចូលបម្រើការងារ:";
+            // 
+            // chbStaffStoppedWork
+            // 
+            chbStaffStoppedWork.AutoSize = true;
+            chbStaffStoppedWork.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            chbStaffStoppedWork.Location = new Point(686, 41);
+            chbStaffStoppedWork.Name = "chbStaffStoppedWork";
+            chbStaffStoppedWork.Size = new Size(157, 40);
+            chbStaffStoppedWork.TabIndex = 18;
+            chbStaffStoppedWork.Text = "បានឈប់ធ្វើការ";
+            chbStaffStoppedWork.UseVisualStyleBackColor = true;
+            // 
+            // txtStaffSalary
+            // 
+            txtStaffSalary.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffSalary.Location = new Point(108, 284);
+            txtStaffSalary.Name = "txtStaffSalary";
+            txtStaffSalary.Size = new Size(164, 44);
+            txtStaffSalary.TabIndex = 17;
+            // 
+            // lblStaffSalary
+            // 
+            lblStaffSalary.AutoSize = true;
+            lblStaffSalary.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffSalary.Location = new Point(18, 292);
+            lblStaffSalary.Name = "lblStaffSalary";
+            lblStaffSalary.Size = new Size(81, 36);
+            lblStaffSalary.TabIndex = 16;
+            lblStaffSalary.Text = "ប្រាក់ខែ:";
+            // 
+            // rdbFemale
+            // 
+            rdbFemale.AutoSize = true;
+            rdbFemale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbFemale.Location = new Point(170, 160);
+            rdbFemale.Name = "rdbFemale";
+            rdbFemale.Size = new Size(62, 40);
+            rdbFemale.TabIndex = 10;
+            rdbFemale.TabStop = true;
+            rdbFemale.Text = "ស្រី";
+            rdbFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdbMale
+            // 
+            rdbMale.AutoSize = true;
+            rdbMale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbMale.Location = new Point(88, 160);
+            rdbMale.Name = "rdbMale";
+            rdbMale.Size = new Size(76, 40);
+            rdbMale.TabIndex = 9;
+            rdbMale.TabStop = true;
+            rdbMale.Text = "ប្រុស";
+            rdbMale.UseVisualStyleBackColor = true;
+            // 
+            // cbStaffPosition
+            // 
+            cbStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffPosition.FormattingEnabled = true;
+            cbStaffPosition.Location = new Point(606, 218);
+            cbStaffPosition.Name = "cbStaffPosition";
+            cbStaffPosition.Size = new Size(237, 44);
+            cbStaffPosition.TabIndex = 15;
+            // 
             // lblStaffID
             // 
             lblStaffID.AutoSize = true;
@@ -187,6 +434,16 @@
             lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 0;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            // 
+            // lblStaffPosition
+            // 
+            lblStaffPosition.AutoSize = true;
+            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPosition.Location = new Point(531, 221);
+            lblStaffPosition.Name = "lblStaffPosition";
+            lblStaffPosition.Size = new Size(69, 36);
+            lblStaffPosition.TabIndex = 14;
+            lblStaffPosition.Text = "តួនាទី:";
             // 
             // txtStaffFirstName
             // 
@@ -215,144 +472,23 @@
             txtStaffID.Size = new Size(324, 44);
             txtStaffID.TabIndex = 3;
             // 
-            // lblStaffProvinceOrCity
+            // lblStaffLastName
             // 
-            lblStaffProvinceOrCity.AutoSize = true;
-            lblStaffProvinceOrCity.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffProvinceOrCity.Location = new Point(438, 108);
-            lblStaffProvinceOrCity.Name = "lblStaffProvinceOrCity";
-            lblStaffProvinceOrCity.Size = new Size(95, 36);
-            lblStaffProvinceOrCity.TabIndex = 24;
-            lblStaffProvinceOrCity.Text = "ខេត្ត/ក្រុង:";
+            lblStaffLastName.AutoSize = true;
+            lblStaffLastName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffLastName.Location = new Point(436, 106);
+            lblStaffLastName.Name = "lblStaffLastName";
+            lblStaffLastName.Size = new Size(83, 36);
+            lblStaffLastName.TabIndex = 6;
+            lblStaffLastName.Text = "នាមខ្លួន:";
             // 
-            // txtStaffKhan
+            // txtStaffLastName
             // 
-            txtStaffKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffKhan.Location = new Point(108, 100);
-            txtStaffKhan.Name = "txtStaffKhan";
-            txtStaffKhan.Size = new Size(242, 44);
-            txtStaffKhan.TabIndex = 23;
-            // 
-            // lblStaffKhan
-            // 
-            lblStaffKhan.AutoSize = true;
-            lblStaffKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffKhan.Location = new Point(18, 108);
-            lblStaffKhan.Name = "lblStaffKhan";
-            lblStaffKhan.Size = new Size(62, 36);
-            lblStaffKhan.TabIndex = 22;
-            lblStaffKhan.Text = "ខណ្ឌ:";
-            // 
-            // txtStaffSangkat
-            // 
-            txtStaffSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffSangkat.Location = new Point(878, 38);
-            txtStaffSangkat.Name = "txtStaffSangkat";
-            txtStaffSangkat.Size = new Size(249, 44);
-            txtStaffSangkat.TabIndex = 21;
-            // 
-            // lblStaffSangkat
-            // 
-            lblStaffSangkat.AutoSize = true;
-            lblStaffSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffSangkat.Location = new Point(797, 46);
-            lblStaffSangkat.Name = "lblStaffSangkat";
-            lblStaffSangkat.Size = new Size(75, 36);
-            lblStaffSangkat.TabIndex = 20;
-            lblStaffSangkat.Text = "សង្កាត់:";
-            // 
-            // txtStaffStreetNo
-            // 
-            txtStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffStreetNo.Location = new Point(540, 38);
-            txtStaffStreetNo.Name = "txtStaffStreetNo";
-            txtStaffStreetNo.Size = new Size(219, 44);
-            txtStaffStreetNo.TabIndex = 19;
-            // 
-            // lblStaffStreetNo
-            // 
-            lblStaffStreetNo.AutoSize = true;
-            lblStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffStreetNo.Location = new Point(438, 46);
-            lblStaffStreetNo.Name = "lblStaffStreetNo";
-            lblStaffStreetNo.Size = new Size(81, 36);
-            lblStaffStreetNo.TabIndex = 18;
-            lblStaffStreetNo.Text = "លេខផ្លូវ:";
-            // 
-            // txtStaffHouseNo
-            // 
-            txtStaffHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffHouseNo.Location = new Point(108, 38);
-            txtStaffHouseNo.Name = "txtStaffHouseNo";
-            txtStaffHouseNo.Size = new Size(242, 44);
-            txtStaffHouseNo.TabIndex = 17;
-            // 
-            // lblStaffHouseNo
-            // 
-            lblStaffHouseNo.AutoSize = true;
-            lblStaffHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffHouseNo.Location = new Point(18, 46);
-            lblStaffHouseNo.Name = "lblStaffHouseNo";
-            lblStaffHouseNo.Size = new Size(84, 36);
-            lblStaffHouseNo.TabIndex = 16;
-            lblStaffHouseNo.Text = "លេខផ្ទះ:";
-            // 
-            // cbStaffPosition
-            // 
-            cbStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStaffPosition.FormattingEnabled = true;
-            cbStaffPosition.Location = new Point(606, 218);
-            cbStaffPosition.Name = "cbStaffPosition";
-            cbStaffPosition.Size = new Size(237, 44);
-            cbStaffPosition.TabIndex = 15;
-            // 
-            // lblStaffPosition
-            // 
-            lblStaffPosition.AutoSize = true;
-            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPosition.Location = new Point(531, 221);
-            lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(69, 36);
-            lblStaffPosition.TabIndex = 14;
-            lblStaffPosition.Text = "តួនាទី:";
-            // 
-            // txtStaffIdentityCardNumber
-            // 
-            txtStaffIdentityCardNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffIdentityCardNumber.Location = new Point(227, 218);
-            txtStaffIdentityCardNumber.Name = "txtStaffIdentityCardNumber";
-            txtStaffIdentityCardNumber.Size = new Size(236, 44);
-            txtStaffIdentityCardNumber.TabIndex = 13;
-            // 
-            // lblStaffIdentityCardNumber
-            // 
-            lblStaffIdentityCardNumber.AutoSize = true;
-            lblStaffIdentityCardNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffIdentityCardNumber.Location = new Point(18, 221);
-            lblStaffIdentityCardNumber.Name = "lblStaffIdentityCardNumber";
-            lblStaffIdentityCardNumber.Size = new Size(203, 36);
-            lblStaffIdentityCardNumber.TabIndex = 12;
-            lblStaffIdentityCardNumber.Text = "លេខអត្តសញ្ញាណប័ណ្ណ:";
-            // 
-            // dtpStaffBirthDate
-            // 
-            dtpStaffBirthDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpStaffBirthDate.Format = DateTimePickerFormat.Short;
-            dtpStaffBirthDate.Location = new Point(531, 156);
-            dtpStaffBirthDate.Name = "dtpStaffBirthDate";
-            dtpStaffBirthDate.Size = new Size(312, 44);
-            dtpStaffBirthDate.TabIndex = 11;
-            // 
-            // lblStaffBirthDate
-            // 
-            lblStaffBirthDate.AutoSize = true;
-            lblStaffBirthDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffBirthDate.Location = new Point(377, 164);
-            lblStaffBirthDate.Name = "lblStaffBirthDate";
-            lblStaffBirthDate.Size = new Size(142, 36);
-            lblStaffBirthDate.TabIndex = 10;
-            lblStaffBirthDate.Text = "ថ្ងៃខែឆ្នាំកំណើត:";
+            txtStaffLastName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffLastName.Location = new Point(531, 98);
+            txtStaffLastName.Name = "txtStaffLastName";
+            txtStaffLastName.Size = new Size(312, 44);
+            txtStaffLastName.TabIndex = 7;
             // 
             // lblStaffSex
             // 
@@ -364,177 +500,42 @@
             lblStaffSex.TabIndex = 8;
             lblStaffSex.Text = "ភេទ:";
             // 
-            // txtStaffLastName
+            // lblStaffBirthDate
             // 
-            txtStaffLastName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffLastName.Location = new Point(531, 98);
-            txtStaffLastName.Name = "txtStaffLastName";
-            txtStaffLastName.Size = new Size(312, 44);
-            txtStaffLastName.TabIndex = 7;
+            lblStaffBirthDate.AutoSize = true;
+            lblStaffBirthDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffBirthDate.Location = new Point(377, 164);
+            lblStaffBirthDate.Name = "lblStaffBirthDate";
+            lblStaffBirthDate.Size = new Size(142, 36);
+            lblStaffBirthDate.TabIndex = 10;
+            lblStaffBirthDate.Text = "ថ្ងៃខែឆ្នាំកំណើត:";
             // 
-            // lblStaffLastName
+            // dtpStaffBirthDate
             // 
-            lblStaffLastName.AutoSize = true;
-            lblStaffLastName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffLastName.Location = new Point(436, 106);
-            lblStaffLastName.Name = "lblStaffLastName";
-            lblStaffLastName.Size = new Size(83, 36);
-            lblStaffLastName.TabIndex = 6;
-            lblStaffLastName.Text = "នាមខ្លួន:";
+            dtpStaffBirthDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpStaffBirthDate.Format = DateTimePickerFormat.Short;
+            dtpStaffBirthDate.Location = new Point(531, 156);
+            dtpStaffBirthDate.Name = "dtpStaffBirthDate";
+            dtpStaffBirthDate.Size = new Size(312, 44);
+            dtpStaffBirthDate.TabIndex = 11;
             // 
-            // rdbMale
+            // lblStaffIdentityCardNumber
             // 
-            rdbMale.AutoSize = true;
-            rdbMale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            rdbMale.Location = new Point(88, 160);
-            rdbMale.Name = "rdbMale";
-            rdbMale.Size = new Size(76, 40);
-            rdbMale.TabIndex = 9;
-            rdbMale.TabStop = true;
-            rdbMale.Text = "ប្រុស";
-            rdbMale.UseVisualStyleBackColor = true;
+            lblStaffIdentityCardNumber.AutoSize = true;
+            lblStaffIdentityCardNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffIdentityCardNumber.Location = new Point(18, 221);
+            lblStaffIdentityCardNumber.Name = "lblStaffIdentityCardNumber";
+            lblStaffIdentityCardNumber.Size = new Size(203, 36);
+            lblStaffIdentityCardNumber.TabIndex = 12;
+            lblStaffIdentityCardNumber.Text = "លេខអត្តសញ្ញាណប័ណ្ណ:";
             // 
-            // rdbFemale
+            // txtStaffIdentityCardNumber
             // 
-            rdbFemale.AutoSize = true;
-            rdbFemale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            rdbFemale.Location = new Point(170, 160);
-            rdbFemale.Name = "rdbFemale";
-            rdbFemale.Size = new Size(62, 40);
-            rdbFemale.TabIndex = 10;
-            rdbFemale.TabStop = true;
-            rdbFemale.Text = "ស្រី";
-            rdbFemale.UseVisualStyleBackColor = true;
-            // 
-            // gbStaffAddress
-            // 
-            gbStaffAddress.Controls.Add(cbStaffCityOrProvince);
-            gbStaffAddress.Controls.Add(lblStaffStreetNo);
-            gbStaffAddress.Controls.Add(txtStaffStreetNo);
-            gbStaffAddress.Controls.Add(txtStaffHouseNo);
-            gbStaffAddress.Controls.Add(lblStaffProvinceOrCity);
-            gbStaffAddress.Controls.Add(lblStaffHouseNo);
-            gbStaffAddress.Controls.Add(lblStaffSangkat);
-            gbStaffAddress.Controls.Add(txtStaffKhan);
-            gbStaffAddress.Controls.Add(txtStaffSangkat);
-            gbStaffAddress.Controls.Add(lblStaffKhan);
-            gbStaffAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            gbStaffAddress.Location = new Point(45, 479);
-            gbStaffAddress.Name = "gbStaffAddress";
-            gbStaffAddress.Size = new Size(1183, 172);
-            gbStaffAddress.TabIndex = 26;
-            gbStaffAddress.TabStop = false;
-            gbStaffAddress.Text = "អាសយដ្ឋាន";
-            // 
-            // cbStaffCityOrProvince
-            // 
-            cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStaffCityOrProvince.FormattingEnabled = true;
-            cbStaffCityOrProvince.Location = new Point(540, 105);
-            cbStaffCityOrProvince.Name = "cbStaffCityOrProvince";
-            cbStaffCityOrProvince.Size = new Size(219, 44);
-            cbStaffCityOrProvince.TabIndex = 25;
-            // 
-            // pbStaffPhoto
-            // 
-            pbStaffPhoto.Location = new Point(970, 32);
-            pbStaffPhoto.Name = "pbStaffPhoto";
-            pbStaffPhoto.Size = new Size(258, 299);
-            pbStaffPhoto.TabIndex = 27;
-            pbStaffPhoto.TabStop = false;
-            // 
-            // btnPickStaffPhoto
-            // 
-            btnPickStaffPhoto.Location = new Point(998, 364);
-            btnPickStaffPhoto.Name = "btnPickStaffPhoto";
-            btnPickStaffPhoto.Size = new Size(211, 63);
-            btnPickStaffPhoto.TabIndex = 28;
-            btnPickStaffPhoto.Text = "ជ្រើសរើសរូបភាព";
-            btnPickStaffPhoto.UseVisualStyleBackColor = true;
-            // 
-            // lblStaffSalary
-            // 
-            lblStaffSalary.AutoSize = true;
-            lblStaffSalary.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffSalary.Location = new Point(18, 292);
-            lblStaffSalary.Name = "lblStaffSalary";
-            lblStaffSalary.Size = new Size(81, 36);
-            lblStaffSalary.TabIndex = 16;
-            lblStaffSalary.Text = "ប្រាក់ខែ:";
-            // 
-            // txtStaffSalary
-            // 
-            txtStaffSalary.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffSalary.Location = new Point(108, 284);
-            txtStaffSalary.Name = "txtStaffSalary";
-            txtStaffSalary.Size = new Size(164, 44);
-            txtStaffSalary.TabIndex = 17;
-            // 
-            // chbStaffStoppedWork
-            // 
-            chbStaffStoppedWork.AutoSize = true;
-            chbStaffStoppedWork.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            chbStaffStoppedWork.Location = new Point(686, 41);
-            chbStaffStoppedWork.Name = "chbStaffStoppedWork";
-            chbStaffStoppedWork.Size = new Size(157, 40);
-            chbStaffStoppedWork.TabIndex = 18;
-            chbStaffStoppedWork.Text = "បានឈប់ធ្វើការ";
-            chbStaffStoppedWork.UseVisualStyleBackColor = true;
-            // 
-            // lblStaffHiredDate
-            // 
-            lblStaffHiredDate.AutoSize = true;
-            lblStaffHiredDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffHiredDate.Location = new Point(284, 292);
-            lblStaffHiredDate.Name = "lblStaffHiredDate";
-            lblStaffHiredDate.Size = new Size(241, 36);
-            lblStaffHiredDate.TabIndex = 19;
-            lblStaffHiredDate.Text = "កាលបរិច្ឆេទចូលបម្រើការងារ:";
-            // 
-            // dtpStaffHiredDate
-            // 
-            dtpStaffHiredDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpStaffHiredDate.Format = DateTimePickerFormat.Short;
-            dtpStaffHiredDate.Location = new Point(531, 286);
-            dtpStaffHiredDate.Name = "dtpStaffHiredDate";
-            dtpStaffHiredDate.Size = new Size(312, 44);
-            dtpStaffHiredDate.TabIndex = 20;
-            // 
-            // lblStaffContactNumber
-            // 
-            lblStaffContactNumber.AutoSize = true;
-            lblStaffContactNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffContactNumber.Location = new Point(18, 354);
-            lblStaffContactNumber.Name = "lblStaffContactNumber";
-            lblStaffContactNumber.Size = new Size(151, 36);
-            lblStaffContactNumber.TabIndex = 21;
-            lblStaffContactNumber.Text = "លេខទំនាក់ទំនង:";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(186, 351);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(230, 44);
-            textBox1.TabIndex = 22;
-            // 
-            // lblStaffPersonalNumber
-            // 
-            lblStaffPersonalNumber.AutoSize = true;
-            lblStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPersonalNumber.Location = new Point(438, 354);
-            lblStaffPersonalNumber.Name = "lblStaffPersonalNumber";
-            lblStaffPersonalNumber.Size = new Size(129, 36);
-            lblStaffPersonalNumber.TabIndex = 23;
-            lblStaffPersonalNumber.Text = "លេខផ្ទាល់ខ្លួន:";
-            // 
-            // txtStaffPersonalNumber
-            // 
-            txtStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffPersonalNumber.Location = new Point(596, 351);
-            txtStaffPersonalNumber.Name = "txtStaffPersonalNumber";
-            txtStaffPersonalNumber.Size = new Size(247, 44);
-            txtStaffPersonalNumber.TabIndex = 24;
+            txtStaffIdentityCardNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffIdentityCardNumber.Location = new Point(227, 218);
+            txtStaffIdentityCardNumber.Name = "txtStaffIdentityCardNumber";
+            txtStaffIdentityCardNumber.Size = new Size(236, 44);
+            txtStaffIdentityCardNumber.TabIndex = 13;
             // 
             // pnlStaffManipulation
             // 
@@ -547,23 +548,14 @@
             pnlStaffManipulation.Size = new Size(992, 101);
             pnlStaffManipulation.TabIndex = 5;
             // 
-            // btnInsertStaff
+            // btnCloseFormStaff
             // 
-            btnInsertStaff.Location = new Point(38, 20);
-            btnInsertStaff.Name = "btnInsertStaff";
-            btnInsertStaff.Size = new Size(152, 52);
-            btnInsertStaff.TabIndex = 0;
-            btnInsertStaff.Text = "បញ្ចូល";
-            btnInsertStaff.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateStaff
-            // 
-            btnUpdateStaff.Location = new Point(305, 20);
-            btnUpdateStaff.Name = "btnUpdateStaff";
-            btnUpdateStaff.Size = new Size(152, 52);
-            btnUpdateStaff.TabIndex = 1;
-            btnUpdateStaff.Text = "កែប្រែ";
-            btnUpdateStaff.UseVisualStyleBackColor = true;
+            btnCloseFormStaff.Location = new Point(801, 20);
+            btnCloseFormStaff.Name = "btnCloseFormStaff";
+            btnCloseFormStaff.Size = new Size(152, 52);
+            btnCloseFormStaff.TabIndex = 3;
+            btnCloseFormStaff.Text = "បិទ";
+            btnCloseFormStaff.UseVisualStyleBackColor = true;
             // 
             // btnNewStaff
             // 
@@ -574,14 +566,23 @@
             btnNewStaff.Text = "បង្កើតថ្មី";
             btnNewStaff.UseVisualStyleBackColor = true;
             // 
-            // btnCloseFormStaff
+            // btnUpdateStaff
             // 
-            btnCloseFormStaff.Location = new Point(801, 20);
-            btnCloseFormStaff.Name = "btnCloseFormStaff";
-            btnCloseFormStaff.Size = new Size(152, 52);
-            btnCloseFormStaff.TabIndex = 3;
-            btnCloseFormStaff.Text = "បិទ";
-            btnCloseFormStaff.UseVisualStyleBackColor = true;
+            btnUpdateStaff.Location = new Point(305, 20);
+            btnUpdateStaff.Name = "btnUpdateStaff";
+            btnUpdateStaff.Size = new Size(152, 52);
+            btnUpdateStaff.TabIndex = 1;
+            btnUpdateStaff.Text = "កែប្រែ";
+            btnUpdateStaff.UseVisualStyleBackColor = true;
+            // 
+            // btnInsertStaff
+            // 
+            btnInsertStaff.Location = new Point(38, 20);
+            btnInsertStaff.Name = "btnInsertStaff";
+            btnInsertStaff.Size = new Size(152, 52);
+            btnInsertStaff.TabIndex = 0;
+            btnInsertStaff.Text = "បញ្ចូល";
+            btnInsertStaff.UseVisualStyleBackColor = true;
             // 
             // FrmStaff
             // 
@@ -598,11 +599,11 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             pnlRightSide.ResumeLayout(false);
-            gbStaffInformation.ResumeLayout(false);
-            gbStaffInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).EndInit();
             gbStaffAddress.ResumeLayout(false);
             gbStaffAddress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).EndInit();
+            gbStaffInformation.ResumeLayout(false);
+            gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
             ResumeLayout(false);
         }

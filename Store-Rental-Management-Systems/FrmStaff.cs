@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace Store_Rental_Management_Systems
 {
-    public partial class FrmStaff : Form
+    public partial class FrmStaff : FrmHome
     {
         public BindingSource StaffBindingSource {  get; set; }
-        public FrmStaff()
+        public FrmStaff(): base()
         {
+           
             InitializeComponent();
             StaffBindingSource = new BindingSource();
 

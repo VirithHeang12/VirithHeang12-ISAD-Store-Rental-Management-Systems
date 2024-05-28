@@ -21,8 +21,22 @@ namespace Store_Rental_Management_Systems
             this.Resize += handleFormResize;
 
             FrmLogin.LoggedIn += handleLoggedIn;
+            FrmHome.NavButtonClicked += handleNavButtonClicked;
             OpenChildForm(new FrmLogin());
            
+        }
+
+        private void handleNavButtonClicked(object? sender, FormEventArgs e)
+        {
+            switch(e.Form)
+            {
+                case FormTypes.FrmHome:
+                    OpenChildForm(new FrmHome());
+                    break;
+                case FormTypes.FrmStaff: 
+                    OpenChildForm(new FrmStaff()); 
+                    break;
+            }
         }
 
         private void handleLoggedIn(object? sender, EventArgs e)

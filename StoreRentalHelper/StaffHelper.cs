@@ -14,9 +14,9 @@ namespace StoreRentalHelper
     public static class StaffHelper
     {
         #region events
-        public static event EventHandler<EntityEventArgs>? Added;
-        public static event EventHandler<EntityEventArgs>? Updated;
-        public static event EventHandler<EntityEventArgs>? Deleted;
+        public static event EventHandler<FormEventArgs>? Added;
+        public static event EventHandler<FormEventArgs>? Updated;
+        public static event EventHandler<FormEventArgs>? Deleted;
         #endregion
 
         #region tblStaff

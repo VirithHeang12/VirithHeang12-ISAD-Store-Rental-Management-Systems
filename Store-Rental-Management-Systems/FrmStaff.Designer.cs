@@ -50,7 +50,7 @@
             gbStaffInformation = new GroupBox();
             txtStaffPersonalNumber = new TextBox();
             lblStaffPersonalNumber = new Label();
-            textBox1 = new TextBox();
+            txtStaffContactNumber = new TextBox();
             lblStaffContactNumber = new Label();
             dtpStaffHiredDate = new DateTimePicker();
             lblStaffHiredDate = new Label();
@@ -186,6 +186,7 @@
             // 
             cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffCityOrProvince.FormattingEnabled = true;
+            cbStaffCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffCityOrProvince.Location = new Point(540, 105);
             cbStaffCityOrProvince.Name = "cbStaffCityOrProvince";
             cbStaffCityOrProvince.Size = new Size(219, 44);
@@ -277,7 +278,7 @@
             // 
             gbStaffInformation.Controls.Add(txtStaffPersonalNumber);
             gbStaffInformation.Controls.Add(lblStaffPersonalNumber);
-            gbStaffInformation.Controls.Add(textBox1);
+            gbStaffInformation.Controls.Add(txtStaffContactNumber);
             gbStaffInformation.Controls.Add(lblStaffContactNumber);
             gbStaffInformation.Controls.Add(dtpStaffHiredDate);
             gbStaffInformation.Controls.Add(lblStaffHiredDate);
@@ -325,13 +326,13 @@
             lblStaffPersonalNumber.TabIndex = 23;
             lblStaffPersonalNumber.Text = "លេខផ្ទាល់ខ្លួន:";
             // 
-            // textBox1
+            // txtStaffContactNumber
             // 
-            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(186, 351);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 44);
-            textBox1.TabIndex = 22;
+            txtStaffContactNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffContactNumber.Location = new Point(186, 351);
+            txtStaffContactNumber.Name = "txtStaffContactNumber";
+            txtStaffContactNumber.Size = new Size(164, 44);
+            txtStaffContactNumber.TabIndex = 22;
             // 
             // lblStaffContactNumber
             // 
@@ -420,6 +421,7 @@
             cbStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffPosition.FormattingEnabled = true;
+            cbStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbStaffPosition.Location = new Point(531, 218);
             cbStaffPosition.Name = "cbStaffPosition";
             cbStaffPosition.Size = new Size(219, 44);
@@ -653,7 +655,7 @@
         private Label lblStaffSalary;
         private DateTimePicker dtpStaffHiredDate;
         private Label lblStaffHiredDate;
-        private TextBox textBox1;
+        private TextBox txtStaffContactNumber;
         private Label lblStaffContactNumber;
         private TextBox txtStaffPersonalNumber;
         private Label lblStaffPersonalNumber;

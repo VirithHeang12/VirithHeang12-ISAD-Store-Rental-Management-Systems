@@ -21,12 +21,31 @@ namespace Store_Rental_Management_Systems
            
             InitializeComponent();
             StaffBindingSource = new BindingSource();
+            ConfigDefaultValues();
 
             this.Load += LoadAllStaffs;
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;
             txtStaffFirstName.GotFocus += HandleTxtStaffFirstNameGotFocus;
+            txtStaffLastName.GotFocus += HandleTxtStaffLastNameGotFocus;
+            txtStaffIdentityCardNumber.GotFocus += HandleTxtIDCardNumberGotFocus;
+            txtStaffSalary.GotFocus += HandleTxtStaffSalaryGotFocus;
+        }
+
+        private void HandleTxtStaffSalaryGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffSalary, epdStaffSalary);
+        }
+
+        private void HandleTxtIDCardNumberGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber);
+        }
+
+        private void HandleTxtStaffLastNameGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffLastName, epdStaffLastName);
         }
 
         private void HandleTxtStaffFirstNameGotFocus(object? sender, EventArgs e)
@@ -36,21 +55,16 @@ namespace Store_Rental_Management_Systems
 
         private void HandleBtnInsertStaffClick(object? sender, EventArgs e)
         {
-            if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName))
+            if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName) || ValidateTextBox(txtStaffLastName, epdStaffLastName) || ValidateTextBox(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber) || ValidateTextBoxNumber(txtStaffSalary, epdStaffSalary))
             {
                 // Proceed with form submission or further processing
             }
-            //else
-            //{
-            //    // Handle validation failure (e.g., show a message to the user)
-            //    MessageBox.Show("Please correct the errors and try again.");
-            //}
         }
 
         private void HandleBtnNewStaffClick(object? sender, EventArgs e)
         {
             ClearAllFields();
-
+            ConfigDefaultValues();
         }
 
         private void ClearAllFields()
@@ -58,7 +72,7 @@ namespace Store_Rental_Management_Systems
             chbStaffStoppedWork.Checked = false;
             txtStaffFirstName.Text = string.Empty;
             txtStaffLastName.Text = string.Empty;
-            rdbFemale.Checked = false;
+            rdbFemale.Checked = true;
             rdbMale.Checked = false;
             dtpStaffBirthDate.Value = DateTime.Now;
             txtStaffIdentityCardNumber.Text = string.Empty;
@@ -101,11 +115,30 @@ namespace Store_Rental_Management_Systems
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
         }
 
+        private bool ValidateTextBoxNumber(TextBox txt, ErrorProvider errorProvider)
+        {
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
+                return false;
+            }
+            else if (!double.TryParse(txt.Text, out double _))
+            {
+                errorProvider.SetError(txt, $"{nameof(txt)} must be a number!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txt, string.Empty);
+                return true;
+            }
+        }
+
         private bool ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
         {
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
-                errorProvider.SetError(txt, $"nameof(txt) cannot be empty!");
+                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
                 return false;
             }
             else
@@ -121,6 +154,15 @@ namespace Store_Rental_Management_Systems
             {
                 errorProvider.Clear();
             }
+        }
+
+        private void ConfigDefaultValues()
+        {
+            chbStaffStoppedWork.Checked = false;
+            rdbFemale.Checked = false;
+            rdbMale.Checked = true;
+            cbStaffCityOrProvince.SelectedIndex = 0;
+            cbStaffPosition.SelectedIndex = 0;
         }
     }
 }

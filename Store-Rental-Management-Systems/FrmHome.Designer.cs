@@ -354,13 +354,14 @@
             // btnLogout
             // 
             btnLogout.BackColor = Color.Beige;
+            btnLogout.Dock = DockStyle.Right;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = Color.Black;
             btnLogout.Image = Properties.Resources.logout;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(1342, 12);
+            btnLogout.Location = new Point(1376, 0);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(140, 52);
+            btnLogout.Size = new Size(140, 80);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "ចាកចេញ";
             btnLogout.TextAlign = ContentAlignment.MiddleRight;

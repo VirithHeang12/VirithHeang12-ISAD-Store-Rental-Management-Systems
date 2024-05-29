@@ -79,6 +79,9 @@
             btnUpdateStaff = new Button();
             btnInsertStaff = new Button();
             epdStaffFirstName = new ErrorProvider(components);
+            epdStaffLastName = new ErrorProvider(components);
+            epdStaffIdentityCardNumber = new ErrorProvider(components);
+            epdStaffSalary = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
@@ -86,6 +89,9 @@
             gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -403,13 +409,13 @@
             rdbFemale.Name = "rdbFemale";
             rdbFemale.Size = new Size(62, 40);
             rdbFemale.TabIndex = 10;
-            rdbFemale.TabStop = true;
             rdbFemale.Text = "ស្រី";
             rdbFemale.UseVisualStyleBackColor = true;
             // 
             // rdbMale
             // 
             rdbMale.AutoSize = true;
+            rdbMale.Checked = true;
             rdbMale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rdbMale.Location = new Point(88, 160);
             rdbMale.Name = "rdbMale";
@@ -548,14 +554,14 @@
             pnlStaffManipulation.Controls.Add(btnNewStaff);
             pnlStaffManipulation.Controls.Add(btnUpdateStaff);
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
-            pnlStaffManipulation.Location = new Point(348, 856);
+            pnlStaffManipulation.Location = new Point(590, 856);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(992, 101);
+            pnlStaffManipulation.Size = new Size(925, 101);
             pnlStaffManipulation.TabIndex = 5;
             // 
             // btnCloseFormStaff
             // 
-            btnCloseFormStaff.Location = new Point(801, 20);
+            btnCloseFormStaff.Location = new Point(706, 20);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
             btnCloseFormStaff.Size = new Size(152, 52);
             btnCloseFormStaff.TabIndex = 3;
@@ -564,7 +570,7 @@
             // 
             // btnNewStaff
             // 
-            btnNewStaff.Location = new Point(551, 20);
+            btnNewStaff.Location = new Point(481, 20);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
@@ -573,7 +579,7 @@
             // 
             // btnUpdateStaff
             // 
-            btnUpdateStaff.Location = new Point(305, 20);
+            btnUpdateStaff.Location = new Point(247, 20);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
@@ -582,7 +588,7 @@
             // 
             // btnInsertStaff
             // 
-            btnInsertStaff.Location = new Point(38, 20);
+            btnInsertStaff.Location = new Point(20, 20);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;
@@ -592,6 +598,18 @@
             // epdStaffFirstName
             // 
             epdStaffFirstName.ContainerControl = this;
+            // 
+            // epdStaffLastName
+            // 
+            epdStaffLastName.ContainerControl = this;
+            // 
+            // epdStaffIdentityCardNumber
+            // 
+            epdStaffIdentityCardNumber.ContainerControl = this;
+            // 
+            // epdStaffSalary
+            // 
+            epdStaffSalary.ContainerControl = this;
             // 
             // FrmStaff
             // 
@@ -618,6 +636,9 @@
             gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
             ResumeLayout(false);
         }
 
@@ -673,5 +694,8 @@
         private Button btnNewStaff;
         private Button btnUpdateStaff;
         private ErrorProvider epdStaffFirstName;
+        private ErrorProvider epdStaffLastName;
+        private ErrorProvider epdStaffIdentityCardNumber;
+        private ErrorProvider epdStaffSalary;
     }
 }

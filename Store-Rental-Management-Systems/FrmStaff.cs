@@ -15,10 +15,10 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmStaff : FrmHome
     {
-        public BindingSource StaffBindingSource {  get; set; }
-        public FrmStaff(): base()
+        public BindingSource StaffBindingSource { get; set; }
+        public FrmStaff() : base()
         {
-           
+
             InitializeComponent();
             StaffBindingSource = new BindingSource();
             ConfigDefaultValues();
@@ -97,7 +97,7 @@ namespace Store_Rental_Management_Systems
             openFileDialog.Filter = "Image Files|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tiff;*.svg";
             openFileDialog.FilterIndex = 1; // Default filter index
             openFileDialog.RestoreDirectory = true;
-            
+
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {

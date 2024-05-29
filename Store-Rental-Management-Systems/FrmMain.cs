@@ -22,8 +22,14 @@ namespace Store_Rental_Management_Systems
 
             FrmLogin.LoggedIn += handleLoggedIn;
             FrmHome.NavButtonClicked += handleNavButtonClicked;
+            FrmHome.ButtonLogoutClicked += handleButtonLogoutClick;
             OpenChildForm(new FrmLogin());
            
+        }
+
+        private void handleButtonLogoutClick(object? sender, EventArgs e)
+        {
+            OpenChildForm(new FrmLogin());
         }
 
         private void handleNavButtonClicked(object? sender, FormEventArgs e)

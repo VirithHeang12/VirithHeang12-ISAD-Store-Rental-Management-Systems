@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             pnlSideNav = new Panel();
+            lblCopyright = new Label();
+            pictureBox1 = new PictureBox();
             btnShowMaintenanceForm = new Button();
             btnShowImportForm = new Button();
             btnShowSalaryPaymentForm = new Button();
@@ -48,11 +50,9 @@
             btnHome = new Button();
             panel1 = new Panel();
             btnLogout = new Button();
-            pictureBox1 = new PictureBox();
-            lblCopyright = new Label();
             pnlSideNav.SuspendLayout();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSideNav
@@ -81,6 +81,26 @@
             pnlSideNav.Name = "pnlSideNav";
             pnlSideNav.Size = new Size(266, 982);
             pnlSideNav.TabIndex = 0;
+            // 
+            // lblCopyright
+            // 
+            lblCopyright.Font = new Font("!Khmer OS Siemreap", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCopyright.Location = new Point(0, 902);
+            lblCopyright.Name = "lblCopyright";
+            lblCopyright.Size = new Size(263, 80);
+            lblCopyright.TabIndex = 16;
+            lblCopyright.Text = "Copyright © 2024 - ISAD SLS Group 3. All Rights Reserved.";
+            lblCopyright.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(266, 80);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // btnShowMaintenanceForm
             // 
@@ -333,32 +353,18 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(1344, 12);
+            btnLogout.BackColor = Color.Beige;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.ForeColor = Color.Black;
+            btnLogout.Image = Properties.Resources.logout;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(1342, 12);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(152, 52);
+            btnLogout.Size = new Size(140, 52);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "ចាកចេញ";
-            btnLogout.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(266, 80);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
-            // lblCopyright
-            // 
-            lblCopyright.Font = new Font("!Khmer OS Siemreap", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCopyright.Location = new Point(0, 902);
-            lblCopyright.Name = "lblCopyright";
-            lblCopyright.Size = new Size(263, 80);
-            lblCopyright.TabIndex = 16;
-            lblCopyright.Text = "Copyright © 2024 - ISAD SLS Group 3. All Rights Reserved.";
-            lblCopyright.TextAlign = ContentAlignment.MiddleCenter;
+            btnLogout.TextAlign = ContentAlignment.MiddleRight;
+            btnLogout.UseVisualStyleBackColor = false;
             // 
             // FrmHome
             // 
@@ -372,8 +378,8 @@
             Name = "FrmHome";
             StartPosition = FormStartPosition.CenterScreen;
             pnlSideNav.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 

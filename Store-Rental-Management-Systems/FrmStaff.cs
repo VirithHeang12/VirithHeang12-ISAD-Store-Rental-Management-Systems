@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Store_Rental_Management_Systems
 {
     public partial class FrmStaff : FrmHome
@@ -25,11 +26,25 @@ namespace Store_Rental_Management_Systems
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;
+            txtStaffFirstName.GotFocus += HandleTxtStaffFirstNameGotFocus;
+        }
+
+        private void HandleTxtStaffFirstNameGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffFirstName, epdStaffFirstName);
         }
 
         private void HandleBtnInsertStaffClick(object? sender, EventArgs e)
         {
-            
+            if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName))
+            {
+                // Proceed with form submission or further processing
+            }
+            //else
+            //{
+            //    // Handle validation failure (e.g., show a message to the user)
+            //    MessageBox.Show("Please correct the errors and try again.");
+            //}
         }
 
         private void HandleBtnNewStaffClick(object? sender, EventArgs e)
@@ -84,6 +99,28 @@ namespace Store_Rental_Management_Systems
         private void LoadAllStaffs(object? sender, EventArgs e)
         {
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+        }
+
+        private bool ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
+        {
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                errorProvider.SetError(txt, $"nameof(txt) cannot be empty!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txt, string.Empty);
+                return true;
+            }
+        }
+
+        private void ShutDownError(TextBox txt, ErrorProvider errorProvider)
+        {
+            if (errorProvider != null)
+            {
+                errorProvider.Clear();
+            }
         }
     }
 }

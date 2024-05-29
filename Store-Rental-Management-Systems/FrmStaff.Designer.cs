@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchStaff = new Label();
             txtSearchStaff = new TextBox();
@@ -77,12 +78,14 @@
             btnNewStaff = new Button();
             btnUpdateStaff = new Button();
             btnInsertStaff = new Button();
+            epdStaffFirstName = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
             gbStaffAddress.SuspendLayout();
             gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -586,6 +589,10 @@
             btnInsertStaff.Text = "បញ្ចូល";
             btnInsertStaff.UseVisualStyleBackColor = true;
             // 
+            // epdStaffFirstName
+            // 
+            epdStaffFirstName.ContainerControl = this;
+            // 
             // FrmStaff
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -610,6 +617,7 @@
             gbStaffInformation.ResumeLayout(false);
             gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
             ResumeLayout(false);
         }
 
@@ -664,5 +672,6 @@
         private Button btnCloseFormStaff;
         private Button btnNewStaff;
         private Button btnUpdateStaff;
+        private ErrorProvider epdStaffFirstName;
     }
 }

@@ -48,12 +48,18 @@
             btnHome = new Button();
             panel1 = new Panel();
             btnLogout = new Button();
+            pictureBox1 = new PictureBox();
+            lblCopyright = new Label();
             pnlSideNav.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pnlSideNav
             // 
+            pnlSideNav.BackColor = Color.Beige;
+            pnlSideNav.Controls.Add(lblCopyright);
+            pnlSideNav.Controls.Add(pictureBox1);
             pnlSideNav.Controls.Add(btnShowMaintenanceForm);
             pnlSideNav.Controls.Add(btnShowImportForm);
             pnlSideNav.Controls.Add(btnShowSalaryPaymentForm);
@@ -73,7 +79,7 @@
             pnlSideNav.Dock = DockStyle.Left;
             pnlSideNav.Location = new Point(0, 0);
             pnlSideNav.Name = "pnlSideNav";
-            pnlSideNav.Size = new Size(251, 982);
+            pnlSideNav.Size = new Size(266, 982);
             pnlSideNav.TabIndex = 0;
             // 
             // btnShowMaintenanceForm
@@ -83,10 +89,10 @@
             btnShowMaintenanceForm.FlatStyle = FlatStyle.Flat;
             btnShowMaintenanceForm.Image = (Image)resources.GetObject("btnShowMaintenanceForm.Image");
             btnShowMaintenanceForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowMaintenanceForm.Location = new Point(3, 796);
+            btnShowMaintenanceForm.Location = new Point(3, 819);
             btnShowMaintenanceForm.Name = "btnShowMaintenanceForm";
             btnShowMaintenanceForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowMaintenanceForm.Size = new Size(245, 41);
+            btnShowMaintenanceForm.Size = new Size(260, 41);
             btnShowMaintenanceForm.TabIndex = 15;
             btnShowMaintenanceForm.Text = "ថែទាំ";
             btnShowMaintenanceForm.UseVisualStyleBackColor = false;
@@ -98,10 +104,10 @@
             btnShowImportForm.FlatStyle = FlatStyle.Flat;
             btnShowImportForm.Image = (Image)resources.GetObject("btnShowImportForm.Image");
             btnShowImportForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowImportForm.Location = new Point(3, 749);
+            btnShowImportForm.Location = new Point(3, 772);
             btnShowImportForm.Name = "btnShowImportForm";
             btnShowImportForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowImportForm.Size = new Size(245, 41);
+            btnShowImportForm.Size = new Size(260, 41);
             btnShowImportForm.TabIndex = 14;
             btnShowImportForm.Text = "នាំចូល";
             btnShowImportForm.UseVisualStyleBackColor = false;
@@ -113,10 +119,10 @@
             btnShowSalaryPaymentForm.FlatStyle = FlatStyle.Flat;
             btnShowSalaryPaymentForm.Image = (Image)resources.GetObject("btnShowSalaryPaymentForm.Image");
             btnShowSalaryPaymentForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowSalaryPaymentForm.Location = new Point(3, 702);
+            btnShowSalaryPaymentForm.Location = new Point(3, 725);
             btnShowSalaryPaymentForm.Name = "btnShowSalaryPaymentForm";
             btnShowSalaryPaymentForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowSalaryPaymentForm.Size = new Size(245, 41);
+            btnShowSalaryPaymentForm.Size = new Size(260, 41);
             btnShowSalaryPaymentForm.TabIndex = 13;
             btnShowSalaryPaymentForm.Text = "ប្រាក់ខែបុគ្គលិក";
             btnShowSalaryPaymentForm.UseVisualStyleBackColor = false;
@@ -128,10 +134,10 @@
             btnShowPaymentForm.FlatStyle = FlatStyle.Flat;
             btnShowPaymentForm.Image = (Image)resources.GetObject("btnShowPaymentForm.Image");
             btnShowPaymentForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowPaymentForm.Location = new Point(3, 655);
+            btnShowPaymentForm.Location = new Point(3, 678);
             btnShowPaymentForm.Name = "btnShowPaymentForm";
             btnShowPaymentForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowPaymentForm.Size = new Size(245, 41);
+            btnShowPaymentForm.Size = new Size(260, 41);
             btnShowPaymentForm.TabIndex = 12;
             btnShowPaymentForm.Text = "ចំណាយរបស់តូប";
             btnShowPaymentForm.UseVisualStyleBackColor = false;
@@ -143,10 +149,10 @@
             btnShowExpenseTypeForm.FlatStyle = FlatStyle.Flat;
             btnShowExpenseTypeForm.Image = (Image)resources.GetObject("btnShowExpenseTypeForm.Image");
             btnShowExpenseTypeForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowExpenseTypeForm.Location = new Point(3, 608);
+            btnShowExpenseTypeForm.Location = new Point(3, 631);
             btnShowExpenseTypeForm.Name = "btnShowExpenseTypeForm";
             btnShowExpenseTypeForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowExpenseTypeForm.Size = new Size(245, 41);
+            btnShowExpenseTypeForm.Size = new Size(260, 41);
             btnShowExpenseTypeForm.TabIndex = 11;
             btnShowExpenseTypeForm.Text = "ប្រភេទចំណាយ";
             btnShowExpenseTypeForm.UseVisualStyleBackColor = false;
@@ -158,10 +164,10 @@
             btnShowAppointmentForm.FlatStyle = FlatStyle.Flat;
             btnShowAppointmentForm.Image = (Image)resources.GetObject("btnShowAppointmentForm.Image");
             btnShowAppointmentForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowAppointmentForm.Location = new Point(3, 326);
+            btnShowAppointmentForm.Location = new Point(3, 349);
             btnShowAppointmentForm.Name = "btnShowAppointmentForm";
             btnShowAppointmentForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowAppointmentForm.Size = new Size(245, 41);
+            btnShowAppointmentForm.Size = new Size(260, 41);
             btnShowAppointmentForm.TabIndex = 10;
             btnShowAppointmentForm.Text = "ពិភាក្សា";
             btnShowAppointmentForm.UseVisualStyleBackColor = false;
@@ -173,10 +179,10 @@
             btnShowItemForm.FlatStyle = FlatStyle.Flat;
             btnShowItemForm.Image = (Image)resources.GetObject("btnShowItemForm.Image");
             btnShowItemForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowItemForm.Location = new Point(3, 561);
+            btnShowItemForm.Location = new Point(3, 584);
             btnShowItemForm.Name = "btnShowItemForm";
             btnShowItemForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowItemForm.Size = new Size(245, 41);
+            btnShowItemForm.Size = new Size(260, 41);
             btnShowItemForm.TabIndex = 9;
             btnShowItemForm.Text = "សម្ភារៈ";
             btnShowItemForm.UseVisualStyleBackColor = false;
@@ -188,10 +194,10 @@
             btnShowInsuranceForm.FlatStyle = FlatStyle.Flat;
             btnShowInsuranceForm.Image = (Image)resources.GetObject("btnShowInsuranceForm.Image");
             btnShowInsuranceForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowInsuranceForm.Location = new Point(3, 514);
+            btnShowInsuranceForm.Location = new Point(3, 537);
             btnShowInsuranceForm.Name = "btnShowInsuranceForm";
             btnShowInsuranceForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowInsuranceForm.Size = new Size(245, 41);
+            btnShowInsuranceForm.Size = new Size(260, 41);
             btnShowInsuranceForm.TabIndex = 8;
             btnShowInsuranceForm.Text = "ធានារ៉ាប់រង";
             btnShowInsuranceForm.UseVisualStyleBackColor = false;
@@ -203,10 +209,10 @@
             btnShowUserForm.FlatStyle = FlatStyle.Flat;
             btnShowUserForm.Image = (Image)resources.GetObject("btnShowUserForm.Image");
             btnShowUserForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowUserForm.Location = new Point(3, 467);
+            btnShowUserForm.Location = new Point(3, 490);
             btnShowUserForm.Name = "btnShowUserForm";
             btnShowUserForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowUserForm.Size = new Size(245, 41);
+            btnShowUserForm.Size = new Size(260, 41);
             btnShowUserForm.TabIndex = 7;
             btnShowUserForm.Text = "អ្នកប្រើប្រាស់";
             btnShowUserForm.UseVisualStyleBackColor = false;
@@ -218,10 +224,10 @@
             btnShowSupplierForm.FlatStyle = FlatStyle.Flat;
             btnShowSupplierForm.Image = (Image)resources.GetObject("btnShowSupplierForm.Image");
             btnShowSupplierForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowSupplierForm.Location = new Point(3, 420);
+            btnShowSupplierForm.Location = new Point(3, 443);
             btnShowSupplierForm.Name = "btnShowSupplierForm";
             btnShowSupplierForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowSupplierForm.Size = new Size(245, 41);
+            btnShowSupplierForm.Size = new Size(260, 41);
             btnShowSupplierForm.TabIndex = 6;
             btnShowSupplierForm.Text = "អ្នកផ្គត់ផ្គង់";
             btnShowSupplierForm.UseVisualStyleBackColor = false;
@@ -233,10 +239,10 @@
             btnShowStoreTypeForm.FlatStyle = FlatStyle.Flat;
             btnShowStoreTypeForm.Image = (Image)resources.GetObject("btnShowStoreTypeForm.Image");
             btnShowStoreTypeForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowStoreTypeForm.Location = new Point(3, 279);
+            btnShowStoreTypeForm.Location = new Point(3, 302);
             btnShowStoreTypeForm.Name = "btnShowStoreTypeForm";
             btnShowStoreTypeForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowStoreTypeForm.Size = new Size(245, 41);
+            btnShowStoreTypeForm.Size = new Size(260, 41);
             btnShowStoreTypeForm.TabIndex = 5;
             btnShowStoreTypeForm.Text = "ប្រភេទតូប";
             btnShowStoreTypeForm.UseVisualStyleBackColor = false;
@@ -248,10 +254,10 @@
             btnShowContractForm.FlatStyle = FlatStyle.Flat;
             btnShowContractForm.Image = (Image)resources.GetObject("btnShowContractForm.Image");
             btnShowContractForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowContractForm.Location = new Point(3, 373);
+            btnShowContractForm.Location = new Point(3, 396);
             btnShowContractForm.Name = "btnShowContractForm";
             btnShowContractForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowContractForm.Size = new Size(245, 41);
+            btnShowContractForm.Size = new Size(260, 41);
             btnShowContractForm.TabIndex = 4;
             btnShowContractForm.Text = "កិច្ចសន្យា";
             btnShowContractForm.UseVisualStyleBackColor = false;
@@ -263,10 +269,10 @@
             btnShowStoreForm.FlatStyle = FlatStyle.Flat;
             btnShowStoreForm.Image = (Image)resources.GetObject("btnShowStoreForm.Image");
             btnShowStoreForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowStoreForm.Location = new Point(3, 232);
+            btnShowStoreForm.Location = new Point(3, 255);
             btnShowStoreForm.Name = "btnShowStoreForm";
             btnShowStoreForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowStoreForm.Size = new Size(245, 41);
+            btnShowStoreForm.Size = new Size(260, 41);
             btnShowStoreForm.TabIndex = 3;
             btnShowStoreForm.Text = "តូប";
             btnShowStoreForm.UseVisualStyleBackColor = false;
@@ -278,10 +284,10 @@
             btnShowCustomerForm.FlatStyle = FlatStyle.Flat;
             btnShowCustomerForm.Image = Properties.Resources.account_settings;
             btnShowCustomerForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowCustomerForm.Location = new Point(3, 185);
+            btnShowCustomerForm.Location = new Point(3, 208);
             btnShowCustomerForm.Name = "btnShowCustomerForm";
             btnShowCustomerForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowCustomerForm.Size = new Size(245, 41);
+            btnShowCustomerForm.Size = new Size(260, 41);
             btnShowCustomerForm.TabIndex = 2;
             btnShowCustomerForm.Text = "អតិថិជន";
             btnShowCustomerForm.UseVisualStyleBackColor = false;
@@ -293,10 +299,10 @@
             btnShowStaffForm.FlatStyle = FlatStyle.Flat;
             btnShowStaffForm.Image = Properties.Resources.account_tie;
             btnShowStaffForm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnShowStaffForm.Location = new Point(3, 125);
+            btnShowStaffForm.Location = new Point(3, 148);
             btnShowStaffForm.Name = "btnShowStaffForm";
             btnShowStaffForm.Padding = new Padding(5, 0, 0, 0);
-            btnShowStaffForm.Size = new Size(245, 54);
+            btnShowStaffForm.Size = new Size(260, 54);
             btnShowStaffForm.TabIndex = 1;
             btnShowStaffForm.Text = "បុគ្គលិក";
             btnShowStaffForm.UseVisualStyleBackColor = false;
@@ -308,10 +314,10 @@
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Image = Properties.Resources.home;
             btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(3, 78);
+            btnHome.Location = new Point(3, 101);
             btnHome.Name = "btnHome";
             btnHome.Padding = new Padding(5, 0, 0, 0);
-            btnHome.Size = new Size(245, 41);
+            btnHome.Size = new Size(260, 41);
             btnHome.TabIndex = 0;
             btnHome.Text = "ទំព័រដើម";
             btnHome.UseVisualStyleBackColor = false;
@@ -320,9 +326,9 @@
             // 
             panel1.Controls.Add(btnLogout);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(251, 0);
+            panel1.Location = new Point(266, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1531, 80);
+            panel1.Size = new Size(1516, 80);
             panel1.TabIndex = 1;
             // 
             // btnLogout
@@ -333,6 +339,26 @@
             btnLogout.TabIndex = 4;
             btnLogout.Text = "ចាកចេញ";
             btnLogout.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(266, 80);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // lblCopyright
+            // 
+            lblCopyright.Font = new Font("!Khmer OS Siemreap", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCopyright.Location = new Point(0, 902);
+            lblCopyright.Name = "lblCopyright";
+            lblCopyright.Size = new Size(263, 80);
+            lblCopyright.TabIndex = 16;
+            lblCopyright.Text = "Copyright © 2024 - ISAD SLS Group 3. All Rights Reserved.";
+            lblCopyright.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmHome
             // 
@@ -347,6 +373,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             pnlSideNav.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -371,5 +398,7 @@
         private Button btnShowImportForm;
         private Button btnShowSalaryPaymentForm;
         private Button btnLogout;
+        private PictureBox pictureBox1;
+        private Label lblCopyright;
     }
 }

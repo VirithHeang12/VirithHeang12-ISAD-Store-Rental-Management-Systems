@@ -91,9 +91,9 @@
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(251, 80);
+            lblTitle.Location = new Point(266, 80);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1549, 101);
+            lblTitle.Size = new Size(1534, 101);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "ព័ត៌មានបុគ្គលិក";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -119,9 +119,9 @@
             pnlLeftSide.Controls.Add(lbStaff);
             pnlLeftSide.Controls.Add(lblSearchStaff);
             pnlLeftSide.Controls.Add(txtSearchStaff);
-            pnlLeftSide.Location = new Point(251, 179);
+            pnlLeftSide.Location = new Point(266, 184);
             pnlLeftSide.Name = "pnlLeftSide";
-            pnlLeftSide.Size = new Size(371, 641);
+            pnlLeftSide.Size = new Size(364, 636);
             pnlLeftSide.TabIndex = 3;
             // 
             // lbStaff
@@ -139,9 +139,9 @@
             pnlRightSide.Controls.Add(pbStaffPhoto);
             pnlRightSide.Controls.Add(gbStaffAddress);
             pnlRightSide.Controls.Add(gbStaffInformation);
-            pnlRightSide.Location = new Point(643, 179);
+            pnlRightSide.Location = new Point(653, 184);
             pnlRightSide.Name = "pnlRightSide";
-            pnlRightSide.Size = new Size(1157, 641);
+            pnlRightSide.Size = new Size(1147, 636);
             pnlRightSide.TabIndex = 4;
             // 
             // btnPickStaffPhoto
@@ -583,7 +583,6 @@
             btnInsertStaff.TabIndex = 0;
             btnInsertStaff.Text = "បញ្ចូល";
             btnInsertStaff.UseVisualStyleBackColor = true;
-  
             // 
             // FrmStaff
             // 

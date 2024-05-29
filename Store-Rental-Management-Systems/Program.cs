@@ -15,7 +15,7 @@ namespace Store_Rental_Management_Systems
             // see https://aka.ms/applicationconfiguration.
             ConnectToServer();
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmStaff());
+            Application.Run(new FrmMain());
         }
 
         static void ConnectToServer()

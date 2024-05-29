@@ -1,6 +1,6 @@
 ﻿namespace Store_Rental_Management_Systems
 {
-    partial class FrmWelcome
+    partial class FrmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             lblSystemTitle.ForeColor = Color.Magenta;
             lblSystemTitle.Location = new Point(0, 0);
             lblSystemTitle.Name = "lblSystemTitle";
-            lblSystemTitle.Size = new Size(1351, 93);
+            lblSystemTitle.Size = new Size(1800, 93);
             lblSystemTitle.TabIndex = 0;
             lblSystemTitle.Text = "ប្រព័ន្ធគ្រប់គ្រងការជួលតូប";
             lblSystemTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -116,16 +116,18 @@
             pnlLogin.Size = new Size(673, 414);
             pnlLogin.TabIndex = 7;
             // 
-            // FrmMain
+            // FrmLogin
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1351, 698);
+            ClientSize = new Size(1800, 1000);
+            ControlBox = false;
             Controls.Add(pnlLogin);
             Controls.Add(lblSystemTitle);
             Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Name = "FrmMain";
+            FormBorderStyle = FormBorderStyle.None;
+            MdiChildrenMinimizedAnchorBottom = false;
+            Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmMain";
             pnlLogin.ResumeLayout(false);
             pnlLogin.PerformLayout();
             ResumeLayout(false);

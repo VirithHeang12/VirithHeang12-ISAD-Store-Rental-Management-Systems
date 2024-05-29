@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace Store_Rental_Management_Systems
 {
-    public partial class FrmWelcome : Form
+    public partial class FrmLogin : Form
     {
-        public FrmWelcome()
+        public static event EventHandler? LoggedIn;
+
+        public FrmLogin()
         {
             InitializeComponent();
 
@@ -21,7 +24,8 @@ namespace Store_Rental_Management_Systems
 
         private void handleBtnLoginClick(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            LoggedIn?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }

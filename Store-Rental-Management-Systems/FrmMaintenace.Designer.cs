@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             gbMaintenanceInformation = new GroupBox();
+            cbMaintenanceStoreID = new ComboBox();
+            lblMaintenanceStoreID = new Label();
+            cbMaintenanceContractID = new ComboBox();
+            txtMaintenanceOwedAmount = new TextBox();
+            lblMaintenanceOwedAmount = new Label();
             lblMaintenanceID = new Label();
             lblMaintenanceContractID = new Label();
             txtMaintenanceTotalAmount = new TextBox();
-
             txtMaintenanceID = new TextBox();
             lblMaintenancePaidAmount = new Label();
             txtMaintenancePaidAmount = new TextBox();
-   
             dtpMaintenanceDate = new DateTimePicker();
-            lblMaintenanceOwedAmount = new Label();
-            txtMaintenanceOwedAmount = new TextBox();
-            cbMaintenanceContractID = new ComboBox();
-            lblMaintenanceStoreID = new Label();
-            cbMaintenanceStoreID = new ComboBox();
+            lblMaintenanceDate = new Label();
             gbMaintenanceInformation.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,6 +51,7 @@
             // 
             // gbMaintenanceInformation
             // 
+            gbMaintenanceInformation.Controls.Add(lblMaintenanceDate);
             gbMaintenanceInformation.Controls.Add(cbMaintenanceStoreID);
             gbMaintenanceInformation.Controls.Add(lblMaintenanceStoreID);
             gbMaintenanceInformation.Controls.Add(cbMaintenanceContractID);
@@ -60,11 +60,9 @@
             gbMaintenanceInformation.Controls.Add(lblMaintenanceID);
             gbMaintenanceInformation.Controls.Add(lblMaintenanceContractID);
             gbMaintenanceInformation.Controls.Add(txtMaintenanceTotalAmount);
-
             gbMaintenanceInformation.Controls.Add(txtMaintenanceID);
             gbMaintenanceInformation.Controls.Add(lblMaintenancePaidAmount);
             gbMaintenanceInformation.Controls.Add(txtMaintenancePaidAmount);
-
             gbMaintenanceInformation.Controls.Add(dtpMaintenanceDate);
             gbMaintenanceInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             gbMaintenanceInformation.Location = new Point(350, 120);
@@ -73,6 +71,56 @@
             gbMaintenanceInformation.TabIndex = 26;
             gbMaintenanceInformation.TabStop = false;
             gbMaintenanceInformation.Text = "ព័ត៌មានថែទាំ";
+            // 
+            // cbMaintenanceStoreID
+            // 
+            cbMaintenanceStoreID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbMaintenanceStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbMaintenanceStoreID.FormattingEnabled = true;
+            cbMaintenanceStoreID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbMaintenanceStoreID.Location = new Point(209, 160);
+            cbMaintenanceStoreID.Name = "cbMaintenanceStoreID";
+            cbMaintenanceStoreID.Size = new Size(219, 44);
+            cbMaintenanceStoreID.TabIndex = 29;
+            // 
+            // lblMaintenanceStoreID
+            // 
+            lblMaintenanceStoreID.AutoSize = true;
+            lblMaintenanceStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMaintenanceStoreID.Location = new Point(18, 168);
+            lblMaintenanceStoreID.Name = "lblMaintenanceStoreID";
+            lblMaintenanceStoreID.Size = new Size(149, 36);
+            lblMaintenanceStoreID.TabIndex = 28;
+            lblMaintenanceStoreID.Text = "លេខសម្គាល់តូប:";
+            // 
+            // cbMaintenanceContractID
+            // 
+            cbMaintenanceContractID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbMaintenanceContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbMaintenanceContractID.FormattingEnabled = true;
+            cbMaintenanceContractID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbMaintenanceContractID.Location = new Point(1046, 103);
+            cbMaintenanceContractID.Name = "cbMaintenanceContractID";
+            cbMaintenanceContractID.Size = new Size(219, 44);
+            cbMaintenanceContractID.TabIndex = 27;
+            // 
+            // txtMaintenanceOwedAmount
+            // 
+            txtMaintenanceOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMaintenanceOwedAmount.Location = new Point(595, 103);
+            txtMaintenanceOwedAmount.Name = "txtMaintenanceOwedAmount";
+            txtMaintenanceOwedAmount.Size = new Size(223, 44);
+            txtMaintenanceOwedAmount.TabIndex = 26;
+            // 
+            // lblMaintenanceOwedAmount
+            // 
+            lblMaintenanceOwedAmount.AutoSize = true;
+            lblMaintenanceOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMaintenanceOwedAmount.Location = new Point(486, 111);
+            lblMaintenanceOwedAmount.Name = "lblMaintenanceOwedAmount";
+            lblMaintenanceOwedAmount.Size = new Size(103, 36);
+            lblMaintenanceOwedAmount.TabIndex = 25;
+            lblMaintenanceOwedAmount.Text = "តម្លៃជំពាក់:";
             // 
             // lblMaintenanceID
             // 
@@ -101,7 +149,6 @@
             txtMaintenanceTotalAmount.Name = "txtMaintenanceTotalAmount";
             txtMaintenanceTotalAmount.Size = new Size(217, 44);
             txtMaintenanceTotalAmount.TabIndex = 5;
-
             // 
             // txtMaintenanceID
             // 
@@ -129,66 +176,25 @@
             txtMaintenancePaidAmount.Name = "txtMaintenancePaidAmount";
             txtMaintenancePaidAmount.Size = new Size(223, 44);
             txtMaintenancePaidAmount.TabIndex = 7;
-   
             // 
             // dtpMaintenanceDate
             // 
             dtpMaintenanceDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpMaintenanceDate.Format = DateTimePickerFormat.Short;
-            dtpMaintenanceDate.Location = new Point(647, 35);
+            dtpMaintenanceDate.Location = new Point(680, 35);
             dtpMaintenanceDate.Name = "dtpMaintenanceDate";
             dtpMaintenanceDate.Size = new Size(208, 44);
             dtpMaintenanceDate.TabIndex = 11;
             // 
-            // lblMaintenanceOwedAmount
+            // lblMaintenanceDate
             // 
-            lblMaintenanceOwedAmount.AutoSize = true;
-            lblMaintenanceOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceOwedAmount.Location = new Point(486, 111);
-            lblMaintenanceOwedAmount.Name = "lblMaintenanceOwedAmount";
-            lblMaintenanceOwedAmount.Size = new Size(103, 36);
-            lblMaintenanceOwedAmount.TabIndex = 25;
-            lblMaintenanceOwedAmount.Text = "តម្លៃជំពាក់:";
-            // 
-            // txtMaintenanceOwedAmount
-            // 
-            txtMaintenanceOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMaintenanceOwedAmount.Location = new Point(595, 103);
-            txtMaintenanceOwedAmount.Name = "txtMaintenanceOwedAmount";
-            txtMaintenanceOwedAmount.Size = new Size(223, 44);
-            txtMaintenanceOwedAmount.TabIndex = 26;
-            // 
-            // cbMaintenanceContractID
-            // 
-            cbMaintenanceContractID.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbMaintenanceContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbMaintenanceContractID.FormattingEnabled = true;
-            cbMaintenanceContractID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbMaintenanceContractID.Location = new Point(1046, 103);
-            cbMaintenanceContractID.Name = "cbMaintenanceContractID";
-            cbMaintenanceContractID.Size = new Size(219, 44);
-            cbMaintenanceContractID.TabIndex = 27;
-            // 
-            // lblMaintenanceStoreID
-            // 
-            lblMaintenanceStoreID.AutoSize = true;
-            lblMaintenanceStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceStoreID.Location = new Point(18, 168);
-            lblMaintenanceStoreID.Name = "lblMaintenanceStoreID";
-            lblMaintenanceStoreID.Size = new Size(149, 36);
-            lblMaintenanceStoreID.TabIndex = 28;
-            lblMaintenanceStoreID.Text = "លេខសម្គាល់តូប:";
-            // 
-            // cbMaintenanceStoreID
-            // 
-            cbMaintenanceStoreID.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbMaintenanceStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbMaintenanceStoreID.FormattingEnabled = true;
-            cbMaintenanceStoreID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbMaintenanceStoreID.Location = new Point(209, 160);
-            cbMaintenanceStoreID.Name = "cbMaintenanceStoreID";
-            cbMaintenanceStoreID.Size = new Size(219, 44);
-            cbMaintenanceStoreID.TabIndex = 29;
+            lblMaintenanceDate.AutoSize = true;
+            lblMaintenanceDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMaintenanceDate.Location = new Point(503, 41);
+            lblMaintenanceDate.Name = "lblMaintenanceDate";
+            lblMaintenanceDate.Size = new Size(155, 36);
+            lblMaintenanceDate.TabIndex = 30;
+            lblMaintenanceDate.Text = "កាលបរិច្ឆេទថែទាំ:";
             // 
             // FrmMaintenace
             // 
@@ -220,5 +226,6 @@
         private ComboBox cbMaintenanceContractID;
         private Label lblMaintenanceStoreID;
         private ComboBox cbMaintenanceStoreID;
+        private Label lblMaintenanceDate;
     }
 }

@@ -404,7 +404,7 @@
         private Button btnShowMaintenanceForm;
         private Button btnShowImportForm;
         private Button btnShowSalaryPaymentForm;
-        private Button btnLogout;
+        public Button btnLogout;
         private PictureBox pictureBox1;
         private Label lblCopyright;
     }

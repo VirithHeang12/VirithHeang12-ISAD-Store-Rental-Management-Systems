@@ -32,6 +32,7 @@ namespace Store_Rental_Management_Systems
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -46,17 +47,10 @@ namespace Store_Rental_Management_Systems
             label5 = new Label();
             panelTop = new Panel();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             groupBoxItem = new GroupBox();
             cbItem = new ComboBox();
             btnItemUpdate = new Button();
             btnItemInsert = new Button();
-            txtItemUnit = new TextBox();
             txtItemCategory = new TextBox();
             txtItemDescription = new TextBox();
             label15 = new Label();
@@ -80,6 +74,13 @@ namespace Store_Rental_Management_Systems
             label8 = new Label();
             cbImport = new ComboBox();
             label16 = new Label();
+            txtItemUnit = new TextBox();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             groupBoxSupplier.SuspendLayout();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -228,72 +229,38 @@ namespace Store_Rental_Management_Systems
             panelTop.Controls.Add(dtpImport);
             panelTop.Controls.Add(label16);
             panelTop.Controls.Add(label4);
-            panelTop.Location = new Point(93, 86);
+            panelTop.Location = new Point(60, 86);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1300, 967);
+            panelTop.Size = new Size(1365, 952);
             panelTop.TabIndex = 8;
             // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Kantumruy", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(25, 113, 176);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Location = new Point(16, 748);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Kantumruy", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(25, 113, 176);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Location = new Point(15, 749);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 60;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(1244, 171);
+            dataGridView1.Size = new Size(1336, 171);
             dataGridView1.TabIndex = 14;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "លេខសម្គាល់សម្ភារៈ";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "ពិពណ៌នាសម្ភារៈ";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
-            Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "បរិមាណសម្ភារៈ";
-            Column3.MinimumWidth = 8;
-            Column3.Name = "Column3";
-            Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "តម្លៃនាំចូលសម្ភារៈ";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
-            Column4.Width = 180;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "ប្រភេទនៃសម្ភារៈ";
-            Column5.MinimumWidth = 8;
-            Column5.Name = "Column5";
-            Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "ខ្នាតរង្វាស់សម្ភារៈ";
-            Column6.MinimumWidth = 8;
-            Column6.Name = "Column6";
-            Column6.Width = 200;
             // 
             // groupBoxItem
             // 
@@ -354,14 +321,6 @@ namespace Store_Rental_Management_Systems
             btnItemInsert.TabIndex = 13;
             btnItemInsert.Text = "បញ្ចូល";
             btnItemInsert.UseVisualStyleBackColor = false;
-            // 
-            // txtItemUnit
-            // 
-            txtItemUnit.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtItemUnit.Location = new Point(968, 132);
-            txtItemUnit.Name = "txtItemUnit";
-            txtItemUnit.Size = new Size(279, 37);
-            txtItemUnit.TabIndex = 12;
             // 
             // txtItemCategory
             // 
@@ -609,6 +568,56 @@ namespace Store_Rental_Management_Systems
             label16.TabIndex = 3;
             label16.Text = "ស្វែងរក​ (លេខសម្គាល់ការនាំចូល)";
             // 
+            // txtItemUnit
+            // 
+            txtItemUnit.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtItemUnit.Location = new Point(968, 132);
+            txtItemUnit.Name = "txtItemUnit";
+            txtItemUnit.Size = new Size(279, 37);
+            txtItemUnit.TabIndex = 12;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "លេខសម្គាល់សម្ភារៈ";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            Column1.Width = 240;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "ពិពណ៌នាសម្ភារៈ";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "បរិមាណសម្ភារៈ";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            Column3.Width = 190;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "តម្លៃនាំចូលសម្ភារៈ";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
+            Column4.Width = 220;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "ប្រភេទនៃសម្ភារៈ";
+            Column5.MinimumWidth = 8;
+            Column5.Name = "Column5";
+            Column5.Width = 200;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "ខ្នាតរង្វាស់សម្ភារៈ";
+            Column6.MinimumWidth = 8;
+            Column6.Name = "Column6";
+            Column6.Width = 220;
+            // 
             // FrmImport
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -669,7 +678,6 @@ namespace Store_Rental_Management_Systems
         private Label label15;
         private Label label14;
         private Label label13;
-        private TextBox txtItemUnit;
         private TextBox txtItemCategory;
         private Button btnItemUpdate;
         private Button btnItemInsert;
@@ -680,6 +688,7 @@ namespace Store_Rental_Management_Systems
         private Label label16;
         private DataGridView dataGridView1;
         private ComboBox cbItem;
+        private TextBox txtItemUnit;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

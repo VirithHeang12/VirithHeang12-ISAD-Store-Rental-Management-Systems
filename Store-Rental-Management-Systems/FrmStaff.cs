@@ -14,7 +14,7 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmStaff : Form
     {
-        public BindingSource StaffBindingSource {  get; set; }
+        public BindingSource StaffBindingSource { get; set; }
         public FrmStaff()
         {
             InitializeComponent();
@@ -26,6 +26,16 @@ namespace Store_Rental_Management_Systems
         private void LoadAllStaffs(object? sender, EventArgs e)
         {
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmStaff_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

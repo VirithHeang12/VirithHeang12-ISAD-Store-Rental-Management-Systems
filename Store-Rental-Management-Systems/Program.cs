@@ -13,11 +13,11 @@ namespace Store_Rental_Management_Systems
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ConnectToServer();
+//            ConnectToServer();
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmStaff());
+            Application.Run(new FrmMaintenace());
         }
-
+/*
         static void ConnectToServer()
         {
             StoreRentalLib.Connection.ConnectionStringKey = "ConnectionString";
@@ -32,6 +32,7 @@ namespace Store_Rental_Management_Systems
                 Environment.Exit(0);
             }
         }
+ */   
         public static SqlConnection Connection = default!;
     }
 }

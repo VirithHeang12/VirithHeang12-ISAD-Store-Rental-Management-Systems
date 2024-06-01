@@ -63,6 +63,16 @@ namespace Store_Rental_Management_Systems.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account_search {
+            get {
+                object obj = ResourceManager.GetObject("account_search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap account_settings {
             get {
                 object obj = ResourceManager.GetObject("account-settings", resourceCulture);

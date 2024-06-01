@@ -1,5 +1,6 @@
 using StoreRentalLib;
 using Microsoft.Data.SqlClient;
+using StoreRentalHelper;
 
 namespace Store_Rental_Management_Systems
 {
@@ -25,6 +26,8 @@ namespace Store_Rental_Management_Systems
             {
                 StoreRentalLib.Connection.LoadConfiguration("appsettings.json");
                 Connection = StoreRentalLib.Connection.OpenConnection();
+                InitStaffCommands(Connection);
+                
             }
             catch (Exception ex)
             {
@@ -33,5 +36,10 @@ namespace Store_Rental_Management_Systems
             }
         }
         public static SqlConnection Connection = default!;
+        private static void InitStaffCommands(SqlConnection connection)
+        {
+            StaffHelper.Connection = connection;
+            StaffHelper.GenerateCommands();
+        }
     }
 }

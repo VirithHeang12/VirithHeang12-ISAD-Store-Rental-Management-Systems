@@ -25,5 +25,6 @@ namespace StoreRentalHelper.entities
         public double Salary { get; set; } = default;
         public DateOnly HiredDate { get; set; } = default!;
         public byte[] Photo { get; set; } = default!;
+        public bool StoppedWork { get; set; } = default;
     }
 }

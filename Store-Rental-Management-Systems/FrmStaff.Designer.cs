@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaff));
             lblTitle = new Label();
             lblSearchStaff = new Label();
             txtSearchStaff = new TextBox();
@@ -49,9 +50,9 @@
             txtStaffSangkat = new TextBox();
             lblStaffKhan = new Label();
             gbStaffInformation = new GroupBox();
-            txtStaffPersonalNumber = new TextBox();
+            mtxtStaffPersonalNumber = new MaskedTextBox();
+            mtxtStaffContactNumber = new MaskedTextBox();
             lblStaffPersonalNumber = new Label();
-            txtStaffContactNumber = new TextBox();
             lblStaffContactNumber = new Label();
             dtpStaffHiredDate = new DateTimePicker();
             lblStaffHiredDate = new Label();
@@ -82,6 +83,12 @@
             epdStaffLastName = new ErrorProvider(components);
             epdStaffIdentityCardNumber = new ErrorProvider(components);
             epdStaffSalary = new ErrorProvider(components);
+            epdStaffContactNumber = new ErrorProvider(components);
+            epdStaffPersonalNumber = new ErrorProvider(components);
+            epdStaffHouseNo = new ErrorProvider(components);
+            epdStaffStreetNo = new ErrorProvider(components);
+            epdStaffSangkat = new ErrorProvider(components);
+            epdStaffKhan = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
@@ -92,6 +99,12 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -165,6 +178,7 @@
             // pbStaffPhoto
             // 
             pbStaffPhoto.BorderStyle = BorderStyle.FixedSingle;
+            pbStaffPhoto.InitialImage = (Image)resources.GetObject("pbStaffPhoto.InitialImage");
             pbStaffPhoto.Location = new Point(856, 32);
             pbStaffPhoto.Name = "pbStaffPhoto";
             pbStaffPhoto.Size = new Size(258, 299);
@@ -285,9 +299,9 @@
             // 
             // gbStaffInformation
             // 
-            gbStaffInformation.Controls.Add(txtStaffPersonalNumber);
+            gbStaffInformation.Controls.Add(mtxtStaffPersonalNumber);
+            gbStaffInformation.Controls.Add(mtxtStaffContactNumber);
             gbStaffInformation.Controls.Add(lblStaffPersonalNumber);
-            gbStaffInformation.Controls.Add(txtStaffContactNumber);
             gbStaffInformation.Controls.Add(lblStaffContactNumber);
             gbStaffInformation.Controls.Add(dtpStaffHiredDate);
             gbStaffInformation.Controls.Add(lblStaffHiredDate);
@@ -317,31 +331,31 @@
             gbStaffInformation.TabStop = false;
             gbStaffInformation.Text = "ព័ត៌មានបុគ្គលិក";
             // 
-            // txtStaffPersonalNumber
+            // mtxtStaffPersonalNumber
             // 
-            txtStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffPersonalNumber.Location = new Point(531, 352);
-            txtStaffPersonalNumber.Name = "txtStaffPersonalNumber";
-            txtStaffPersonalNumber.Size = new Size(219, 44);
-            txtStaffPersonalNumber.TabIndex = 24;
+            mtxtStaffPersonalNumber.Location = new Point(531, 351);
+            mtxtStaffPersonalNumber.Mask = "(999) 00-000-0000";
+            mtxtStaffPersonalNumber.Name = "mtxtStaffPersonalNumber";
+            mtxtStaffPersonalNumber.Size = new Size(219, 39);
+            mtxtStaffPersonalNumber.TabIndex = 26;
+            // 
+            // mtxtStaffContactNumber
+            // 
+            mtxtStaffContactNumber.Location = new Point(175, 351);
+            mtxtStaffContactNumber.Mask = "(999) 00-000-0000";
+            mtxtStaffContactNumber.Name = "mtxtStaffContactNumber";
+            mtxtStaffContactNumber.Size = new Size(215, 39);
+            mtxtStaffContactNumber.TabIndex = 25;
             // 
             // lblStaffPersonalNumber
             // 
             lblStaffPersonalNumber.AutoSize = true;
             lblStaffPersonalNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPersonalNumber.Location = new Point(378, 355);
+            lblStaffPersonalNumber.Location = new Point(396, 354);
             lblStaffPersonalNumber.Name = "lblStaffPersonalNumber";
             lblStaffPersonalNumber.Size = new Size(129, 36);
             lblStaffPersonalNumber.TabIndex = 23;
             lblStaffPersonalNumber.Text = "លេខផ្ទាល់ខ្លួន:";
-            // 
-            // txtStaffContactNumber
-            // 
-            txtStaffContactNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffContactNumber.Location = new Point(186, 351);
-            txtStaffContactNumber.Name = "txtStaffContactNumber";
-            txtStaffContactNumber.Size = new Size(164, 44);
-            txtStaffContactNumber.TabIndex = 22;
             // 
             // lblStaffContactNumber
             // 
@@ -611,6 +625,30 @@
             // 
             epdStaffSalary.ContainerControl = this;
             // 
+            // epdStaffContactNumber
+            // 
+            epdStaffContactNumber.ContainerControl = this;
+            // 
+            // epdStaffPersonalNumber
+            // 
+            epdStaffPersonalNumber.ContainerControl = this;
+            // 
+            // epdStaffHouseNo
+            // 
+            epdStaffHouseNo.ContainerControl = this;
+            // 
+            // epdStaffStreetNo
+            // 
+            epdStaffStreetNo.ContainerControl = this;
+            // 
+            // epdStaffSangkat
+            // 
+            epdStaffSangkat.ContainerControl = this;
+            // 
+            // epdStaffKhan
+            // 
+            epdStaffKhan.ContainerControl = this;
+            // 
             // FrmStaff
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -639,6 +677,12 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -684,9 +728,7 @@
         private Label lblStaffSalary;
         private DateTimePicker dtpStaffHiredDate;
         private Label lblStaffHiredDate;
-        private TextBox txtStaffContactNumber;
         private Label lblStaffContactNumber;
-        private TextBox txtStaffPersonalNumber;
         private Label lblStaffPersonalNumber;
         private Panel pnlStaffManipulation;
         private Button btnInsertStaff;
@@ -697,5 +739,13 @@
         private ErrorProvider epdStaffLastName;
         private ErrorProvider epdStaffIdentityCardNumber;
         private ErrorProvider epdStaffSalary;
+        private MaskedTextBox mtxtStaffPersonalNumber;
+        private MaskedTextBox mtxtStaffContactNumber;
+        private ErrorProvider epdStaffContactNumber;
+        private ErrorProvider epdStaffPersonalNumber;
+        private ErrorProvider epdStaffHouseNo;
+        private ErrorProvider epdStaffStreetNo;
+        private ErrorProvider epdStaffSangkat;
+        private ErrorProvider epdStaffKhan;
     }
 }

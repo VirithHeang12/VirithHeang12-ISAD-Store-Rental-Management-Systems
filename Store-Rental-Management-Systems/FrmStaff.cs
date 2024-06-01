@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using StoreRentalHelper;
+using StoreRentalHelper.entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmStaff : FrmHome
     {
-        public BindingSource StaffBindingSource {  get; set; }
+        public BindingSource StaffBindingSource { get; set; }
         public FrmStaff(): base()
         {
            
@@ -23,14 +24,56 @@ namespace Store_Rental_Management_Systems
             StaffBindingSource = new BindingSource();
             ConfigDefaultValues();
 
+            #region Event registration for CRUD operations
             this.Load += LoadAllStaffs;
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;
+            #endregion
+
+            #region Event registration for shutting down error on got focus
             txtStaffFirstName.GotFocus += HandleTxtStaffFirstNameGotFocus;
             txtStaffLastName.GotFocus += HandleTxtStaffLastNameGotFocus;
             txtStaffIdentityCardNumber.GotFocus += HandleTxtIDCardNumberGotFocus;
             txtStaffSalary.GotFocus += HandleTxtStaffSalaryGotFocus;
+            mtxtStaffContactNumber.GotFocus += HandleMTxtStaffContactNumberGotFocus;
+            mtxtStaffPersonalNumber.GotFocus += MtxtStaffPersonalNumberGotFocus;
+            txtStaffHouseNo.GotFocus += HandleStaffTxtHouseNoGotFocus;
+            txtStaffStreetNo.GotFocus += HandleStaffTxtStreetNoGotFocus;
+            txtStaffSangkat.GotFocus += HandleStaffTxtSangkatGotFocus;
+            txtStaffKhan.GotFocus += HandleStaffTxtKhanGotFocus;
+            #endregion
+        }
+
+        #region Error shutdown event handlers
+        private void HandleStaffTxtKhanGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffKhan, epdStaffKhan);
+        }
+
+        private void HandleStaffTxtSangkatGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffSangkat, epdStaffSangkat);
+        }
+
+        private void HandleStaffTxtStreetNoGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffStreetNo, epdStaffStreetNo);
+        }
+
+        private void HandleStaffTxtHouseNoGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(txtStaffHouseNo, epdStaffHouseNo);
+        }
+
+        private void MtxtStaffPersonalNumberGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(mtxtStaffPersonalNumber, epdStaffPersonalNumber);
+        }
+
+        private void HandleMTxtStaffContactNumberGotFocus(object? sender, EventArgs e)
+        {
+            ShutDownError(mtxtStaffContactNumber, epdStaffContactNumber);
         }
 
         private void HandleTxtStaffSalaryGotFocus(object? sender, EventArgs e)
@@ -52,21 +95,48 @@ namespace Store_Rental_Management_Systems
         {
             ShutDownError(txtStaffFirstName, epdStaffFirstName);
         }
+        #endregion
 
+        #region Insert event handler
         private void HandleBtnInsertStaffClick(object? sender, EventArgs e)
         {
-            if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName) || ValidateTextBox(txtStaffLastName, epdStaffLastName) || ValidateTextBox(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber) || ValidateTextBoxNumber(txtStaffSalary, epdStaffSalary))
+            if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName) || ValidateTextBox(txtStaffLastName, epdStaffLastName) || ValidateTextBox(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber) || ValidateTextBoxNumber(txtStaffSalary, epdStaffSalary) || ValidateMaskedTextBox(mtxtStaffContactNumber, epdStaffContactNumber) || ValidateMaskedTextBox(mtxtStaffPersonalNumber, epdStaffPersonalNumber) || ValidateTextBox(txtStaffHouseNo, epdStaffHouseNo) || ValidateTextBox(txtStaffStreetNo, epdStaffStreetNo) || ValidateTextBox(txtStaffSangkat, epdStaffSangkat) || ValidateTextBox(txtStaffKhan, epdStaffKhan))
             {
-                // Proceed with form submission or further processing
+                StaffHelper.AddStaff(Program.Connection, new Staff()
+                {
+                    StaffFirstName = txtStaffFirstName.Text,
+                    StaffLastName = txtStaffLastName.Text,
+                    Sex = rdbFemale.Checked ? 'F' : 'M',
+                    BirthDate = DateOnly.Parse(dtpStaffBirthDate.Text),
+                    IdentityCardNumber = txtStaffIdentityCardNumber.Text,
+                    StaffPosition = cbStaffPosition.Text,
+                    HouseNo = txtStaffHouseNo.Text,
+                    StreetNo = txtStaffStreetNo.Text,
+                    Sangkat = txtStaffSangkat.Text,
+                    Khan = txtStaffKhan.Text,
+                    ProvinceOrCity = cbStaffCityOrProvince.Text,
+                    ContactNumber = mtxtStaffContactNumber.Text,
+                    PersonalNumber = mtxtStaffPersonalNumber.Text,
+                    Salary = double.Parse(txtStaffSalary.Text),
+                    HiredDate = DateOnly.Parse(dtpStaffHiredDate.Text),
+                    Photo = BitmapToByteArray(new Bitmap(pbStaffPhoto.Image)),
+                    StoppedWork = chbStaffStoppedWork.Checked
+
+                }) ; 
             }
         }
+        #endregion
 
+        #region New event handler
         private void HandleBtnNewStaffClick(object? sender, EventArgs e)
         {
             ClearAllFields();
             ConfigDefaultValues();
+            MaskedTextBox maskedText = new MaskedTextBox();
         }
+        #endregion
 
+        #region Clear all input fields
         private void ClearAllFields()
         {
             chbStaffStoppedWork.Checked = false;
@@ -79,8 +149,8 @@ namespace Store_Rental_Management_Systems
             cbStaffPosition.SelectedIndex = -1;
             txtStaffSalary.Text = string.Empty;
             dtpStaffHiredDate.Value = DateTime.Now;
-            txtStaffContactNumber.Text = string.Empty;
-            txtStaffPersonalNumber.Text = string.Empty;
+            mtxtStaffContactNumber.Text = string.Empty;
+            mtxtStaffPersonalNumber.Text = string.Empty;
             txtStaffHouseNo.Text = string.Empty;
             txtStaffStreetNo.Text = string.Empty;
             txtStaffSangkat.Text = string.Empty;
@@ -89,7 +159,9 @@ namespace Store_Rental_Management_Systems
             txtStaffFirstName.Focus();
 
         }
+        #endregion
 
+        #region Event handler for staff photo click
         private void HandleBtnStaffPhotoClick(object? sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -109,12 +181,17 @@ namespace Store_Rental_Management_Systems
                 pbStaffPhoto.SizeMode = PictureBoxSizeMode.StretchImage; //
             }
         }
+        #endregion
 
+        #region Event handler for loading all staffs and render initial picture
         private void LoadAllStaffs(object? sender, EventArgs e)
         {
-            var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+            RenderInitialPicture();
+            //var staffs = StaffHelper.GetAllStaffs(Program.Connection);
         }
+        #endregion
 
+        #region Validate textbox number input fields
         private bool ValidateTextBoxNumber(TextBox txt, ErrorProvider errorProvider)
         {
             if (string.IsNullOrWhiteSpace(txt.Text))
@@ -134,6 +211,9 @@ namespace Store_Rental_Management_Systems
             }
         }
 
+        #endregion
+
+        #region Validate TextBox
         private bool ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
         {
             if (string.IsNullOrWhiteSpace(txt.Text))
@@ -147,15 +227,35 @@ namespace Store_Rental_Management_Systems
                 return true;
             }
         }
+        #endregion
 
-        private void ShutDownError(TextBox txt, ErrorProvider errorProvider)
+        #region Validate MaskedTextBox
+        private bool ValidateMaskedTextBox(MaskedTextBox mtxt, ErrorProvider errorProvider)
+        {
+            if (!mtxt.MaskCompleted)
+            {
+                errorProvider.SetError(mtxt, $"{nameof(mtxt)} cannot be empty!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(mtxt, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Shutdown Error
+        private void ShutDownError(TextBoxBase txt, ErrorProvider errorProvider)
         {
             if (errorProvider != null)
             {
                 errorProvider.Clear();
             }
         }
+        #endregion
 
+        #region Config Default Input values
         private void ConfigDefaultValues()
         {
             chbStaffStoppedWork.Checked = false;
@@ -164,5 +264,29 @@ namespace Store_Rental_Management_Systems
             cbStaffCityOrProvince.SelectedIndex = 0;
             cbStaffPosition.SelectedIndex = 0;
         }
+        #endregion
+
+        #region Render initial picture
+        private void RenderInitialPicture()
+        {
+            pbStaffPhoto.Visible = true;
+            Bitmap initialImage = Properties.Resources.account_search;
+            pbStaffPhoto.Image = initialImage;
+        }
+        #endregion
+
+        #region Convert image to byte[]
+        static byte[] BitmapToByteArray(Bitmap bitmap)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                // Save the bitmap to the stream in the desired format
+                bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+
+                // Return the byte array from the stream
+                return stream.ToArray();
+            }
+        }
+        #endregion
     }
 }

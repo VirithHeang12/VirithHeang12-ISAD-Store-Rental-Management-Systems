@@ -174,6 +174,5 @@ namespace StoreRentalHelper
         }
         #endregion
 
-
     }
 }

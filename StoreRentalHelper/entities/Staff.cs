@@ -22,9 +22,14 @@ namespace StoreRentalHelper.entities
         public string ProvinceOrCity { get; set; } = default!;
         public string ContactNumber { get; set; } = default!;
         public string PersonalNumber { get; set; } = default!;
-        public double Salary { get; set; } = default;
+        public decimal Salary { get; set; } = default;
         public DateOnly HiredDate { get; set; } = default!;
         public byte[] Photo { get; set; } = default!;
         public bool StoppedWork { get; set; } = default;
+
+        public string FullName => $"{StaffFirstName} {StaffLastName}";
+        public bool IsFemale => Sex == 'F' ;
+        public bool IsMale => Sex == 'M';
+
     }
 }

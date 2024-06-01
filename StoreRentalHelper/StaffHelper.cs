@@ -19,15 +19,15 @@ namespace StoreRentalHelper
         public static event EventHandler? Deleted;
         #endregion
 
-        #region
+        #region Constants
         public static SqlConnection? Connection { get; set; }
         #endregion
 
         #region Procedure Names
-        private const string INSERT_STAFF = "InsertNewStaff";
-        private const string UPDATE_STAFF = "UpdateStaff";
-        private const string DELETE_STAFF = "DeleteStaff";
-        private const string GET_ALL_STAFFS = "GetAllStaffs";
+        private const string INSERT_STAFF = "sp_InsertNewStaff";
+        private const string UPDATE_STAFF = "sp_UpdateStaff";
+        private const string DELETE_STAFF = "sp_DeleteStaff";
+        private const string GET_ALL_STAFFS = "v_GetAllStaffs";
         #endregion
 
         #region Commands
@@ -129,14 +129,24 @@ namespace StoreRentalHelper
         }
         #endregion
 
+        #region Generate Get All Staffs Command
+        private static void CreateGetAllStaffsCommand()
+        {
+            var cmd = new SqlCommand($"SELECT * FROM {GET_ALL_STAFFS}", Connection);
+            cmd.CommandType = CommandType.Text;
+            commands.Add(GET_ALL_STAFFS, cmd);
+        }
+        #endregion
+
         #region Generate Commands
         public static void GenerateCommands()
         {
             CreateInsertStaffCommand();
+            CreateGetAllStaffsCommand();
         }
         #endregion
 
-        #region
+        #region Add New Staff
         public static void AddStaff(SqlConnection conn, Staff staff)
         {
             SqlCommand cmd = commands[INSERT_STAFF];
@@ -171,6 +181,36 @@ namespace StoreRentalHelper
             {
                 cmd.Dispose();
             }
+        }
+        #endregion
+
+        #region Get All Staffs
+        public static IEnumerable<Staff> GetAllStaffs(SqlConnection conn)
+        {
+            SqlCommand cmd = commands[GET_ALL_STAFFS];
+            SqlDataReader? reader = null;
+            try
+            {
+                reader = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in getting all staffs > {ex.Message}");
+            }
+            finally
+            {
+                cmd.Dispose();
+            }
+
+            if (reader != null && reader.HasRows == true)
+            {
+                var queryable = reader.Cast<IDataRecord>().AsQueryable();
+                foreach (var record in queryable)
+                {
+                    yield return record.ToStaff();
+                }
+            }
+            reader?.Close();
         }
         #endregion
 

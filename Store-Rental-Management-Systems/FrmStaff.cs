@@ -29,6 +29,7 @@ namespace Store_Rental_Management_Systems
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;
+            lbStaff.SelectedValueChanged += HandleLbStaffSelectedValueChanged;
             #endregion
 
             #region Event registration for shutting down error on got focus
@@ -43,6 +44,56 @@ namespace Store_Rental_Management_Systems
             txtStaffSangkat.GotFocus += HandleStaffTxtSangkatGotFocus;
             txtStaffKhan.GotFocus += HandleStaffTxtKhanGotFocus;
             #endregion
+
+            #region Register event for converting and changing image
+            StaffBindingSource.CurrentChanged += HandleStaffBindingSourceCurrentChanged;
+            #endregion
+
+        }
+
+        #region HandleStaffBindingSourceCurrentChanged
+        private void HandleStaffBindingSourceCurrentChanged(object? sender, EventArgs e)
+        {
+            if (StaffBindingSource.Current is Staff selectedStaff && selectedStaff.Photo != null)
+            {
+                using (MemoryStream ms = new MemoryStream(selectedStaff.Photo))
+                {
+                    pbStaffPhoto.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                pbStaffPhoto.Image = null;
+            }
+        }
+        #endregion
+
+        private void BindListBoxToOtherControl()
+        {
+            txtStaffID.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffID"));
+            txtStaffFirstName.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffFirstName"));
+            txtStaffLastName.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffLastName"));
+            rdbFemale.DataBindings.Add(new Binding("Checked", StaffBindingSource, "IsFemale"));
+            rdbMale.DataBindings.Add(new Binding("Checked", StaffBindingSource, "IsMale"));
+            dtpStaffBirthDate.DataBindings.Add(new Binding("Text", StaffBindingSource, "BirthDate"));
+            txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "IdentityCardNumber"));
+            cbStaffPosition.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffPosition"));
+            txtStaffHouseNo.DataBindings.Add(new Binding("Text", StaffBindingSource, "HouseNo"));
+            txtStaffStreetNo.DataBindings.Add(new Binding("Text", StaffBindingSource, "StreetNo"));
+            txtStaffSangkat.DataBindings.Add(new Binding("Text", StaffBindingSource, "Sangkat"));
+            txtStaffKhan.DataBindings.Add(new Binding("Text", StaffBindingSource, "Khan"));
+            cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", StaffBindingSource, "ProvinceOrCity"));
+            mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "ContactNumber"));
+            mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "PersonalNumber"));
+            txtStaffSalary.DataBindings.Add(new Binding("Text", StaffBindingSource, "Salary"));
+            dtpStaffHiredDate.DataBindings.Add(new Binding("Text", StaffBindingSource, "HiredDate"));
+            chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", StaffBindingSource, "StoppedWork"));
+
+
+        }
+        private void HandleLbStaffSelectedValueChanged(object? sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         #region Error shutdown event handlers
@@ -117,7 +168,7 @@ namespace Store_Rental_Management_Systems
                     ProvinceOrCity = cbStaffCityOrProvince.Text,
                     ContactNumber = mtxtStaffContactNumber.Text,
                     PersonalNumber = mtxtStaffPersonalNumber.Text,
-                    Salary = double.Parse(txtStaffSalary.Text),
+                    Salary = decimal.Parse(txtStaffSalary.Text),
                     HiredDate = DateOnly.Parse(dtpStaffHiredDate.Text),
                     Photo = BitmapToByteArray(new Bitmap(pbStaffPhoto.Image)),
                     StoppedWork = chbStaffStoppedWork.Checked
@@ -132,13 +183,13 @@ namespace Store_Rental_Management_Systems
         {
             ClearAllFields();
             ConfigDefaultValues();
-            MaskedTextBox maskedText = new MaskedTextBox();
         }
         #endregion
 
         #region Clear all input fields
         private void ClearAllFields()
         {
+            txtStaffID.Text = string.Empty;
             chbStaffStoppedWork.Checked = false;
             txtStaffFirstName.Text = string.Empty;
             txtStaffLastName.Text = string.Empty;
@@ -187,7 +238,14 @@ namespace Store_Rental_Management_Systems
         private void LoadAllStaffs(object? sender, EventArgs e)
         {
             RenderInitialPicture();
-            //var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+            var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+            StaffBindingSource = new BindingSource();
+            StaffBindingSource.DataSource = staffs;
+            lbStaff.Items.Clear();
+            lbStaff.DataSource = StaffBindingSource;
+            lbStaff.DisplayMember = "FullName";
+            lbStaff.ValueMember = "StaffID";
+            BindListBoxToOtherControl();
         }
         #endregion
 

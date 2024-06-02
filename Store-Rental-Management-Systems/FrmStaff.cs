@@ -17,6 +17,25 @@ namespace Store_Rental_Management_Systems
     public partial class FrmStaff : FrmHome
     {
         public BindingSource StaffBindingSource { get; set; }
+        private Binding? _staffIDBinding;
+        private Binding? _staffFirstNameBinding;
+        private Binding? _staffLastNameBinding;
+        private Binding? _staffIsMaleBinding;
+        private Binding? _staffIsFemaleBinding;
+        private Binding? _staffBirthDateBinding;
+        private Binding? _staffIdentityCardNumberBinding;
+        private Binding? _staffPositionBinding;
+        private Binding? _staffHouseNoBinding;
+        private Binding? _staffStreetNoBinding;
+        private Binding? _staffSangkatBinding;
+        private Binding? _staffKhanBinding;
+        private Binding? _staffProvinceOrCityBinding;
+        private Binding? _staffContactNumberBinding;
+        private Binding? _staffPersonalNumberBinding;
+        private Binding? _staffSalaryBinding;
+        private Binding? _staffHiredDateBinding;
+        private Binding? _staffStoppedWorkBinding;
+
         public FrmStaff(): base()
         {
            
@@ -29,7 +48,6 @@ namespace Store_Rental_Management_Systems
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;
-            lbStaff.SelectedValueChanged += HandleLbStaffSelectedValueChanged;
             #endregion
 
             #region Event registration for shutting down error on got focus
@@ -68,33 +86,149 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
+        #region Instantiate bindings
+
+        private void InstantiateBindings()
+        {
+            _staffIDBinding = new Binding("Text", StaffBindingSource, "StaffID");
+            _staffFirstNameBinding = new Binding("Text", StaffBindingSource, "StaffFirstName");
+            _staffLastNameBinding = new Binding("Text", StaffBindingSource, "StaffLastName");
+            _staffIsFemaleBinding = new Binding("Checked", StaffBindingSource, "IsFemale");
+            _staffIsMaleBinding = new Binding("Checked", StaffBindingSource, "IsMale");
+            _staffBirthDateBinding = new Binding("Text", StaffBindingSource, "BirthDate");
+            _staffIdentityCardNumberBinding = new Binding("Text", StaffBindingSource, "IdentityCardNumber");
+            _staffPositionBinding = new Binding("Text", StaffBindingSource, "StaffPosition");
+            _staffHouseNoBinding = new Binding("Text", StaffBindingSource, "HouseNo");
+            _staffStreetNoBinding = new Binding("Text", StaffBindingSource, "StreetNo");
+            _staffSangkatBinding = new Binding("Text", StaffBindingSource, "Sangkat");
+            _staffKhanBinding = new Binding("Text", StaffBindingSource, "Khan");
+            _staffProvinceOrCityBinding = new Binding("Text", StaffBindingSource, "ProvinceOrCity");
+            _staffContactNumberBinding = new Binding("Text", StaffBindingSource, "ContactNumber");
+            _staffPersonalNumberBinding = new Binding("Text", StaffBindingSource, "PersonalNumber");
+            _staffSalaryBinding = new Binding("Text", StaffBindingSource, "Salary");
+            _staffHiredDateBinding = new Binding("Text", StaffBindingSource, "HiredDate");
+            _staffStoppedWorkBinding = new Binding("Checked", StaffBindingSource, "StoppedWork");
+        }
+
+        #endregion
+
+        #region Bind bindings to controls
         private void BindListBoxToOtherControl()
         {
-            txtStaffID.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffID"));
-            txtStaffFirstName.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffFirstName"));
-            txtStaffLastName.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffLastName"));
-            rdbFemale.DataBindings.Add(new Binding("Checked", StaffBindingSource, "IsFemale"));
-            rdbMale.DataBindings.Add(new Binding("Checked", StaffBindingSource, "IsMale"));
-            dtpStaffBirthDate.DataBindings.Add(new Binding("Text", StaffBindingSource, "BirthDate"));
-            txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "IdentityCardNumber"));
-            cbStaffPosition.DataBindings.Add(new Binding("Text", StaffBindingSource, "StaffPosition"));
-            txtStaffHouseNo.DataBindings.Add(new Binding("Text", StaffBindingSource, "HouseNo"));
-            txtStaffStreetNo.DataBindings.Add(new Binding("Text", StaffBindingSource, "StreetNo"));
-            txtStaffSangkat.DataBindings.Add(new Binding("Text", StaffBindingSource, "Sangkat"));
-            txtStaffKhan.DataBindings.Add(new Binding("Text", StaffBindingSource, "Khan"));
-            cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", StaffBindingSource, "ProvinceOrCity"));
-            mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "ContactNumber"));
-            mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", StaffBindingSource, "PersonalNumber"));
-            txtStaffSalary.DataBindings.Add(new Binding("Text", StaffBindingSource, "Salary"));
-            dtpStaffHiredDate.DataBindings.Add(new Binding("Text", StaffBindingSource, "HiredDate"));
-            chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", StaffBindingSource, "StoppedWork"));
+            if (txtStaffID.DataBindings.Count == 0)
+                txtStaffID.DataBindings.Add(_staffIDBinding);
 
+            if (txtStaffFirstName.DataBindings.Count == 0)
+                txtStaffFirstName.DataBindings.Add(_staffFirstNameBinding);
 
+            if (txtStaffLastName.DataBindings.Count == 0)
+                txtStaffLastName.DataBindings.Add(_staffLastNameBinding);
+
+            if (rdbFemale.DataBindings.Count == 0)
+                rdbFemale.DataBindings.Add(_staffIsFemaleBinding);
+
+            if (rdbMale.DataBindings.Count == 0)
+                rdbMale.DataBindings.Add(_staffIsMaleBinding);
+
+            if (dtpStaffBirthDate.DataBindings.Count == 0)
+                dtpStaffBirthDate.DataBindings.Add(_staffBirthDateBinding);
+
+            if (txtStaffIdentityCardNumber.DataBindings.Count == 0)
+                txtStaffIdentityCardNumber.DataBindings.Add(_staffIdentityCardNumberBinding);
+
+            if (cbStaffPosition.DataBindings.Count == 0)
+                cbStaffPosition.DataBindings.Add(_staffPositionBinding);
+
+            if (txtStaffHouseNo.DataBindings.Count == 0)
+                txtStaffHouseNo.DataBindings.Add(_staffHouseNoBinding);
+
+            if (txtStaffStreetNo.DataBindings.Count == 0)
+                txtStaffStreetNo.DataBindings.Add(_staffStreetNoBinding);
+
+            if (txtStaffSangkat.DataBindings.Count == 0)
+                txtStaffSangkat.DataBindings.Add(_staffSangkatBinding);
+
+            if (txtStaffKhan.DataBindings.Count == 0)
+                txtStaffKhan.DataBindings.Add(_staffKhanBinding);
+
+            if (cbStaffCityOrProvince.DataBindings.Count == 0)
+                cbStaffCityOrProvince.DataBindings.Add(_staffProvinceOrCityBinding);
+
+            if (mtxtStaffContactNumber.DataBindings.Count == 0)
+                mtxtStaffContactNumber.DataBindings.Add(_staffContactNumberBinding);
+
+            if (mtxtStaffPersonalNumber.DataBindings.Count == 0)
+                mtxtStaffPersonalNumber.DataBindings.Add(_staffPersonalNumberBinding);
+
+            if (txtStaffSalary.DataBindings.Count == 0)
+                txtStaffSalary.DataBindings.Add(_staffSalaryBinding);
+
+            if (dtpStaffHiredDate.DataBindings.Count == 0)
+                dtpStaffHiredDate.DataBindings.Add(_staffHiredDateBinding);
+
+            if (chbStaffStoppedWork.DataBindings.Count == 0)
+                chbStaffStoppedWork.DataBindings.Add(_staffStoppedWorkBinding);
         }
-        private void HandleLbStaffSelectedValueChanged(object? sender, EventArgs e)
+        #endregion
+
+        #region Unbind bindings
+        private void UnBindListBoxToOtherControl()
         {
-            //throw new NotImplementedException();
+            if (txtStaffID.DataBindings.Count > 0)
+                txtStaffID.DataBindings.Remove(_staffIDBinding);
+            
+            if (txtStaffFirstName.DataBindings.Count > 0) 
+                txtStaffFirstName.DataBindings.Remove(_staffFirstNameBinding);
+
+            if (txtStaffLastName.DataBindings.Count > 0)
+                txtStaffLastName.DataBindings.Remove(_staffLastNameBinding);
+
+            if (rdbFemale.DataBindings.Count > 0)
+                rdbFemale.DataBindings.Remove(_staffIsFemaleBinding);
+
+            if (rdbMale.DataBindings.Count > 0)
+                rdbMale.DataBindings.Remove(_staffIsMaleBinding);
+
+            if (dtpStaffBirthDate.DataBindings.Count > 0)
+                dtpStaffBirthDate.DataBindings.Remove(_staffBirthDateBinding);
+
+            if (txtStaffIdentityCardNumber.DataBindings.Count > 0)
+            txtStaffIdentityCardNumber.DataBindings.Remove(_staffIdentityCardNumberBinding);
+
+            if (cbStaffPosition.DataBindings.Count > 0)
+                cbStaffPosition.DataBindings.Remove(_staffPositionBinding);
+
+            if (txtStaffHouseNo.DataBindings.Count > 0)
+                txtStaffHouseNo.DataBindings.Remove(_staffHouseNoBinding);
+
+            if (txtStaffStreetNo.DataBindings.Count > 0)
+                txtStaffStreetNo.DataBindings.Remove(_staffStreetNoBinding);
+
+            if (txtStaffSangkat.DataBindings.Count > 0)
+                txtStaffSangkat.DataBindings.Remove(_staffSangkatBinding);
+
+            if (txtStaffKhan.DataBindings.Count > 0)
+                txtStaffKhan.DataBindings.Remove(_staffKhanBinding);
+
+            if (cbStaffCityOrProvince.DataBindings.Count > 0)
+                cbStaffCityOrProvince.DataBindings.Remove(_staffProvinceOrCityBinding);
+
+            if (mtxtStaffContactNumber.DataBindings.Count > 0)
+                mtxtStaffContactNumber.DataBindings.Remove(_staffContactNumberBinding);
+
+            if (mtxtStaffPersonalNumber.DataBindings.Count > 0)
+                mtxtStaffPersonalNumber.DataBindings.Remove(_staffPersonalNumberBinding);
+
+            if (txtStaffSalary.DataBindings.Count > 0)
+                txtStaffSalary.DataBindings.Remove(_staffSalaryBinding);
+
+            if (dtpStaffHiredDate.DataBindings.Count > 0)
+                dtpStaffHiredDate.DataBindings.Remove(_staffHiredDateBinding);
+
+            if (chbStaffStoppedWork.DataBindings.Count > 0)
+                    chbStaffStoppedWork.DataBindings.Remove(_staffStoppedWorkBinding);
         }
+        #endregion
 
         #region Error shutdown event handlers
         private void HandleStaffTxtKhanGotFocus(object? sender, EventArgs e)
@@ -172,9 +306,12 @@ namespace Store_Rental_Management_Systems
                     HiredDate = DateOnly.Parse(dtpStaffHiredDate.Text),
                     Photo = BitmapToByteArray(new Bitmap(pbStaffPhoto.Image)),
                     StoppedWork = chbStaffStoppedWork.Checked
-
-                }) ; 
+                   
+                }) ;
+               ReloadStaffs();
+                BindListBoxToOtherControl();
             }
+            
         }
         #endregion
 
@@ -183,6 +320,8 @@ namespace Store_Rental_Management_Systems
         {
             ClearAllFields();
             ConfigDefaultValues();
+            RenderInitialPicture();
+            UnBindListBoxToOtherControl();
         }
         #endregion
 
@@ -239,9 +378,21 @@ namespace Store_Rental_Management_Systems
         {
             RenderInitialPicture();
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
-            StaffBindingSource = new BindingSource();
             StaffBindingSource.DataSource = staffs;
             lbStaff.Items.Clear();
+            lbStaff.DataSource = StaffBindingSource;
+            lbStaff.DisplayMember = "FullName";
+            lbStaff.ValueMember = "StaffID";
+            InstantiateBindings();
+            BindListBoxToOtherControl();
+        }
+        #endregion
+
+        #region Reload Staffs
+        private void ReloadStaffs()
+        {
+            var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+            StaffBindingSource.DataSource = staffs;
             lbStaff.DataSource = StaffBindingSource;
             lbStaff.DisplayMember = "FullName";
             lbStaff.ValueMember = "StaffID";

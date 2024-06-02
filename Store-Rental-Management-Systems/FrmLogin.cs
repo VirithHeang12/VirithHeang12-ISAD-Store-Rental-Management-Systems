@@ -26,6 +26,5 @@ namespace Store_Rental_Management_Systems
         {
             LoggedIn?.Invoke(this, EventArgs.Empty);
         }
-
     }
 }

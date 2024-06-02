@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Store_Rental_Management_Systems
 {
-    public partial class FrmImport : FrmHome
+    public partial class FrmSupplier : FrmHome
     {
-        public FrmImport()
+        public FrmSupplier()
         {
             InitializeComponent();
         }

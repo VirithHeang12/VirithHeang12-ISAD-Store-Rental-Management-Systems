@@ -28,120 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblSystemTitle = new Label();
-            lblLoginUserName = new Label();
-            txtLoginUserName = new TextBox();
-            lblLoginTitle = new Label();
-            lblLoginPassword = new Label();
-            txtLoginPassword = new TextBox();
+            panel1 = new Panel();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            pictureBox1 = new PictureBox();
+            panel2 = new Panel();
             btnLogin = new Button();
-            pnlLogin = new Panel();
-            pnlLogin.SuspendLayout();
+            txtLoginPassword = new TextBox();
+            txtLoginUserName = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // lblSystemTitle
+            // panel1
             // 
-            lblSystemTitle.BackColor = Color.HotPink;
-            lblSystemTitle.Dock = DockStyle.Top;
-            lblSystemTitle.ForeColor = Color.Magenta;
-            lblSystemTitle.Location = new Point(0, 0);
-            lblSystemTitle.Name = "lblSystemTitle";
-            lblSystemTitle.Size = new Size(1800, 93);
-            lblSystemTitle.TabIndex = 0;
-            lblSystemTitle.Text = "ប្រព័ន្ធគ្រប់គ្រងការជួលតូប";
-            lblSystemTitle.TextAlign = ContentAlignment.MiddleCenter;
+            panel1.BackColor = Color.FromArgb(0, 28, 87);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(916, 1000);
+            panel1.TabIndex = 0;
             // 
-            // lblLoginUserName
+            // label3
             // 
-            lblLoginUserName.AutoSize = true;
-            lblLoginUserName.Location = new Point(111, 107);
-            lblLoginUserName.Name = "lblLoginUserName";
-            lblLoginUserName.Size = new Size(162, 36);
-            lblLoginUserName.TabIndex = 1;
-            lblLoginUserName.Text = "ឈ្មោះអ្នកប្រើប្រាស់";
+            label3.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(607, 879);
+            label3.Name = "label3";
+            label3.Size = new Size(309, 89);
+            label3.TabIndex = 3;
+            label3.Text = "Copyright © 2024 - ISAD SLS Group 3. All Rights Reserved.";
             // 
-            // txtLoginUserName
+            // label2
             // 
-            txtLoginUserName.Location = new Point(350, 99);
-            txtLoginUserName.Name = "txtLoginUserName";
-            txtLoginUserName.Size = new Size(269, 44);
-            txtLoginUserName.TabIndex = 2;
+            label2.AutoSize = true;
+            label2.Font = new Font("Dangrek", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(102, 521);
+            label2.Name = "label2";
+            label2.Size = new Size(690, 80);
+            label2.TabIndex = 2;
+            label2.Text = "ប្រព័ន្ធគ្រប់គ្រងនៃការជួលតូបក្នុងផ្សារទំនើប";
             // 
-            // lblLoginTitle
+            // label1
             // 
-            lblLoginTitle.AutoSize = true;
-            lblLoginTitle.Location = new Point(136, 29);
-            lblLoginTitle.Name = "lblLoginTitle";
-            lblLoginTitle.Size = new Size(422, 36);
-            lblLoginTitle.TabIndex = 3;
-            lblLoginTitle.Text = "សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់ដើម្បីចូលក្នុងប្រព័ន្ធ";
+            label1.AutoSize = true;
+            label1.Font = new Font("Dangrek", 28F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(237, 405);
+            label1.Name = "label1";
+            label1.Size = new Size(448, 101);
+            label1.TabIndex = 1;
+            label1.Text = "សូមស្វាគមន៍មកកាន់";
             // 
-            // lblLoginPassword
+            // pictureBox1
             // 
-            lblLoginPassword.AutoSize = true;
-            lblLoginPassword.Location = new Point(122, 186);
-            lblLoginPassword.Name = "lblLoginPassword";
-            lblLoginPassword.Size = new Size(109, 36);
-            lblLoginPassword.TabIndex = 4;
-            lblLoginPassword.Text = "លេខសម្ងាត់";
+            pictureBox1.Image = Properties.Resources.Shop_logo_1;
+            pictureBox1.Location = new Point(237, 94);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(429, 308);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
-            // txtLoginPassword
+            // panel2
             // 
-            txtLoginPassword.Location = new Point(350, 186);
-            txtLoginPassword.Name = "txtLoginPassword";
-            txtLoginPassword.PasswordChar = '*';
-            txtLoginPassword.Size = new Size(269, 44);
-            txtLoginPassword.TabIndex = 5;
+            panel2.BackColor = Color.FromArgb(238, 238, 238);
+            panel2.Controls.Add(btnLogin);
+            panel2.Controls.Add(txtLoginPassword);
+            panel2.Controls.Add(txtLoginUserName);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(916, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(884, 1000);
+            panel2.TabIndex = 1;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(472, 280);
+            btnLogin.AutoSize = true;
+            btnLogin.BackColor = Color.FromArgb(0, 28, 87);
+            btnLogin.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(583, 551);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(147, 51);
-            btnLogin.TabIndex = 6;
+            btnLogin.Size = new Size(200, 71);
+            btnLogin.TabIndex = 5;
             btnLogin.Text = "ចូលក្នុងប្រព័ន្ធ";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.UseVisualStyleBackColor = false;
             // 
-            // pnlLogin
+            // txtLoginPassword
             // 
-            pnlLogin.BackColor = Color.SkyBlue;
-            pnlLogin.Controls.Add(lblLoginTitle);
-            pnlLogin.Controls.Add(btnLogin);
-            pnlLogin.Controls.Add(lblLoginUserName);
-            pnlLogin.Controls.Add(txtLoginPassword);
-            pnlLogin.Controls.Add(txtLoginUserName);
-            pnlLogin.Controls.Add(lblLoginPassword);
-            pnlLogin.Location = new Point(374, 141);
-            pnlLogin.Name = "pnlLogin";
-            pnlLogin.Size = new Size(673, 414);
-            pnlLogin.TabIndex = 7;
+            txtLoginPassword.Location = new Point(379, 417);
+            txtLoginPassword.Name = "txtLoginPassword";
+            txtLoginPassword.Size = new Size(404, 51);
+            txtLoginPassword.TabIndex = 4;
+            // 
+            // txtLoginUserName
+            // 
+            txtLoginUserName.Location = new Point(379, 320);
+            txtLoginUserName.Name = "txtLoginUserName";
+            txtLoginUserName.Size = new Size(404, 51);
+            txtLoginUserName.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.FromArgb(0, 28, 87);
+            label6.Location = new Point(78, 426);
+            label6.Name = "label6";
+            label6.Size = new Size(145, 43);
+            label6.TabIndex = 2;
+            label6.Text = "លេខសម្ងាត់ៈ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.FromArgb(0, 28, 87);
+            label5.Location = new Point(78, 329);
+            label5.Name = "label5";
+            label5.Size = new Size(217, 43);
+            label5.TabIndex = 1;
+            label5.Text = "ឈ្មោះអ្នកប្រើប្រាស់ៈ";
+            // 
+            // label4
+            // 
+            label4.BackColor = Color.FromArgb(0, 28, 87);
+            label4.Font = new Font("Khmer OS Siemreap", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(78, 171);
+            label4.Name = "label4";
+            label4.Size = new Size(705, 66);
+            label4.TabIndex = 0;
+            label4.Text = "សូមបញ្ចូលឈ្មោះ និង លេខសម្ងាត់ដើម្បីចូលក្នុងប្រព័ន្ធ";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmLogin
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1800, 1000);
             ControlBox = false;
-            Controls.Add(pnlLogin);
-            Controls.Add(lblSystemTitle);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            pnlLogin.ResumeLayout(false);
-            pnlLogin.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Label lblSystemTitle;
-        private Label lblLoginUserName;
-        private TextBox txtLoginUserName;
-        private Label lblLoginTitle;
-        private Label lblLoginPassword;
+        private Panel panel1;
+        private Label label2;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private Label label3;
+        private Panel panel2;
+        private Label label4;
         private TextBox txtLoginPassword;
+        private TextBox txtLoginUserName;
+        private Label label6;
+        private Label label5;
         private Button btnLogin;
-        private Panel pnlLogin;
     }
 }

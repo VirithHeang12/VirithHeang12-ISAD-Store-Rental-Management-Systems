@@ -63,6 +63,9 @@ namespace Store_Rental_Management_Systems
                 case FormTypes.FrmExpenseType:
                     OpenChildForm(new FrmExpenseType());
                     break;
+                case FormTypes.FrmSalaryPayment:
+                    OpenChildForm(new FrmSalaryPayment());
+                    break;
                 default: break;
             }
         }

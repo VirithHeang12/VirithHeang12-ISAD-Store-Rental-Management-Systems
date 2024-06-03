@@ -31,7 +31,7 @@ namespace Store_Rental_Management_Systems
 
         private void HandleShowFormInsurance(object? sender, EventArgs e)
         {
-            RaiseEvent(FormTypes.FrmUser);
+            RaiseEvent(FormTypes.FrmInsurance);
         }
 
         private void HandleShowFormUser(object? sender, EventArgs e)

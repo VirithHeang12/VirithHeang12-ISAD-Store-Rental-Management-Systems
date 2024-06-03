@@ -66,6 +66,9 @@ namespace Store_Rental_Management_Systems
                 case FormTypes.FrmSalaryPayment:
                     OpenChildForm(new FrmSalaryPayment());
                     break;
+                case FormTypes.FrmImport:
+                    OpenChildForm(new FrmImport());
+                    break;
                 default: break;
             }
         }

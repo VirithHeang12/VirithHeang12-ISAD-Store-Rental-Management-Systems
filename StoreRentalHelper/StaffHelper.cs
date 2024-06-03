@@ -59,7 +59,7 @@ namespace StoreRentalHelper
                 Direction = ParameterDirection.Input,
                 IsNullable = false
             });
-            cmd.Parameters.Add(new SqlParameter("@IdentityCardNumber", SqlDbType.NVarChar, 10)
+            cmd.Parameters.Add(new SqlParameter("@IdentityCardNumber", SqlDbType.VarChar, 10)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false
@@ -69,12 +69,12 @@ namespace StoreRentalHelper
                 Direction = ParameterDirection.Input,
                 IsNullable = false
             });
-            cmd.Parameters.Add(new SqlParameter("@HouseNo", SqlDbType.NVarChar, 15)
+            cmd.Parameters.Add(new SqlParameter("@HouseNo", SqlDbType.NVarChar, 25)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false
             });
-            cmd.Parameters.Add(new SqlParameter("@StreetNo", SqlDbType.NVarChar, 15)
+            cmd.Parameters.Add(new SqlParameter("@StreetNo", SqlDbType.NVarChar, 25)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false
@@ -94,12 +94,12 @@ namespace StoreRentalHelper
                 Direction = ParameterDirection.Input,
                 IsNullable = false
             });
-            cmd.Parameters.Add(new SqlParameter("@ContactNumber", SqlDbType.NVarChar, 20)
+            cmd.Parameters.Add(new SqlParameter("@ContactNumber", SqlDbType.VarChar, 20)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false
             });
-            cmd.Parameters.Add(new SqlParameter("@PersonalNumber", SqlDbType.NVarChar, 20)
+            cmd.Parameters.Add(new SqlParameter("@PersonalNumber", SqlDbType.VarChar, 20)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false

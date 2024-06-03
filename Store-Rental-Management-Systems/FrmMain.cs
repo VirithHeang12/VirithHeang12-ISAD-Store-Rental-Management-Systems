@@ -42,6 +42,19 @@ namespace Store_Rental_Management_Systems
                 case FormTypes.FrmStaff: 
                     OpenChildForm(new FrmStaff()); 
                     break;
+                case FormTypes.FrmCustomer:
+                    OpenChildForm(new FrmCustomer());
+                    break;
+                case FormTypes.FrmItem:
+                    OpenChildForm(new FrmItem());
+                    break;
+                case FormTypes.FrmSupplier:
+                    OpenChildForm(new FrmSupplier());
+                    break;
+                case FormTypes.FrmStoreType:
+                    OpenChildForm(new FrmStoreType());
+                    break;
+                default: break;
             }
         }
 

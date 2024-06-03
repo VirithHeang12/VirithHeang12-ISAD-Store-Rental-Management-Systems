@@ -6,29 +6,23 @@ using System.Threading.Tasks;
 
 namespace StoreRentalHelper.entities
 {
-    public class Staff
+    public class Customer
     {
-        public int StaffID { get; set; } = default;
-        public string StaffFirstName { get; set; } = default!;
-        public string StaffLastName { get; set; } = default!;
+        public int CustomerID { get; set; } = default;
+        public string CustomerFirstName { get; set; } = default!;
+        public string CustomerLastName { get; set; } = default!;
         public char Sex { get; set; } = default;
         public DateOnly BirthDate { get; set; } = default!;
         public string IdentityCardNumber { get; set; } = default!;
-        public string StaffPosition { get; set; } = default!;
         public string HouseNo { get; set; } = default!;
         public string StreetNo { get; set; } = default!;
         public string Sangkat { get; set; } = default!;
         public string Khan { get; set; } = default!;
         public string ProvinceOrCity { get; set; } = default!;
         public string ContactNumber { get; set; } = default!;
-        public string PersonalNumber { get; set; } = default!;
-        public decimal Salary { get; set; } = default;
-        public DateOnly HiredDate { get; set; } = default!;
         public byte[] Photo { get; set; } = default!;
-        public bool StoppedWork { get; set; } = default;
-        public string FullName => $"{StaffFirstName} {StaffLastName}";
-        public bool IsFemale => Sex == 'F' ;
+        public string FullName => $"{CustomerFirstName} {CustomerLastName}";
+        public bool IsFemale => Sex == 'F';
         public bool IsMale => Sex == 'M';
-
     }
 }

@@ -107,5 +107,75 @@ namespace StoreRentalHelper
 
             };
         }
+        public static Customer ToCustomer(this IDataRecord record)
+        {
+            int index = record.GetOrdinal("CustomerID");
+            int customerID = record.GetInt32(index);
+
+            index = record.GetOrdinal("CustomerFirstName");
+            string? customerFirstName = null;
+            if (!record.IsDBNull(index)) customerFirstName = record.GetString(index);
+
+            index = record.GetOrdinal("CustomerLastName");
+            string? customerLastName = null;
+            if (!record.IsDBNull(index)) customerLastName = record.GetString(index);
+
+            index = record.GetOrdinal("Sex");
+            char sex = default;
+            if (!record.IsDBNull(index)) sex = record.GetChar(index);
+
+            index = record.GetOrdinal("BirthDate");
+            DateOnly birthDate;
+            if (!record.IsDBNull(index)) birthDate = DateOnly.FromDateTime(record.GetDateTime(index));
+
+            index = record.GetOrdinal("IdentityCardNumber");
+            string? identityCardNumber = null;
+            if (!record.IsDBNull(index)) identityCardNumber = record.GetString(index);
+
+            index = record.GetOrdinal("HouseNo");
+            string? houseNo = null;
+            if (!record.IsDBNull(index)) houseNo = record.GetString(index);
+
+            index = record.GetOrdinal("StreetNo");
+            string? streetNo = null;
+            if (!record.IsDBNull(index)) streetNo = record.GetString(index);
+
+            index = record.GetOrdinal("Sangkat");
+            string? sangkat = null;
+            if (!record.IsDBNull(index)) sangkat = record.GetString(index);
+
+            index = record.GetOrdinal("Khan");
+            string? khan = null;
+            if (!record.IsDBNull(index)) khan = record.GetString(index);
+
+            index = record.GetOrdinal("ProvinceOrCity");
+            string? provinceOrCity = null;
+            if (!record.IsDBNull(index)) provinceOrCity = record.GetString(index);
+
+            index = record.GetOrdinal("ContactNumber");
+            string? contactNumber = null;
+            if (!record.IsDBNull(index)) contactNumber = record.GetString(index);
+
+            index = record.GetOrdinal("Photo");
+            byte[]? photo = null;
+            if (!record.IsDBNull(index)) photo = (byte[])record.GetValue(index);
+
+            return new Customer()
+            {
+                CustomerID = customerID,
+                CustomerFirstName = customerFirstName!,
+                CustomerLastName = customerLastName!,
+                Sex = sex,
+                BirthDate = birthDate,
+                IdentityCardNumber = identityCardNumber!,
+                HouseNo = houseNo!,
+                StreetNo = streetNo!,
+                Sangkat = sangkat!,
+                Khan = khan!,
+                ProvinceOrCity = provinceOrCity!,
+                ContactNumber = contactNumber!,
+                Photo = photo!,
+            };
+        }
     }
 }

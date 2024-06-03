@@ -115,59 +115,63 @@ namespace Store_Rental_Management_Systems
         #region Bind bindings to controls
         private void BindListBoxToOtherControl()
         {
-            if (txtStaffID.DataBindings.Count == 0)
-                txtStaffID.DataBindings.Add(_staffIDBinding);
+            var staffs = StaffHelper.GetAllStaffs(Program.Connection);
+            if (staffs.Any())
+            {
+                if (txtStaffID.DataBindings.Count == 0)
+                    txtStaffID.DataBindings.Add(_staffIDBinding);
 
-            if (txtStaffFirstName.DataBindings.Count == 0)
-                txtStaffFirstName.DataBindings.Add(_staffFirstNameBinding);
+                if (txtStaffFirstName.DataBindings.Count == 0)
+                    txtStaffFirstName.DataBindings.Add(_staffFirstNameBinding);
 
-            if (txtStaffLastName.DataBindings.Count == 0)
-                txtStaffLastName.DataBindings.Add(_staffLastNameBinding);
+                if (txtStaffLastName.DataBindings.Count == 0)
+                    txtStaffLastName.DataBindings.Add(_staffLastNameBinding);
 
-            if (rdbFemale.DataBindings.Count == 0)
-                rdbFemale.DataBindings.Add(_staffIsFemaleBinding);
+                if (rdbFemale.DataBindings.Count == 0)
+                    rdbFemale.DataBindings.Add(_staffIsFemaleBinding);
 
-            if (rdbMale.DataBindings.Count == 0)
-                rdbMale.DataBindings.Add(_staffIsMaleBinding);
+                if (rdbMale.DataBindings.Count == 0)
+                    rdbMale.DataBindings.Add(_staffIsMaleBinding);
 
-            if (dtpStaffBirthDate.DataBindings.Count == 0)
-                dtpStaffBirthDate.DataBindings.Add(_staffBirthDateBinding);
+                if (dtpStaffBirthDate.DataBindings.Count == 0)
+                    dtpStaffBirthDate.DataBindings.Add(_staffBirthDateBinding);
 
-            if (txtStaffIdentityCardNumber.DataBindings.Count == 0)
-                txtStaffIdentityCardNumber.DataBindings.Add(_staffIdentityCardNumberBinding);
+                if (txtStaffIdentityCardNumber.DataBindings.Count == 0)
+                    txtStaffIdentityCardNumber.DataBindings.Add(_staffIdentityCardNumberBinding);
 
-            if (cbStaffPosition.DataBindings.Count == 0)
-                cbStaffPosition.DataBindings.Add(_staffPositionBinding);
+                if (cbStaffPosition.DataBindings.Count == 0)
+                    cbStaffPosition.DataBindings.Add(_staffPositionBinding);
 
-            if (txtStaffHouseNo.DataBindings.Count == 0)
-                txtStaffHouseNo.DataBindings.Add(_staffHouseNoBinding);
+                if (txtStaffHouseNo.DataBindings.Count == 0)
+                    txtStaffHouseNo.DataBindings.Add(_staffHouseNoBinding);
 
-            if (txtStaffStreetNo.DataBindings.Count == 0)
-                txtStaffStreetNo.DataBindings.Add(_staffStreetNoBinding);
+                if (txtStaffStreetNo.DataBindings.Count == 0)
+                    txtStaffStreetNo.DataBindings.Add(_staffStreetNoBinding);
 
-            if (txtStaffSangkat.DataBindings.Count == 0)
-                txtStaffSangkat.DataBindings.Add(_staffSangkatBinding);
+                if (txtStaffSangkat.DataBindings.Count == 0)
+                    txtStaffSangkat.DataBindings.Add(_staffSangkatBinding);
 
-            if (txtStaffKhan.DataBindings.Count == 0)
-                txtStaffKhan.DataBindings.Add(_staffKhanBinding);
+                if (txtStaffKhan.DataBindings.Count == 0)
+                    txtStaffKhan.DataBindings.Add(_staffKhanBinding);
 
-            if (cbStaffCityOrProvince.DataBindings.Count == 0)
-                cbStaffCityOrProvince.DataBindings.Add(_staffProvinceOrCityBinding);
+                if (cbStaffCityOrProvince.DataBindings.Count == 0)
+                    cbStaffCityOrProvince.DataBindings.Add(_staffProvinceOrCityBinding);
 
-            if (mtxtStaffContactNumber.DataBindings.Count == 0)
-                mtxtStaffContactNumber.DataBindings.Add(_staffContactNumberBinding);
+                if (mtxtStaffContactNumber.DataBindings.Count == 0)
+                    mtxtStaffContactNumber.DataBindings.Add(_staffContactNumberBinding);
 
-            if (mtxtStaffPersonalNumber.DataBindings.Count == 0)
-                mtxtStaffPersonalNumber.DataBindings.Add(_staffPersonalNumberBinding);
+                if (mtxtStaffPersonalNumber.DataBindings.Count == 0)
+                    mtxtStaffPersonalNumber.DataBindings.Add(_staffPersonalNumberBinding);
 
-            if (txtStaffSalary.DataBindings.Count == 0)
-                txtStaffSalary.DataBindings.Add(_staffSalaryBinding);
+                if (txtStaffSalary.DataBindings.Count == 0)
+                    txtStaffSalary.DataBindings.Add(_staffSalaryBinding);
 
-            if (dtpStaffHiredDate.DataBindings.Count == 0)
-                dtpStaffHiredDate.DataBindings.Add(_staffHiredDateBinding);
+                if (dtpStaffHiredDate.DataBindings.Count == 0)
+                    dtpStaffHiredDate.DataBindings.Add(_staffHiredDateBinding);
 
-            if (chbStaffStoppedWork.DataBindings.Count == 0)
-                chbStaffStoppedWork.DataBindings.Add(_staffStoppedWorkBinding);
+                if (chbStaffStoppedWork.DataBindings.Count == 0)
+                    chbStaffStoppedWork.DataBindings.Add(_staffStoppedWorkBinding);
+            }
         }
         #endregion
 
@@ -308,7 +312,7 @@ namespace Store_Rental_Management_Systems
                     StoppedWork = chbStaffStoppedWork.Checked
                    
                 }) ;
-               ReloadStaffs();
+                ReloadStaffs();
                 BindListBoxToOtherControl();
             }
             
@@ -378,13 +382,25 @@ namespace Store_Rental_Management_Systems
         {
             RenderInitialPicture();
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
-            StaffBindingSource.DataSource = staffs;
-            lbStaff.Items.Clear();
-            lbStaff.DataSource = StaffBindingSource;
-            lbStaff.DisplayMember = "FullName";
-            lbStaff.ValueMember = "StaffID";
-            InstantiateBindings();
-            BindListBoxToOtherControl();
+            
+            
+            if (staffs.Any())
+            {
+                StaffBindingSource.DataSource = staffs;
+                lbStaff.Items.Clear();
+                lbStaff.DataSource = StaffBindingSource;
+                lbStaff.DisplayMember = "FullName";
+                lbStaff.ValueMember = "StaffID";
+                InstantiateBindings();
+                BindListBoxToOtherControl();
+            }
+            else
+            {
+                lbStaff.Items.Clear();
+                lbStaff.DataSource = null; 
+                lbStaff.DisplayMember = string.Empty;
+                lbStaff.ValueMember = string.Empty;
+            }
         }
         #endregion
 
@@ -392,11 +408,23 @@ namespace Store_Rental_Management_Systems
         private void ReloadStaffs()
         {
             var staffs = StaffHelper.GetAllStaffs(Program.Connection);
-            StaffBindingSource.DataSource = staffs;
-            lbStaff.DataSource = StaffBindingSource;
-            lbStaff.DisplayMember = "FullName";
-            lbStaff.ValueMember = "StaffID";
-            BindListBoxToOtherControl();
+            if (staffs.Any())
+            {
+                StaffBindingSource.DataSource = staffs;
+                lbStaff.Items.Clear();
+                lbStaff.DataSource = StaffBindingSource;
+                lbStaff.DisplayMember = "FullName";
+                lbStaff.ValueMember = "StaffID";
+                InstantiateBindings();
+                BindListBoxToOtherControl();
+            }
+            else
+            {
+                lbStaff.Items.Clear();
+                lbStaff.DataSource = null;
+                lbStaff.DisplayMember = string.Empty;
+                lbStaff.ValueMember = string.Empty;
+            }
         }
         #endregion
 

@@ -18,13 +18,36 @@ namespace Store_Rental_Management_Systems
         public FrmHome()
         {
             InitializeComponent();
-
-            btnShowStaffForm.Click += handleShowFormStaff;
-            btnHome.Click += handleShowFormHome;
-            btnLogout.Click += handleButtonLogoutClick;
+            btnHome.Click += HandleShowFormHome;
+            btnShowStaffForm.Click += HandleShowFormStaff;
+            btnShowCustomerForm.Click += HandleShowFormCustomer;
+            btnShowItemForm.Click += HandleShowFormItem;
+            btnShowSupplierForm.Click += HandleShowFromSupplier;
+            btnShowStoreTypeForm.Click += HandleShowFormStoreType;
+            btnLogout.Click += HandleButtonLogoutClick;
         }
 
-        private void handleButtonLogoutClick(object? sender, EventArgs e)
+        private void HandleShowFormStoreType(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmStoreType);
+        }
+
+        private void HandleShowFromSupplier(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmSupplier);
+        }
+
+        private void HandleShowFormItem(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmItem);
+        }
+
+        private void HandleShowFormCustomer(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmCustomer);
+        }
+
+        private void HandleButtonLogoutClick(object? sender, EventArgs e)
         {
             var result = MessageBox.Show("តើអ្នកពិតជាចង់ចាកចេញពីប្រព័ន្ធមែនឬទេ?", "ចាកចេញពីប្រព័ន្ធ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
@@ -34,12 +57,12 @@ namespace Store_Rental_Management_Systems
             
         }
 
-        private void handleShowFormHome(object? sender, EventArgs e)
+        private void HandleShowFormHome(object? sender, EventArgs e)
         {
             RaiseEvent(FormTypes.FrmHome);
         }
 
-        private void handleShowFormStaff(object? sender, EventArgs e)
+        private void HandleShowFormStaff(object? sender, EventArgs e)
         {
             RaiseEvent(FormTypes.FrmStaff);
         }

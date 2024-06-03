@@ -25,7 +25,13 @@ namespace Store_Rental_Management_Systems
             btnShowSupplierForm.Click += HandleShowFromSupplier;
             btnShowStoreTypeForm.Click += HandleShowFormStoreType;
             btnShowUserForm.Click += HandleShowFormUser;
+            btnShowInsuranceForm.Click += HandleShowFormInsurance;
             btnLogout.Click += HandleButtonLogoutClick;
+        }
+
+        private void HandleShowFormInsurance(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void HandleShowFormUser(object? sender, EventArgs e)

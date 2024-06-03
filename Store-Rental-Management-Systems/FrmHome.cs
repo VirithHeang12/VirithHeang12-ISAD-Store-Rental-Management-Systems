@@ -26,7 +26,13 @@ namespace Store_Rental_Management_Systems
             btnShowStoreTypeForm.Click += HandleShowFormStoreType;
             btnShowUserForm.Click += HandleShowFormUser;
             btnShowInsuranceForm.Click += HandleShowFormInsurance;
+            btnShowExpenseTypeForm.Click += HandleShowFormExpenseType;
             btnLogout.Click += HandleButtonLogoutClick;
+        }
+
+        private void HandleShowFormExpenseType(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmExpenseType);
         }
 
         private void HandleShowFormInsurance(object? sender, EventArgs e)

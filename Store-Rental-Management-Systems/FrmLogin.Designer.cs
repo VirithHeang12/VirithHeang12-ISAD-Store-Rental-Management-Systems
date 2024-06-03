@@ -119,7 +119,7 @@
             // 
             btnLogin.AutoSize = true;
             btnLogin.BackColor = Color.FromArgb(0, 28, 87);
-            btnLogin.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLogin.Font = new Font("Kantumruy", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(583, 551);
             btnLogin.Name = "btnLogin";
@@ -145,29 +145,29 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Kantumruy", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.FromArgb(0, 28, 87);
             label6.Location = new Point(78, 426);
             label6.Name = "label6";
-            label6.Size = new Size(145, 43);
+            label6.Size = new Size(158, 43);
             label6.TabIndex = 2;
             label6.Text = "លេខសម្ងាត់ៈ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Kantumruy", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.FromArgb(0, 28, 87);
             label5.Location = new Point(78, 329);
             label5.Name = "label5";
-            label5.Size = new Size(217, 43);
+            label5.Size = new Size(230, 43);
             label5.TabIndex = 1;
             label5.Text = "ឈ្មោះអ្នកប្រើប្រាស់ៈ";
             // 
             // label4
             // 
             label4.BackColor = Color.FromArgb(0, 28, 87);
-            label4.Font = new Font("Khmer OS Siemreap", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Dangrek", 14F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
             label4.Location = new Point(78, 171);
             label4.Name = "label4";

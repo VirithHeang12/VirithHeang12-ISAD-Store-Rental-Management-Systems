@@ -40,12 +40,12 @@
             panel3 = new Panel();
             gbMaintenanceInformation = new GroupBox();
             txtUserPassword = new TextBox();
-            cbStaffPosition = new ComboBox();
-            cbStaffID = new ComboBox();
-            txtStaffName = new TextBox();
-            lblStaffPosition = new Label();
-            lblStaffName = new Label();
-            lblStaffID = new Label();
+            cbUserStaffPosition = new ComboBox();
+            cbUserStaffID = new ComboBox();
+            txtUserStaffName = new TextBox();
+            lblUserStaffPosition = new Label();
+            lblUserStaffName = new Label();
+            lblUserStaffID = new Label();
             lblUserPassword = new Label();
             lblUserName = new Label();
             lblUserID = new Label();
@@ -172,12 +172,12 @@
             // gbMaintenanceInformation
             // 
             gbMaintenanceInformation.Controls.Add(txtUserPassword);
-            gbMaintenanceInformation.Controls.Add(cbStaffPosition);
-            gbMaintenanceInformation.Controls.Add(cbStaffID);
-            gbMaintenanceInformation.Controls.Add(txtStaffName);
-            gbMaintenanceInformation.Controls.Add(lblStaffPosition);
-            gbMaintenanceInformation.Controls.Add(lblStaffName);
-            gbMaintenanceInformation.Controls.Add(lblStaffID);
+            gbMaintenanceInformation.Controls.Add(cbUserStaffPosition);
+            gbMaintenanceInformation.Controls.Add(cbUserStaffID);
+            gbMaintenanceInformation.Controls.Add(txtUserStaffName);
+            gbMaintenanceInformation.Controls.Add(lblUserStaffPosition);
+            gbMaintenanceInformation.Controls.Add(lblUserStaffName);
+            gbMaintenanceInformation.Controls.Add(lblUserStaffID);
             gbMaintenanceInformation.Controls.Add(lblUserPassword);
             gbMaintenanceInformation.Controls.Add(lblUserName);
             gbMaintenanceInformation.Controls.Add(lblUserID);
@@ -200,65 +200,65 @@
             txtUserPassword.Size = new Size(219, 51);
             txtUserPassword.TabIndex = 36;
             // 
-            // cbStaffPosition
+            // cbUserStaffPosition
             // 
-            cbStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStaffPosition.FormattingEnabled = true;
-            cbStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbStaffPosition.Location = new Point(811, 200);
-            cbStaffPosition.Name = "cbStaffPosition";
-            cbStaffPosition.Size = new Size(219, 51);
-            cbStaffPosition.TabIndex = 35;
+            cbUserStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbUserStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbUserStaffPosition.FormattingEnabled = true;
+            cbUserStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbUserStaffPosition.Location = new Point(811, 200);
+            cbUserStaffPosition.Name = "cbUserStaffPosition";
+            cbUserStaffPosition.Size = new Size(219, 51);
+            cbUserStaffPosition.TabIndex = 35;
             // 
-            // cbStaffID
+            // cbUserStaffID
             // 
-            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStaffID.FormattingEnabled = true;
-            cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbStaffID.Location = new Point(811, 122);
-            cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(219, 51);
-            cbStaffID.TabIndex = 34;
+            cbUserStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbUserStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbUserStaffID.FormattingEnabled = true;
+            cbUserStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbUserStaffID.Location = new Point(811, 122);
+            cbUserStaffID.Name = "cbUserStaffID";
+            cbUserStaffID.Size = new Size(219, 51);
+            cbUserStaffID.TabIndex = 34;
             // 
-            // txtStaffName
+            // txtUserStaffName
             // 
-            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffName.Location = new Point(292, 208);
-            txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(237, 51);
-            txtStaffName.TabIndex = 33;
+            txtUserStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUserStaffName.Location = new Point(292, 208);
+            txtUserStaffName.Name = "txtUserStaffName";
+            txtUserStaffName.Size = new Size(237, 51);
+            txtUserStaffName.TabIndex = 33;
             // 
-            // lblStaffPosition
+            // lblUserStaffPosition
             // 
-            lblStaffPosition.AutoSize = true;
-            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPosition.Location = new Point(585, 206);
-            lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(153, 43);
-            lblStaffPosition.TabIndex = 32;
-            lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
+            lblUserStaffPosition.AutoSize = true;
+            lblUserStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserStaffPosition.Location = new Point(585, 206);
+            lblUserStaffPosition.Name = "lblUserStaffPosition";
+            lblUserStaffPosition.Size = new Size(153, 43);
+            lblUserStaffPosition.TabIndex = 32;
+            lblUserStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
-            // lblStaffName
+            // lblUserStaffName
             // 
-            lblStaffName.AutoSize = true;
-            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffName.Location = new Point(21, 208);
-            lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(155, 43);
-            lblStaffName.TabIndex = 31;
-            lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
+            lblUserStaffName.AutoSize = true;
+            lblUserStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserStaffName.Location = new Point(21, 208);
+            lblUserStaffName.Name = "lblUserStaffName";
+            lblUserStaffName.Size = new Size(155, 43);
+            lblUserStaffName.TabIndex = 31;
+            lblUserStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
-            // lblStaffID
+            // lblUserStaffID
             // 
-            lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(585, 130);
-            lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(214, 43);
-            lblStaffID.TabIndex = 30;
-            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            lblUserStaffID.AutoSize = true;
+            lblUserStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserStaffID.Location = new Point(585, 130);
+            lblUserStaffID.Name = "lblUserStaffID";
+            lblUserStaffID.Size = new Size(214, 43);
+            lblUserStaffID.TabIndex = 30;
+            lblUserStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // lblUserPassword
             // 
@@ -358,13 +358,13 @@
         private Label lblUserID;
         private TextBox txtUserID;
         private TextBox txtUserName;
-        private TextBox txtStaffName;
-        private Label lblStaffPosition;
-        private Label lblStaffName;
-        private Label lblStaffID;
+        private TextBox txtUserStaffName;
+        private Label lblUserStaffPosition;
+        private Label lblUserStaffName;
+        private Label lblUserStaffID;
         private TextBox txtUserPassword;
-        private ComboBox cbStaffPosition;
-        private ComboBox cbStaffID;
+        private ComboBox cbUserStaffPosition;
+        private ComboBox cbUserStaffID;
         private Label lblTitle;
         private Button btnLogOutUser;
         private Button btnNewUser;

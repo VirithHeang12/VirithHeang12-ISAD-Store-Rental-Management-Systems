@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             gbMaintenanceInformation = new GroupBox();
             cbPaymentStaffPosition = new ComboBox();
             lblPaymentStaffPosition = new Label();
@@ -74,6 +74,7 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            lblTitle = new Label();
             gbMaintenanceInformation.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPaymentDetail).BeginInit();
@@ -104,7 +105,7 @@
             gbMaintenanceInformation.Controls.Add(txtPaymentPaidAmount);
             gbMaintenanceInformation.Controls.Add(dtpPaymentDate);
             gbMaintenanceInformation.Font = new Font("Khmer OS Siemreap", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            gbMaintenanceInformation.Location = new Point(311, 86);
+            gbMaintenanceInformation.Location = new Point(311, 169);
             gbMaintenanceInformation.Name = "gbMaintenanceInformation";
             gbMaintenanceInformation.Size = new Size(1427, 234);
             gbMaintenanceInformation.TabIndex = 27;
@@ -187,9 +188,9 @@
             lblPaymentStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPaymentStaffID.Location = new Point(18, 168);
             lblPaymentStaffID.Name = "lblPaymentStaffID";
-            lblPaymentStaffID.Size = new Size(175, 43);
+            lblPaymentStaffID.Size = new Size(214, 43);
             lblPaymentStaffID.TabIndex = 28;
-            lblPaymentStaffID.Text = "លេខសម្គាល់តូប:";
+            lblPaymentStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // cbPaymentContractID
             // 
@@ -299,7 +300,7 @@
             groupBox1.Controls.Add(txtExpenseTypeID);
             groupBox1.Controls.Add(label7);
             groupBox1.Font = new Font("Khmer OS Siemreap", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(311, 320);
+            groupBox1.Location = new Point(311, 405);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1427, 241);
             groupBox1.TabIndex = 33;
@@ -431,7 +432,7 @@
             btnLogOutPayment.BackColor = Color.FromArgb(0, 28, 87);
             btnLogOutPayment.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogOutPayment.ForeColor = Color.White;
-            btnLogOutPayment.Location = new Point(852, 583);
+            btnLogOutPayment.Location = new Point(855, 652);
             btnLogOutPayment.Name = "btnLogOutPayment";
             btnLogOutPayment.Size = new Size(128, 60);
             btnLogOutPayment.TabIndex = 42;
@@ -444,7 +445,7 @@
             btnNewPayment.BackColor = Color.FromArgb(0, 28, 87);
             btnNewPayment.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnNewPayment.ForeColor = Color.White;
-            btnNewPayment.Location = new Point(666, 583);
+            btnNewPayment.Location = new Point(669, 652);
             btnNewPayment.Name = "btnNewPayment";
             btnNewPayment.Size = new Size(128, 60);
             btnNewPayment.TabIndex = 41;
@@ -457,7 +458,7 @@
             btnUpdatePayment.BackColor = Color.FromArgb(0, 28, 87);
             btnUpdatePayment.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdatePayment.ForeColor = Color.White;
-            btnUpdatePayment.Location = new Point(481, 583);
+            btnUpdatePayment.Location = new Point(484, 652);
             btnUpdatePayment.Name = "btnUpdatePayment";
             btnUpdatePayment.Size = new Size(128, 60);
             btnUpdatePayment.TabIndex = 40;
@@ -470,7 +471,7 @@
             btnInsertPayment.BackColor = Color.FromArgb(0, 28, 87);
             btnInsertPayment.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertPayment.ForeColor = Color.White;
-            btnInsertPayment.Location = new Point(308, 583);
+            btnInsertPayment.Location = new Point(311, 652);
             btnInsertPayment.Name = "btnInsertPayment";
             btnInsertPayment.Size = new Size(128, 60);
             btnInsertPayment.TabIndex = 39;
@@ -483,7 +484,7 @@
             cbPaymentSearchID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbPaymentSearchID.FormattingEnabled = true;
             cbPaymentSearchID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbPaymentSearchID.Location = new Point(660, 663);
+            cbPaymentSearchID.Location = new Point(660, 718);
             cbPaymentSearchID.Name = "cbPaymentSearchID";
             cbPaymentSearchID.Size = new Size(323, 51);
             cbPaymentSearchID.TabIndex = 44;
@@ -492,7 +493,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(311, 666);
+            label8.Location = new Point(311, 721);
             label8.Name = "label8";
             label8.Size = new Size(342, 43);
             label8.TabIndex = 43;
@@ -501,29 +502,29 @@
             // dgvPaymentDetail
             // 
             dgvPaymentDetail.BackgroundColor = SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvPaymentDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvPaymentDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvPaymentDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPaymentDetail.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column6 });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(25, 113, 176);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvPaymentDetail.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvPaymentDetail.Location = new Point(287, 735);
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(25, 113, 176);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvPaymentDetail.DefaultCellStyle = dataGridViewCellStyle8;
+            dgvPaymentDetail.Location = new Point(287, 782);
             dgvPaymentDetail.Name = "dgvPaymentDetail";
             dgvPaymentDetail.RowHeadersWidth = 60;
             dgvPaymentDetail.RowTemplate.Height = 33;
-            dgvPaymentDetail.Size = new Size(1451, 185);
+            dgvPaymentDetail.Size = new Size(1451, 147);
             dgvPaymentDetail.TabIndex = 45;
             // 
             // Column1
@@ -561,11 +562,25 @@
             Column6.Name = "Column6";
             Column6.Width = 230;
             // 
+            // lblTitle
+            // 
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
+            lblTitle.Dock = DockStyle.Top;
+            lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(266, 80);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(1512, 86);
+            lblTitle.TabIndex = 51;
+            lblTitle.Text = "ព័ត៌មានការបង់ថ្លៃ";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmPayment
             // 
             AutoScaleDimensions = new SizeF(13F, 43F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1778, 944);
+            Controls.Add(lblTitle);
             Controls.Add(dgvPaymentDetail);
             Controls.Add(cbPaymentSearchID);
             Controls.Add(label8);
@@ -586,6 +601,7 @@
             Controls.SetChildIndex(label8, 0);
             Controls.SetChildIndex(cbPaymentSearchID, 0);
             Controls.SetChildIndex(dgvPaymentDetail, 0);
+            Controls.SetChildIndex(lblTitle, 0);
             gbMaintenanceInformation.ResumeLayout(false);
             gbMaintenanceInformation.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -641,5 +657,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column6;
+        private Label lblTitle;
     }
 }

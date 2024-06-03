@@ -32,22 +32,22 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lblTitle = new Label();
             gbMaintenanceInformation = new GroupBox();
+            txtImportStaffName = new TextBox();
+            cbImportStaffPosition = new ComboBox();
+            lblImportStaffPosition = new Label();
             lblMaintenanceTotalAmount = new Label();
             lblMaintenanceDate = new Label();
             cbImportSupplierID = new ComboBox();
-            lblMaintenanceStoreID = new Label();
+            lblImportStaffName = new Label();
             cbImportStaffID = new ComboBox();
             txtImportSupplierName = new TextBox();
-            lblMaintenanceOwedAmount = new Label();
+            lblImportSupplierName = new Label();
             lblMaintenanceID = new Label();
-            lblMaintenanceContractID = new Label();
+            lblImportStaffID = new Label();
             txtImportTotalAmount = new TextBox();
             txtImportID = new TextBox();
-            lblMaintenancePaidAmount = new Label();
+            lblImportSupplierID = new Label();
             dtpImportDate = new DateTimePicker();
-            label1 = new Label();
-            cbImportStaffPosition = new ComboBox();
-            txtImportStaffName = new TextBox();
             groupBox1 = new GroupBox();
             btnUpdateImportItem = new Button();
             btnInsertImportItem = new Button();
@@ -102,19 +102,19 @@
             // 
             gbMaintenanceInformation.Controls.Add(txtImportStaffName);
             gbMaintenanceInformation.Controls.Add(cbImportStaffPosition);
-            gbMaintenanceInformation.Controls.Add(label1);
+            gbMaintenanceInformation.Controls.Add(lblImportStaffPosition);
             gbMaintenanceInformation.Controls.Add(lblMaintenanceTotalAmount);
             gbMaintenanceInformation.Controls.Add(lblMaintenanceDate);
             gbMaintenanceInformation.Controls.Add(cbImportSupplierID);
-            gbMaintenanceInformation.Controls.Add(lblMaintenanceStoreID);
+            gbMaintenanceInformation.Controls.Add(lblImportStaffName);
             gbMaintenanceInformation.Controls.Add(cbImportStaffID);
             gbMaintenanceInformation.Controls.Add(txtImportSupplierName);
-            gbMaintenanceInformation.Controls.Add(lblMaintenanceOwedAmount);
+            gbMaintenanceInformation.Controls.Add(lblImportSupplierName);
             gbMaintenanceInformation.Controls.Add(lblMaintenanceID);
-            gbMaintenanceInformation.Controls.Add(lblMaintenanceContractID);
+            gbMaintenanceInformation.Controls.Add(lblImportStaffID);
             gbMaintenanceInformation.Controls.Add(txtImportTotalAmount);
             gbMaintenanceInformation.Controls.Add(txtImportID);
-            gbMaintenanceInformation.Controls.Add(lblMaintenancePaidAmount);
+            gbMaintenanceInformation.Controls.Add(lblImportSupplierID);
             gbMaintenanceInformation.Controls.Add(dtpImportDate);
             gbMaintenanceInformation.Font = new Font("Khmer OS Siemreap", 10F, FontStyle.Bold, GraphicsUnit.Point);
             gbMaintenanceInformation.Location = new Point(291, 176);
@@ -123,6 +123,35 @@
             gbMaintenanceInformation.TabIndex = 51;
             gbMaintenanceInformation.TabStop = false;
             gbMaintenanceInformation.Text = "ព័ត៌មានការនាំចូល";
+            // 
+            // txtImportStaffName
+            // 
+            txtImportStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtImportStaffName.Location = new Point(265, 162);
+            txtImportStaffName.Name = "txtImportStaffName";
+            txtImportStaffName.Size = new Size(210, 51);
+            txtImportStaffName.TabIndex = 34;
+            // 
+            // cbImportStaffPosition
+            // 
+            cbImportStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbImportStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbImportStaffPosition.FormattingEnabled = true;
+            cbImportStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbImportStaffPosition.Location = new Point(715, 152);
+            cbImportStaffPosition.Name = "cbImportStaffPosition";
+            cbImportStaffPosition.Size = new Size(208, 51);
+            cbImportStaffPosition.TabIndex = 33;
+            // 
+            // lblImportStaffPosition
+            // 
+            lblImportStaffPosition.AutoSize = true;
+            lblImportStaffPosition.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImportStaffPosition.Location = new Point(526, 165);
+            lblImportStaffPosition.Name = "lblImportStaffPosition";
+            lblImportStaffPosition.Size = new Size(153, 43);
+            lblImportStaffPosition.TabIndex = 32;
+            lblImportStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
             // lblMaintenanceTotalAmount
             // 
@@ -155,15 +184,15 @@
             cbImportSupplierID.Size = new Size(210, 51);
             cbImportSupplierID.TabIndex = 29;
             // 
-            // lblMaintenanceStoreID
+            // lblImportStaffName
             // 
-            lblMaintenanceStoreID.AutoSize = true;
-            lblMaintenanceStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceStoreID.Location = new Point(18, 159);
-            lblMaintenanceStoreID.Name = "lblMaintenanceStoreID";
-            lblMaintenanceStoreID.Size = new Size(155, 43);
-            lblMaintenanceStoreID.TabIndex = 28;
-            lblMaintenanceStoreID.Text = "ឈ្មោះបុគ្គលិក:";
+            lblImportStaffName.AutoSize = true;
+            lblImportStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImportStaffName.Location = new Point(18, 159);
+            lblImportStaffName.Name = "lblImportStaffName";
+            lblImportStaffName.Size = new Size(155, 43);
+            lblImportStaffName.TabIndex = 28;
+            lblImportStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
             // cbImportStaffID
             // 
@@ -184,15 +213,15 @@
             txtImportSupplierName.Size = new Size(208, 51);
             txtImportSupplierName.TabIndex = 26;
             // 
-            // lblMaintenanceOwedAmount
+            // lblImportSupplierName
             // 
-            lblMaintenanceOwedAmount.AutoSize = true;
-            lblMaintenanceOwedAmount.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceOwedAmount.Location = new Point(526, 99);
-            lblMaintenanceOwedAmount.Name = "lblMaintenanceOwedAmount";
-            lblMaintenanceOwedAmount.Size = new Size(180, 43);
-            lblMaintenanceOwedAmount.TabIndex = 25;
-            lblMaintenanceOwedAmount.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
+            lblImportSupplierName.AutoSize = true;
+            lblImportSupplierName.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImportSupplierName.Location = new Point(526, 99);
+            lblImportSupplierName.Name = "lblImportSupplierName";
+            lblImportSupplierName.Size = new Size(180, 43);
+            lblImportSupplierName.TabIndex = 25;
+            lblImportSupplierName.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
             // 
             // lblMaintenanceID
             // 
@@ -204,15 +233,15 @@
             lblMaintenanceID.TabIndex = 0;
             lblMaintenanceID.Text = "លេខសម្គាល់ការនាំចូល:";
             // 
-            // lblMaintenanceContractID
+            // lblImportStaffID
             // 
-            lblMaintenanceContractID.AutoSize = true;
-            lblMaintenanceContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceContractID.Location = new Point(986, 106);
-            lblMaintenanceContractID.Name = "lblMaintenanceContractID";
-            lblMaintenanceContractID.Size = new Size(214, 43);
-            lblMaintenanceContractID.TabIndex = 14;
-            lblMaintenanceContractID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            lblImportStaffID.AutoSize = true;
+            lblImportStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImportStaffID.Location = new Point(986, 106);
+            lblImportStaffID.Name = "lblImportStaffID";
+            lblImportStaffID.Size = new Size(214, 43);
+            lblImportStaffID.TabIndex = 14;
+            lblImportStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // txtImportTotalAmount
             // 
@@ -231,15 +260,15 @@
             txtImportID.Size = new Size(210, 51);
             txtImportID.TabIndex = 3;
             // 
-            // lblMaintenancePaidAmount
+            // lblImportSupplierID
             // 
-            lblMaintenancePaidAmount.AutoSize = true;
-            lblMaintenancePaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenancePaidAmount.Location = new Point(18, 101);
-            lblMaintenancePaidAmount.Name = "lblMaintenancePaidAmount";
-            lblMaintenancePaidAmount.Size = new Size(239, 43);
-            lblMaintenancePaidAmount.TabIndex = 6;
-            lblMaintenancePaidAmount.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
+            lblImportSupplierID.AutoSize = true;
+            lblImportSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblImportSupplierID.Location = new Point(18, 101);
+            lblImportSupplierID.Name = "lblImportSupplierID";
+            lblImportSupplierID.Size = new Size(239, 43);
+            lblImportSupplierID.TabIndex = 6;
+            lblImportSupplierID.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
             // 
             // dtpImportDate
             // 
@@ -249,35 +278,6 @@
             dtpImportDate.Name = "dtpImportDate";
             dtpImportDate.Size = new Size(208, 51);
             dtpImportDate.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(526, 165);
-            label1.Name = "label1";
-            label1.Size = new Size(153, 43);
-            label1.TabIndex = 32;
-            label1.Text = "តួនាទីបុគ្គលិក:";
-            // 
-            // cbImportStaffPosition
-            // 
-            cbImportStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbImportStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbImportStaffPosition.FormattingEnabled = true;
-            cbImportStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbImportStaffPosition.Location = new Point(715, 152);
-            cbImportStaffPosition.Name = "cbImportStaffPosition";
-            cbImportStaffPosition.Size = new Size(208, 51);
-            cbImportStaffPosition.TabIndex = 33;
-            // 
-            // txtImportStaffName
-            // 
-            txtImportStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtImportStaffName.Location = new Point(265, 162);
-            txtImportStaffName.Name = "txtImportStaffName";
-            txtImportStaffName.Size = new Size(210, 51);
-            txtImportStaffName.TabIndex = 34;
             // 
             // groupBox1
             // 
@@ -628,19 +628,19 @@
         private Label lblMaintenanceTotalAmount;
         private Label lblMaintenanceDate;
         private ComboBox cbImportSupplierID;
-        private Label lblMaintenanceStoreID;
+        private Label lblImportStaffName;
         private ComboBox cbImportStaffID;
         private TextBox txtImportSupplierName;
-        private Label lblMaintenanceOwedAmount;
+        private Label lblImportSupplierName;
         private Label lblMaintenanceID;
-        private Label lblMaintenanceContractID;
+        private Label lblImportStaffID;
         private TextBox txtImportTotalAmount;
         private TextBox txtImportID;
-        private Label lblMaintenancePaidAmount;
+        private Label lblImportSupplierID;
         private DateTimePicker dtpImportDate;
         private TextBox txtImportStaffName;
         private ComboBox cbImportStaffPosition;
-        private Label label1;
+        private Label lblImportStaffPosition;
         private GroupBox groupBox1;
         private Button btnUpdateImportItem;
         private Button btnInsertImportItem;

@@ -159,7 +159,7 @@
             // 
             // btnPickStaffPhoto
             // 
-            btnPickStaffPhoto.Location = new Point(882, 365);
+            btnPickStaffPhoto.Location = new Point(882, 372);
             btnPickStaffPhoto.Name = "btnPickStaffPhoto";
             btnPickStaffPhoto.Size = new Size(211, 63);
             btnPickStaffPhoto.TabIndex = 28;
@@ -169,7 +169,7 @@
             // pbStaffPhoto
             // 
             pbStaffPhoto.BorderStyle = BorderStyle.FixedSingle;
-            pbStaffPhoto.Location = new Point(856, 32);
+            pbStaffPhoto.Location = new Point(856, 50);
             pbStaffPhoto.Name = "pbStaffPhoto";
             pbStaffPhoto.Size = new Size(258, 299);
             pbStaffPhoto.TabIndex = 27;
@@ -558,7 +558,7 @@
             pnlStaffManipulation.Controls.Add(btnNewStaff);
             pnlStaffManipulation.Controls.Add(btnUpdateStaff);
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
-            pnlStaffManipulation.Location = new Point(590, 856);
+            pnlStaffManipulation.Location = new Point(586, 856);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
             pnlStaffManipulation.Size = new Size(925, 101);
             pnlStaffManipulation.TabIndex = 5;

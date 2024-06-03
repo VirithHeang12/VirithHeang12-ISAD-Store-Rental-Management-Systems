@@ -24,7 +24,13 @@ namespace Store_Rental_Management_Systems
             btnShowItemForm.Click += HandleShowFormItem;
             btnShowSupplierForm.Click += HandleShowFromSupplier;
             btnShowStoreTypeForm.Click += HandleShowFormStoreType;
+            btnShowUserForm.Click += HandleShowFormUser;
             btnLogout.Click += HandleButtonLogoutClick;
+        }
+
+        private void HandleShowFormUser(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmUser);
         }
 
         private void HandleShowFormStoreType(object? sender, EventArgs e)

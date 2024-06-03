@@ -54,6 +54,9 @@ namespace Store_Rental_Management_Systems
                 case FormTypes.FrmStoreType:
                     OpenChildForm(new FrmStoreType());
                     break;
+                case FormTypes.FrmUser:
+                    OpenChildForm(new FrmUser());
+                    break;
                 default: break;
             }
         }

@@ -44,7 +44,7 @@ namespace Store_Rental_Management_Systems
             ConfigDefaultValues();
 
             #region Event registration for CRUD operations
-            this.Load += LoadAllStaffs;
+            //this.Load += LoadAllStaffs;
             btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
             btnNewStaff.Click += HandleBtnNewStaffClick;
             btnInsertStaff.Click += HandleBtnInsertStaffClick;

@@ -179,9 +179,9 @@
             // 
             pbStaffPhoto.BorderStyle = BorderStyle.FixedSingle;
             pbStaffPhoto.InitialImage = (Image)resources.GetObject("pbStaffPhoto.InitialImage");
-            pbStaffPhoto.Location = new Point(856, 32);
+            pbStaffPhoto.Location = new Point(856, 50);
             pbStaffPhoto.Name = "pbStaffPhoto";
-            pbStaffPhoto.Size = new Size(258, 299);
+            pbStaffPhoto.Size = new Size(258, 281);
             pbStaffPhoto.TabIndex = 27;
             pbStaffPhoto.TabStop = false;
             // 
@@ -200,7 +200,7 @@
             gbStaffAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             gbStaffAddress.Location = new Point(45, 466);
             gbStaffAddress.Name = "gbStaffAddress";
-            gbStaffAddress.Size = new Size(1069, 158);
+            gbStaffAddress.Size = new Size(1069, 167);
             gbStaffAddress.TabIndex = 26;
             gbStaffAddress.TabStop = false;
             gbStaffAddress.Text = "អាសយដ្ឋាន";
@@ -210,7 +210,7 @@
             cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffCityOrProvince.FormattingEnabled = true;
             cbStaffCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbStaffCityOrProvince.Location = new Point(540, 105);
+            cbStaffCityOrProvince.Location = new Point(485, 100);
             cbStaffCityOrProvince.Name = "cbStaffCityOrProvince";
             cbStaffCityOrProvince.Size = new Size(219, 44);
             cbStaffCityOrProvince.TabIndex = 25;
@@ -219,7 +219,7 @@
             // 
             lblStaffStreetNo.AutoSize = true;
             lblStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffStreetNo.Location = new Point(352, 46);
+            lblStaffStreetNo.Location = new Point(368, 46);
             lblStaffStreetNo.Name = "lblStaffStreetNo";
             lblStaffStreetNo.Size = new Size(81, 36);
             lblStaffStreetNo.TabIndex = 18;
@@ -228,7 +228,7 @@
             // txtStaffStreetNo
             // 
             txtStaffStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffStreetNo.Location = new Point(469, 38);
+            txtStaffStreetNo.Location = new Point(485, 38);
             txtStaffStreetNo.Name = "txtStaffStreetNo";
             txtStaffStreetNo.Size = new Size(219, 44);
             txtStaffStreetNo.TabIndex = 19;
@@ -238,14 +238,14 @@
             txtStaffHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffHouseNo.Location = new Point(108, 38);
             txtStaffHouseNo.Name = "txtStaffHouseNo";
-            txtStaffHouseNo.Size = new Size(183, 44);
+            txtStaffHouseNo.Size = new Size(242, 44);
             txtStaffHouseNo.TabIndex = 17;
             // 
             // lblStaffProvinceOrCity
             // 
             lblStaffProvinceOrCity.AutoSize = true;
             lblStaffProvinceOrCity.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffProvinceOrCity.Location = new Point(438, 108);
+            lblStaffProvinceOrCity.Location = new Point(368, 108);
             lblStaffProvinceOrCity.Name = "lblStaffProvinceOrCity";
             lblStaffProvinceOrCity.Size = new Size(95, 36);
             lblStaffProvinceOrCity.TabIndex = 24;
@@ -284,7 +284,7 @@
             txtStaffSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffSangkat.Location = new Point(805, 38);
             txtStaffSangkat.Name = "txtStaffSangkat";
-            txtStaffSangkat.Size = new Size(249, 44);
+            txtStaffSangkat.Size = new Size(243, 44);
             txtStaffSangkat.TabIndex = 21;
             // 
             // lblStaffKhan
@@ -568,14 +568,14 @@
             pnlStaffManipulation.Controls.Add(btnNewStaff);
             pnlStaffManipulation.Controls.Add(btnUpdateStaff);
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
-            pnlStaffManipulation.Location = new Point(590, 856);
+            pnlStaffManipulation.Location = new Point(653, 854);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
             pnlStaffManipulation.Size = new Size(925, 101);
             pnlStaffManipulation.TabIndex = 5;
             // 
             // btnCloseFormStaff
             // 
-            btnCloseFormStaff.Location = new Point(706, 20);
+            btnCloseFormStaff.Location = new Point(705, 20);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
             btnCloseFormStaff.Size = new Size(152, 52);
             btnCloseFormStaff.TabIndex = 3;
@@ -584,7 +584,7 @@
             // 
             // btnNewStaff
             // 
-            btnNewStaff.Location = new Point(481, 20);
+            btnNewStaff.Location = new Point(485, 20);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
@@ -593,7 +593,7 @@
             // 
             // btnUpdateStaff
             // 
-            btnUpdateStaff.Location = new Point(247, 20);
+            btnUpdateStaff.Location = new Point(265, 20);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
@@ -602,7 +602,7 @@
             // 
             // btnInsertStaff
             // 
-            btnInsertStaff.Location = new Point(20, 20);
+            btnInsertStaff.Location = new Point(45, 20);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;

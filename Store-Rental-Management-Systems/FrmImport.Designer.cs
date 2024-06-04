@@ -57,12 +57,7 @@
             cbSupplierID = new ComboBox();
             dtpImportDate = new DateTimePicker();
             lblImportDate = new Label();
-            lblStaffID = new Label();
-            txtTotalAmount = new TextBox();
-            lblTotalAmount = new Label();
             txtImportID = new TextBox();
-            lblSupplierID = new Label();
-            lblSupplierName = new Label();
             pnlStaffManipulation = new Panel();
             btnCloseFormStaff = new Button();
             btnNewStaff = new Button();
@@ -290,12 +285,7 @@
             gbImportInformation.Controls.Add(cbSupplierID);
             gbImportInformation.Controls.Add(dtpImportDate);
             gbImportInformation.Controls.Add(lblImportDate);
-            gbImportInformation.Controls.Add(lblStaffID);
-            gbImportInformation.Controls.Add(txtTotalAmount);
-            gbImportInformation.Controls.Add(lblTotalAmount);
             gbImportInformation.Controls.Add(txtImportID);
-            gbImportInformation.Controls.Add(lblSupplierID);
-            gbImportInformation.Controls.Add(lblSupplierName);
             gbImportInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             gbImportInformation.Location = new Point(63, 19);
             gbImportInformation.Name = "gbImportInformation";
@@ -400,34 +390,6 @@
             lblImportDate.TabIndex = 19;
             lblImportDate.Text = "កាលបរិច្ឆេទនាំចូល:";
             // 
-            // lblStaffID
-            // 
-            lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(18, 146);
-            lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
-            lblStaffID.TabIndex = 14;
-            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
-            // 
-            // txtTotalAmount
-            // 
-            txtTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTotalAmount.Location = new Point(227, 90);
-            txtTotalAmount.Name = "txtTotalAmount";
-            txtTotalAmount.Size = new Size(217, 44);
-            txtTotalAmount.TabIndex = 5;
-            // 
-            // lblTotalAmount
-            // 
-            lblTotalAmount.AutoSize = true;
-            lblTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTotalAmount.Location = new Point(19, 98);
-            lblTotalAmount.Name = "lblTotalAmount";
-            lblTotalAmount.Size = new Size(131, 36);
-            lblTotalAmount.TabIndex = 4;
-            lblTotalAmount.Text = "ចំនួនទឹកប្រាក់:";
-            // 
             // txtImportID
             // 
             txtImportID.Enabled = false;
@@ -436,26 +398,6 @@
             txtImportID.Name = "txtImportID";
             txtImportID.Size = new Size(405, 44);
             txtImportID.TabIndex = 3;
-            // 
-            // lblSupplierID
-            // 
-            lblSupplierID.AutoSize = true;
-            lblSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSupplierID.Location = new Point(496, 93);
-            lblSupplierID.Name = "lblSupplierID";
-            lblSupplierID.Size = new Size(205, 36);
-            lblSupplierID.TabIndex = 6;
-            lblSupplierID.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
-            // 
-            // lblSupplierName
-            // 
-            lblSupplierName.AutoSize = true;
-            lblSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSupplierName.Location = new Point(902, 93);
-            lblSupplierName.Name = "lblSupplierName";
-            lblSupplierName.Size = new Size(152, 36);
-            lblSupplierName.TabIndex = 8;
-            lblSupplierName.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
             // 
             // pnlStaffManipulation
             // 
@@ -623,15 +565,7 @@
         #endregion
 
         private Label lblTitle;
-        private Label lblSearchStaff;
-        private TextBox txtSearchStaff;
-        private ListBox lbStaff;
         private Panel pnlRightSide;
-        private Label lblStaffID;
-        private Label lblSupplierName;
-        private Label lblSupplierID;
-        private TextBox txtTotalAmount;
-        private Label lblTotalAmount;
         private TextBox txtImportID;
         private DateTimePicker dtpStaffBirthDate;
         private TextBox txtItemDescription;

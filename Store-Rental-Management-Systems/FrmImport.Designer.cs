@@ -159,7 +159,7 @@
             // btnInsertImportItem
             // 
             btnInsertImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInsertImportItem.Location = new Point(1120, 93);
+            btnInsertImportItem.Location = new Point(1151, 93);
             btnInsertImportItem.Name = "btnInsertImportItem";
             btnInsertImportItem.Size = new Size(102, 52);
             btnInsertImportItem.TabIndex = 28;

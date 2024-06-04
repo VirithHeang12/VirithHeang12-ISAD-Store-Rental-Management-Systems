@@ -36,13 +36,13 @@
             btnInsertExpenseType = new Button();
             txtExpenseQty = new TextBox();
             lblExpenseQty = new Label();
+            txtUnitPrice = new TextBox();
+            lblUnitPrice = new Label();
             lblExpenseDescription = new Label();
             txtExpenseDescription = new TextBox();
             txtExpenseTypeID = new TextBox();
             lblExpenseTypeID = new Label();
-            lblUnitPrice = new Label();
             txtCategory = new TextBox();
-            txtUnitPrice = new TextBox();
             lblAmount = new Label();
             gbPaymentInformation = new GroupBox();
             txtStaffName = new TextBox();
@@ -157,7 +157,7 @@
             // btnUpdateExpenseType
             // 
             btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateExpenseType.Location = new Point(1281, 93);
+            btnUpdateExpenseType.Location = new Point(1298, 90);
             btnUpdateExpenseType.Name = "btnUpdateExpenseType";
             btnUpdateExpenseType.Size = new Size(100, 52);
             btnUpdateExpenseType.TabIndex = 4;
@@ -191,6 +191,25 @@
             lblExpenseQty.Size = new Size(88, 36);
             lblExpenseQty.TabIndex = 26;
             lblExpenseQty.Text = "បរិមាណ:";
+            // 
+            // txtUnitPrice
+            // 
+            txtUnitPrice.Enabled = false;
+            txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUnitPrice.Location = new Point(1120, 38);
+            txtUnitPrice.Name = "txtUnitPrice";
+            txtUnitPrice.Size = new Size(278, 44);
+            txtUnitPrice.TabIndex = 21;
+            // 
+            // lblUnitPrice
+            // 
+            lblUnitPrice.AutoSize = true;
+            lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUnitPrice.Location = new Point(947, 46);
+            lblUnitPrice.Name = "lblUnitPrice";
+            lblUnitPrice.Size = new Size(165, 36);
+            lblUnitPrice.TabIndex = 20;
+            lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
             // lblExpenseDescription
             // 
@@ -229,16 +248,6 @@
             lblExpenseTypeID.TabIndex = 16;
             lblExpenseTypeID.Text = "លេខសម្គាល់ប្រភេទចំណាយ:";
             // 
-            // lblUnitPrice
-            // 
-            lblUnitPrice.AutoSize = true;
-            lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnitPrice.Location = new Point(947, 46);
-            lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(165, 36);
-            lblUnitPrice.TabIndex = 20;
-            lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
-            // 
             // txtCategory
             // 
             txtCategory.Enabled = false;
@@ -247,15 +256,6 @@
             txtCategory.Name = "txtCategory";
             txtCategory.Size = new Size(219, 44);
             txtCategory.TabIndex = 23;
-            // 
-            // txtUnitPrice
-            // 
-            txtUnitPrice.Enabled = false;
-            txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUnitPrice.Location = new Point(1120, 38);
-            txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(261, 44);
-            txtUnitPrice.TabIndex = 21;
             // 
             // lblAmount
             // 

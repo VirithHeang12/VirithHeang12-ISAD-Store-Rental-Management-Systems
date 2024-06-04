@@ -47,6 +47,12 @@
             txtUnitPrice = new TextBox();
             lblCategory = new Label();
             gbMaintenanceInformation = new GroupBox();
+            txtStaffName = new TextBox();
+            lblStaffName = new Label();
+            txtStaffPosition = new TextBox();
+            lblStaffPosition = new Label();
+            textBox1 = new TextBox();
+            lblStaffID = new Label();
             cbStoreID = new ComboBox();
             txtOwedAmount = new TextBox();
             lblContractID = new Label();
@@ -68,12 +74,6 @@
             btnInsertMaintenance = new Button();
             pnlLeftSide = new Panel();
             dgvMaintenanceItems = new DataGridView();
-            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             itemBindingSource = new BindingSource(components);
             lblSearchMaintenance = new Label();
             txtSearchMaintenance = new TextBox();
@@ -87,12 +87,8 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            lblStaffID = new Label();
-            textBox1 = new TextBox();
-            lblStaffPosition = new Label();
-            txtStaffPosition = new TextBox();
-            lblStaffName = new Label();
-            txtStaffName = new TextBox();
+            lblAmount = new Label();
+            txtAmount = new TextBox();
             pnlRightSide.SuspendLayout();
             gbMaintenanceDetails.SuspendLayout();
             gbMaintenanceInformation.SuspendLayout();
@@ -136,6 +132,8 @@
             // 
             // gbMaintenanceDetails
             // 
+            gbMaintenanceDetails.Controls.Add(txtAmount);
+            gbMaintenanceDetails.Controls.Add(lblAmount);
             gbMaintenanceDetails.Controls.Add(btnUpdateMaintenanceItem);
             gbMaintenanceDetails.Controls.Add(btnInsertMaintenanceItem);
             gbMaintenanceDetails.Controls.Add(txtUnit);
@@ -161,7 +159,7 @@
             // btnUpdateMaintenanceItem
             // 
             btnUpdateMaintenanceItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateMaintenanceItem.Location = new Point(1281, 93);
+            btnUpdateMaintenanceItem.Location = new Point(1298, 93);
             btnUpdateMaintenanceItem.Name = "btnUpdateMaintenanceItem";
             btnUpdateMaintenanceItem.Size = new Size(100, 52);
             btnUpdateMaintenanceItem.TabIndex = 4;
@@ -171,7 +169,7 @@
             // btnInsertMaintenanceItem
             // 
             btnInsertMaintenanceItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInsertMaintenanceItem.Location = new Point(1120, 93);
+            btnInsertMaintenanceItem.Location = new Point(1177, 93);
             btnInsertMaintenanceItem.Name = "btnInsertMaintenanceItem";
             btnInsertMaintenanceItem.Size = new Size(102, 52);
             btnInsertMaintenanceItem.TabIndex = 28;
@@ -182,16 +180,16 @@
             // 
             txtUnit.Enabled = false;
             txtUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUnit.Location = new Point(1120, 38);
+            txtUnit.Location = new Point(888, 43);
             txtUnit.Name = "txtUnit";
-            txtUnit.Size = new Size(261, 44);
+            txtUnit.Size = new Size(179, 44);
             txtUnit.TabIndex = 27;
             // 
             // lblUnit
             // 
             lblUnit.AutoSize = true;
             lblUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnit.Location = new Point(997, 47);
+            lblUnit.Location = new Point(801, 46);
             lblUnit.Name = "lblUnit";
             lblUnit.Size = new Size(69, 36);
             lblUnit.TabIndex = 26;
@@ -200,7 +198,7 @@
             // txtMaintenanceQty
             // 
             txtMaintenanceQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMaintenanceQty.Location = new Point(888, 98);
+            txtMaintenanceQty.Location = new Point(583, 101);
             txtMaintenanceQty.Name = "txtMaintenanceQty";
             txtMaintenanceQty.Size = new Size(196, 44);
             txtMaintenanceQty.TabIndex = 25;
@@ -209,7 +207,7 @@
             // 
             lblItemDescription.AutoSize = true;
             lblItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblItemDescription.Location = new Point(482, 47);
+            lblItemDescription.Location = new Point(387, 47);
             lblItemDescription.Name = "lblItemDescription";
             lblItemDescription.Size = new Size(190, 36);
             lblItemDescription.TabIndex = 18;
@@ -219,9 +217,9 @@
             // 
             txtItemDescription.Enabled = false;
             txtItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtItemDescription.Location = new Point(681, 38);
+            txtItemDescription.Location = new Point(583, 44);
             txtItemDescription.Name = "txtItemDescription";
-            txtItemDescription.Size = new Size(219, 44);
+            txtItemDescription.Size = new Size(198, 44);
             txtItemDescription.TabIndex = 19;
             // 
             // txtItemID
@@ -229,14 +227,14 @@
             txtItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemID.Location = new Point(199, 38);
             txtItemID.Name = "txtItemID";
-            txtItemID.Size = new Size(245, 44);
+            txtItemID.Size = new Size(151, 44);
             txtItemID.TabIndex = 17;
             // 
             // lblMaintenanceQty
             // 
             lblMaintenanceQty.AutoSize = true;
             lblMaintenanceQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceQty.Location = new Point(710, 106);
+            lblMaintenanceQty.Location = new Point(387, 101);
             lblMaintenanceQty.Name = "lblMaintenanceQty";
             lblMaintenanceQty.Size = new Size(160, 36);
             lblMaintenanceQty.TabIndex = 24;
@@ -266,9 +264,9 @@
             // 
             txtCategory.Enabled = false;
             txtCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCategory.Location = new Point(482, 98);
+            txtCategory.Location = new Point(1177, 43);
             txtCategory.Name = "txtCategory";
-            txtCategory.Size = new Size(204, 44);
+            txtCategory.Size = new Size(221, 44);
             txtCategory.TabIndex = 23;
             // 
             // txtUnitPrice
@@ -277,14 +275,14 @@
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnitPrice.Location = new Point(199, 98);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(151, 44);
+            txtUnitPrice.Size = new Size(143, 44);
             txtUnitPrice.TabIndex = 21;
             // 
             // lblCategory
             // 
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCategory.Location = new Point(387, 101);
+            lblCategory.Location = new Point(1091, 47);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(75, 36);
             lblCategory.TabIndex = 22;
@@ -319,6 +317,62 @@
             gbMaintenanceInformation.TabIndex = 25;
             gbMaintenanceInformation.TabStop = false;
             gbMaintenanceInformation.Text = "ព័ត៌មានការថែទាំ";
+            // 
+            // txtStaffName
+            // 
+            txtStaffName.Enabled = false;
+            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffName.Location = new Point(937, 140);
+            txtStaffName.Name = "txtStaffName";
+            txtStaffName.Size = new Size(161, 44);
+            txtStaffName.TabIndex = 47;
+            // 
+            // lblStaffName
+            // 
+            lblStaffName.AutoSize = true;
+            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffName.Location = new Point(739, 143);
+            lblStaffName.Name = "lblStaffName";
+            lblStaffName.Size = new Size(192, 36);
+            lblStaffName.TabIndex = 46;
+            lblStaffName.Text = "ឈ្មោះបុគ្គលិកបុគ្គលិក:";
+            // 
+            // txtStaffPosition
+            // 
+            txtStaffPosition.Enabled = false;
+            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPosition.Location = new Point(1241, 140);
+            txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.Size = new Size(157, 44);
+            txtStaffPosition.TabIndex = 45;
+            // 
+            // lblStaffPosition
+            // 
+            lblStaffPosition.AutoSize = true;
+            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPosition.Location = new Point(1104, 143);
+            lblStaffPosition.Name = "lblStaffPosition";
+            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.TabIndex = 44;
+            lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(576, 140);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(157, 44);
+            textBox1.TabIndex = 43;
+            // 
+            // lblStaffID
+            // 
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Location = new Point(387, 143);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.TabIndex = 42;
+            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // cbStoreID
             // 
@@ -517,7 +571,6 @@
             dgvMaintenanceItems.AllowUserToDeleteRows = false;
             dgvMaintenanceItems.AutoGenerateColumns = false;
             dgvMaintenanceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaintenanceItems.Columns.AddRange(new DataGridViewColumn[] { itemIDDataGridViewTextBoxColumn, itemDescriptionDataGridViewTextBoxColumn, stockQtyDataGridViewTextBoxColumn, unitPriceDataGridViewTextBoxColumn, categoryDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn });
             dgvMaintenanceItems.DataSource = itemBindingSource;
             dgvMaintenanceItems.Location = new Point(63, 74);
             dgvMaintenanceItems.Name = "dgvMaintenanceItems";
@@ -526,68 +579,6 @@
             dgvMaintenanceItems.RowTemplate.Height = 29;
             dgvMaintenanceItems.Size = new Size(1427, 238);
             dgvMaintenanceItems.TabIndex = 3;
-            // 
-            // itemIDDataGridViewTextBoxColumn
-            // 
-            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
-            itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
-            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
-            itemIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // itemDescriptionDataGridViewTextBoxColumn
-            // 
-            itemDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            itemDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ItemDescription";
-            itemDescriptionDataGridViewTextBoxColumn.HeaderText = "ItemDescription";
-            itemDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemDescriptionDataGridViewTextBoxColumn.Name = "itemDescriptionDataGridViewTextBoxColumn";
-            itemDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stockQtyDataGridViewTextBoxColumn
-            // 
-            stockQtyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            stockQtyDataGridViewTextBoxColumn.DataPropertyName = "StockQty";
-            stockQtyDataGridViewTextBoxColumn.HeaderText = "MaintenanceQty";
-            stockQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            stockQtyDataGridViewTextBoxColumn.Name = "stockQtyDataGridViewTextBoxColumn";
-            stockQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            stockQtyDataGridViewTextBoxColumn.Width = 189;
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            unitPriceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            unitPriceDataGridViewTextBoxColumn.Width = 124;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            categoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            categoryDataGridViewTextBoxColumn.Width = 123;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            unitDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            unitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            unitDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            unitDataGridViewTextBoxColumn.ReadOnly = true;
-            unitDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // lblSearchMaintenance
             // 
@@ -645,61 +636,24 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // lblStaffID
+            // lblAmount
             // 
-            lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(387, 143);
-            lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
-            lblStaffID.TabIndex = 42;
-            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            lblAmount.AutoSize = true;
+            lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAmount.Location = new Point(801, 101);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(55, 36);
+            lblAmount.TabIndex = 29;
+            lblAmount.Text = "តម្លៃ:";
             // 
-            // textBox1
+            // txtAmount
             // 
-            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(576, 140);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(157, 44);
-            textBox1.TabIndex = 43;
-            // 
-            // lblStaffPosition
-            // 
-            lblStaffPosition.AutoSize = true;
-            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPosition.Location = new Point(1104, 143);
-            lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(131, 36);
-            lblStaffPosition.TabIndex = 44;
-            lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
-            // 
-            // txtStaffPosition
-            // 
-            txtStaffPosition.Enabled = false;
-            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffPosition.Location = new Point(1241, 140);
-            txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(157, 44);
-            txtStaffPosition.TabIndex = 45;
-            // 
-            // lblStaffName
-            // 
-            lblStaffName.AutoSize = true;
-            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffName.Location = new Point(739, 143);
-            lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(192, 36);
-            lblStaffName.TabIndex = 46;
-            lblStaffName.Text = "ឈ្មោះបុគ្គលិកបុគ្គលិក:";
-            // 
-            // txtStaffName
-            // 
-            txtStaffName.Enabled = false;
-            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffName.Location = new Point(937, 140);
-            txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(161, 44);
-            txtStaffName.TabIndex = 47;
+            txtAmount.Enabled = false;
+            txtAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAmount.Location = new Point(888, 98);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(179, 44);
+            txtAmount.TabIndex = 30;
             // 
             // FrmMaintenance
             // 
@@ -814,5 +768,7 @@
         private Label lblStaffID;
         private TextBox textBox1;
         private Label lblStaffName;
+        private TextBox txtAmount;
+        private Label lblAmount;
     }
 }

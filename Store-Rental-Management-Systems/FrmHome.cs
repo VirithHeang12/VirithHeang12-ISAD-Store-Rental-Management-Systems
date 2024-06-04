@@ -30,8 +30,14 @@ namespace Store_Rental_Management_Systems
             btnShowSalaryPaymentForm.Click += HandleShowFormSalaryPayment;
             btnShowImportForm.Click += HandleShowFormImport;
             btnShowAppointmentForm.Click += HandleShowFormAppointment;
+            btnShowMaintenanceForm.Click += HandleShowFormMaintenance;
           
             btnLogout.Click += HandleButtonLogoutClick;
+        }
+
+        private void HandleShowFormMaintenance(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmMaintenance);
         }
 
         private void HandleShowFormAppointment(object? sender, EventArgs e)

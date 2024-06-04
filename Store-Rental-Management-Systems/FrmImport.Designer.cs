@@ -47,6 +47,11 @@
             txtUnitPrice = new TextBox();
             lblCategory = new Label();
             gbImportInformation = new GroupBox();
+            lblStaffID = new Label();
+            lblSupplierName = new Label();
+            lblSupplierID = new Label();
+            textBox1 = new TextBox();
+            label1 = new Label();
             lblImportID = new Label();
             txtStaffPosition = new TextBox();
             lblStaffPosition = new Label();
@@ -275,6 +280,11 @@
             // 
             // gbImportInformation
             // 
+            gbImportInformation.Controls.Add(lblStaffID);
+            gbImportInformation.Controls.Add(lblSupplierName);
+            gbImportInformation.Controls.Add(lblSupplierID);
+            gbImportInformation.Controls.Add(textBox1);
+            gbImportInformation.Controls.Add(label1);
             gbImportInformation.Controls.Add(lblImportID);
             gbImportInformation.Controls.Add(txtStaffPosition);
             gbImportInformation.Controls.Add(lblStaffPosition);
@@ -289,10 +299,58 @@
             gbImportInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             gbImportInformation.Location = new Point(63, 19);
             gbImportInformation.Name = "gbImportInformation";
-            gbImportInformation.Size = new Size(1782, 194);
+            gbImportInformation.Size = new Size(1427, 194);
             gbImportInformation.TabIndex = 25;
             gbImportInformation.TabStop = false;
             gbImportInformation.Text = "ព័ត៌មានការនាំចូល";
+            // 
+            // lblStaffID
+            // 
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Location = new Point(22, 146);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.TabIndex = 39;
+            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            // 
+            // lblSupplierName
+            // 
+            lblSupplierName.AutoSize = true;
+            lblSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSupplierName.Location = new Point(905, 88);
+            lblSupplierName.Name = "lblSupplierName";
+            lblSupplierName.Size = new Size(152, 36);
+            lblSupplierName.TabIndex = 38;
+            lblSupplierName.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
+            // 
+            // lblSupplierID
+            // 
+            lblSupplierID.AutoSize = true;
+            lblSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSupplierID.Location = new Point(496, 88);
+            lblSupplierID.Name = "lblSupplierID";
+            lblSupplierID.Size = new Size(205, 36);
+            lblSupplierID.TabIndex = 37;
+            lblSupplierID.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(227, 85);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(217, 44);
+            textBox1.TabIndex = 36;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(22, 88);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 36);
+            label1.TabIndex = 35;
+            label1.Text = "ចំនួនទឹកប្រាក់សរុប:";
             // 
             // lblImportID
             // 
@@ -405,23 +463,23 @@
             pnlStaffManipulation.Controls.Add(btnNewStaff);
             pnlStaffManipulation.Controls.Add(btnUpdateStaff);
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
-            pnlStaffManipulation.Location = new Point(266, 558);
+            pnlStaffManipulation.Location = new Point(329, 563);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(1554, 79);
+            pnlStaffManipulation.Size = new Size(1427, 62);
             pnlStaffManipulation.TabIndex = 5;
             // 
             // btnCloseFormStaff
             // 
-            btnCloseFormStaff.Location = new Point(1274, 20);
+            btnCloseFormStaff.Location = new Point(1231, 7);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
-            btnCloseFormStaff.Size = new Size(152, 52);
+            btnCloseFormStaff.Size = new Size(134, 52);
             btnCloseFormStaff.TabIndex = 3;
             btnCloseFormStaff.Text = "បិទ";
             btnCloseFormStaff.UseVisualStyleBackColor = true;
             // 
             // btnNewStaff
             // 
-            btnNewStaff.Location = new Point(947, 20);
+            btnNewStaff.Location = new Point(871, 7);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
@@ -430,7 +488,7 @@
             // 
             // btnUpdateStaff
             // 
-            btnUpdateStaff.Location = new Point(527, 20);
+            btnUpdateStaff.Location = new Point(452, 7);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
@@ -439,7 +497,7 @@
             // 
             // btnInsertStaff
             // 
-            btnInsertStaff.Location = new Point(151, 20);
+            btnInsertStaff.Location = new Point(67, 7);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;
@@ -466,7 +524,7 @@
             dgvImportItems.ReadOnly = true;
             dgvImportItems.RowHeadersWidth = 51;
             dgvImportItems.RowTemplate.Height = 29;
-            dgvImportItems.Size = new Size(1381, 238);
+            dgvImportItems.Size = new Size(1427, 238);
             dgvImportItems.TabIndex = 3;
             // 
             // lblSearchImport
@@ -482,7 +540,7 @@
             // 
             txtSearchImport.Location = new Point(169, 11);
             txtSearchImport.Name = "txtSearchImport";
-            txtSearchImport.Size = new Size(1275, 44);
+            txtSearchImport.Size = new Size(1321, 44);
             txtSearchImport.TabIndex = 2;
             // 
             // epdStaffFirstName
@@ -617,5 +675,10 @@
         private DataGridView dgvImportItems;
         private Label lblSearchImport;
         private TextBox txtSearchImport;
+        private Label lblSupplierName;
+        private Label lblSupplierID;
+        private TextBox textBox1;
+        private Label label1;
+        private Label lblStaffID;
     }
 }

@@ -72,6 +72,9 @@ namespace Store_Rental_Management_Systems
                 case FormTypes.FrmAppointment:
                     OpenChildForm(new FrmAppointment());
                     break;
+                case FormTypes.FrmMaintenance:
+                    OpenChildForm(new FrmMaintenance());
+                    break;
                 default: break;
             }
         }

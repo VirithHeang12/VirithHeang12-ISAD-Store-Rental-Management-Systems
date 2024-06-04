@@ -135,9 +135,6 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ប្រព័ន្ធគ្រប់គ្រងការជួលតូបក្នុងផ្សារទំនើប</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmMain</value>
   </data>

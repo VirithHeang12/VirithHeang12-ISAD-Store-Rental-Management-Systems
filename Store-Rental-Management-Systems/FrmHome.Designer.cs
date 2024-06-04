@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
             pnlSideNav = new Panel();
-            lblCopyright = new Label();
+            panel2 = new Panel();
             pictureBox1 = new PictureBox();
+            lblCopyright = new Label();
             btnShowMaintenanceForm = new Button();
             btnShowImportForm = new Button();
             btnShowSalaryPaymentForm = new Button();
@@ -51,15 +52,16 @@
             panel1 = new Panel();
             btnLogout = new Button();
             pnlSideNav.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSideNav
             // 
-            pnlSideNav.BackColor = Color.Beige;
+            pnlSideNav.BackColor = Color.FromArgb(244, 244, 244);
+            pnlSideNav.Controls.Add(panel2);
             pnlSideNav.Controls.Add(lblCopyright);
-            pnlSideNav.Controls.Add(pictureBox1);
             pnlSideNav.Controls.Add(btnShowMaintenanceForm);
             pnlSideNav.Controls.Add(btnShowImportForm);
             pnlSideNav.Controls.Add(btnShowSalaryPaymentForm);
@@ -82,6 +84,26 @@
             pnlSideNav.Size = new Size(266, 982);
             pnlSideNav.TabIndex = 0;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(0, 28, 87);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(266, 80);
+            panel2.TabIndex = 17;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(0, 28, 87);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(58, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(149, 80);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // lblCopyright
             // 
             lblCopyright.Font = new Font("!Khmer OS Siemreap", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -91,16 +113,6 @@
             lblCopyright.TabIndex = 16;
             lblCopyright.Text = "Copyright © 2024 - ISAD SLS Group 3. All Rights Reserved.";
             lblCopyright.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(266, 80);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
             // 
             // btnShowMaintenanceForm
             // 
@@ -353,10 +365,10 @@
             // 
             // btnLogout
             // 
-            btnLogout.BackColor = Color.Beige;
+            btnLogout.BackColor = Color.FromArgb(244, 244, 244);
             btnLogout.Dock = DockStyle.Right;
             btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.ForeColor = Color.Black;
+            btnLogout.ForeColor = Color.FromArgb(0, 28, 87);
             btnLogout.Image = Properties.Resources.logout;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
             btnLogout.Location = new Point(1376, 0);
@@ -370,6 +382,7 @@
             // FrmHome
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.White;
             ClientSize = new Size(1782, 982);
             ControlBox = false;
             Controls.Add(panel1);
@@ -379,6 +392,7 @@
             Name = "FrmHome";
             StartPosition = FormStartPosition.CenterScreen;
             pnlSideNav.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -407,5 +421,6 @@
         private Button btnLogout;
         private PictureBox pictureBox1;
         private Label lblCopyright;
+        private Panel panel2;
     }
 }

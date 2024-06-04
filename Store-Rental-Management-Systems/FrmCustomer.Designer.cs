@@ -95,7 +95,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -136,9 +136,9 @@
             // 
             lbCustomer.FormattingEnabled = true;
             lbCustomer.ItemHeight = 36;
-            lbCustomer.Location = new Point(21, 114);
+            lbCustomer.Location = new Point(21, 127);
             lbCustomer.Name = "lbCustomer";
-            lbCustomer.Size = new Size(319, 472);
+            lbCustomer.Size = new Size(319, 436);
             lbCustomer.TabIndex = 3;
             // 
             // pnlRightSide
@@ -154,12 +154,15 @@
             // 
             // btnPickCustomerPhoto
             // 
-            btnPickCustomerPhoto.Location = new Point(882, 365);
+            btnPickCustomerPhoto.BackColor = Color.FromArgb(0, 28, 87);
+            btnPickCustomerPhoto.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPickCustomerPhoto.ForeColor = Color.White;
+            btnPickCustomerPhoto.Location = new Point(888, 331);
             btnPickCustomerPhoto.Name = "btnPickCustomerPhoto";
             btnPickCustomerPhoto.Size = new Size(211, 63);
             btnPickCustomerPhoto.TabIndex = 28;
             btnPickCustomerPhoto.Text = "ជ្រើសរើសរូបភាព";
-            btnPickCustomerPhoto.UseVisualStyleBackColor = true;
+            btnPickCustomerPhoto.UseVisualStyleBackColor = false;
             // 
             // pbCustomerPhoto
             // 
@@ -167,7 +170,7 @@
             pbCustomerPhoto.InitialImage = null;
             pbCustomerPhoto.Location = new Point(856, 32);
             pbCustomerPhoto.Name = "pbCustomerPhoto";
-            pbCustomerPhoto.Size = new Size(258, 299);
+            pbCustomerPhoto.Size = new Size(258, 282);
             pbCustomerPhoto.TabIndex = 27;
             pbCustomerPhoto.TabStop = false;
             // 
@@ -183,10 +186,10 @@
             gbCustomerAddress.Controls.Add(txtCustomerKhan);
             gbCustomerAddress.Controls.Add(txtCustomerSangkat);
             gbCustomerAddress.Controls.Add(lblCustomerKhan);
-            gbCustomerAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            gbCustomerAddress.Location = new Point(45, 337);
+            gbCustomerAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbCustomerAddress.Location = new Point(45, 331);
             gbCustomerAddress.Name = "gbCustomerAddress";
-            gbCustomerAddress.Size = new Size(776, 249);
+            gbCustomerAddress.Size = new Size(776, 233);
             gbCustomerAddress.TabIndex = 26;
             gbCustomerAddress.TabStop = false;
             gbCustomerAddress.Text = "អាសយដ្ឋាន";
@@ -196,16 +199,16 @@
             cbCustomerCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbCustomerCityOrProvince.FormattingEnabled = true;
             cbCustomerCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbCustomerCityOrProvince.Location = new Point(133, 186);
+            cbCustomerCityOrProvince.Location = new Point(154, 174);
             cbCustomerCityOrProvince.Name = "cbCustomerCityOrProvince";
-            cbCustomerCityOrProvince.Size = new Size(219, 44);
+            cbCustomerCityOrProvince.Size = new Size(198, 44);
             cbCustomerCityOrProvince.TabIndex = 25;
             // 
             // lblCustomerStreetNo
             // 
             lblCustomerStreetNo.AutoSize = true;
             lblCustomerStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerStreetNo.Location = new Point(352, 46);
+            lblCustomerStreetNo.Location = new Point(428, 46);
             lblCustomerStreetNo.Name = "lblCustomerStreetNo";
             lblCustomerStreetNo.Size = new Size(81, 36);
             lblCustomerStreetNo.TabIndex = 18;
@@ -214,7 +217,7 @@
             // txtCustomerStreetNo
             // 
             txtCustomerStreetNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerStreetNo.Location = new Point(469, 38);
+            txtCustomerStreetNo.Location = new Point(531, 38);
             txtCustomerStreetNo.Name = "txtCustomerStreetNo";
             txtCustomerStreetNo.Size = new Size(219, 44);
             txtCustomerStreetNo.TabIndex = 19;
@@ -222,16 +225,16 @@
             // txtCustomerHouseNo
             // 
             txtCustomerHouseNo.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerHouseNo.Location = new Point(108, 38);
+            txtCustomerHouseNo.Location = new Point(154, 43);
             txtCustomerHouseNo.Name = "txtCustomerHouseNo";
-            txtCustomerHouseNo.Size = new Size(183, 44);
+            txtCustomerHouseNo.Size = new Size(198, 44);
             txtCustomerHouseNo.TabIndex = 17;
             // 
             // lblCustomerProvinceOrCity
             // 
             lblCustomerProvinceOrCity.AutoSize = true;
             lblCustomerProvinceOrCity.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerProvinceOrCity.Location = new Point(18, 189);
+            lblCustomerProvinceOrCity.Location = new Point(18, 177);
             lblCustomerProvinceOrCity.Name = "lblCustomerProvinceOrCity";
             lblCustomerProvinceOrCity.Size = new Size(95, 36);
             lblCustomerProvinceOrCity.TabIndex = 24;
@@ -251,7 +254,7 @@
             // 
             lblCustomerSangkat.AutoSize = true;
             lblCustomerSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerSangkat.Location = new Point(352, 103);
+            lblCustomerSangkat.Location = new Point(428, 106);
             lblCustomerSangkat.Name = "lblCustomerSangkat";
             lblCustomerSangkat.Size = new Size(75, 36);
             lblCustomerSangkat.TabIndex = 20;
@@ -260,15 +263,15 @@
             // txtCustomerKhan
             // 
             txtCustomerKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerKhan.Location = new Point(108, 100);
+            txtCustomerKhan.Location = new Point(154, 105);
             txtCustomerKhan.Name = "txtCustomerKhan";
-            txtCustomerKhan.Size = new Size(183, 44);
+            txtCustomerKhan.Size = new Size(198, 44);
             txtCustomerKhan.TabIndex = 23;
             // 
             // txtCustomerSangkat
             // 
             txtCustomerSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerSangkat.Location = new Point(469, 100);
+            txtCustomerSangkat.Location = new Point(531, 100);
             txtCustomerSangkat.Name = "txtCustomerSangkat";
             txtCustomerSangkat.Size = new Size(219, 44);
             txtCustomerSangkat.TabIndex = 21;
@@ -300,10 +303,10 @@
             gbCustomerInformation.Controls.Add(dtpCustomerBirthDate);
             gbCustomerInformation.Controls.Add(lblCustomerIdentityCardNumber);
             gbCustomerInformation.Controls.Add(txtCustomerIdentityCardNumber);
-            gbCustomerInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbCustomerInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbCustomerInformation.Location = new Point(45, 32);
             gbCustomerInformation.Name = "gbCustomerInformation";
-            gbCustomerInformation.Size = new Size(776, 299);
+            gbCustomerInformation.Size = new Size(776, 282);
             gbCustomerInformation.TabIndex = 25;
             gbCustomerInformation.TabStop = false;
             gbCustomerInformation.Text = "ព័ត៌មានអតិថិជន";
@@ -330,7 +333,7 @@
             // 
             rdbFemale.AutoSize = true;
             rdbFemale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            rdbFemale.Location = new Point(581, 37);
+            rdbFemale.Location = new Point(683, 34);
             rdbFemale.Name = "rdbFemale";
             rdbFemale.Size = new Size(62, 40);
             rdbFemale.TabIndex = 10;
@@ -342,7 +345,7 @@
             rdbMale.AutoSize = true;
             rdbMale.Checked = true;
             rdbMale.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            rdbMale.Location = new Point(499, 37);
+            rdbMale.Location = new Point(601, 34);
             rdbMale.Name = "rdbMale";
             rdbMale.Size = new Size(76, 40);
             rdbMale.TabIndex = 9;
@@ -363,9 +366,9 @@
             // txtCustomerFirstName
             // 
             txtCustomerFirstName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerFirstName.Location = new Point(133, 103);
+            txtCustomerFirstName.Location = new Point(166, 103);
             txtCustomerFirstName.Name = "txtCustomerFirstName";
-            txtCustomerFirstName.Size = new Size(217, 44);
+            txtCustomerFirstName.Size = new Size(184, 44);
             txtCustomerFirstName.TabIndex = 5;
             // 
             // label1
@@ -382,9 +385,9 @@
             // 
             txtCustomerID.Enabled = false;
             txtCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerID.Location = new Point(209, 33);
+            txtCustomerID.Location = new Point(228, 33);
             txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(207, 44);
+            txtCustomerID.Size = new Size(205, 44);
             txtCustomerID.TabIndex = 3;
             // 
             // lblCustomerLastName
@@ -400,16 +403,16 @@
             // txtCustomerLastName
             // 
             txtCustomerLastName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerLastName.Location = new Point(469, 103);
+            txtCustomerLastName.Location = new Point(535, 103);
             txtCustomerLastName.Name = "txtCustomerLastName";
-            txtCustomerLastName.Size = new Size(281, 44);
+            txtCustomerLastName.Size = new Size(215, 44);
             txtCustomerLastName.TabIndex = 7;
             // 
             // lblCustomerSex
             // 
             lblCustomerSex.AutoSize = true;
             lblCustomerSex.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerSex.Location = new Point(438, 41);
+            lblCustomerSex.Location = new Point(540, 38);
             lblCustomerSex.Name = "lblCustomerSex";
             lblCustomerSex.Size = new Size(55, 36);
             lblCustomerSex.TabIndex = 8;
@@ -458,46 +461,58 @@
             pnlCustomerManipulation.Controls.Add(btnNewCustomer);
             pnlCustomerManipulation.Controls.Add(btnUpdateCustomer);
             pnlCustomerManipulation.Controls.Add(btnInsertCustomer);
-            pnlCustomerManipulation.Location = new Point(590, 856);
+            pnlCustomerManipulation.Location = new Point(653, 856);
             pnlCustomerManipulation.Name = "pnlCustomerManipulation";
-            pnlCustomerManipulation.Size = new Size(925, 101);
+            pnlCustomerManipulation.Size = new Size(821, 101);
             pnlCustomerManipulation.TabIndex = 5;
             // 
             // btnCloseFormCustomer
             // 
-            btnCloseFormCustomer.Location = new Point(706, 20);
+            btnCloseFormCustomer.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormCustomer.ForeColor = Color.White;
+            btnCloseFormCustomer.Location = new Point(626, 20);
             btnCloseFormCustomer.Name = "btnCloseFormCustomer";
             btnCloseFormCustomer.Size = new Size(152, 52);
             btnCloseFormCustomer.TabIndex = 3;
             btnCloseFormCustomer.Text = "បិទ";
-            btnCloseFormCustomer.UseVisualStyleBackColor = true;
+            btnCloseFormCustomer.UseVisualStyleBackColor = false;
             // 
             // btnNewCustomer
             // 
-            btnNewCustomer.Location = new Point(481, 20);
+            btnNewCustomer.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewCustomer.ForeColor = Color.White;
+            btnNewCustomer.Location = new Point(424, 20);
             btnNewCustomer.Name = "btnNewCustomer";
             btnNewCustomer.Size = new Size(152, 52);
             btnNewCustomer.TabIndex = 2;
             btnNewCustomer.Text = "បង្កើតថ្មី";
-            btnNewCustomer.UseVisualStyleBackColor = true;
+            btnNewCustomer.UseVisualStyleBackColor = false;
             // 
             // btnUpdateCustomer
             // 
-            btnUpdateCustomer.Location = new Point(247, 20);
+            btnUpdateCustomer.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateCustomer.ForeColor = Color.White;
+            btnUpdateCustomer.Location = new Point(222, 20);
             btnUpdateCustomer.Name = "btnUpdateCustomer";
             btnUpdateCustomer.Size = new Size(152, 52);
             btnUpdateCustomer.TabIndex = 1;
             btnUpdateCustomer.Text = "កែប្រែ";
-            btnUpdateCustomer.UseVisualStyleBackColor = true;
+            btnUpdateCustomer.UseVisualStyleBackColor = false;
             // 
             // btnInsertCustomer
             // 
+            btnInsertCustomer.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertCustomer.ForeColor = Color.White;
             btnInsertCustomer.Location = new Point(20, 20);
             btnInsertCustomer.Name = "btnInsertCustomer";
             btnInsertCustomer.Size = new Size(152, 52);
             btnInsertCustomer.TabIndex = 0;
             btnInsertCustomer.Text = "បញ្ចូល";
-            btnInsertCustomer.UseVisualStyleBackColor = true;
+            btnInsertCustomer.UseVisualStyleBackColor = false;
             // 
             // epdCustomerFirstName
             // 

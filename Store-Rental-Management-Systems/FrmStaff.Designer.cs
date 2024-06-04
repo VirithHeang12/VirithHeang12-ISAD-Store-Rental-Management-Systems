@@ -89,6 +89,7 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
+            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
@@ -105,11 +106,12 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -123,7 +125,7 @@
             // lblSearchStaff
             // 
             lblSearchStaff.AutoSize = true;
-            lblSearchStaff.Location = new Point(21, 11);
+            lblSearchStaff.Location = new Point(21, 24);
             lblSearchStaff.Name = "lblSearchStaff";
             lblSearchStaff.Size = new Size(81, 36);
             lblSearchStaff.TabIndex = 1;
@@ -131,7 +133,7 @@
             // 
             // txtSearchStaff
             // 
-            txtSearchStaff.Location = new Point(21, 50);
+            txtSearchStaff.Location = new Point(21, 70);
             txtSearchStaff.Name = "txtSearchStaff";
             txtSearchStaff.Size = new Size(319, 44);
             txtSearchStaff.TabIndex = 2;
@@ -150,7 +152,7 @@
             // 
             lbStaff.FormattingEnabled = true;
             lbStaff.ItemHeight = 36;
-            lbStaff.Location = new Point(21, 114);
+            lbStaff.Location = new Point(21, 146);
             lbStaff.Name = "lbStaff";
             lbStaff.Size = new Size(319, 472);
             lbStaff.TabIndex = 3;
@@ -168,12 +170,15 @@
             // 
             // btnPickStaffPhoto
             // 
+            btnPickStaffPhoto.BackColor = Color.FromArgb(0, 28, 87);
+            btnPickStaffPhoto.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPickStaffPhoto.ForeColor = Color.White;
             btnPickStaffPhoto.Location = new Point(882, 365);
             btnPickStaffPhoto.Name = "btnPickStaffPhoto";
             btnPickStaffPhoto.Size = new Size(211, 63);
             btnPickStaffPhoto.TabIndex = 28;
             btnPickStaffPhoto.Text = "ជ្រើសរើសរូបភាព";
-            btnPickStaffPhoto.UseVisualStyleBackColor = true;
+            btnPickStaffPhoto.UseVisualStyleBackColor = false;
             // 
             // pbStaffPhoto
             // 
@@ -187,6 +192,7 @@
             // 
             // gbStaffAddress
             // 
+            gbStaffAddress.Controls.Add(webView21);
             gbStaffAddress.Controls.Add(cbStaffCityOrProvince);
             gbStaffAddress.Controls.Add(lblStaffStreetNo);
             gbStaffAddress.Controls.Add(txtStaffStreetNo);
@@ -197,8 +203,8 @@
             gbStaffAddress.Controls.Add(txtStaffKhan);
             gbStaffAddress.Controls.Add(txtStaffSangkat);
             gbStaffAddress.Controls.Add(lblStaffKhan);
-            gbStaffAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            gbStaffAddress.Location = new Point(45, 466);
+            gbStaffAddress.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbStaffAddress.Location = new Point(45, 449);
             gbStaffAddress.Name = "gbStaffAddress";
             gbStaffAddress.Size = new Size(1069, 167);
             gbStaffAddress.TabIndex = 26;
@@ -323,7 +329,7 @@
             gbStaffInformation.Controls.Add(dtpStaffBirthDate);
             gbStaffInformation.Controls.Add(lblStaffIdentityCardNumber);
             gbStaffInformation.Controls.Add(txtStaffIdentityCardNumber);
-            gbStaffInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbStaffInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbStaffInformation.Location = new Point(45, 32);
             gbStaffInformation.Name = "gbStaffInformation";
             gbStaffInformation.Size = new Size(776, 411);
@@ -575,39 +581,51 @@
             // 
             // btnCloseFormStaff
             // 
+            btnCloseFormStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormStaff.ForeColor = Color.White;
             btnCloseFormStaff.Location = new Point(705, 20);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
             btnCloseFormStaff.Size = new Size(152, 52);
             btnCloseFormStaff.TabIndex = 3;
             btnCloseFormStaff.Text = "បិទ";
-            btnCloseFormStaff.UseVisualStyleBackColor = true;
+            btnCloseFormStaff.UseVisualStyleBackColor = false;
             // 
             // btnNewStaff
             // 
+            btnNewStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewStaff.ForeColor = Color.White;
             btnNewStaff.Location = new Point(485, 20);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
             btnNewStaff.Text = "បង្កើតថ្មី";
-            btnNewStaff.UseVisualStyleBackColor = true;
+            btnNewStaff.UseVisualStyleBackColor = false;
             // 
             // btnUpdateStaff
             // 
+            btnUpdateStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateStaff.ForeColor = Color.White;
             btnUpdateStaff.Location = new Point(265, 20);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
             btnUpdateStaff.Text = "កែប្រែ";
-            btnUpdateStaff.UseVisualStyleBackColor = true;
+            btnUpdateStaff.UseVisualStyleBackColor = false;
             // 
             // btnInsertStaff
             // 
+            btnInsertStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertStaff.ForeColor = Color.White;
             btnInsertStaff.Location = new Point(45, 20);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;
             btnInsertStaff.Text = "បញ្ចូល";
-            btnInsertStaff.UseVisualStyleBackColor = true;
+            btnInsertStaff.UseVisualStyleBackColor = false;
             // 
             // epdStaffFirstName
             // 
@@ -649,6 +667,16 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
+            // webView21
+            // 
+            webView21.CreationProperties = null;
+            webView21.DefaultBackgroundColor = Color.White;
+            webView21.Location = new Point(220, 35);
+            webView21.Name = "webView21";
+            webView21.Size = new Size(8, 8);
+            webView21.TabIndex = 26;
+            webView21.ZoomFactor = 1D;
+            // 
             // FrmStaff
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -683,6 +711,7 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
+            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
         }
 
@@ -747,5 +776,6 @@
         private ErrorProvider epdStaffStreetNo;
         private ErrorProvider epdStaffSangkat;
         private ErrorProvider epdStaffKhan;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

@@ -37,6 +37,7 @@
             resources.ApplyResources(this, "$this");
             IsMdiContainer = true;
             Name = "FrmMain";
+            ShowIcon = false;
             ResumeLayout(false);
         }
 

@@ -34,6 +34,7 @@
             txtSearchSupplier = new TextBox();
             pnlLeftSide = new Panel();
             dataItems = new DataGridView();
+            supplierBindingSource = new BindingSource(components);
             itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbSupplierInformation = new GroupBox();
@@ -60,13 +61,13 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            supplierBindingSource = new BindingSource(components);
             supplierIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             supplierNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             contactNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             supplierAddressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbSupplierInformation.SuspendLayout();
@@ -81,12 +82,11 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -102,15 +102,15 @@
             lblSearchSupplier.AutoSize = true;
             lblSearchSupplier.Location = new Point(82, 19);
             lblSearchSupplier.Name = "lblSearchSupplier";
-            lblSearchSupplier.Size = new Size(81, 36);
+            lblSearchSupplier.Size = new Size(293, 36);
             lblSearchSupplier.TabIndex = 1;
-            lblSearchSupplier.Text = "ស្វែងរក:";
+            lblSearchSupplier.Text = "ស្វែងរក (លេខសម្គាល់អ្នកផ្គត់ផ្គង់):";
             // 
             // txtSearchSupplier
             // 
-            txtSearchSupplier.Location = new Point(169, 11);
+            txtSearchSupplier.Location = new Point(396, 11);
             txtSearchSupplier.Name = "txtSearchSupplier";
-            txtSearchSupplier.Size = new Size(1275, 44);
+            txtSearchSupplier.Size = new Size(349, 44);
             txtSearchSupplier.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -139,6 +139,10 @@
             dataItems.Size = new Size(1362, 369);
             dataItems.TabIndex = 3;
             // 
+            // supplierBindingSource
+            // 
+            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
+            // 
             // itemBindingSource
             // 
             itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
@@ -153,6 +157,7 @@
             // 
             // gbSupplierInformation
             // 
+            gbSupplierInformation.BackColor = Color.White;
             gbSupplierInformation.Controls.Add(pnlStaffManipulation);
             gbSupplierInformation.Controls.Add(lblSupplierAddress);
             gbSupplierInformation.Controls.Add(lblSupplierID);
@@ -162,7 +167,7 @@
             gbSupplierInformation.Controls.Add(lblContactNumber);
             gbSupplierInformation.Controls.Add(txtSupplierAddress);
             gbSupplierInformation.Controls.Add(txtContactNumber);
-            gbSupplierInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbSupplierInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbSupplierInformation.Location = new Point(82, 12);
             gbSupplierInformation.Name = "gbSupplierInformation";
             gbSupplierInformation.Size = new Size(1362, 288);
@@ -177,46 +182,58 @@
             pnlStaffManipulation.Controls.Add(btnUpdateSupplier);
             pnlStaffManipulation.Controls.Add(btnInsertSupplier);
             pnlStaffManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            pnlStaffManipulation.Location = new Point(18, 175);
+            pnlStaffManipulation.Location = new Point(18, 171);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(1301, 81);
+            pnlStaffManipulation.Size = new Size(1301, 85);
             pnlStaffManipulation.TabIndex = 5;
             // 
             // btnCloseFormSupplier
             // 
-            btnCloseFormSupplier.Location = new Point(1102, 20);
+            btnCloseFormSupplier.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormSupplier.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormSupplier.ForeColor = Color.White;
+            btnCloseFormSupplier.Location = new Point(1100, 20);
             btnCloseFormSupplier.Name = "btnCloseFormSupplier";
             btnCloseFormSupplier.Size = new Size(152, 52);
             btnCloseFormSupplier.TabIndex = 3;
             btnCloseFormSupplier.Text = "បិទ";
-            btnCloseFormSupplier.UseVisualStyleBackColor = true;
+            btnCloseFormSupplier.UseVisualStyleBackColor = false;
             // 
             // btnNewSupplier
             // 
-            btnNewSupplier.Location = new Point(774, 20);
+            btnNewSupplier.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewSupplier.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewSupplier.ForeColor = Color.White;
+            btnNewSupplier.Location = new Point(740, 20);
             btnNewSupplier.Name = "btnNewSupplier";
             btnNewSupplier.Size = new Size(152, 52);
             btnNewSupplier.TabIndex = 2;
             btnNewSupplier.Text = "បង្កើតថ្មី";
-            btnNewSupplier.UseVisualStyleBackColor = true;
+            btnNewSupplier.UseVisualStyleBackColor = false;
             // 
             // btnUpdateSupplier
             // 
-            btnUpdateSupplier.Location = new Point(411, 20);
+            btnUpdateSupplier.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateSupplier.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateSupplier.ForeColor = Color.White;
+            btnUpdateSupplier.Location = new Point(380, 20);
             btnUpdateSupplier.Name = "btnUpdateSupplier";
             btnUpdateSupplier.Size = new Size(152, 52);
             btnUpdateSupplier.TabIndex = 1;
             btnUpdateSupplier.Text = "កែប្រែ";
-            btnUpdateSupplier.UseVisualStyleBackColor = true;
+            btnUpdateSupplier.UseVisualStyleBackColor = false;
             // 
             // btnInsertSupplier
             // 
+            btnInsertSupplier.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertSupplier.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertSupplier.ForeColor = Color.White;
             btnInsertSupplier.Location = new Point(20, 20);
             btnInsertSupplier.Name = "btnInsertSupplier";
             btnInsertSupplier.Size = new Size(152, 52);
             btnInsertSupplier.TabIndex = 0;
             btnInsertSupplier.Text = "បញ្ចូល";
-            btnInsertSupplier.UseVisualStyleBackColor = true;
+            btnInsertSupplier.UseVisualStyleBackColor = false;
             // 
             // lblSupplierAddress
             // 
@@ -331,44 +348,41 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
             // supplierIDDataGridViewTextBoxColumn
             // 
+            supplierIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             supplierIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierID";
-            supplierIDDataGridViewTextBoxColumn.HeaderText = "SupplierID";
+            supplierIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
             supplierIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
             supplierIDDataGridViewTextBoxColumn.ReadOnly = true;
-            supplierIDDataGridViewTextBoxColumn.Width = 125;
+            supplierIDDataGridViewTextBoxColumn.Width = 228;
             // 
             // supplierNameDataGridViewTextBoxColumn
             // 
             supplierNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             supplierNameDataGridViewTextBoxColumn.DataPropertyName = "SupplierName";
-            supplierNameDataGridViewTextBoxColumn.HeaderText = "SupplierName";
+            supplierNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
             supplierNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             supplierNameDataGridViewTextBoxColumn.Name = "supplierNameDataGridViewTextBoxColumn";
             supplierNameDataGridViewTextBoxColumn.ReadOnly = true;
-            supplierNameDataGridViewTextBoxColumn.Width = 169;
+            supplierNameDataGridViewTextBoxColumn.Width = 175;
             // 
             // contactNumberDataGridViewTextBoxColumn
             // 
             contactNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             contactNumberDataGridViewTextBoxColumn.DataPropertyName = "ContactNumber";
-            contactNumberDataGridViewTextBoxColumn.HeaderText = "ContactNumber";
+            contactNumberDataGridViewTextBoxColumn.HeaderText = "លេខទំនាក់ទំនង";
             contactNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
             contactNumberDataGridViewTextBoxColumn.Name = "contactNumberDataGridViewTextBoxColumn";
             contactNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            contactNumberDataGridViewTextBoxColumn.Width = 184;
+            contactNumberDataGridViewTextBoxColumn.Width = 174;
             // 
             // supplierAddressDataGridViewTextBoxColumn
             // 
             supplierAddressDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             supplierAddressDataGridViewTextBoxColumn.DataPropertyName = "SupplierAddress";
-            supplierAddressDataGridViewTextBoxColumn.HeaderText = "SupplierAddress";
+            supplierAddressDataGridViewTextBoxColumn.HeaderText = "អាសយដ្ឋានអ្នកផ្គត់ផ្គង់";
             supplierAddressDataGridViewTextBoxColumn.MinimumWidth = 6;
             supplierAddressDataGridViewTextBoxColumn.Name = "supplierAddressDataGridViewTextBoxColumn";
             supplierAddressDataGridViewTextBoxColumn.ReadOnly = true;
@@ -376,6 +390,7 @@
             // FrmSupplier
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.White;
             ClientSize = new Size(1800, 1000);
             ControlBox = true;
             Controls.Add(pnlRightSide);
@@ -389,6 +404,7 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbSupplierInformation.ResumeLayout(false);
@@ -404,7 +420,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
             ResumeLayout(false);
         }
 

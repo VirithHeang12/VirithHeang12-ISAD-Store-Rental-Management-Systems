@@ -68,6 +68,13 @@
             btnInsertMaintenance = new Button();
             pnlLeftSide = new Panel();
             dgvMaintenanceItems = new DataGridView();
+            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            itemBindingSource = new BindingSource(components);
             lblSearchMaintenance = new Label();
             txtSearchMaintenance = new TextBox();
             epdStaffFirstName = new ErrorProvider(components);
@@ -80,19 +87,19 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            itemBindingSource = new BindingSource(components);
-            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lblStaffID = new Label();
+            textBox1 = new TextBox();
+            lblStaffPosition = new Label();
+            txtStaffPosition = new TextBox();
+            lblStaffName = new Label();
+            txtStaffName = new TextBox();
             pnlRightSide.SuspendLayout();
             gbMaintenanceDetails.SuspendLayout();
             gbMaintenanceInformation.SuspendLayout();
             pnlMaintenanceManipulation.SuspendLayout();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaintenanceItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
@@ -103,7 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -286,6 +292,12 @@
             // 
             // gbMaintenanceInformation
             // 
+            gbMaintenanceInformation.Controls.Add(txtStaffName);
+            gbMaintenanceInformation.Controls.Add(lblStaffName);
+            gbMaintenanceInformation.Controls.Add(txtStaffPosition);
+            gbMaintenanceInformation.Controls.Add(lblStaffPosition);
+            gbMaintenanceInformation.Controls.Add(textBox1);
+            gbMaintenanceInformation.Controls.Add(lblStaffID);
             gbMaintenanceInformation.Controls.Add(cbStoreID);
             gbMaintenanceInformation.Controls.Add(txtOwedAmount);
             gbMaintenanceInformation.Controls.Add(lblContractID);
@@ -310,10 +322,11 @@
             // 
             // cbStoreID
             // 
+            cbStoreID.Enabled = false;
             cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStoreID.FormattingEnabled = true;
             cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbStoreID.Location = new Point(681, 143);
+            cbStoreID.Location = new Point(173, 140);
             cbStoreID.Name = "cbStoreID";
             cbStoreID.Size = new Size(189, 44);
             cbStoreID.TabIndex = 41;
@@ -322,16 +335,16 @@
             // 
             txtOwedAmount.Enabled = false;
             txtOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtOwedAmount.Location = new Point(1109, 88);
+            txtOwedAmount.Location = new Point(681, 85);
             txtOwedAmount.Name = "txtOwedAmount";
-            txtOwedAmount.Size = new Size(272, 44);
+            txtOwedAmount.Size = new Size(189, 44);
             txtOwedAmount.TabIndex = 40;
             // 
             // lblContractID
             // 
             lblContractID.AutoSize = true;
             lblContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblContractID.Location = new Point(22, 146);
+            lblContractID.Location = new Point(905, 88);
             lblContractID.Name = "lblContractID";
             lblContractID.Size = new Size(196, 36);
             lblContractID.TabIndex = 39;
@@ -341,7 +354,7 @@
             // 
             lblPaidAmount.AutoSize = true;
             lblPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaidAmount.Location = new Point(482, 88);
+            lblPaidAmount.Location = new Point(18, 88);
             lblPaidAmount.Name = "lblPaidAmount";
             lblPaidAmount.Size = new Size(193, 36);
             lblPaidAmount.TabIndex = 38;
@@ -351,7 +364,7 @@
             // 
             lblOwedAmount.AutoSize = true;
             lblOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOwedAmount.Location = new Point(905, 88);
+            lblOwedAmount.Location = new Point(482, 88);
             lblOwedAmount.Name = "lblOwedAmount";
             lblOwedAmount.Size = new Size(179, 36);
             lblOwedAmount.TabIndex = 37;
@@ -360,16 +373,16 @@
             // txtTotalAmount
             // 
             txtTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTotalAmount.Location = new Point(227, 85);
+            txtTotalAmount.Location = new Point(1109, 33);
             txtTotalAmount.Name = "txtTotalAmount";
-            txtTotalAmount.Size = new Size(217, 44);
+            txtTotalAmount.Size = new Size(289, 44);
             txtTotalAmount.TabIndex = 36;
             // 
             // lblTotalAmount
             // 
             lblTotalAmount.AutoSize = true;
             lblTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTotalAmount.Location = new Point(22, 88);
+            lblTotalAmount.Location = new Point(905, 41);
             lblTotalAmount.Name = "lblTotalAmount";
             lblTotalAmount.Size = new Size(171, 36);
             lblTotalAmount.TabIndex = 35;
@@ -389,7 +402,7 @@
             // 
             lblStoreID.AutoSize = true;
             lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStoreID.Location = new Point(482, 148);
+            lblStoreID.Location = new Point(18, 143);
             lblStoreID.Name = "lblStoreID";
             lblStoreID.Size = new Size(149, 36);
             lblStoreID.TabIndex = 30;
@@ -400,33 +413,33 @@
             cbContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbContractID.FormattingEnabled = true;
             cbContractID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbContractID.Location = new Point(227, 143);
+            cbContractID.Location = new Point(1109, 85);
             cbContractID.Name = "cbContractID";
-            cbContractID.Size = new Size(217, 44);
+            cbContractID.Size = new Size(289, 44);
             cbContractID.TabIndex = 29;
             // 
             // txtPaidAmount
             // 
             txtPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPaidAmount.Location = new Point(681, 85);
+            txtPaidAmount.Location = new Point(227, 85);
             txtPaidAmount.Name = "txtPaidAmount";
-            txtPaidAmount.Size = new Size(189, 44);
+            txtPaidAmount.Size = new Size(217, 44);
             txtPaidAmount.TabIndex = 28;
             // 
             // dtpMaintenanceDate
             // 
             dtpMaintenanceDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpMaintenanceDate.Format = DateTimePickerFormat.Short;
-            dtpMaintenanceDate.Location = new Point(960, 35);
+            dtpMaintenanceDate.Location = new Point(681, 33);
             dtpMaintenanceDate.Name = "dtpMaintenanceDate";
-            dtpMaintenanceDate.Size = new Size(421, 44);
+            dtpMaintenanceDate.Size = new Size(189, 44);
             dtpMaintenanceDate.TabIndex = 20;
             // 
             // lblMaintenanceDate
             // 
             lblMaintenanceDate.AutoSize = true;
             lblMaintenanceDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMaintenanceDate.Location = new Point(760, 39);
+            lblMaintenanceDate.Location = new Point(482, 41);
             lblMaintenanceDate.Name = "lblMaintenanceDate";
             lblMaintenanceDate.Size = new Size(155, 36);
             lblMaintenanceDate.TabIndex = 19;
@@ -438,7 +451,7 @@
             txtMaintenanceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtMaintenanceID.Location = new Point(227, 33);
             txtMaintenanceID.Name = "txtMaintenanceID";
-            txtMaintenanceID.Size = new Size(377, 44);
+            txtMaintenanceID.Size = new Size(217, 44);
             txtMaintenanceID.TabIndex = 3;
             // 
             // pnlMaintenanceManipulation
@@ -514,66 +527,6 @@
             dgvMaintenanceItems.Size = new Size(1427, 238);
             dgvMaintenanceItems.TabIndex = 3;
             // 
-            // lblSearchMaintenance
-            // 
-            lblSearchMaintenance.AutoSize = true;
-            lblSearchMaintenance.Location = new Point(64, 17);
-            lblSearchMaintenance.Name = "lblSearchMaintenance";
-            lblSearchMaintenance.Size = new Size(81, 36);
-            lblSearchMaintenance.TabIndex = 1;
-            lblSearchMaintenance.Text = "ស្វែងរក:";
-            // 
-            // txtSearchMaintenance
-            // 
-            txtSearchMaintenance.Location = new Point(169, 11);
-            txtSearchMaintenance.Name = "txtSearchMaintenance";
-            txtSearchMaintenance.Size = new Size(1321, 44);
-            txtSearchMaintenance.TabIndex = 2;
-            // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
-            // 
             // itemIDDataGridViewTextBoxColumn
             // 
             itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
@@ -632,6 +585,122 @@
             unitDataGridViewTextBoxColumn.ReadOnly = true;
             unitDataGridViewTextBoxColumn.Width = 80;
             // 
+            // itemBindingSource
+            // 
+            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
+            // 
+            // lblSearchMaintenance
+            // 
+            lblSearchMaintenance.AutoSize = true;
+            lblSearchMaintenance.Location = new Point(64, 17);
+            lblSearchMaintenance.Name = "lblSearchMaintenance";
+            lblSearchMaintenance.Size = new Size(81, 36);
+            lblSearchMaintenance.TabIndex = 1;
+            lblSearchMaintenance.Text = "ស្វែងរក:";
+            // 
+            // txtSearchMaintenance
+            // 
+            txtSearchMaintenance.Location = new Point(169, 11);
+            txtSearchMaintenance.Name = "txtSearchMaintenance";
+            txtSearchMaintenance.Size = new Size(1321, 44);
+            txtSearchMaintenance.TabIndex = 2;
+            // 
+            // epdStaffFirstName
+            // 
+            epdStaffFirstName.ContainerControl = this;
+            // 
+            // epdStaffLastName
+            // 
+            epdStaffLastName.ContainerControl = this;
+            // 
+            // epdStaffIdentityCardNumber
+            // 
+            epdStaffIdentityCardNumber.ContainerControl = this;
+            // 
+            // epdStaffSalary
+            // 
+            epdStaffSalary.ContainerControl = this;
+            // 
+            // epdStaffContactNumber
+            // 
+            epdStaffContactNumber.ContainerControl = this;
+            // 
+            // epdStaffPersonalNumber
+            // 
+            epdStaffPersonalNumber.ContainerControl = this;
+            // 
+            // epdStaffHouseNo
+            // 
+            epdStaffHouseNo.ContainerControl = this;
+            // 
+            // epdStaffStreetNo
+            // 
+            epdStaffStreetNo.ContainerControl = this;
+            // 
+            // epdStaffSangkat
+            // 
+            epdStaffSangkat.ContainerControl = this;
+            // 
+            // epdStaffKhan
+            // 
+            epdStaffKhan.ContainerControl = this;
+            // 
+            // lblStaffID
+            // 
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Location = new Point(387, 143);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.TabIndex = 42;
+            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(576, 140);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(157, 44);
+            textBox1.TabIndex = 43;
+            // 
+            // lblStaffPosition
+            // 
+            lblStaffPosition.AutoSize = true;
+            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPosition.Location = new Point(1104, 143);
+            lblStaffPosition.Name = "lblStaffPosition";
+            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.TabIndex = 44;
+            lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
+            // 
+            // txtStaffPosition
+            // 
+            txtStaffPosition.Enabled = false;
+            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPosition.Location = new Point(1241, 140);
+            txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.Size = new Size(157, 44);
+            txtStaffPosition.TabIndex = 45;
+            // 
+            // lblStaffName
+            // 
+            lblStaffName.AutoSize = true;
+            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffName.Location = new Point(739, 143);
+            lblStaffName.Name = "lblStaffName";
+            lblStaffName.Size = new Size(192, 36);
+            lblStaffName.TabIndex = 46;
+            lblStaffName.Text = "ឈ្មោះបុគ្គលិកបុគ្គលិក:";
+            // 
+            // txtStaffName
+            // 
+            txtStaffName.Enabled = false;
+            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffName.Location = new Point(937, 140);
+            txtStaffName.Name = "txtStaffName";
+            txtStaffName.Size = new Size(161, 44);
+            txtStaffName.TabIndex = 47;
+            // 
             // FrmMaintenance
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -656,6 +725,7 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaintenanceItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
@@ -666,7 +736,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -712,9 +781,8 @@
         private TextBox txtSupplierName;
         private ComboBox cbStaffID;
         private TextBox txtStaffName;
-        private Label lblStaffName;
-        private TextBox txtStaffPosition;
         private Label lblStaffPosition;
+        private TextBox txtStaffPosition;
         private Label lblMaintenanceID;
         private TextBox txtUnit;
         private Label lblUnit;
@@ -743,5 +811,8 @@
         private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private Label lblStaffID;
+        private TextBox textBox1;
+        private Label lblStaffName;
     }
 }

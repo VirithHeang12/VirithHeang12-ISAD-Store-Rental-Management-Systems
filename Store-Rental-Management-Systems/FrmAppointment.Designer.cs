@@ -109,7 +109,7 @@
             pnlRightSide.Controls.Add(gbAppointmentInformation);
             pnlRightSide.Location = new Point(266, 184);
             pnlRightSide.Name = "pnlRightSide";
-            pnlRightSide.Size = new Size(1534, 375);
+            pnlRightSide.Size = new Size(1534, 409);
             pnlRightSide.TabIndex = 4;
             // 
             // gbStaffAssignments
@@ -299,12 +299,12 @@
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
             pnlStaffManipulation.Location = new Point(329, 501);
             pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(1427, 77);
+            pnlStaffManipulation.Size = new Size(1427, 57);
             pnlStaffManipulation.TabIndex = 5;
             // 
             // btnCloseFormStaff
             // 
-            btnCloseFormStaff.Location = new Point(1203, 20);
+            btnCloseFormStaff.Location = new Point(1204, 3);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
             btnCloseFormStaff.Size = new Size(152, 52);
             btnCloseFormStaff.TabIndex = 3;
@@ -313,7 +313,7 @@
             // 
             // btnNewStaff
             // 
-            btnNewStaff.Location = new Point(844, 20);
+            btnNewStaff.Location = new Point(834, 3);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
@@ -322,7 +322,7 @@
             // 
             // btnUpdateStaff
             // 
-            btnUpdateStaff.Location = new Point(459, 20);
+            btnUpdateStaff.Location = new Point(424, 3);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
@@ -331,7 +331,7 @@
             // 
             // btnInsertStaff
             // 
-            btnInsertStaff.Location = new Point(64, 20);
+            btnInsertStaff.Location = new Point(90, 3);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;

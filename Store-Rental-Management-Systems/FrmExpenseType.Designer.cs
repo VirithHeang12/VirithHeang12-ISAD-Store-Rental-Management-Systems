@@ -34,6 +34,7 @@
             txtSearchExpenseType = new TextBox();
             pnlLeftSide = new Panel();
             dgvExpenseTypes = new DataGridView();
+            expenseTypeBindingSource = new BindingSource(components);
             insuranceBindingSource = new BindingSource(components);
             supplierBindingSource = new BindingSource(components);
             itemBindingSource = new BindingSource(components);
@@ -58,11 +59,11 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            expenseTypeBindingSource = new BindingSource(components);
             expenseTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             expenseDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenseTypes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
@@ -79,12 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -100,15 +100,15 @@
             lblSearchExpenseType.AutoSize = true;
             lblSearchExpenseType.Location = new Point(82, 19);
             lblSearchExpenseType.Name = "lblSearchExpenseType";
-            lblSearchExpenseType.Size = new Size(81, 36);
+            lblSearchExpenseType.Size = new Size(331, 36);
             lblSearchExpenseType.TabIndex = 1;
-            lblSearchExpenseType.Text = "ស្វែងរក:";
+            lblSearchExpenseType.Text = "ស្វែងរក (លេខសម្គាល់ប្រភេទចំណាយ):";
             // 
             // txtSearchExpenseType
             // 
-            txtSearchExpenseType.Location = new Point(169, 11);
+            txtSearchExpenseType.Location = new Point(436, 11);
             txtSearchExpenseType.Name = "txtSearchExpenseType";
-            txtSearchExpenseType.Size = new Size(1275, 44);
+            txtSearchExpenseType.Size = new Size(556, 44);
             txtSearchExpenseType.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -137,6 +137,10 @@
             dgvExpenseTypes.Size = new Size(1362, 369);
             dgvExpenseTypes.TabIndex = 3;
             // 
+            // expenseTypeBindingSource
+            // 
+            expenseTypeBindingSource.DataSource = typeof(StoreRentalHelper.entities.ExpenseType);
+            // 
             // insuranceBindingSource
             // 
             insuranceBindingSource.DataSource = typeof(StoreRentalHelper.entities.Insurance);
@@ -164,7 +168,7 @@
             gbExpenseTypeInformation.Controls.Add(txtExpenseTypeID);
             gbExpenseTypeInformation.Controls.Add(lblExpenseDescription);
             gbExpenseTypeInformation.Controls.Add(txtExpenseDescription);
-            gbExpenseTypeInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbExpenseTypeInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbExpenseTypeInformation.Location = new Point(82, 12);
             gbExpenseTypeInformation.Name = "gbExpenseTypeInformation";
             gbExpenseTypeInformation.Size = new Size(1362, 288);
@@ -186,39 +190,51 @@
             // 
             // btnCloseFormExpenseType
             // 
-            btnCloseFormExpenseType.Location = new Point(1102, 20);
+            btnCloseFormExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormExpenseType.ForeColor = Color.White;
+            btnCloseFormExpenseType.Location = new Point(1100, 20);
             btnCloseFormExpenseType.Name = "btnCloseFormExpenseType";
             btnCloseFormExpenseType.Size = new Size(152, 52);
             btnCloseFormExpenseType.TabIndex = 3;
             btnCloseFormExpenseType.Text = "បិទ";
-            btnCloseFormExpenseType.UseVisualStyleBackColor = true;
+            btnCloseFormExpenseType.UseVisualStyleBackColor = false;
             // 
             // btnNewExpenseType
             // 
-            btnNewExpenseType.Location = new Point(774, 20);
+            btnNewExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewExpenseType.ForeColor = Color.White;
+            btnNewExpenseType.Location = new Point(740, 20);
             btnNewExpenseType.Name = "btnNewExpenseType";
             btnNewExpenseType.Size = new Size(152, 52);
             btnNewExpenseType.TabIndex = 2;
             btnNewExpenseType.Text = "បង្កើតថ្មី";
-            btnNewExpenseType.UseVisualStyleBackColor = true;
+            btnNewExpenseType.UseVisualStyleBackColor = false;
             // 
             // btnUpdateExpenseType
             // 
-            btnUpdateExpenseType.Location = new Point(411, 20);
+            btnUpdateExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateExpenseType.ForeColor = Color.White;
+            btnUpdateExpenseType.Location = new Point(380, 20);
             btnUpdateExpenseType.Name = "btnUpdateExpenseType";
             btnUpdateExpenseType.Size = new Size(152, 52);
             btnUpdateExpenseType.TabIndex = 1;
             btnUpdateExpenseType.Text = "កែប្រែ";
-            btnUpdateExpenseType.UseVisualStyleBackColor = true;
+            btnUpdateExpenseType.UseVisualStyleBackColor = false;
             // 
             // btnInsertExpenseType
             // 
+            btnInsertExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertExpenseType.ForeColor = Color.White;
             btnInsertExpenseType.Location = new Point(20, 20);
             btnInsertExpenseType.Name = "btnInsertExpenseType";
             btnInsertExpenseType.Size = new Size(152, 52);
             btnInsertExpenseType.TabIndex = 0;
             btnInsertExpenseType.Text = "បញ្ចូល";
-            btnInsertExpenseType.UseVisualStyleBackColor = true;
+            btnInsertExpenseType.UseVisualStyleBackColor = false;
             // 
             // lblExpenseTypeID
             // 
@@ -297,25 +313,21 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // expenseTypeBindingSource
-            // 
-            expenseTypeBindingSource.DataSource = typeof(StoreRentalHelper.entities.ExpenseType);
-            // 
             // expenseTypeIDDataGridViewTextBoxColumn
             // 
             expenseTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             expenseTypeIDDataGridViewTextBoxColumn.DataPropertyName = "ExpenseTypeID";
-            expenseTypeIDDataGridViewTextBoxColumn.HeaderText = "ExpenseTypeID";
+            expenseTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទចំណាយ";
             expenseTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             expenseTypeIDDataGridViewTextBoxColumn.Name = "expenseTypeIDDataGridViewTextBoxColumn";
             expenseTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            expenseTypeIDDataGridViewTextBoxColumn.Width = 182;
+            expenseTypeIDDataGridViewTextBoxColumn.Width = 266;
             // 
             // expenseDescriptionDataGridViewTextBoxColumn
             // 
             expenseDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             expenseDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ExpenseDescription";
-            expenseDescriptionDataGridViewTextBoxColumn.HeaderText = "ExpenseDescription";
+            expenseDescriptionDataGridViewTextBoxColumn.HeaderText = "ពិព័ណ៌នាការចំណាយ";
             expenseDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             expenseDescriptionDataGridViewTextBoxColumn.Name = "expenseDescriptionDataGridViewTextBoxColumn";
             expenseDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
@@ -336,6 +348,7 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenseTypes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
@@ -353,7 +366,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -388,8 +400,8 @@
         private BindingSource itemBindingSource;
         private BindingSource supplierBindingSource;
         private BindingSource insuranceBindingSource;
+        private BindingSource expenseTypeBindingSource;
         private DataGridViewTextBoxColumn expenseTypeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expenseDescriptionDataGridViewTextBoxColumn;
-        private BindingSource expenseTypeBindingSource;
     }
 }

@@ -33,15 +33,18 @@
             lblSearchStoreType = new Label();
             txtSearchStoreType = new TextBox();
             pnlLeftSide = new Panel();
-            dataItems = new DataGridView();
+            dgvStoreTypes = new DataGridView();
+            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            storeTypeDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            oneYearPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             storeTypeBindingSource = new BindingSource(components);
-            supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbStoreTypeInformation = new GroupBox();
             txtOneYearPaymentDiscount = new TextBox();
             lblOneYearPaymentDiscount = new Label();
-            pnlStaffManipulation = new Panel();
+            pnlStoreTypeManipulation = new Panel();
             btnCloseFormStoreType = new Button();
             btnNewStoreType = new Button();
             btnUpdateStoreType = new Button();
@@ -54,39 +57,12 @@
             lblThreeMonthPaymentDiscount = new Label();
             txtSixMonthPaymentDiscount = new TextBox();
             txtThreeMonthPaymentDiscount = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            storeTypeDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            oneYearPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStoreTypes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)storeTypeBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbStoreTypeInformation.SuspendLayout();
-            pnlStaffManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
+            pnlStoreTypeManipulation.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitle
@@ -113,14 +89,14 @@
             // 
             // txtSearchStoreType
             // 
-            txtSearchStoreType.Location = new Point(495, 17);
+            txtSearchStoreType.Location = new Point(406, 22);
             txtSearchStoreType.Name = "txtSearchStoreType";
             txtSearchStoreType.Size = new Size(445, 44);
             txtSearchStoreType.TabIndex = 2;
             // 
             // pnlLeftSide
             // 
-            pnlLeftSide.Controls.Add(dataItems);
+            pnlLeftSide.Controls.Add(dgvStoreTypes);
             pnlLeftSide.Controls.Add(lblSearchStoreType);
             pnlLeftSide.Controls.Add(txtSearchStoreType);
             pnlLeftSide.Location = new Point(266, 537);
@@ -128,33 +104,71 @@
             pnlLeftSide.Size = new Size(1534, 463);
             pnlLeftSide.TabIndex = 3;
             // 
-            // dataItems
+            // dgvStoreTypes
             // 
-            dataItems.AllowUserToAddRows = false;
-            dataItems.AllowUserToDeleteRows = false;
-            dataItems.AutoGenerateColumns = false;
-            dataItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataItems.Columns.AddRange(new DataGridViewColumn[] { storeTypeIDDataGridViewTextBoxColumn, storeTypeDescriptionDataGridViewTextBoxColumn, threeMonthPaymentDiscountDataGridViewTextBoxColumn, sixMonthPaymentDiscountDataGridViewTextBoxColumn, oneYearPaymentDiscountDataGridViewTextBoxColumn });
-            dataItems.DataSource = storeTypeBindingSource;
-            dataItems.Location = new Point(82, 81);
-            dataItems.Name = "dataItems";
-            dataItems.ReadOnly = true;
-            dataItems.RowHeadersWidth = 51;
-            dataItems.RowTemplate.Height = 29;
-            dataItems.Size = new Size(1397, 337);
-            dataItems.TabIndex = 3;
+            dgvStoreTypes.AllowUserToAddRows = false;
+            dgvStoreTypes.AllowUserToDeleteRows = false;
+            dgvStoreTypes.AutoGenerateColumns = false;
+            dgvStoreTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStoreTypes.Columns.AddRange(new DataGridViewColumn[] { storeTypeIDDataGridViewTextBoxColumn, storeTypeDescriptionDataGridViewTextBoxColumn, threeMonthPaymentDiscountDataGridViewTextBoxColumn, sixMonthPaymentDiscountDataGridViewTextBoxColumn, oneYearPaymentDiscountDataGridViewTextBoxColumn });
+            dgvStoreTypes.DataSource = storeTypeBindingSource;
+            dgvStoreTypes.Location = new Point(82, 81);
+            dgvStoreTypes.Name = "dgvStoreTypes";
+            dgvStoreTypes.ReadOnly = true;
+            dgvStoreTypes.RowHeadersWidth = 51;
+            dgvStoreTypes.RowTemplate.Height = 29;
+            dgvStoreTypes.Size = new Size(1397, 337);
+            dgvStoreTypes.TabIndex = 3;
+            // 
+            // storeTypeIDDataGridViewTextBoxColumn
+            // 
+            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
+            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
+            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
+            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            storeTypeIDDataGridViewTextBoxColumn.Width = 226;
+            // 
+            // storeTypeDescriptionDataGridViewTextBoxColumn
+            // 
+            storeTypeDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            storeTypeDescriptionDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeDescription";
+            storeTypeDescriptionDataGridViewTextBoxColumn.HeaderText = "ថ្លៃជួលប្រចាំខែ";
+            storeTypeDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeTypeDescriptionDataGridViewTextBoxColumn.Name = "storeTypeDescriptionDataGridViewTextBoxColumn";
+            storeTypeDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // threeMonthPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "ThreeMonthPaymentDiscount";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៣ខែ";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "threeMonthPaymentDiscountDataGridViewTextBoxColumn";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sixMonthPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "SixMonthPaymentDiscount";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៦ខែ";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "sixMonthPaymentDiscountDataGridViewTextBoxColumn";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // oneYearPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "OneYearPaymentDiscount";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.Name = "oneYearPaymentDiscountDataGridViewTextBoxColumn";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // storeTypeBindingSource
             // 
             storeTypeBindingSource.DataSource = typeof(StoreRentalHelper.entities.StoreType);
-            // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // pnlRightSide
             // 
@@ -168,7 +182,7 @@
             // 
             gbStoreTypeInformation.Controls.Add(txtOneYearPaymentDiscount);
             gbStoreTypeInformation.Controls.Add(lblOneYearPaymentDiscount);
-            gbStoreTypeInformation.Controls.Add(pnlStaffManipulation);
+            gbStoreTypeInformation.Controls.Add(pnlStoreTypeManipulation);
             gbStoreTypeInformation.Controls.Add(lblSixMonthPaymentDiscount);
             gbStoreTypeInformation.Controls.Add(lblStoreTypeID);
             gbStoreTypeInformation.Controls.Add(txtMonthlyLeasePrice);
@@ -203,17 +217,17 @@
             lblOneYearPaymentDiscount.TabIndex = 28;
             lblOneYearPaymentDiscount.Text = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ:";
             // 
-            // pnlStaffManipulation
+            // pnlStoreTypeManipulation
             // 
-            pnlStaffManipulation.Controls.Add(btnCloseFormStoreType);
-            pnlStaffManipulation.Controls.Add(btnNewStoreType);
-            pnlStaffManipulation.Controls.Add(btnUpdateStoreType);
-            pnlStaffManipulation.Controls.Add(btnInsertStoreType);
-            pnlStaffManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            pnlStaffManipulation.Location = new Point(18, 232);
-            pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(1301, 81);
-            pnlStaffManipulation.TabIndex = 5;
+            pnlStoreTypeManipulation.Controls.Add(btnCloseFormStoreType);
+            pnlStoreTypeManipulation.Controls.Add(btnNewStoreType);
+            pnlStoreTypeManipulation.Controls.Add(btnUpdateStoreType);
+            pnlStoreTypeManipulation.Controls.Add(btnInsertStoreType);
+            pnlStoreTypeManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlStoreTypeManipulation.Location = new Point(18, 232);
+            pnlStoreTypeManipulation.Name = "pnlStoreTypeManipulation";
+            pnlStoreTypeManipulation.Size = new Size(1301, 81);
+            pnlStoreTypeManipulation.TabIndex = 5;
             // 
             // btnCloseFormStoreType
             // 
@@ -336,92 +350,6 @@
             txtThreeMonthPaymentDiscount.Size = new Size(354, 44);
             txtThreeMonthPaymentDiscount.TabIndex = 13;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // storeTypeIDDataGridViewTextBoxColumn
-            // 
-            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
-            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
-            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
-            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            storeTypeIDDataGridViewTextBoxColumn.Width = 226;
-            // 
-            // storeTypeDescriptionDataGridViewTextBoxColumn
-            // 
-            storeTypeDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            storeTypeDescriptionDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeDescription";
-            storeTypeDescriptionDataGridViewTextBoxColumn.HeaderText = "ថ្លៃជួលប្រចាំខែ";
-            storeTypeDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeDescriptionDataGridViewTextBoxColumn.Name = "storeTypeDescriptionDataGridViewTextBoxColumn";
-            storeTypeDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // threeMonthPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "ThreeMonthPaymentDiscount";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៣ខែ";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "threeMonthPaymentDiscountDataGridViewTextBoxColumn";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sixMonthPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "SixMonthPaymentDiscount";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៦ខែ";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "sixMonthPaymentDiscountDataGridViewTextBoxColumn";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // oneYearPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "OneYearPaymentDiscount";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.Name = "oneYearPaymentDiscountDataGridViewTextBoxColumn";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FrmStoreType
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -437,24 +365,12 @@
             Controls.SetChildIndex(pnlRightSide, 0);
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStoreTypes).EndInit();
             ((System.ComponentModel.ISupportInitialize)storeTypeBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbStoreTypeInformation.ResumeLayout(false);
             gbStoreTypeInformation.PerformLayout();
-            pnlStaffManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
+            pnlStoreTypeManipulation.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -471,30 +387,15 @@
         private TextBox txtMonthlyLeasePrice;
         private Label lblMonthlyLeasePrice;
         private TextBox txtStoreTypeID;
-        private Label lblStockQty;
         private TextBox txtThreeMonthPaymentDiscount;
-        private Label lblUnitPrice;
         private GroupBox gbStoreTypeInformation;
-        private Panel pnlStaffManipulation;
+        private Panel pnlStoreTypeManipulation;
         private Button btnInsertStoreType;
         private Button btnCloseFormStoreType;
         private Button btnNewStoreType;
         private Button btnUpdateStoreType;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
-        private TextBox txtStockQty;
         private Label lblSixMonthPaymentDiscount;
-        private DataGridView dataItems;
-        private BindingSource itemBindingSource;
-        private BindingSource supplierBindingSource;
+        private DataGridView dgvStoreTypes;
         private TextBox txtOneYearPaymentDiscount;
         private Label lblOneYearPaymentDiscount;
         private BindingSource storeTypeBindingSource;

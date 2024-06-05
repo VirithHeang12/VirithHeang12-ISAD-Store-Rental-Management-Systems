@@ -34,11 +34,15 @@
             txtSearchUser = new TextBox();
             pnlLeftSide = new Panel();
             dgvUsers = new DataGridView();
+            userIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            staffNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             userBindingSource = new BindingSource(components);
-            supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
-            gbSupplierInformation = new GroupBox();
+            gbUserInformation = new GroupBox();
             lblStaffPosition = new Label();
             txtStaffPosition = new TextBox();
             txtStaffName = new TextBox();
@@ -49,48 +53,19 @@
             btnNewUser = new Button();
             btnUpdateUser = new Button();
             btnInsertUser = new Button();
-            lblSupplierAddress = new Label();
+            lblStaffID = new Label();
             lblUserID = new Label();
             txtUserName = new TextBox();
             lblUserName = new Label();
             txtUserID = new TextBox();
             lblPassword = new Label();
             txtPassword = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            userIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
-            gbSupplierInformation.SuspendLayout();
+            gbUserInformation.SuspendLayout();
             pnlUserManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            SuspendLayout();
             // 
             // lblTitle
             // 
@@ -147,48 +122,98 @@
             dgvUsers.Size = new Size(1362, 325);
             dgvUsers.TabIndex = 3;
             // 
+            // userIDDataGridViewTextBoxColumn
+            // 
+            userIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            userIDDataGridViewTextBoxColumn.DataPropertyName = "UserID";
+            userIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
+            userIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
+            userIDDataGridViewTextBoxColumn.ReadOnly = true;
+            userIDDataGridViewTextBoxColumn.Width = 244;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            userNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            userNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
+            userNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            userNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            passwordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            passwordDataGridViewTextBoxColumn.HeaderText = "លេខសម្ងាត់";
+            passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            passwordDataGridViewTextBoxColumn.Visible = false;
+            passwordDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // staffIDDataGridViewTextBoxColumn
+            // 
+            staffIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
+            staffIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
+            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
+            staffIDDataGridViewTextBoxColumn.Width = 206;
+            // 
+            // staffNameDataGridViewTextBoxColumn
+            // 
+            staffNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            staffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
+            staffNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះបុគ្គលិក";
+            staffNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            staffNameDataGridViewTextBoxColumn.Name = "staffNameDataGridViewTextBoxColumn";
+            staffNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // staffPositionDataGridViewTextBoxColumn
+            // 
+            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
+            staffPositionDataGridViewTextBoxColumn.HeaderText = "តួនាទីបុគ្គលិក";
+            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
+            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // userBindingSource
             // 
             userBindingSource.DataSource = typeof(StoreRentalHelper.entities.User);
             // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
-            // 
             // pnlRightSide
             // 
-            pnlRightSide.Controls.Add(gbSupplierInformation);
+            pnlRightSide.Controls.Add(gbUserInformation);
             pnlRightSide.Location = new Point(266, 184);
             pnlRightSide.Name = "pnlRightSide";
             pnlRightSide.Size = new Size(1534, 355);
             pnlRightSide.TabIndex = 4;
             // 
-            // gbSupplierInformation
+            // gbUserInformation
             // 
-            gbSupplierInformation.Controls.Add(lblStaffPosition);
-            gbSupplierInformation.Controls.Add(txtStaffPosition);
-            gbSupplierInformation.Controls.Add(txtStaffName);
-            gbSupplierInformation.Controls.Add(lblStaffName);
-            gbSupplierInformation.Controls.Add(cbStaffID);
-            gbSupplierInformation.Controls.Add(pnlUserManipulation);
-            gbSupplierInformation.Controls.Add(lblSupplierAddress);
-            gbSupplierInformation.Controls.Add(lblUserID);
-            gbSupplierInformation.Controls.Add(txtUserName);
-            gbSupplierInformation.Controls.Add(lblUserName);
-            gbSupplierInformation.Controls.Add(txtUserID);
-            gbSupplierInformation.Controls.Add(lblPassword);
-            gbSupplierInformation.Controls.Add(txtPassword);
-            gbSupplierInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            gbSupplierInformation.Location = new Point(82, 12);
-            gbSupplierInformation.Name = "gbSupplierInformation";
-            gbSupplierInformation.Size = new Size(1362, 335);
-            gbSupplierInformation.TabIndex = 25;
-            gbSupplierInformation.TabStop = false;
-            gbSupplierInformation.Text = "ព័ត៌មានអ្នកប្រើប្រាស់";
+            gbUserInformation.Controls.Add(lblStaffPosition);
+            gbUserInformation.Controls.Add(txtStaffPosition);
+            gbUserInformation.Controls.Add(txtStaffName);
+            gbUserInformation.Controls.Add(lblStaffName);
+            gbUserInformation.Controls.Add(cbStaffID);
+            gbUserInformation.Controls.Add(pnlUserManipulation);
+            gbUserInformation.Controls.Add(lblStaffID);
+            gbUserInformation.Controls.Add(lblUserID);
+            gbUserInformation.Controls.Add(txtUserName);
+            gbUserInformation.Controls.Add(lblUserName);
+            gbUserInformation.Controls.Add(txtUserID);
+            gbUserInformation.Controls.Add(lblPassword);
+            gbUserInformation.Controls.Add(txtPassword);
+            gbUserInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbUserInformation.Location = new Point(82, 12);
+            gbUserInformation.Name = "gbUserInformation";
+            gbUserInformation.Size = new Size(1362, 335);
+            gbUserInformation.TabIndex = 25;
+            gbUserInformation.TabStop = false;
+            gbUserInformation.Text = "ព័ត៌មានអ្នកប្រើប្រាស់";
             // 
             // lblStaffPosition
             // 
@@ -300,15 +325,15 @@
             btnInsertUser.Text = "បញ្ចូល";
             btnInsertUser.UseVisualStyleBackColor = false;
             // 
-            // lblSupplierAddress
+            // lblStaffID
             // 
-            lblSupplierAddress.AutoSize = true;
-            lblSupplierAddress.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSupplierAddress.Location = new Point(711, 111);
-            lblSupplierAddress.Name = "lblSupplierAddress";
-            lblSupplierAddress.Size = new Size(183, 36);
-            lblSupplierAddress.TabIndex = 27;
-            lblSupplierAddress.Text = "លេខសម្គាល់បុគ្គលិក:";
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Location = new Point(711, 111);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.TabIndex = 27;
+            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // lblUserID
             // 
@@ -366,104 +391,6 @@
             txtPassword.TabIndex = 13;
             txtPassword.UseSystemPasswordChar = true;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // userIDDataGridViewTextBoxColumn
-            // 
-            userIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            userIDDataGridViewTextBoxColumn.DataPropertyName = "UserID";
-            userIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
-            userIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
-            userIDDataGridViewTextBoxColumn.ReadOnly = true;
-            userIDDataGridViewTextBoxColumn.Width = 244;
-            // 
-            // userNameDataGridViewTextBoxColumn
-            // 
-            userNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-            userNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
-            userNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-            userNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            passwordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            passwordDataGridViewTextBoxColumn.HeaderText = "លេខសម្ងាត់";
-            passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            passwordDataGridViewTextBoxColumn.Visible = false;
-            passwordDataGridViewTextBoxColumn.Width = 138;
-            // 
-            // staffIDDataGridViewTextBoxColumn
-            // 
-            staffIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            staffIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់បុគ្គលិក";
-            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
-            staffIDDataGridViewTextBoxColumn.Width = 206;
-            // 
-            // staffNameDataGridViewTextBoxColumn
-            // 
-            staffNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
-            staffNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះបុគ្គលិក";
-            staffNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffNameDataGridViewTextBoxColumn.Name = "staffNameDataGridViewTextBoxColumn";
-            staffNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // staffPositionDataGridViewTextBoxColumn
-            // 
-            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
-            staffPositionDataGridViewTextBoxColumn.HeaderText = "តួនាទីបុគ្គលិក";
-            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
-            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FrmUser
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -481,23 +408,10 @@
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
-            gbSupplierInformation.ResumeLayout(false);
-            gbSupplierInformation.PerformLayout();
+            gbUserInformation.ResumeLayout(false);
+            gbUserInformation.PerformLayout();
             pnlUserManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ResumeLayout(false);
         }
 
         #endregion
@@ -512,30 +426,15 @@
         private TextBox txtUserName;
         private Label lblUserName;
         private TextBox txtUserID;
-        private Label lblStockQty;
         private TextBox txtPassword;
-        private Label lblUnitPrice;
-        private GroupBox gbSupplierInformation;
+        private GroupBox gbUserInformation;
         private Panel pnlUserManipulation;
         private Button btnInsertUser;
         private Button btnCloseFormUser;
         private Button btnNewUser;
         private Button btnUpdateUser;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
-        private TextBox txtStockQty;
-        private Label lblSupplierAddress;
+        private Label lblStaffID;
         private DataGridView dgvUsers;
-        private BindingSource itemBindingSource;
-        private BindingSource supplierBindingSource;
         private Label lblStaffName;
         private ComboBox cbStaffID;
         private Label lblStaffPosition;

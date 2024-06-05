@@ -111,9 +111,9 @@
             lblSearchCustomer.AutoSize = true;
             lblSearchCustomer.Location = new Point(21, 11);
             lblSearchCustomer.Name = "lblSearchCustomer";
-            lblSearchCustomer.Size = new Size(81, 36);
+            lblSearchCustomer.Size = new Size(279, 36);
             lblSearchCustomer.TabIndex = 1;
-            lblSearchCustomer.Text = "ស្វែងរក:";
+            lblSearchCustomer.Text = "ស្វែងរក (លេខសម្គាល់អតិថិជន):";
             // 
             // txtSearchCustomer
             // 
@@ -463,7 +463,7 @@
             pnlCustomerManipulation.Controls.Add(btnInsertCustomer);
             pnlCustomerManipulation.Location = new Point(653, 856);
             pnlCustomerManipulation.Name = "pnlCustomerManipulation";
-            pnlCustomerManipulation.Size = new Size(821, 101);
+            pnlCustomerManipulation.Size = new Size(876, 101);
             pnlCustomerManipulation.TabIndex = 5;
             // 
             // btnCloseFormCustomer
@@ -471,7 +471,7 @@
             btnCloseFormCustomer.BackColor = Color.FromArgb(0, 28, 87);
             btnCloseFormCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnCloseFormCustomer.ForeColor = Color.White;
-            btnCloseFormCustomer.Location = new Point(626, 20);
+            btnCloseFormCustomer.Location = new Point(669, 20);
             btnCloseFormCustomer.Name = "btnCloseFormCustomer";
             btnCloseFormCustomer.Size = new Size(152, 52);
             btnCloseFormCustomer.TabIndex = 3;
@@ -483,7 +483,7 @@
             btnNewCustomer.BackColor = Color.FromArgb(0, 28, 87);
             btnNewCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnNewCustomer.ForeColor = Color.White;
-            btnNewCustomer.Location = new Point(424, 20);
+            btnNewCustomer.Location = new Point(461, 20);
             btnNewCustomer.Name = "btnNewCustomer";
             btnNewCustomer.Size = new Size(152, 52);
             btnNewCustomer.TabIndex = 2;
@@ -495,7 +495,7 @@
             btnUpdateCustomer.BackColor = Color.FromArgb(0, 28, 87);
             btnUpdateCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateCustomer.ForeColor = Color.White;
-            btnUpdateCustomer.Location = new Point(222, 20);
+            btnUpdateCustomer.Location = new Point(253, 20);
             btnUpdateCustomer.Name = "btnUpdateCustomer";
             btnUpdateCustomer.Size = new Size(152, 52);
             btnUpdateCustomer.TabIndex = 1;
@@ -507,7 +507,7 @@
             btnInsertCustomer.BackColor = Color.FromArgb(0, 28, 87);
             btnInsertCustomer.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertCustomer.ForeColor = Color.White;
-            btnInsertCustomer.Location = new Point(20, 20);
+            btnInsertCustomer.Location = new Point(45, 20);
             btnInsertCustomer.Name = "btnInsertCustomer";
             btnInsertCustomer.Size = new Size(152, 52);
             btnInsertCustomer.TabIndex = 0;

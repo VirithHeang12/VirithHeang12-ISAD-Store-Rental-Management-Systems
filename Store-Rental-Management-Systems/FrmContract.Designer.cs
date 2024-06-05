@@ -35,23 +35,36 @@
             pnlLeftSide = new Panel();
             lbContract = new ListBox();
             pnlRightSide = new Panel();
-            gbContractInformation = new GroupBox();
-            lblStaffPosition = new Label();
-            lblStaffName = new Label();
-            txtInsuranceName = new TextBox();
-            lblInsuranceName = new Label();
-            this.cbStoreID = new ComboBox();
-            lblContractID = new Label();
-            this.lblStoreID = new Label();
-            txtContractID = new TextBox();
-            this.lblContractDate = new Label();
-            dtpContractDate = new DateTimePicker();
-            lblCustomerID = new Label();
             pnlContractManipulation = new Panel();
             btnCloseFormContract = new Button();
             btnNewContract = new Button();
             btnUpdateContract = new Button();
             btnInsertContract = new Button();
+            gbContractInformation = new GroupBox();
+            txtStaffPosition = new TextBox();
+            txtStaffName = new TextBox();
+            cbStaffID = new ComboBox();
+            lblStaffID = new Label();
+            cbInsuranceID = new ComboBox();
+            lblInsuranceID = new Label();
+            cbCustomerID = new ComboBox();
+            dtpNextPaymentDate = new DateTimePicker();
+            lblNextPaymentDate = new Label();
+            dtpLeaseEndDate = new DateTimePicker();
+            lblLeaseEndDate = new Label();
+            dtpLeaseStartDate = new DateTimePicker();
+            lblLeaseStartDate = new Label();
+            lblStaffPosition = new Label();
+            lblStaffName = new Label();
+            txtInsuranceName = new TextBox();
+            lblInsuranceName = new Label();
+            cbStoreID = new ComboBox();
+            lblContractID = new Label();
+            lblStoreID = new Label();
+            txtContractID = new TextBox();
+            lblContractDate = new Label();
+            dtpContractDate = new DateTimePicker();
+            lblCustomerID = new Label();
             epdStaffFirstName = new ErrorProvider(components);
             epdStaffLastName = new ErrorProvider(components);
             epdStaffIdentityCardNumber = new ErrorProvider(components);
@@ -62,23 +75,10 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            this.lblLeaseStartDate = new Label();
-            dtpLeaseStartDate = new DateTimePicker();
-            this.lblLeaseEndDate = new Label();
-            this.dtpLeaseEndDate = new DateTimePicker();
-            lblNextPaymentDate = new Label();
-            dtpNextPaymentDate = new DateTimePicker();
-            cbCustomerID = new ComboBox();
-            lblInsuranceID = new Label();
-            cbInsuranceID = new ComboBox();
-            lblStaffID = new Label();
-            cbStaffID = new ComboBox();
-            txtStaffName = new TextBox();
-            txtStaffPosition = new TextBox();
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
-            gbContractInformation.SuspendLayout();
             pnlContractManipulation.SuspendLayout();
+            gbContractInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
@@ -93,7 +93,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -109,9 +109,9 @@
             lblSearchContract.AutoSize = true;
             lblSearchContract.Location = new Point(21, 11);
             lblSearchContract.Name = "lblSearchContract";
-            lblSearchContract.Size = new Size(81, 36);
+            lblSearchContract.Size = new Size(284, 36);
             lblSearchContract.TabIndex = 1;
-            lblSearchContract.Text = "ស្វែងរក:";
+            lblSearchContract.Text = "ស្វែងរក (លេខសម្គាល់កិច្ចសន្យា):";
             // 
             // txtSearchContract
             // 
@@ -134,7 +134,7 @@
             // 
             lbContract.FormattingEnabled = true;
             lbContract.ItemHeight = 36;
-            lbContract.Location = new Point(21, 114);
+            lbContract.Location = new Point(21, 110);
             lbContract.Name = "lbContract";
             lbContract.Size = new Size(319, 472);
             lbContract.TabIndex = 3;
@@ -148,6 +148,65 @@
             pnlRightSide.Size = new Size(1147, 636);
             pnlRightSide.TabIndex = 4;
             // 
+            // pnlContractManipulation
+            // 
+            pnlContractManipulation.Controls.Add(btnCloseFormContract);
+            pnlContractManipulation.Controls.Add(btnNewContract);
+            pnlContractManipulation.Controls.Add(btnUpdateContract);
+            pnlContractManipulation.Controls.Add(btnInsertContract);
+            pnlContractManipulation.Location = new Point(45, 481);
+            pnlContractManipulation.Name = "pnlContractManipulation";
+            pnlContractManipulation.Size = new Size(1069, 101);
+            pnlContractManipulation.TabIndex = 5;
+            // 
+            // btnCloseFormContract
+            // 
+            btnCloseFormContract.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormContract.ForeColor = Color.White;
+            btnCloseFormContract.Location = new Point(871, 20);
+            btnCloseFormContract.Name = "btnCloseFormContract";
+            btnCloseFormContract.Size = new Size(152, 52);
+            btnCloseFormContract.TabIndex = 3;
+            btnCloseFormContract.Text = "បិទ";
+            btnCloseFormContract.UseVisualStyleBackColor = false;
+            // 
+            // btnNewContract
+            // 
+            btnNewContract.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewContract.ForeColor = Color.White;
+            btnNewContract.Location = new Point(587, 20);
+            btnNewContract.Name = "btnNewContract";
+            btnNewContract.Size = new Size(152, 52);
+            btnNewContract.TabIndex = 2;
+            btnNewContract.Text = "បង្កើតថ្មី";
+            btnNewContract.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdateContract
+            // 
+            btnUpdateContract.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateContract.ForeColor = Color.White;
+            btnUpdateContract.Location = new Point(303, 20);
+            btnUpdateContract.Name = "btnUpdateContract";
+            btnUpdateContract.Size = new Size(152, 52);
+            btnUpdateContract.TabIndex = 1;
+            btnUpdateContract.Text = "កែប្រែ";
+            btnUpdateContract.UseVisualStyleBackColor = false;
+            // 
+            // btnInsertContract
+            // 
+            btnInsertContract.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertContract.ForeColor = Color.White;
+            btnInsertContract.Location = new Point(19, 20);
+            btnInsertContract.Name = "btnInsertContract";
+            btnInsertContract.Size = new Size(152, 52);
+            btnInsertContract.TabIndex = 0;
+            btnInsertContract.Text = "បញ្ចូល";
+            btnInsertContract.UseVisualStyleBackColor = false;
+            // 
             // gbContractInformation
             // 
             gbContractInformation.Controls.Add(txtStaffPosition);
@@ -159,28 +218,153 @@
             gbContractInformation.Controls.Add(cbCustomerID);
             gbContractInformation.Controls.Add(dtpNextPaymentDate);
             gbContractInformation.Controls.Add(lblNextPaymentDate);
-            gbContractInformation.Controls.Add(this.dtpLeaseEndDate);
-            gbContractInformation.Controls.Add(this.lblLeaseEndDate);
+            gbContractInformation.Controls.Add(dtpLeaseEndDate);
+            gbContractInformation.Controls.Add(lblLeaseEndDate);
             gbContractInformation.Controls.Add(dtpLeaseStartDate);
-            gbContractInformation.Controls.Add(this.lblLeaseStartDate);
+            gbContractInformation.Controls.Add(lblLeaseStartDate);
             gbContractInformation.Controls.Add(lblStaffPosition);
             gbContractInformation.Controls.Add(lblStaffName);
             gbContractInformation.Controls.Add(txtInsuranceName);
             gbContractInformation.Controls.Add(lblInsuranceName);
-            gbContractInformation.Controls.Add(this.cbStoreID);
+            gbContractInformation.Controls.Add(cbStoreID);
             gbContractInformation.Controls.Add(lblContractID);
-            gbContractInformation.Controls.Add(this.lblStoreID);
+            gbContractInformation.Controls.Add(lblStoreID);
             gbContractInformation.Controls.Add(txtContractID);
-            gbContractInformation.Controls.Add(this.lblContractDate);
+            gbContractInformation.Controls.Add(lblContractDate);
             gbContractInformation.Controls.Add(dtpContractDate);
             gbContractInformation.Controls.Add(lblCustomerID);
-            gbContractInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbContractInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbContractInformation.Location = new Point(45, 32);
             gbContractInformation.Name = "gbContractInformation";
             gbContractInformation.Size = new Size(1069, 409);
             gbContractInformation.TabIndex = 25;
             gbContractInformation.TabStop = false;
             gbContractInformation.Text = "ព័ត៌មានកិច្ចសន្យា";
+            // 
+            // txtStaffPosition
+            // 
+            txtStaffPosition.Enabled = false;
+            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPosition.Location = new Point(805, 338);
+            txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.Size = new Size(220, 44);
+            txtStaffPosition.TabIndex = 39;
+            // 
+            // txtStaffName
+            // 
+            txtStaffName.Enabled = false;
+            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffName.Location = new Point(256, 338);
+            txtStaffName.Name = "txtStaffName";
+            txtStaffName.Size = new Size(242, 44);
+            txtStaffName.TabIndex = 38;
+            // 
+            // cbStaffID
+            // 
+            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffID.FormattingEnabled = true;
+            cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbStaffID.Location = new Point(805, 276);
+            cbStaffID.Name = "cbStaffID";
+            cbStaffID.Size = new Size(220, 44);
+            cbStaffID.TabIndex = 37;
+            // 
+            // lblStaffID
+            // 
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Location = new Point(513, 276);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.TabIndex = 36;
+            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
+            // 
+            // cbInsuranceID
+            // 
+            cbInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbInsuranceID.FormattingEnabled = true;
+            cbInsuranceID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbInsuranceID.Location = new Point(805, 215);
+            cbInsuranceID.Name = "cbInsuranceID";
+            cbInsuranceID.Size = new Size(220, 44);
+            cbInsuranceID.TabIndex = 35;
+            // 
+            // lblInsuranceID
+            // 
+            lblInsuranceID.AutoSize = true;
+            lblInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInsuranceID.Location = new Point(513, 218);
+            lblInsuranceID.Name = "lblInsuranceID";
+            lblInsuranceID.Size = new Size(276, 36);
+            lblInsuranceID.TabIndex = 34;
+            lblInsuranceID.Text = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង:";
+            // 
+            // cbCustomerID
+            // 
+            cbCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbCustomerID.FormattingEnabled = true;
+            cbCustomerID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbCustomerID.Location = new Point(256, 215);
+            cbCustomerID.Name = "cbCustomerID";
+            cbCustomerID.Size = new Size(242, 44);
+            cbCustomerID.TabIndex = 33;
+            // 
+            // dtpNextPaymentDate
+            // 
+            dtpNextPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpNextPaymentDate.Format = DateTimePickerFormat.Short;
+            dtpNextPaymentDate.Location = new Point(256, 151);
+            dtpNextPaymentDate.Name = "dtpNextPaymentDate";
+            dtpNextPaymentDate.Size = new Size(242, 44);
+            dtpNextPaymentDate.TabIndex = 32;
+            // 
+            // lblNextPaymentDate
+            // 
+            lblNextPaymentDate.AutoSize = true;
+            lblNextPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNextPaymentDate.Location = new Point(18, 157);
+            lblNextPaymentDate.Name = "lblNextPaymentDate";
+            lblNextPaymentDate.Size = new Size(231, 36);
+            lblNextPaymentDate.TabIndex = 31;
+            lblNextPaymentDate.Text = "កាលបរិច្ឆេទបង់ប្រាក់បន្ទាប់:";
+            // 
+            // dtpLeaseEndDate
+            // 
+            dtpLeaseEndDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpLeaseEndDate.Format = DateTimePickerFormat.Short;
+            dtpLeaseEndDate.Location = new Point(805, 92);
+            dtpLeaseEndDate.Name = "dtpLeaseEndDate";
+            dtpLeaseEndDate.Size = new Size(220, 44);
+            dtpLeaseEndDate.TabIndex = 30;
+            // 
+            // lblLeaseEndDate
+            // 
+            lblLeaseEndDate.AutoSize = true;
+            lblLeaseEndDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLeaseEndDate.Location = new Point(513, 98);
+            lblLeaseEndDate.Name = "lblLeaseEndDate";
+            lblLeaseEndDate.Size = new Size(223, 36);
+            lblLeaseEndDate.TabIndex = 29;
+            lblLeaseEndDate.Text = "កាលបរិច្ឆេទបញ្ចប់ការជួល:";
+            // 
+            // dtpLeaseStartDate
+            // 
+            dtpLeaseStartDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpLeaseStartDate.Format = DateTimePickerFormat.Short;
+            dtpLeaseStartDate.Location = new Point(256, 92);
+            dtpLeaseStartDate.Name = "dtpLeaseStartDate";
+            dtpLeaseStartDate.Size = new Size(242, 44);
+            dtpLeaseStartDate.TabIndex = 28;
+            // 
+            // lblLeaseStartDate
+            // 
+            lblLeaseStartDate.AutoSize = true;
+            lblLeaseStartDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLeaseStartDate.Location = new Point(19, 98);
+            lblLeaseStartDate.Name = "lblLeaseStartDate";
+            lblLeaseStartDate.Size = new Size(217, 36);
+            lblLeaseStartDate.TabIndex = 27;
+            lblLeaseStartDate.Text = "កាលបរិច្ឆេទចាប់ផ្ដើមជួល:";
             // 
             // lblStaffPosition
             // 
@@ -223,13 +407,13 @@
             // 
             // cbStoreID
             // 
-            this.cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.cbStoreID.FormattingEnabled = true;
-            this.cbStoreID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            this.cbStoreID.Location = new Point(761, 154);
-            this.cbStoreID.Name = "cbStoreID";
-            this.cbStoreID.Size = new Size(264, 44);
-            this.cbStoreID.TabIndex = 15;
+            cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStoreID.FormattingEnabled = true;
+            cbStoreID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbStoreID.Location = new Point(805, 154);
+            cbStoreID.Name = "cbStoreID";
+            cbStoreID.Size = new Size(220, 44);
+            cbStoreID.TabIndex = 15;
             // 
             // lblContractID
             // 
@@ -243,13 +427,13 @@
             // 
             // lblStoreID
             // 
-            this.lblStoreID.AutoSize = true;
-            this.lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.lblStoreID.Location = new Point(513, 157);
-            this.lblStoreID.Name = "lblStoreID";
-            this.lblStoreID.Size = new Size(149, 36);
-            this.lblStoreID.TabIndex = 14;
-            this.lblStoreID.Text = "លេខសម្គាល់តូប:";
+            lblStoreID.AutoSize = true;
+            lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStoreID.Location = new Point(513, 157);
+            lblStoreID.Name = "lblStoreID";
+            lblStoreID.Size = new Size(149, 36);
+            lblStoreID.TabIndex = 14;
+            lblStoreID.Text = "លេខសម្គាល់តូប:";
             // 
             // txtContractID
             // 
@@ -262,21 +446,21 @@
             // 
             // lblContractDate
             // 
-            this.lblContractDate.AutoSize = true;
-            this.lblContractDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.lblContractDate.Location = new Point(513, 41);
-            this.lblContractDate.Name = "lblContractDate";
-            this.lblContractDate.Size = new Size(213, 36);
-            this.lblContractDate.TabIndex = 10;
-            this.lblContractDate.Text = "កាលបរិច្ឆេទចុះកិច្ចសន្យា:";
+            lblContractDate.AutoSize = true;
+            lblContractDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblContractDate.Location = new Point(513, 41);
+            lblContractDate.Name = "lblContractDate";
+            lblContractDate.Size = new Size(213, 36);
+            lblContractDate.TabIndex = 10;
+            lblContractDate.Text = "កាលបរិច្ឆេទចុះកិច្ចសន្យា:";
             // 
             // dtpContractDate
             // 
             dtpContractDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpContractDate.Format = DateTimePickerFormat.Short;
-            dtpContractDate.Location = new Point(761, 35);
+            dtpContractDate.Location = new Point(805, 35);
             dtpContractDate.Name = "dtpContractDate";
-            dtpContractDate.Size = new Size(264, 44);
+            dtpContractDate.Size = new Size(220, 44);
             dtpContractDate.TabIndex = 11;
             // 
             // lblCustomerID
@@ -288,53 +472,6 @@
             lblCustomerID.Size = new Size(191, 36);
             lblCustomerID.TabIndex = 12;
             lblCustomerID.Text = "លេខសម្គាល់អតិថិជន:";
-            // 
-            // pnlContractManipulation
-            // 
-            pnlContractManipulation.Controls.Add(btnCloseFormContract);
-            pnlContractManipulation.Controls.Add(btnNewContract);
-            pnlContractManipulation.Controls.Add(btnUpdateContract);
-            pnlContractManipulation.Controls.Add(btnInsertContract);
-            pnlContractManipulation.Location = new Point(45, 481);
-            pnlContractManipulation.Name = "pnlContractManipulation";
-            pnlContractManipulation.Size = new Size(1025, 101);
-            pnlContractManipulation.TabIndex = 5;
-            // 
-            // btnCloseFormContract
-            // 
-            btnCloseFormContract.Location = new Point(706, 20);
-            btnCloseFormContract.Name = "btnCloseFormContract";
-            btnCloseFormContract.Size = new Size(152, 52);
-            btnCloseFormContract.TabIndex = 3;
-            btnCloseFormContract.Text = "បិទ";
-            btnCloseFormContract.UseVisualStyleBackColor = true;
-            // 
-            // btnNewContract
-            // 
-            btnNewContract.Location = new Point(481, 20);
-            btnNewContract.Name = "btnNewContract";
-            btnNewContract.Size = new Size(152, 52);
-            btnNewContract.TabIndex = 2;
-            btnNewContract.Text = "បង្កើតថ្មី";
-            btnNewContract.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateContract
-            // 
-            btnUpdateContract.Location = new Point(247, 20);
-            btnUpdateContract.Name = "btnUpdateContract";
-            btnUpdateContract.Size = new Size(152, 52);
-            btnUpdateContract.TabIndex = 1;
-            btnUpdateContract.Text = "កែប្រែ";
-            btnUpdateContract.UseVisualStyleBackColor = true;
-            // 
-            // btnInsertContract
-            // 
-            btnInsertContract.Location = new Point(20, 20);
-            btnInsertContract.Name = "btnInsertContract";
-            btnInsertContract.Size = new Size(152, 52);
-            btnInsertContract.TabIndex = 0;
-            btnInsertContract.Text = "បញ្ចូល";
-            btnInsertContract.UseVisualStyleBackColor = true;
             // 
             // epdStaffFirstName
             // 
@@ -376,131 +513,6 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // lblLeaseStartDate
-            // 
-            this.lblLeaseStartDate.AutoSize = true;
-            this.lblLeaseStartDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.lblLeaseStartDate.Location = new Point(19, 98);
-            this.lblLeaseStartDate.Name = "lblLeaseStartDate";
-            this.lblLeaseStartDate.Size = new Size(217, 36);
-            this.lblLeaseStartDate.TabIndex = 27;
-            this.lblLeaseStartDate.Text = "កាលបរិច្ឆេទចាប់ផ្ដើមជួល:";
-            // 
-            // dtpLeaseStartDate
-            // 
-            dtpLeaseStartDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpLeaseStartDate.Format = DateTimePickerFormat.Short;
-            dtpLeaseStartDate.Location = new Point(256, 92);
-            dtpLeaseStartDate.Name = "dtpLeaseStartDate";
-            dtpLeaseStartDate.Size = new Size(242, 44);
-            dtpLeaseStartDate.TabIndex = 28;
-            // 
-            // lblLeaseEndDate
-            // 
-            this.lblLeaseEndDate.AutoSize = true;
-            this.lblLeaseEndDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.lblLeaseEndDate.Location = new Point(513, 98);
-            this.lblLeaseEndDate.Name = "lblLeaseEndDate";
-            this.lblLeaseEndDate.Size = new Size(223, 36);
-            this.lblLeaseEndDate.TabIndex = 29;
-            this.lblLeaseEndDate.Text = "កាលបរិច្ឆេទបញ្ចប់ការជួល:";
-            // 
-            // dtpLeaseEndDate
-            // 
-            this.dtpLeaseEndDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            this.dtpLeaseEndDate.Format = DateTimePickerFormat.Short;
-            this.dtpLeaseEndDate.Location = new Point(761, 92);
-            this.dtpLeaseEndDate.Name = "dtpLeaseEndDate";
-            this.dtpLeaseEndDate.Size = new Size(264, 44);
-            this.dtpLeaseEndDate.TabIndex = 30;
-            // 
-            // lblNextPaymentDate
-            // 
-            lblNextPaymentDate.AutoSize = true;
-            lblNextPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNextPaymentDate.Location = new Point(18, 157);
-            lblNextPaymentDate.Name = "lblNextPaymentDate";
-            lblNextPaymentDate.Size = new Size(231, 36);
-            lblNextPaymentDate.TabIndex = 31;
-            lblNextPaymentDate.Text = "កាលបរិច្ឆេទបង់ប្រាក់បន្ទាប់:";
-            // 
-            // dtpNextPaymentDate
-            // 
-            dtpNextPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpNextPaymentDate.Format = DateTimePickerFormat.Short;
-            dtpNextPaymentDate.Location = new Point(256, 151);
-            dtpNextPaymentDate.Name = "dtpNextPaymentDate";
-            dtpNextPaymentDate.Size = new Size(242, 44);
-            dtpNextPaymentDate.TabIndex = 32;
-            // 
-            // cbCustomerID
-            // 
-            cbCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbCustomerID.FormattingEnabled = true;
-            cbCustomerID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbCustomerID.Location = new Point(256, 215);
-            cbCustomerID.Name = "cbCustomerID";
-            cbCustomerID.Size = new Size(242, 44);
-            cbCustomerID.TabIndex = 33;
-            // 
-            // lblInsuranceID
-            // 
-            lblInsuranceID.AutoSize = true;
-            lblInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblInsuranceID.Location = new Point(513, 218);
-            lblInsuranceID.Name = "lblInsuranceID";
-            lblInsuranceID.Size = new Size(276, 36);
-            lblInsuranceID.TabIndex = 34;
-            lblInsuranceID.Text = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង:";
-            // 
-            // cbInsuranceID
-            // 
-            cbInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbInsuranceID.FormattingEnabled = true;
-            cbInsuranceID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbInsuranceID.Location = new Point(805, 215);
-            cbInsuranceID.Name = "cbInsuranceID";
-            cbInsuranceID.Size = new Size(220, 44);
-            cbInsuranceID.TabIndex = 35;
-            // 
-            // lblStaffID
-            // 
-            lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(513, 276);
-            lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
-            lblStaffID.TabIndex = 36;
-            lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
-            // 
-            // cbStaffID
-            // 
-            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStaffID.FormattingEnabled = true;
-            cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbStaffID.Location = new Point(761, 276);
-            cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(264, 44);
-            cbStaffID.TabIndex = 37;
-            // 
-            // txtStaffName
-            // 
-            txtStaffName.Enabled = false;
-            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffName.Location = new Point(256, 338);
-            txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(242, 44);
-            txtStaffName.TabIndex = 38;
-            // 
-            // txtStaffPosition
-            // 
-            txtStaffPosition.Enabled = false;
-            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffPosition.Location = new Point(761, 338);
-            txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(264, 44);
-            txtStaffPosition.TabIndex = 39;
-            // 
             // FrmContract
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -517,9 +529,9 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             pnlRightSide.ResumeLayout(false);
+            pnlContractManipulation.ResumeLayout(false);
             gbContractInformation.ResumeLayout(false);
             gbContractInformation.PerformLayout();
-            pnlContractManipulation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();

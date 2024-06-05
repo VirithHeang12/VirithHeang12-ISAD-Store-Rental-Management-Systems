@@ -39,6 +39,7 @@
             btnPickStaffPhoto = new Button();
             pbStaffPhoto = new PictureBox();
             gbStaffAddress = new GroupBox();
+            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             cbStaffCityOrProvince = new ComboBox();
             lblStaffStreetNo = new Label();
             txtStaffStreetNo = new TextBox();
@@ -89,11 +90,11 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
             gbStaffAddress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
@@ -106,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -127,9 +127,9 @@
             lblSearchStaff.AutoSize = true;
             lblSearchStaff.Location = new Point(21, 24);
             lblSearchStaff.Name = "lblSearchStaff";
-            lblSearchStaff.Size = new Size(81, 36);
+            lblSearchStaff.Size = new Size(265, 36);
             lblSearchStaff.TabIndex = 1;
-            lblSearchStaff.Text = "ស្វែងរក:";
+            lblSearchStaff.Text = "ស្វែងរក​(លេខសម្គាល់បុគ្គលិក):";
             // 
             // txtSearchStaff
             // 
@@ -210,6 +210,16 @@
             gbStaffAddress.TabIndex = 26;
             gbStaffAddress.TabStop = false;
             gbStaffAddress.Text = "អាសយដ្ឋាន";
+            // 
+            // webView21
+            // 
+            webView21.CreationProperties = null;
+            webView21.DefaultBackgroundColor = Color.White;
+            webView21.Location = new Point(220, 35);
+            webView21.Name = "webView21";
+            webView21.Size = new Size(8, 8);
+            webView21.TabIndex = 26;
+            webView21.ZoomFactor = 1D;
             // 
             // cbStaffCityOrProvince
             // 
@@ -667,16 +677,6 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // webView21
-            // 
-            webView21.CreationProperties = null;
-            webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(220, 35);
-            webView21.Name = "webView21";
-            webView21.Size = new Size(8, 8);
-            webView21.TabIndex = 26;
-            webView21.ZoomFactor = 1D;
-            // 
             // FrmStaff
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -698,6 +698,7 @@
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).EndInit();
             gbStaffAddress.ResumeLayout(false);
             gbStaffAddress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             gbStaffInformation.ResumeLayout(false);
             gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
@@ -711,7 +712,6 @@
             ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
             ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
         }
 

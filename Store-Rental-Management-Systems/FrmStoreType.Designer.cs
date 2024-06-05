@@ -34,11 +34,6 @@
             txtSearchStoreType = new TextBox();
             pnlLeftSide = new Panel();
             dataItems = new DataGridView();
-            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            storeTypeDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            oneYearPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             storeTypeBindingSource = new BindingSource(components);
             supplierBindingSource = new BindingSource(components);
             itemBindingSource = new BindingSource(components);
@@ -69,6 +64,11 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
+            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            storeTypeDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            oneYearPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataItems).BeginInit();
             ((System.ComponentModel.ISupportInitialize)storeTypeBindingSource).BeginInit();
@@ -107,7 +107,7 @@
             lblSearchStoreType.AutoSize = true;
             lblSearchStoreType.Location = new Point(82, 25);
             lblSearchStoreType.Name = "lblSearchStoreType";
-            lblSearchStoreType.Size = new Size(343, 43);
+            lblSearchStoreType.Size = new Size(291, 36);
             lblSearchStoreType.TabIndex = 1;
             lblSearchStoreType.Text = "ស្វែងរក (លេខសម្គាល់ប្រភេទតូប):";
             // 
@@ -115,7 +115,7 @@
             // 
             txtSearchStoreType.Location = new Point(495, 17);
             txtSearchStoreType.Name = "txtSearchStoreType";
-            txtSearchStoreType.Size = new Size(445, 51);
+            txtSearchStoreType.Size = new Size(445, 44);
             txtSearchStoreType.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -143,56 +143,6 @@
             dataItems.RowTemplate.Height = 29;
             dataItems.Size = new Size(1397, 337);
             dataItems.TabIndex = 3;
-            // 
-            // storeTypeIDDataGridViewTextBoxColumn
-            // 
-            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
-            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
-            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
-            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            storeTypeIDDataGridViewTextBoxColumn.Width = 270;
-            // 
-            // storeTypeDescriptionDataGridViewTextBoxColumn
-            // 
-            storeTypeDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            storeTypeDescriptionDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeDescription";
-            storeTypeDescriptionDataGridViewTextBoxColumn.HeaderText = "ថ្លៃជួលប្រចាំខែ";
-            storeTypeDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeDescriptionDataGridViewTextBoxColumn.Name = "storeTypeDescriptionDataGridViewTextBoxColumn";
-            storeTypeDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            storeTypeDescriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // threeMonthPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "ThreeMonthPaymentDiscount";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៣ខែ";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "threeMonthPaymentDiscountDataGridViewTextBoxColumn";
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            threeMonthPaymentDiscountDataGridViewTextBoxColumn.Width = 310;
-            // 
-            // sixMonthPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "SixMonthPaymentDiscount";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៦ខែ";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "sixMonthPaymentDiscountDataGridViewTextBoxColumn";
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            sixMonthPaymentDiscountDataGridViewTextBoxColumn.Width = 300;
-            // 
-            // oneYearPaymentDiscountDataGridViewTextBoxColumn
-            // 
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "OneYearPaymentDiscount";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.Name = "oneYearPaymentDiscountDataGridViewTextBoxColumn";
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            oneYearPaymentDiscountDataGridViewTextBoxColumn.Width = 310;
             // 
             // storeTypeBindingSource
             // 
@@ -240,7 +190,7 @@
             txtOneYearPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtOneYearPaymentDiscount.Location = new Point(309, 179);
             txtOneYearPaymentDiscount.Name = "txtOneYearPaymentDiscount";
-            txtOneYearPaymentDiscount.Size = new Size(354, 51);
+            txtOneYearPaymentDiscount.Size = new Size(354, 44);
             txtOneYearPaymentDiscount.TabIndex = 29;
             // 
             // lblOneYearPaymentDiscount
@@ -249,7 +199,7 @@
             lblOneYearPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblOneYearPaymentDiscount.Location = new Point(18, 182);
             lblOneYearPaymentDiscount.Name = "lblOneYearPaymentDiscount";
-            lblOneYearPaymentDiscount.Size = new Size(271, 43);
+            lblOneYearPaymentDiscount.Size = new Size(229, 36);
             lblOneYearPaymentDiscount.TabIndex = 28;
             lblOneYearPaymentDiscount.Text = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ:";
             // 
@@ -319,7 +269,7 @@
             lblSixMonthPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSixMonthPaymentDiscount.Location = new Point(711, 111);
             lblSixMonthPaymentDiscount.Name = "lblSixMonthPaymentDiscount";
-            lblSixMonthPaymentDiscount.Size = new Size(271, 43);
+            lblSixMonthPaymentDiscount.Size = new Size(229, 36);
             lblSixMonthPaymentDiscount.TabIndex = 27;
             lblSixMonthPaymentDiscount.Text = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៦ខែ:";
             // 
@@ -329,7 +279,7 @@
             lblStoreTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStoreTypeID.Location = new Point(18, 41);
             lblStoreTypeID.Name = "lblStoreTypeID";
-            lblStoreTypeID.Size = new Size(239, 43);
+            lblStoreTypeID.Size = new Size(203, 36);
             lblStoreTypeID.TabIndex = 0;
             lblStoreTypeID.Text = "លេខសម្គាល់ប្រភេទតូប:";
             // 
@@ -338,7 +288,7 @@
             txtMonthlyLeasePrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtMonthlyLeasePrice.Location = new Point(977, 33);
             txtMonthlyLeasePrice.Name = "txtMonthlyLeasePrice";
-            txtMonthlyLeasePrice.Size = new Size(342, 51);
+            txtMonthlyLeasePrice.Size = new Size(342, 44);
             txtMonthlyLeasePrice.TabIndex = 5;
             // 
             // lblMonthlyLeasePrice
@@ -347,7 +297,7 @@
             lblMonthlyLeasePrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblMonthlyLeasePrice.Location = new Point(711, 41);
             lblMonthlyLeasePrice.Name = "lblMonthlyLeasePrice";
-            lblMonthlyLeasePrice.Size = new Size(161, 43);
+            lblMonthlyLeasePrice.Size = new Size(135, 36);
             lblMonthlyLeasePrice.TabIndex = 4;
             lblMonthlyLeasePrice.Text = "ថ្លៃជួលប្រចាំខែ:";
             // 
@@ -357,7 +307,7 @@
             txtStoreTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStoreTypeID.Location = new Point(309, 33);
             txtStoreTypeID.Name = "txtStoreTypeID";
-            txtStoreTypeID.Size = new Size(354, 51);
+            txtStoreTypeID.Size = new Size(354, 44);
             txtStoreTypeID.TabIndex = 3;
             // 
             // lblThreeMonthPaymentDiscount
@@ -366,7 +316,7 @@
             lblThreeMonthPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblThreeMonthPaymentDiscount.Location = new Point(18, 111);
             lblThreeMonthPaymentDiscount.Name = "lblThreeMonthPaymentDiscount";
-            lblThreeMonthPaymentDiscount.Size = new Size(274, 43);
+            lblThreeMonthPaymentDiscount.Size = new Size(232, 36);
             lblThreeMonthPaymentDiscount.TabIndex = 6;
             lblThreeMonthPaymentDiscount.Text = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៣ខែ:";
             // 
@@ -375,7 +325,7 @@
             txtSixMonthPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSixMonthPaymentDiscount.Location = new Point(977, 103);
             txtSixMonthPaymentDiscount.Name = "txtSixMonthPaymentDiscount";
-            txtSixMonthPaymentDiscount.Size = new Size(342, 51);
+            txtSixMonthPaymentDiscount.Size = new Size(342, 44);
             txtSixMonthPaymentDiscount.TabIndex = 7;
             // 
             // txtThreeMonthPaymentDiscount
@@ -383,7 +333,7 @@
             txtThreeMonthPaymentDiscount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtThreeMonthPaymentDiscount.Location = new Point(309, 103);
             txtThreeMonthPaymentDiscount.Name = "txtThreeMonthPaymentDiscount";
-            txtThreeMonthPaymentDiscount.Size = new Size(354, 51);
+            txtThreeMonthPaymentDiscount.Size = new Size(354, 44);
             txtThreeMonthPaymentDiscount.TabIndex = 13;
             // 
             // epdStaffFirstName
@@ -425,6 +375,52 @@
             // epdStaffKhan
             // 
             epdStaffKhan.ContainerControl = this;
+            // 
+            // storeTypeIDDataGridViewTextBoxColumn
+            // 
+            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
+            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
+            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
+            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            storeTypeIDDataGridViewTextBoxColumn.Width = 226;
+            // 
+            // storeTypeDescriptionDataGridViewTextBoxColumn
+            // 
+            storeTypeDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            storeTypeDescriptionDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeDescription";
+            storeTypeDescriptionDataGridViewTextBoxColumn.HeaderText = "ថ្លៃជួលប្រចាំខែ";
+            storeTypeDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeTypeDescriptionDataGridViewTextBoxColumn.Name = "storeTypeDescriptionDataGridViewTextBoxColumn";
+            storeTypeDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // threeMonthPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "ThreeMonthPaymentDiscount";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៣ខែ";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "threeMonthPaymentDiscountDataGridViewTextBoxColumn";
+            threeMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sixMonthPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "SixMonthPaymentDiscount";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង៦ខែ";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.Name = "sixMonthPaymentDiscountDataGridViewTextBoxColumn";
+            sixMonthPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // oneYearPaymentDiscountDataGridViewTextBoxColumn
+            // 
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.DataPropertyName = "OneYearPaymentDiscount";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.HeaderText = "អត្រាបញ្ចុះតម្លៃបង់ម្ដង១ឆ្នាំ";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.Name = "oneYearPaymentDiscountDataGridViewTextBoxColumn";
+            oneYearPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmStoreType
             // 

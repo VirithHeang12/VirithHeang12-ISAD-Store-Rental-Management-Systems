@@ -55,9 +55,6 @@
             btnInsertStaff = new Button();
             pnlLeftSide = new Panel();
             dgvStaffAssignments = new DataGridView();
-            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fullNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             staffBindingSource = new BindingSource(components);
             lblSearchAppointment = new Label();
             txtSearchAppointment = new TextBox();
@@ -71,6 +68,10 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
+            cbCustomerID = new ComboBox();
+            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fullNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbStaffAssignments.SuspendLayout();
             gbAppointmentInformation.SuspendLayout();
@@ -92,7 +93,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -122,7 +123,7 @@
             gbStaffAssignments.Controls.Add(txtStaffName);
             gbStaffAssignments.Controls.Add(lblStaffID);
             gbStaffAssignments.Controls.Add(txtStaffID);
-            gbStaffAssignments.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbStaffAssignments.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbStaffAssignments.Location = new Point(63, 164);
             gbStaffAssignments.Name = "gbStaffAssignments";
             gbStaffAssignments.Size = new Size(1427, 147);
@@ -132,23 +133,27 @@
             // 
             // btnUpdateAppointmentStaff
             // 
-            btnUpdateAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateAppointmentStaff.Location = new Point(1229, 95);
+            btnUpdateAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateAppointmentStaff.ForeColor = Color.White;
+            btnUpdateAppointmentStaff.Location = new Point(1265, 95);
             btnUpdateAppointmentStaff.Name = "btnUpdateAppointmentStaff";
-            btnUpdateAppointmentStaff.Size = new Size(152, 46);
+            btnUpdateAppointmentStaff.Size = new Size(116, 46);
             btnUpdateAppointmentStaff.TabIndex = 24;
             btnUpdateAppointmentStaff.Text = "កែប្រែ";
-            btnUpdateAppointmentStaff.UseVisualStyleBackColor = true;
+            btnUpdateAppointmentStaff.UseVisualStyleBackColor = false;
             // 
             // btnInsertAppointmentStaff
             // 
-            btnInsertAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInsertAppointmentStaff.Location = new Point(922, 95);
+            btnInsertAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertAppointmentStaff.ForeColor = Color.White;
+            btnInsertAppointmentStaff.Location = new Point(1084, 95);
             btnInsertAppointmentStaff.Name = "btnInsertAppointmentStaff";
-            btnInsertAppointmentStaff.Size = new Size(152, 46);
+            btnInsertAppointmentStaff.Size = new Size(118, 46);
             btnInsertAppointmentStaff.TabIndex = 23;
             btnInsertAppointmentStaff.Text = "បញ្ចូល";
-            btnInsertAppointmentStaff.UseVisualStyleBackColor = true;
+            btnInsertAppointmentStaff.UseVisualStyleBackColor = false;
             // 
             // lblStaffPosition
             // 
@@ -208,6 +213,7 @@
             // 
             // gbAppointmentInformation
             // 
+            gbAppointmentInformation.Controls.Add(cbCustomerID);
             gbAppointmentInformation.Controls.Add(lblAppointmentID);
             gbAppointmentInformation.Controls.Add(cbAppointmentStatus);
             gbAppointmentInformation.Controls.Add(dtpAppointmentDate);
@@ -215,7 +221,7 @@
             gbAppointmentInformation.Controls.Add(lblAppointmentStatus);
             gbAppointmentInformation.Controls.Add(txtAppointmentID);
             gbAppointmentInformation.Controls.Add(lblCustomerID);
-            gbAppointmentInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbAppointmentInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbAppointmentInformation.Location = new Point(64, 4);
             gbAppointmentInformation.Name = "gbAppointmentInformation";
             gbAppointmentInformation.Size = new Size(1427, 155);
@@ -304,39 +310,51 @@
             // 
             // btnCloseFormStaff
             // 
-            btnCloseFormStaff.Location = new Point(1204, 3);
+            btnCloseFormStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormStaff.ForeColor = Color.White;
+            btnCloseFormStaff.Location = new Point(1228, 0);
             btnCloseFormStaff.Name = "btnCloseFormStaff";
             btnCloseFormStaff.Size = new Size(152, 52);
             btnCloseFormStaff.TabIndex = 3;
             btnCloseFormStaff.Text = "បិទ";
-            btnCloseFormStaff.UseVisualStyleBackColor = true;
+            btnCloseFormStaff.UseVisualStyleBackColor = false;
             // 
             // btnNewStaff
             // 
-            btnNewStaff.Location = new Point(834, 3);
+            btnNewStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewStaff.ForeColor = Color.White;
+            btnNewStaff.Location = new Point(835, 3);
             btnNewStaff.Name = "btnNewStaff";
             btnNewStaff.Size = new Size(152, 52);
             btnNewStaff.TabIndex = 2;
             btnNewStaff.Text = "បង្កើតថ្មី";
-            btnNewStaff.UseVisualStyleBackColor = true;
+            btnNewStaff.UseVisualStyleBackColor = false;
             // 
             // btnUpdateStaff
             // 
-            btnUpdateStaff.Location = new Point(424, 3);
+            btnUpdateStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateStaff.ForeColor = Color.White;
+            btnUpdateStaff.Location = new Point(442, 3);
             btnUpdateStaff.Name = "btnUpdateStaff";
             btnUpdateStaff.Size = new Size(152, 52);
             btnUpdateStaff.TabIndex = 1;
             btnUpdateStaff.Text = "កែប្រែ";
-            btnUpdateStaff.UseVisualStyleBackColor = true;
+            btnUpdateStaff.UseVisualStyleBackColor = false;
             // 
             // btnInsertStaff
             // 
-            btnInsertStaff.Location = new Point(90, 3);
+            btnInsertStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertStaff.ForeColor = Color.White;
+            btnInsertStaff.Location = new Point(49, 0);
             btnInsertStaff.Name = "btnInsertStaff";
             btnInsertStaff.Size = new Size(152, 52);
             btnInsertStaff.TabIndex = 0;
             btnInsertStaff.Text = "បញ្ចូល";
-            btnInsertStaff.UseVisualStyleBackColor = true;
+            btnInsertStaff.UseVisualStyleBackColor = false;
             // 
             // pnlLeftSide
             // 
@@ -361,35 +379,8 @@
             dgvStaffAssignments.ReadOnly = true;
             dgvStaffAssignments.RowHeadersWidth = 51;
             dgvStaffAssignments.RowTemplate.Height = 29;
-            dgvStaffAssignments.Size = new Size(1381, 303);
+            dgvStaffAssignments.Size = new Size(1428, 303);
             dgvStaffAssignments.TabIndex = 3;
-            // 
-            // staffIDDataGridViewTextBoxColumn
-            // 
-            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            staffIDDataGridViewTextBoxColumn.HeaderText = "StaffID";
-            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
-            staffIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // fullNameDataGridViewTextBoxColumn
-            // 
-            fullNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            fullNameDataGridViewTextBoxColumn.HeaderText = "StaffName";
-            fullNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // staffPositionDataGridViewTextBoxColumn
-            // 
-            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
-            staffPositionDataGridViewTextBoxColumn.HeaderText = "StaffPosition";
-            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
-            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // staffBindingSource
             // 
@@ -400,15 +391,15 @@
             lblSearchAppointment.AutoSize = true;
             lblSearchAppointment.Location = new Point(64, 17);
             lblSearchAppointment.Name = "lblSearchAppointment";
-            lblSearchAppointment.Size = new Size(81, 36);
+            lblSearchAppointment.Size = new Size(311, 36);
             lblSearchAppointment.TabIndex = 1;
-            lblSearchAppointment.Text = "ស្វែងរក:";
+            lblSearchAppointment.Text = "ស្វែងរក (លេខសម្គាល់ការណាត់ជួប):";
             // 
             // txtSearchAppointment
             // 
-            txtSearchAppointment.Location = new Point(169, 11);
+            txtSearchAppointment.Location = new Point(402, 11);
             txtSearchAppointment.Name = "txtSearchAppointment";
-            txtSearchAppointment.Size = new Size(1275, 44);
+            txtSearchAppointment.Size = new Size(501, 44);
             txtSearchAppointment.TabIndex = 2;
             // 
             // epdStaffFirstName
@@ -450,6 +441,44 @@
             // epdStaffKhan
             // 
             epdStaffKhan.ContainerControl = this;
+            // 
+            // cbCustomerID
+            // 
+            cbCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbCustomerID.FormattingEnabled = true;
+            cbCustomerID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbCustomerID.Location = new Point(960, 95);
+            cbCustomerID.Name = "cbCustomerID";
+            cbCustomerID.Size = new Size(421, 44);
+            cbCustomerID.TabIndex = 35;
+            // 
+            // staffIDDataGridViewTextBoxColumn
+            // 
+            staffIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
+            staffIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
+            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
+            staffIDDataGridViewTextBoxColumn.Width = 206;
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            fullNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            fullNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះបុគ្គលិក";
+            fullNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            fullNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // staffPositionDataGridViewTextBoxColumn
+            // 
+            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
+            staffPositionDataGridViewTextBoxColumn.HeaderText = "តួនាទីបុគ្គលិក";
+            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
+            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmAppointment
             // 
@@ -545,9 +574,6 @@
         private Label lblSearchAppointment;
         private TextBox txtSearchAppointment;
         private BindingSource staffBindingSource;
-        private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
         private Button btnInsertImportItem;
         private TextBox txtUnit;
         private Label lblUnit;
@@ -558,5 +584,9 @@
         private TextBox txtStaffPosition;
         private Button btnUpdateAppointmentStaff;
         private Button btnInsertAppointmentStaff;
+        private ComboBox cbCustomerID;
+        private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
     }
 }

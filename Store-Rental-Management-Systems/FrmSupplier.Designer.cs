@@ -33,12 +33,15 @@
             lblSearchSupplier = new Label();
             txtSearchSupplier = new TextBox();
             pnlLeftSide = new Panel();
-            dataItems = new DataGridView();
+            dgvSuppliers = new DataGridView();
+            supplierIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            supplierNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            contactNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            supplierAddressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbSupplierInformation = new GroupBox();
-            pnlStaffManipulation = new Panel();
+            pnlSupplierManipulation = new Panel();
             btnCloseFormSupplier = new Button();
             btnNewSupplier = new Button();
             btnUpdateSupplier = new Button();
@@ -51,37 +54,12 @@
             lblContactNumber = new Label();
             txtSupplierAddress = new TextBox();
             txtContactNumber = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            supplierIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            supplierNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            contactNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            supplierAddressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataItems).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbSupplierInformation.SuspendLayout();
-            pnlStaffManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
+            pnlSupplierManipulation.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitle
@@ -115,7 +93,7 @@
             // 
             // pnlLeftSide
             // 
-            pnlLeftSide.Controls.Add(dataItems);
+            pnlLeftSide.Controls.Add(dgvSuppliers);
             pnlLeftSide.Controls.Add(lblSearchSupplier);
             pnlLeftSide.Controls.Add(txtSearchSupplier);
             pnlLeftSide.Location = new Point(266, 509);
@@ -123,29 +101,64 @@
             pnlLeftSide.Size = new Size(1534, 491);
             pnlLeftSide.TabIndex = 3;
             // 
-            // dataItems
+            // dgvSuppliers
             // 
-            dataItems.AllowUserToAddRows = false;
-            dataItems.AllowUserToDeleteRows = false;
-            dataItems.AutoGenerateColumns = false;
-            dataItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataItems.Columns.AddRange(new DataGridViewColumn[] { supplierIDDataGridViewTextBoxColumn, supplierNameDataGridViewTextBoxColumn, contactNumberDataGridViewTextBoxColumn, supplierAddressDataGridViewTextBoxColumn });
-            dataItems.DataSource = supplierBindingSource;
-            dataItems.Location = new Point(82, 74);
-            dataItems.Name = "dataItems";
-            dataItems.ReadOnly = true;
-            dataItems.RowHeadersWidth = 51;
-            dataItems.RowTemplate.Height = 29;
-            dataItems.Size = new Size(1362, 369);
-            dataItems.TabIndex = 3;
+            dgvSuppliers.AllowUserToAddRows = false;
+            dgvSuppliers.AllowUserToDeleteRows = false;
+            dgvSuppliers.AutoGenerateColumns = false;
+            dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { supplierIDDataGridViewTextBoxColumn, supplierNameDataGridViewTextBoxColumn, contactNumberDataGridViewTextBoxColumn, supplierAddressDataGridViewTextBoxColumn });
+            dgvSuppliers.DataSource = supplierBindingSource;
+            dgvSuppliers.Location = new Point(82, 74);
+            dgvSuppliers.Name = "dgvSuppliers";
+            dgvSuppliers.ReadOnly = true;
+            dgvSuppliers.RowHeadersWidth = 51;
+            dgvSuppliers.RowTemplate.Height = 29;
+            dgvSuppliers.Size = new Size(1362, 369);
+            dgvSuppliers.TabIndex = 3;
+            // 
+            // supplierIDDataGridViewTextBoxColumn
+            // 
+            supplierIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            supplierIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierID";
+            supplierIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
+            supplierIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
+            supplierIDDataGridViewTextBoxColumn.ReadOnly = true;
+            supplierIDDataGridViewTextBoxColumn.Width = 228;
+            // 
+            // supplierNameDataGridViewTextBoxColumn
+            // 
+            supplierNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            supplierNameDataGridViewTextBoxColumn.DataPropertyName = "SupplierName";
+            supplierNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
+            supplierNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            supplierNameDataGridViewTextBoxColumn.Name = "supplierNameDataGridViewTextBoxColumn";
+            supplierNameDataGridViewTextBoxColumn.ReadOnly = true;
+            supplierNameDataGridViewTextBoxColumn.Width = 175;
+            // 
+            // contactNumberDataGridViewTextBoxColumn
+            // 
+            contactNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            contactNumberDataGridViewTextBoxColumn.DataPropertyName = "ContactNumber";
+            contactNumberDataGridViewTextBoxColumn.HeaderText = "លេខទំនាក់ទំនង";
+            contactNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            contactNumberDataGridViewTextBoxColumn.Name = "contactNumberDataGridViewTextBoxColumn";
+            contactNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            contactNumberDataGridViewTextBoxColumn.Width = 174;
+            // 
+            // supplierAddressDataGridViewTextBoxColumn
+            // 
+            supplierAddressDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            supplierAddressDataGridViewTextBoxColumn.DataPropertyName = "SupplierAddress";
+            supplierAddressDataGridViewTextBoxColumn.HeaderText = "អាសយដ្ឋានអ្នកផ្គត់ផ្គង់";
+            supplierAddressDataGridViewTextBoxColumn.MinimumWidth = 6;
+            supplierAddressDataGridViewTextBoxColumn.Name = "supplierAddressDataGridViewTextBoxColumn";
+            supplierAddressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // supplierBindingSource
             // 
             supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // pnlRightSide
             // 
@@ -158,7 +171,7 @@
             // gbSupplierInformation
             // 
             gbSupplierInformation.BackColor = Color.White;
-            gbSupplierInformation.Controls.Add(pnlStaffManipulation);
+            gbSupplierInformation.Controls.Add(pnlSupplierManipulation);
             gbSupplierInformation.Controls.Add(lblSupplierAddress);
             gbSupplierInformation.Controls.Add(lblSupplierID);
             gbSupplierInformation.Controls.Add(txtSupplierName);
@@ -175,17 +188,17 @@
             gbSupplierInformation.TabStop = false;
             gbSupplierInformation.Text = "ព័ត៌មានអ្នកផ្គត់ផ្គង់";
             // 
-            // pnlStaffManipulation
+            // pnlSupplierManipulation
             // 
-            pnlStaffManipulation.Controls.Add(btnCloseFormSupplier);
-            pnlStaffManipulation.Controls.Add(btnNewSupplier);
-            pnlStaffManipulation.Controls.Add(btnUpdateSupplier);
-            pnlStaffManipulation.Controls.Add(btnInsertSupplier);
-            pnlStaffManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            pnlStaffManipulation.Location = new Point(18, 171);
-            pnlStaffManipulation.Name = "pnlStaffManipulation";
-            pnlStaffManipulation.Size = new Size(1301, 85);
-            pnlStaffManipulation.TabIndex = 5;
+            pnlSupplierManipulation.Controls.Add(btnCloseFormSupplier);
+            pnlSupplierManipulation.Controls.Add(btnNewSupplier);
+            pnlSupplierManipulation.Controls.Add(btnUpdateSupplier);
+            pnlSupplierManipulation.Controls.Add(btnInsertSupplier);
+            pnlSupplierManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlSupplierManipulation.Location = new Point(18, 171);
+            pnlSupplierManipulation.Name = "pnlSupplierManipulation";
+            pnlSupplierManipulation.Size = new Size(1301, 85);
+            pnlSupplierManipulation.TabIndex = 5;
             // 
             // btnCloseFormSupplier
             // 
@@ -308,85 +321,6 @@
             txtContactNumber.Size = new Size(434, 44);
             txtContactNumber.TabIndex = 13;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // supplierIDDataGridViewTextBoxColumn
-            // 
-            supplierIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            supplierIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierID";
-            supplierIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
-            supplierIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
-            supplierIDDataGridViewTextBoxColumn.ReadOnly = true;
-            supplierIDDataGridViewTextBoxColumn.Width = 228;
-            // 
-            // supplierNameDataGridViewTextBoxColumn
-            // 
-            supplierNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            supplierNameDataGridViewTextBoxColumn.DataPropertyName = "SupplierName";
-            supplierNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
-            supplierNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            supplierNameDataGridViewTextBoxColumn.Name = "supplierNameDataGridViewTextBoxColumn";
-            supplierNameDataGridViewTextBoxColumn.ReadOnly = true;
-            supplierNameDataGridViewTextBoxColumn.Width = 175;
-            // 
-            // contactNumberDataGridViewTextBoxColumn
-            // 
-            contactNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            contactNumberDataGridViewTextBoxColumn.DataPropertyName = "ContactNumber";
-            contactNumberDataGridViewTextBoxColumn.HeaderText = "លេខទំនាក់ទំនង";
-            contactNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            contactNumberDataGridViewTextBoxColumn.Name = "contactNumberDataGridViewTextBoxColumn";
-            contactNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            contactNumberDataGridViewTextBoxColumn.Width = 174;
-            // 
-            // supplierAddressDataGridViewTextBoxColumn
-            // 
-            supplierAddressDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            supplierAddressDataGridViewTextBoxColumn.DataPropertyName = "SupplierAddress";
-            supplierAddressDataGridViewTextBoxColumn.HeaderText = "អាសយដ្ឋានអ្នកផ្គត់ផ្គង់";
-            supplierAddressDataGridViewTextBoxColumn.MinimumWidth = 6;
-            supplierAddressDataGridViewTextBoxColumn.Name = "supplierAddressDataGridViewTextBoxColumn";
-            supplierAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FrmSupplier
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -403,24 +337,12 @@
             Controls.SetChildIndex(pnlRightSide, 0);
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbSupplierInformation.ResumeLayout(false);
             gbSupplierInformation.PerformLayout();
-            pnlStaffManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ResumeLayout(false);
+            pnlSupplierManipulation.ResumeLayout(false);
         }
 
         #endregion
@@ -436,29 +358,15 @@
         private TextBox txtSupplierName;
         private Label lblSupplierName;
         private TextBox txtSupplierID;
-        private Label lblStockQty;
         private TextBox txtContactNumber;
-        private Label lblUnitPrice;
         private GroupBox gbSupplierInformation;
-        private Panel pnlStaffManipulation;
+        private Panel pnlSupplierManipulation;
         private Button btnInsertSupplier;
         private Button btnCloseFormSupplier;
         private Button btnNewSupplier;
         private Button btnUpdateSupplier;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
-        private TextBox txtStockQty;
         private Label lblSupplierAddress;
-        private DataGridView dataItems;
-        private BindingSource itemBindingSource;
+        private DataGridView dgvSuppliers;
         private BindingSource supplierBindingSource;
         private DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn supplierNameDataGridViewTextBoxColumn;

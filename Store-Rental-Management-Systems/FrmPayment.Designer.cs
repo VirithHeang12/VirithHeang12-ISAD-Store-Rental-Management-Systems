@@ -67,17 +67,14 @@
             txtPaymentID = new TextBox();
             pnlPaymentManipulation = new Panel();
             btnCloseFormPayment = new Button();
+            button3 = new Button();
             btnNewPayment = new Button();
+            button2 = new Button();
             btnUpdatePayment = new Button();
+            button1 = new Button();
             btnInsertPayment = new Button();
             pnlLeftSide = new Panel();
             dgvMaintenanceItems = new DataGridView();
-            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             itemBindingSource = new BindingSource(components);
             lblSearchPayment = new Label();
             txtSearchPayment = new TextBox();
@@ -91,6 +88,11 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
+            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbPaymentDetails.SuspendLayout();
             gbPaymentInformation.SuspendLayout();
@@ -112,7 +114,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -129,7 +131,7 @@
             pnlRightSide.Controls.Add(gbPaymentInformation);
             pnlRightSide.Location = new Point(266, 184);
             pnlRightSide.Name = "pnlRightSide";
-            pnlRightSide.Size = new Size(1534, 375);
+            pnlRightSide.Size = new Size(1534, 373);
             pnlRightSide.TabIndex = 4;
             // 
             // gbPaymentDetails
@@ -146,8 +148,8 @@
             gbPaymentDetails.Controls.Add(lblExpenseTypeID);
             gbPaymentDetails.Controls.Add(txtCategory);
             gbPaymentDetails.Controls.Add(lblAmount);
-            gbPaymentDetails.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            gbPaymentDetails.Location = new Point(63, 214);
+            gbPaymentDetails.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbPaymentDetails.Location = new Point(63, 212);
             gbPaymentDetails.Name = "gbPaymentDetails";
             gbPaymentDetails.Size = new Size(1427, 154);
             gbPaymentDetails.TabIndex = 26;
@@ -156,30 +158,34 @@
             // 
             // btnUpdateExpenseType
             // 
-            btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateExpenseType.ForeColor = Color.White;
             btnUpdateExpenseType.Location = new Point(1298, 90);
             btnUpdateExpenseType.Name = "btnUpdateExpenseType";
             btnUpdateExpenseType.Size = new Size(100, 52);
             btnUpdateExpenseType.TabIndex = 4;
             btnUpdateExpenseType.Text = "កែប្រែ";
-            btnUpdateExpenseType.UseVisualStyleBackColor = true;
+            btnUpdateExpenseType.UseVisualStyleBackColor = false;
             // 
             // btnInsertExpenseType
             // 
-            btnInsertExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInsertExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertExpenseType.ForeColor = Color.White;
             btnInsertExpenseType.Location = new Point(1120, 93);
             btnInsertExpenseType.Name = "btnInsertExpenseType";
             btnInsertExpenseType.Size = new Size(102, 52);
             btnInsertExpenseType.TabIndex = 28;
             btnInsertExpenseType.Text = "បញ្ចូល";
-            btnInsertExpenseType.UseVisualStyleBackColor = true;
+            btnInsertExpenseType.UseVisualStyleBackColor = false;
             // 
             // txtExpenseQty
             // 
             txtExpenseQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtExpenseQty.Location = new Point(173, 98);
+            txtExpenseQty.Location = new Point(267, 98);
             txtExpenseQty.Name = "txtExpenseQty";
-            txtExpenseQty.Size = new Size(271, 44);
+            txtExpenseQty.Size = new Size(177, 44);
             txtExpenseQty.TabIndex = 27;
             // 
             // lblExpenseQty
@@ -289,8 +295,8 @@
             gbPaymentInformation.Controls.Add(dtpPaymentDate);
             gbPaymentInformation.Controls.Add(lblPaymentDate);
             gbPaymentInformation.Controls.Add(txtPaymentID);
-            gbPaymentInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            gbPaymentInformation.Location = new Point(63, 19);
+            gbPaymentInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbPaymentInformation.Location = new Point(63, 12);
             gbPaymentInformation.Name = "gbPaymentInformation";
             gbPaymentInformation.Size = new Size(1427, 194);
             gbPaymentInformation.TabIndex = 25;
@@ -301,7 +307,7 @@
             // 
             txtStaffName.Enabled = false;
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffName.Location = new Point(937, 140);
+            txtStaffName.Location = new Point(928, 140);
             txtStaffName.Name = "txtStaffName";
             txtStaffName.Size = new Size(161, 44);
             txtStaffName.TabIndex = 47;
@@ -310,7 +316,7 @@
             // 
             lblStaffName.AutoSize = true;
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffName.Location = new Point(739, 143);
+            lblStaffName.Location = new Point(730, 143);
             lblStaffName.Name = "lblStaffName";
             lblStaffName.Size = new Size(192, 36);
             lblStaffName.TabIndex = 46;
@@ -338,16 +344,16 @@
             // textBox1
             // 
             textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(576, 140);
+            textBox1.Location = new Point(555, 140);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(157, 44);
+            textBox1.Size = new Size(159, 44);
             textBox1.TabIndex = 43;
             // 
             // lblStaffID
             // 
             lblStaffID.AutoSize = true;
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(387, 143);
+            lblStaffID.Location = new Point(366, 143);
             lblStaffID.Name = "lblStaffID";
             lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 42;
@@ -361,7 +367,7 @@
             cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStoreID.Location = new Point(173, 140);
             cbStoreID.Name = "cbStoreID";
-            cbStoreID.Size = new Size(189, 44);
+            cbStoreID.Size = new Size(166, 44);
             cbStoreID.TabIndex = 41;
             // 
             // txtOwedAmount
@@ -490,8 +496,11 @@
             // pnlPaymentManipulation
             // 
             pnlPaymentManipulation.Controls.Add(btnCloseFormPayment);
+            pnlPaymentManipulation.Controls.Add(button3);
             pnlPaymentManipulation.Controls.Add(btnNewPayment);
+            pnlPaymentManipulation.Controls.Add(button2);
             pnlPaymentManipulation.Controls.Add(btnUpdatePayment);
+            pnlPaymentManipulation.Controls.Add(button1);
             pnlPaymentManipulation.Controls.Add(btnInsertPayment);
             pnlPaymentManipulation.Location = new Point(329, 563);
             pnlPaymentManipulation.Name = "pnlPaymentManipulation";
@@ -500,30 +509,69 @@
             // 
             // btnCloseFormPayment
             // 
+            btnCloseFormPayment.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormPayment.ForeColor = Color.White;
             btnCloseFormPayment.Location = new Point(1231, 7);
             btnCloseFormPayment.Name = "btnCloseFormPayment";
             btnCloseFormPayment.Size = new Size(134, 52);
             btnCloseFormPayment.TabIndex = 3;
             btnCloseFormPayment.Text = "បិទ";
-            btnCloseFormPayment.UseVisualStyleBackColor = true;
+            btnCloseFormPayment.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(0, 28, 87);
+            button3.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(843, 7);
+            button3.Name = "button3";
+            button3.Size = new Size(152, 52);
+            button3.TabIndex = 2;
+            button3.Text = "បង្កើតថ្មី";
+            button3.UseVisualStyleBackColor = false;
             // 
             // btnNewPayment
             // 
-            btnNewPayment.Location = new Point(871, 7);
+            btnNewPayment.Location = new Point(843, 7);
             btnNewPayment.Name = "btnNewPayment";
             btnNewPayment.Size = new Size(152, 52);
             btnNewPayment.TabIndex = 2;
             btnNewPayment.Text = "បង្កើតថ្មី";
             btnNewPayment.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(0, 28, 87);
+            button2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(455, 7);
+            button2.Name = "button2";
+            button2.Size = new Size(152, 52);
+            button2.TabIndex = 1;
+            button2.Text = "កែប្រែ";
+            button2.UseVisualStyleBackColor = false;
+            // 
             // btnUpdatePayment
             // 
-            btnUpdatePayment.Location = new Point(452, 7);
+            btnUpdatePayment.Location = new Point(455, 7);
             btnUpdatePayment.Name = "btnUpdatePayment";
             btnUpdatePayment.Size = new Size(152, 52);
             btnUpdatePayment.TabIndex = 1;
             btnUpdatePayment.Text = "កែប្រែ";
             btnUpdatePayment.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(0, 28, 87);
+            button1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(67, 7);
+            button1.Name = "button1";
+            button1.Size = new Size(152, 52);
+            button1.TabIndex = 0;
+            button1.Text = "បញ្ចូល";
+            button1.UseVisualStyleBackColor = false;
             // 
             // btnInsertPayment
             // 
@@ -550,7 +598,7 @@
             dgvMaintenanceItems.AllowUserToDeleteRows = false;
             dgvMaintenanceItems.AutoGenerateColumns = false;
             dgvMaintenanceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaintenanceItems.Columns.AddRange(new DataGridViewColumn[] { itemIDDataGridViewTextBoxColumn, itemDescriptionDataGridViewTextBoxColumn, stockQtyDataGridViewTextBoxColumn, unitPriceDataGridViewTextBoxColumn, categoryDataGridViewTextBoxColumn, unitDataGridViewTextBoxColumn });
+            dgvMaintenanceItems.Columns.AddRange(new DataGridViewColumn[] { itemIDDataGridViewTextBoxColumn, itemDescriptionDataGridViewTextBoxColumn, stockQtyDataGridViewTextBoxColumn, unitPriceDataGridViewTextBoxColumn, categoryDataGridViewTextBoxColumn });
             dgvMaintenanceItems.DataSource = itemBindingSource;
             dgvMaintenanceItems.Location = new Point(63, 74);
             dgvMaintenanceItems.Name = "dgvMaintenanceItems";
@@ -559,64 +607,6 @@
             dgvMaintenanceItems.RowTemplate.Height = 29;
             dgvMaintenanceItems.Size = new Size(1427, 238);
             dgvMaintenanceItems.TabIndex = 3;
-            // 
-            // itemIDDataGridViewTextBoxColumn
-            // 
-            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
-            itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
-            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
-            itemIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // itemDescriptionDataGridViewTextBoxColumn
-            // 
-            itemDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            itemDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ItemDescription";
-            itemDescriptionDataGridViewTextBoxColumn.HeaderText = "ItemDescription";
-            itemDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemDescriptionDataGridViewTextBoxColumn.Name = "itemDescriptionDataGridViewTextBoxColumn";
-            itemDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stockQtyDataGridViewTextBoxColumn
-            // 
-            stockQtyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            stockQtyDataGridViewTextBoxColumn.DataPropertyName = "StockQty";
-            stockQtyDataGridViewTextBoxColumn.HeaderText = "MaintenanceQty";
-            stockQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            stockQtyDataGridViewTextBoxColumn.Name = "stockQtyDataGridViewTextBoxColumn";
-            stockQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            stockQtyDataGridViewTextBoxColumn.Width = 189;
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            unitPriceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            unitPriceDataGridViewTextBoxColumn.Width = 124;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            categoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            categoryDataGridViewTextBoxColumn.Width = 123;
-            // 
-            // unitDataGridViewTextBoxColumn
-            // 
-            unitDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            unitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            unitDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            unitDataGridViewTextBoxColumn.ReadOnly = true;
-            unitDataGridViewTextBoxColumn.Width = 80;
             // 
             // itemBindingSource
             // 
@@ -627,15 +617,15 @@
             lblSearchPayment.AutoSize = true;
             lblSearchPayment.Location = new Point(64, 17);
             lblSearchPayment.Name = "lblSearchPayment";
-            lblSearchPayment.Size = new Size(81, 36);
+            lblSearchPayment.Size = new Size(283, 36);
             lblSearchPayment.TabIndex = 1;
-            lblSearchPayment.Text = "ស្វែងរក:";
+            lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
             // 
             // txtSearchPayment
             // 
-            txtSearchPayment.Location = new Point(169, 11);
+            txtSearchPayment.Location = new Point(365, 11);
             txtSearchPayment.Name = "txtSearchPayment";
-            txtSearchPayment.Size = new Size(1321, 44);
+            txtSearchPayment.Size = new Size(370, 44);
             txtSearchPayment.TabIndex = 2;
             // 
             // epdStaffFirstName
@@ -677,6 +667,54 @@
             // epdStaffKhan
             // 
             epdStaffKhan.ContainerControl = this;
+            // 
+            // itemIDDataGridViewTextBoxColumn
+            // 
+            itemIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
+            itemIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទចំណាយ";
+            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
+            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
+            itemIDDataGridViewTextBoxColumn.Width = 266;
+            // 
+            // itemDescriptionDataGridViewTextBoxColumn
+            // 
+            itemDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            itemDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ItemDescription";
+            itemDescriptionDataGridViewTextBoxColumn.HeaderText = "ពិព័ណ៌នាការចំណាយ";
+            itemDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            itemDescriptionDataGridViewTextBoxColumn.Name = "itemDescriptionDataGridViewTextBoxColumn";
+            itemDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stockQtyDataGridViewTextBoxColumn
+            // 
+            stockQtyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            stockQtyDataGridViewTextBoxColumn.DataPropertyName = "StockQty";
+            stockQtyDataGridViewTextBoxColumn.HeaderText = "បរិមាណ";
+            stockQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
+            stockQtyDataGridViewTextBoxColumn.Name = "stockQtyDataGridViewTextBoxColumn";
+            stockQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            stockQtyDataGridViewTextBoxColumn.Width = 111;
+            // 
+            // unitPriceDataGridViewTextBoxColumn
+            // 
+            unitPriceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            unitPriceDataGridViewTextBoxColumn.HeaderText = "តម្លៃក្នុងមួយឯកតា";
+            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            unitPriceDataGridViewTextBoxColumn.Width = 188;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            categoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            categoryDataGridViewTextBoxColumn.HeaderText = "តម្លៃ";
+            categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            categoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmPayment
             // 
@@ -780,14 +818,16 @@
         private Label lblStoreID;
         private ComboBox cbContractID;
         private BindingSource itemBindingSource;
+        private Label lblStaffID;
+        private TextBox textBox1;
+        private Label lblStaffName;
+        private Button button3;
+        private Button button2;
+        private Button button1;
         private DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn itemDescriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stockQtyDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
-        private Label lblStaffID;
-        private TextBox textBox1;
-        private Label lblStaffName;
     }
 }

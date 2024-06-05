@@ -64,12 +64,12 @@
             epdStaffStreetNo = new ErrorProvider(components);
             epdStaffSangkat = new ErrorProvider(components);
             epdStaffKhan = new ErrorProvider(components);
-            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            itemDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stockQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categoryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            unitDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataItems).BeginInit();
             ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
@@ -90,7 +90,7 @@
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.DarkBlue;
+            lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
             lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
@@ -106,15 +106,15 @@
             lblSearchItem.AutoSize = true;
             lblSearchItem.Location = new Point(82, 19);
             lblSearchItem.Name = "lblSearchItem";
-            lblSearchItem.Size = new Size(81, 36);
+            lblSearchItem.Size = new Size(263, 36);
             lblSearchItem.TabIndex = 1;
-            lblSearchItem.Text = "ស្វែងរក:";
+            lblSearchItem.Text = "ស្វែងរក (លេខសម្គាល់សម្ភារៈ):";
             // 
             // txtSearchItem
             // 
-            txtSearchItem.Location = new Point(169, 11);
+            txtSearchItem.Location = new Point(377, 11);
             txtSearchItem.Name = "txtSearchItem";
-            txtSearchItem.Size = new Size(1275, 44);
+            txtSearchItem.Size = new Size(452, 44);
             txtSearchItem.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -170,7 +170,7 @@
             gbItemInformation.Controls.Add(txtUnit);
             gbItemInformation.Controls.Add(lblUnitPrice);
             gbItemInformation.Controls.Add(txtUnitPrice);
-            gbItemInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            gbItemInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbItemInformation.Location = new Point(82, 12);
             gbItemInformation.Name = "gbItemInformation";
             gbItemInformation.Size = new Size(1362, 335);
@@ -192,39 +192,51 @@
             // 
             // btnCloseFormItem
             // 
-            btnCloseFormItem.Location = new Point(1102, 20);
+            btnCloseFormItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnCloseFormItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCloseFormItem.ForeColor = Color.White;
+            btnCloseFormItem.Location = new Point(1100, 20);
             btnCloseFormItem.Name = "btnCloseFormItem";
             btnCloseFormItem.Size = new Size(152, 52);
             btnCloseFormItem.TabIndex = 3;
             btnCloseFormItem.Text = "បិទ";
-            btnCloseFormItem.UseVisualStyleBackColor = true;
+            btnCloseFormItem.UseVisualStyleBackColor = false;
             // 
             // btnNewItem
             // 
-            btnNewItem.Location = new Point(774, 20);
+            btnNewItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnNewItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewItem.ForeColor = Color.White;
+            btnNewItem.Location = new Point(740, 20);
             btnNewItem.Name = "btnNewItem";
             btnNewItem.Size = new Size(152, 52);
             btnNewItem.TabIndex = 2;
             btnNewItem.Text = "បង្កើតថ្មី";
-            btnNewItem.UseVisualStyleBackColor = true;
+            btnNewItem.UseVisualStyleBackColor = false;
             // 
             // btnUpdateItem
             // 
-            btnUpdateItem.Location = new Point(411, 20);
+            btnUpdateItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdateItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateItem.ForeColor = Color.White;
+            btnUpdateItem.Location = new Point(380, 20);
             btnUpdateItem.Name = "btnUpdateItem";
             btnUpdateItem.Size = new Size(152, 52);
             btnUpdateItem.TabIndex = 1;
             btnUpdateItem.Text = "កែប្រែ";
-            btnUpdateItem.UseVisualStyleBackColor = true;
+            btnUpdateItem.UseVisualStyleBackColor = false;
             // 
             // btnInsertItem
             // 
+            btnInsertItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertItem.ForeColor = Color.White;
             btnInsertItem.Location = new Point(20, 20);
             btnInsertItem.Name = "btnInsertItem";
             btnInsertItem.Size = new Size(152, 52);
             btnInsertItem.TabIndex = 0;
             btnInsertItem.Text = "បញ្ចូល";
-            btnInsertItem.UseVisualStyleBackColor = true;
+            btnInsertItem.UseVisualStyleBackColor = false;
             // 
             // txtStockQty
             // 
@@ -378,59 +390,64 @@
             // 
             epdStaffKhan.ContainerControl = this;
             // 
-            // unitDataGridViewTextBoxColumn
+            // itemIDDataGridViewTextBoxColumn
             // 
-            unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
-            unitDataGridViewTextBoxColumn.HeaderText = "Unit";
-            unitDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
-            unitDataGridViewTextBoxColumn.ReadOnly = true;
-            unitDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            categoryDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            unitPriceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // stockQtyDataGridViewTextBoxColumn
-            // 
-            stockQtyDataGridViewTextBoxColumn.DataPropertyName = "StockQty";
-            stockQtyDataGridViewTextBoxColumn.HeaderText = "StockQty";
-            stockQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            stockQtyDataGridViewTextBoxColumn.Name = "stockQtyDataGridViewTextBoxColumn";
-            stockQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            stockQtyDataGridViewTextBoxColumn.Width = 125;
+            itemIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
+            itemIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់សម្ភារៈ";
+            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
+            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
+            itemIDDataGridViewTextBoxColumn.Width = 198;
             // 
             // itemDescriptionDataGridViewTextBoxColumn
             // 
             itemDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             itemDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ItemDescription";
-            itemDescriptionDataGridViewTextBoxColumn.HeaderText = "ItemDescription";
+            itemDescriptionDataGridViewTextBoxColumn.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
             itemDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             itemDescriptionDataGridViewTextBoxColumn.Name = "itemDescriptionDataGridViewTextBoxColumn";
             itemDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // itemIDDataGridViewTextBoxColumn
+            // stockQtyDataGridViewTextBoxColumn
             // 
-            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
-            itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
-            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
-            itemIDDataGridViewTextBoxColumn.Width = 125;
+            stockQtyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            stockQtyDataGridViewTextBoxColumn.DataPropertyName = "StockQty";
+            stockQtyDataGridViewTextBoxColumn.HeaderText = "បរិមាណក្នុងស្ដុក";
+            stockQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
+            stockQtyDataGridViewTextBoxColumn.Name = "stockQtyDataGridViewTextBoxColumn";
+            stockQtyDataGridViewTextBoxColumn.ReadOnly = true;
+            stockQtyDataGridViewTextBoxColumn.Width = 173;
+            // 
+            // unitPriceDataGridViewTextBoxColumn
+            // 
+            unitPriceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            unitPriceDataGridViewTextBoxColumn.HeaderText = "តម្លៃក្នុងមួយឯកតា";
+            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            unitPriceDataGridViewTextBoxColumn.Width = 188;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            categoryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            categoryDataGridViewTextBoxColumn.HeaderText = "ប្រភេទ";
+            categoryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            categoryDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // unitDataGridViewTextBoxColumn
+            // 
+            unitDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            unitDataGridViewTextBoxColumn.HeaderText = "ឯកតា";
+            unitDataGridViewTextBoxColumn.MinimumWidth = 6;
+            unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            unitDataGridViewTextBoxColumn.ReadOnly = true;
+            unitDataGridViewTextBoxColumn.Width = 92;
             // 
             // FrmItem
             // 

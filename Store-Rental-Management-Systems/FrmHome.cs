@@ -33,8 +33,14 @@ namespace Store_Rental_Management_Systems
             btnShowMaintenanceForm.Click += HandleShowFormMaintenance;
             btnShowPaymentForm.Click += HandleShowFormPayment;
             btnShowContractForm.Click += HandleShowFormContract;
+            btnShowStoreForm.Click += HandleShowFormStore;
           
             btnLogout.Click += HandleButtonLogoutClick;
+        }
+
+        private void HandleShowFormStore(object? sender, EventArgs e)
+        {
+            RaiseEvent(FormTypes.FrmStore);
         }
 
         private void HandleShowFormContract(object? sender, EventArgs e)

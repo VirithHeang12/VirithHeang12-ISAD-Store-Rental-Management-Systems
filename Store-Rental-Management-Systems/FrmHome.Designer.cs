@@ -368,6 +368,7 @@
             btnLogout.BackColor = Color.FromArgb(244, 244, 244);
             btnLogout.Dock = DockStyle.Right;
             btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogout.ForeColor = Color.FromArgb(0, 28, 87);
             btnLogout.Image = Properties.Resources.logout;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;

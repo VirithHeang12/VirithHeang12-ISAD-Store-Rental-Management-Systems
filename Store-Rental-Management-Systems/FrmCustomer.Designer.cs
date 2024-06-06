@@ -55,7 +55,7 @@
             rdbMale = new RadioButton();
             lblCustomerID = new Label();
             txtCustomerFirstName = new TextBox();
-            label1 = new Label();
+            lblCustomerFirstName = new Label();
             txtCustomerID = new TextBox();
             lblCustomerLastName = new Label();
             txtCustomerLastName = new TextBox();
@@ -254,7 +254,7 @@
             // 
             lblCustomerSangkat.AutoSize = true;
             lblCustomerSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerSangkat.Location = new Point(428, 106);
+            lblCustomerSangkat.Location = new Point(18, 108);
             lblCustomerSangkat.Name = "lblCustomerSangkat";
             lblCustomerSangkat.Size = new Size(75, 36);
             lblCustomerSangkat.TabIndex = 20;
@@ -263,24 +263,24 @@
             // txtCustomerKhan
             // 
             txtCustomerKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerKhan.Location = new Point(154, 105);
+            txtCustomerKhan.Location = new Point(531, 105);
             txtCustomerKhan.Name = "txtCustomerKhan";
-            txtCustomerKhan.Size = new Size(198, 44);
+            txtCustomerKhan.Size = new Size(219, 44);
             txtCustomerKhan.TabIndex = 23;
             // 
             // txtCustomerSangkat
             // 
             txtCustomerSangkat.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCustomerSangkat.Location = new Point(531, 100);
+            txtCustomerSangkat.Location = new Point(154, 105);
             txtCustomerSangkat.Name = "txtCustomerSangkat";
-            txtCustomerSangkat.Size = new Size(219, 44);
+            txtCustomerSangkat.Size = new Size(196, 44);
             txtCustomerSangkat.TabIndex = 21;
             // 
             // lblCustomerKhan
             // 
             lblCustomerKhan.AutoSize = true;
             lblCustomerKhan.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCustomerKhan.Location = new Point(18, 108);
+            lblCustomerKhan.Location = new Point(428, 108);
             lblCustomerKhan.Name = "lblCustomerKhan";
             lblCustomerKhan.Size = new Size(62, 36);
             lblCustomerKhan.TabIndex = 22;
@@ -294,7 +294,7 @@
             gbCustomerInformation.Controls.Add(rdbMale);
             gbCustomerInformation.Controls.Add(lblCustomerID);
             gbCustomerInformation.Controls.Add(txtCustomerFirstName);
-            gbCustomerInformation.Controls.Add(label1);
+            gbCustomerInformation.Controls.Add(lblCustomerFirstName);
             gbCustomerInformation.Controls.Add(txtCustomerID);
             gbCustomerInformation.Controls.Add(lblCustomerLastName);
             gbCustomerInformation.Controls.Add(txtCustomerLastName);
@@ -371,15 +371,15 @@
             txtCustomerFirstName.Size = new Size(184, 44);
             txtCustomerFirstName.TabIndex = 5;
             // 
-            // label1
+            // lblCustomerFirstName
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(18, 106);
-            label1.Name = "label1";
-            label1.Size = new Size(109, 36);
-            label1.TabIndex = 4;
-            label1.Text = "នាមត្រកូល:";
+            lblCustomerFirstName.AutoSize = true;
+            lblCustomerFirstName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCustomerFirstName.Location = new Point(18, 106);
+            lblCustomerFirstName.Name = "lblCustomerFirstName";
+            lblCustomerFirstName.Size = new Size(109, 36);
+            lblCustomerFirstName.TabIndex = 4;
+            lblCustomerFirstName.Text = "នាមត្រកូល:";
             // 
             // txtCustomerID
             // 
@@ -594,7 +594,7 @@
         private TextBox txtCustomerLastName;
         private Label lblCustomerLastName;
         private TextBox txtCustomerFirstName;
-        private Label label1;
+        private Label lblCustomerFirstName;
         private TextBox txtCustomerID;
         private Label lblCustomerBirthDate;
         private DateTimePicker dtpCustomerBirthDate;

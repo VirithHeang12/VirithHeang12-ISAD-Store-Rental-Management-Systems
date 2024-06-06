@@ -39,7 +39,6 @@
             btnPickStaffPhoto = new Button();
             pbStaffPhoto = new PictureBox();
             gbStaffAddress = new GroupBox();
-            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             cbStaffCityOrProvince = new ComboBox();
             lblStaffStreetNo = new Label();
             txtStaffStreetNo = new TextBox();
@@ -66,7 +65,7 @@
             lblStaffID = new Label();
             lblStaffPosition = new Label();
             txtStaffFirstName = new TextBox();
-            label1 = new Label();
+            lblStaffFirstName = new Label();
             txtStaffID = new TextBox();
             lblStaffLastName = new Label();
             txtStaffLastName = new TextBox();
@@ -94,7 +93,6 @@
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
             gbStaffAddress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
@@ -192,7 +190,6 @@
             // 
             // gbStaffAddress
             // 
-            gbStaffAddress.Controls.Add(webView21);
             gbStaffAddress.Controls.Add(cbStaffCityOrProvince);
             gbStaffAddress.Controls.Add(lblStaffStreetNo);
             gbStaffAddress.Controls.Add(txtStaffStreetNo);
@@ -210,16 +207,6 @@
             gbStaffAddress.TabIndex = 26;
             gbStaffAddress.TabStop = false;
             gbStaffAddress.Text = "អាសយដ្ឋាន";
-            // 
-            // webView21
-            // 
-            webView21.CreationProperties = null;
-            webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(220, 35);
-            webView21.Name = "webView21";
-            webView21.Size = new Size(8, 8);
-            webView21.TabIndex = 26;
-            webView21.ZoomFactor = 1D;
             // 
             // cbStaffCityOrProvince
             // 
@@ -330,7 +317,7 @@
             gbStaffInformation.Controls.Add(lblStaffID);
             gbStaffInformation.Controls.Add(lblStaffPosition);
             gbStaffInformation.Controls.Add(txtStaffFirstName);
-            gbStaffInformation.Controls.Add(label1);
+            gbStaffInformation.Controls.Add(lblStaffFirstName);
             gbStaffInformation.Controls.Add(txtStaffID);
             gbStaffInformation.Controls.Add(lblStaffLastName);
             gbStaffInformation.Controls.Add(txtStaffLastName);
@@ -494,15 +481,15 @@
             txtStaffFirstName.Size = new Size(217, 44);
             txtStaffFirstName.TabIndex = 5;
             // 
-            // label1
+            // lblStaffFirstName
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(18, 106);
-            label1.Name = "label1";
-            label1.Size = new Size(109, 36);
-            label1.TabIndex = 4;
-            label1.Text = "នាមត្រកូល:";
+            lblStaffFirstName.AutoSize = true;
+            lblStaffFirstName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffFirstName.Location = new Point(18, 106);
+            lblStaffFirstName.Name = "lblStaffFirstName";
+            lblStaffFirstName.Size = new Size(109, 36);
+            lblStaffFirstName.TabIndex = 4;
+            lblStaffFirstName.Text = "នាមត្រកូល:";
             // 
             // txtStaffID
             // 
@@ -698,7 +685,6 @@
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).EndInit();
             gbStaffAddress.ResumeLayout(false);
             gbStaffAddress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             gbStaffInformation.ResumeLayout(false);
             gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
@@ -728,7 +714,7 @@
         private TextBox txtStaffLastName;
         private Label lblStaffLastName;
         private TextBox txtStaffFirstName;
-        private Label label1;
+        private Label lblStaffFirstName;
         private TextBox txtStaffID;
         private Label lblStaffBirthDate;
         private DateTimePicker dtpStaffBirthDate;
@@ -776,6 +762,5 @@
         private ErrorProvider epdStaffStreetNo;
         private ErrorProvider epdStaffSangkat;
         private ErrorProvider epdStaffKhan;
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }

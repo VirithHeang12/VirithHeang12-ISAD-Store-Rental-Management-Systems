@@ -35,8 +35,6 @@
             pnlLeftSide = new Panel();
             dgvInsurances = new DataGridView();
             insuranceBindingSource = new BindingSource(components);
-            supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbInsuranceInformation = new GroupBox();
             pnlInsuranceManipulation = new Panel();
@@ -50,37 +48,15 @@
             txtInsuranceID = new TextBox();
             lblInsuranceWebsite = new Label();
             txtInsuranceWebsite = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
             insuranceIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             insuranceNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             insuranceWebsiteDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).BeginInit();
             ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbInsuranceInformation.SuspendLayout();
             pnlInsuranceManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -141,14 +117,6 @@
             // insuranceBindingSource
             // 
             insuranceBindingSource.DataSource = typeof(StoreRentalHelper.entities.Insurance);
-            // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // pnlRightSide
             // 
@@ -290,46 +258,6 @@
             txtInsuranceWebsite.Size = new Size(1019, 44);
             txtInsuranceWebsite.TabIndex = 13;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
             // insuranceIDDataGridViewTextBoxColumn
             // 
             insuranceIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -354,7 +282,7 @@
             // 
             insuranceWebsiteDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             insuranceWebsiteDataGridViewTextBoxColumn.DataPropertyName = "InsuranceWebsite";
-            insuranceWebsiteDataGridViewTextBoxColumn.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង:";
+            insuranceWebsiteDataGridViewTextBoxColumn.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង";
             insuranceWebsiteDataGridViewTextBoxColumn.MinimumWidth = 6;
             insuranceWebsiteDataGridViewTextBoxColumn.Name = "insuranceWebsiteDataGridViewTextBoxColumn";
             insuranceWebsiteDataGridViewTextBoxColumn.ReadOnly = true;
@@ -376,22 +304,10 @@
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).EndInit();
             ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbInsuranceInformation.ResumeLayout(false);
             gbInsuranceInformation.PerformLayout();
             pnlInsuranceManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -414,19 +330,7 @@
         private Button btnCloseFormInsurance;
         private Button btnNewInsurance;
         private Button btnUpdateInsurance;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
         private DataGridView dgvInsurances;
-        private BindingSource itemBindingSource;
-        private BindingSource supplierBindingSource;
         private BindingSource insuranceBindingSource;
         private DataGridViewTextBoxColumn insuranceIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn insuranceNameDataGridViewTextBoxColumn;

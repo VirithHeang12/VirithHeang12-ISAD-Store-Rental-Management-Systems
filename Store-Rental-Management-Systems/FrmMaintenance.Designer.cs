@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbMaintenanceDetails = new GroupBox();
@@ -49,11 +48,11 @@
             txtUnitPrice = new TextBox();
             lblCategory = new Label();
             gbMaintenanceInformation = new GroupBox();
+            cbStaffID = new ComboBox();
             txtStaffName = new TextBox();
             lblStaffName = new Label();
             txtStaffPosition = new TextBox();
             lblStaffPosition = new Label();
-            textBox1 = new TextBox();
             lblStaffID = new Label();
             cbStoreID = new ComboBox();
             txtOwedAmount = new TextBox();
@@ -76,45 +75,14 @@
             btnInsertMaintenance = new Button();
             pnlLeftSide = new Panel();
             dgvMaintenanceItems = new DataGridView();
-            itemBindingSource1 = new BindingSource(components);
             lblSearchMaintenance = new Label();
             txtSearchMaintenance = new TextBox();
-            itemBindingSource = new BindingSource(components);
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            Unit = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbMaintenanceDetails.SuspendLayout();
             gbMaintenanceInformation.SuspendLayout();
             pnlMaintenanceManipulation.SuspendLayout();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaintenanceItems).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -322,11 +290,11 @@
             // 
             // gbMaintenanceInformation
             // 
+            gbMaintenanceInformation.Controls.Add(cbStaffID);
             gbMaintenanceInformation.Controls.Add(txtStaffName);
             gbMaintenanceInformation.Controls.Add(lblStaffName);
             gbMaintenanceInformation.Controls.Add(txtStaffPosition);
             gbMaintenanceInformation.Controls.Add(lblStaffPosition);
-            gbMaintenanceInformation.Controls.Add(textBox1);
             gbMaintenanceInformation.Controls.Add(lblStaffID);
             gbMaintenanceInformation.Controls.Add(cbStoreID);
             gbMaintenanceInformation.Controls.Add(txtOwedAmount);
@@ -350,6 +318,16 @@
             gbMaintenanceInformation.TabStop = false;
             gbMaintenanceInformation.Text = "ព័ត៌មានការថែទាំ";
             // 
+            // cbStaffID
+            // 
+            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffID.FormattingEnabled = true;
+            cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbStaffID.Location = new Point(576, 140);
+            cbStaffID.Name = "cbStaffID";
+            cbStaffID.Size = new Size(180, 44);
+            cbStaffID.TabIndex = 48;
+            // 
             // txtStaffName
             // 
             txtStaffName.Enabled = false;
@@ -363,11 +341,11 @@
             // 
             lblStaffName.AutoSize = true;
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffName.Location = new Point(739, 143);
+            lblStaffName.Location = new Point(785, 143);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(192, 36);
+            lblStaffName.Size = new Size(130, 36);
             lblStaffName.TabIndex = 46;
-            lblStaffName.Text = "ឈ្មោះបុគ្គលិកបុគ្គលិក:";
+            lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
             // txtStaffPosition
             // 
@@ -388,14 +366,6 @@
             lblStaffPosition.TabIndex = 44;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(576, 140);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(157, 44);
-            textBox1.TabIndex = 43;
-            // 
             // lblStaffID
             // 
             lblStaffID.AutoSize = true;
@@ -408,7 +378,6 @@
             // 
             // cbStoreID
             // 
-            cbStoreID.Enabled = false;
             cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStoreID.FormattingEnabled = true;
             cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
@@ -613,10 +582,7 @@
             // 
             dgvMaintenanceItems.AllowUserToAddRows = false;
             dgvMaintenanceItems.AllowUserToDeleteRows = false;
-            dgvMaintenanceItems.AutoGenerateColumns = false;
             dgvMaintenanceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaintenanceItems.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, Unit, Category, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn5 });
-            dgvMaintenanceItems.DataSource = itemBindingSource1;
             dgvMaintenanceItems.Location = new Point(63, 74);
             dgvMaintenanceItems.Name = "dgvMaintenanceItems";
             dgvMaintenanceItems.ReadOnly = true;
@@ -624,10 +590,6 @@
             dgvMaintenanceItems.RowTemplate.Height = 29;
             dgvMaintenanceItems.Size = new Size(1427, 238);
             dgvMaintenanceItems.TabIndex = 3;
-            // 
-            // itemBindingSource1
-            // 
-            itemBindingSource1.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // lblSearchMaintenance
             // 
@@ -644,112 +606,6 @@
             txtSearchMaintenance.Name = "txtSearchMaintenance";
             txtSearchMaintenance.Size = new Size(470, 44);
             txtSearchMaintenance.TabIndex = 2;
-            // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewTextBoxColumn1.DataPropertyName = "ItemID";
-            dataGridViewTextBoxColumn1.HeaderText = "លេខសម្គាល់សម្ភារៈ";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 198;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.DataPropertyName = "ItemDescription";
-            dataGridViewTextBoxColumn2.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            Unit.DataPropertyName = "Unit";
-            Unit.HeaderText = "ឯកតា";
-            Unit.MinimumWidth = 6;
-            Unit.Name = "Unit";
-            Unit.ReadOnly = true;
-            Unit.Width = 125;
-            // 
-            // Category
-            // 
-            Category.DataPropertyName = "Category";
-            Category.HeaderText = "ប្រភេទ";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            Category.ReadOnly = true;
-            Category.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewTextBoxColumn4.DataPropertyName = "UnitPrice";
-            dataGridViewTextBoxColumn4.HeaderText = "តម្លៃក្នុងមួយឯកតា";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 188;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewTextBoxColumn3.DataPropertyName = "StockQty";
-            dataGridViewTextBoxColumn3.HeaderText = "បរិមាណប្រើប្រាស់";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 183;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn5.DataPropertyName = "Category";
-            dataGridViewTextBoxColumn5.HeaderText = "តម្លៃ";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // FrmMaintenance
             // 
@@ -775,18 +631,6 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaintenanceItems).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -795,7 +639,6 @@
         private Label lblTitle;
         private Panel pnlRightSide;
         private TextBox txtMaintenanceID;
-        private DateTimePicker dtpStaffBirthDate;
         private TextBox txtItemDescription;
         private Label lblItemDescription;
         private TextBox txtItemID;
@@ -806,11 +649,7 @@
         private Label lblUnitPrice;
         private TextBox txtCategory;
         private GroupBox gbMaintenanceInformation;
-        private RadioButton rdbFemale;
-        private RadioButton rdbMale;
         private GroupBox gbImportDetails;
-        private PictureBox pbStaffPhoto;
-        private Button btnPickStaffPhoto;
         private DateTimePicker dtpMaintenanceDate;
         private Label lblMaintenanceDate;
         private Panel pnlMaintenanceManipulation;
@@ -818,19 +657,6 @@
         private Button btnCloseFormMaintenance;
         private Button btnNewMaintenance;
         private Button btnUpdateMaintenance;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
-        private ComboBox cbSupplierID;
-        private TextBox txtSupplierName;
-        private ComboBox cbStaffID;
         private TextBox txtStaffName;
         private Label lblStaffPosition;
         private TextBox txtStaffPosition;
@@ -855,25 +681,15 @@
         private TextBox txtPaidAmount;
         private Label lblStoreID;
         private ComboBox cbContractID;
-        private BindingSource itemBindingSource;
-        private DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn itemDescriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn stockQtyDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private Label lblStaffID;
-        private TextBox textBox1;
         private Label lblStaffName;
         private TextBox txtAmount;
         private Label lblAmount;
-        private BindingSource itemBindingSource1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn Unit;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private ComboBox cbStaffID;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn UnitPrice;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn Amount;
     }
 }

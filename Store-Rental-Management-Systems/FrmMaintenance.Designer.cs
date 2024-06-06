@@ -378,6 +378,7 @@
             // 
             // cbStoreID
             // 
+            cbStoreID.Enabled = false;
             cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStoreID.FormattingEnabled = true;
             cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });

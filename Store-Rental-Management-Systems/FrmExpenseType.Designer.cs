@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchExpenseType = new Label();
             txtSearchExpenseType = new TextBox();
             pnlLeftSide = new Panel();
             dgvExpenseTypes = new DataGridView();
-            expenseTypeBindingSource = new BindingSource(components);
-            insuranceBindingSource = new BindingSource(components);
-            supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbExpenseTypeInformation = new GroupBox();
             pnlExpenseTypeManipulation = new Panel();
@@ -49,37 +44,11 @@
             txtExpenseTypeID = new TextBox();
             lblExpenseDescription = new Label();
             txtExpenseDescription = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            expenseTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            expenseDescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenseTypes).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbExpenseTypeInformation.SuspendLayout();
             pnlExpenseTypeManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -125,10 +94,7 @@
             // 
             dgvExpenseTypes.AllowUserToAddRows = false;
             dgvExpenseTypes.AllowUserToDeleteRows = false;
-            dgvExpenseTypes.AutoGenerateColumns = false;
             dgvExpenseTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvExpenseTypes.Columns.AddRange(new DataGridViewColumn[] { expenseTypeIDDataGridViewTextBoxColumn, expenseDescriptionDataGridViewTextBoxColumn });
-            dgvExpenseTypes.DataSource = expenseTypeBindingSource;
             dgvExpenseTypes.Location = new Point(82, 74);
             dgvExpenseTypes.Name = "dgvExpenseTypes";
             dgvExpenseTypes.ReadOnly = true;
@@ -136,22 +102,6 @@
             dgvExpenseTypes.RowTemplate.Height = 29;
             dgvExpenseTypes.Size = new Size(1362, 369);
             dgvExpenseTypes.TabIndex = 3;
-            // 
-            // expenseTypeBindingSource
-            // 
-            expenseTypeBindingSource.DataSource = typeof(StoreRentalHelper.entities.ExpenseType);
-            // 
-            // insuranceBindingSource
-            // 
-            insuranceBindingSource.DataSource = typeof(StoreRentalHelper.entities.Insurance);
-            // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
-            // 
-            // itemBindingSource
-            // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
             // 
             // pnlRightSide
             // 
@@ -270,67 +220,8 @@
             txtExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseDescription.Location = new Point(300, 111);
             txtExpenseDescription.Name = "txtExpenseDescription";
-            txtExpenseDescription.Size = new Size(1019, 44);
+            txtExpenseDescription.Size = new Size(970, 44);
             txtExpenseDescription.TabIndex = 13;
-            // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // expenseTypeIDDataGridViewTextBoxColumn
-            // 
-            expenseTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            expenseTypeIDDataGridViewTextBoxColumn.DataPropertyName = "ExpenseTypeID";
-            expenseTypeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ប្រភេទចំណាយ";
-            expenseTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            expenseTypeIDDataGridViewTextBoxColumn.Name = "expenseTypeIDDataGridViewTextBoxColumn";
-            expenseTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            expenseTypeIDDataGridViewTextBoxColumn.Width = 266;
-            // 
-            // expenseDescriptionDataGridViewTextBoxColumn
-            // 
-            expenseDescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            expenseDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ExpenseDescription";
-            expenseDescriptionDataGridViewTextBoxColumn.HeaderText = "ពិព័ណ៌នាការចំណាយ";
-            expenseDescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            expenseDescriptionDataGridViewTextBoxColumn.Name = "expenseDescriptionDataGridViewTextBoxColumn";
-            expenseDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmExpenseType
             // 
@@ -348,24 +239,10 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenseTypes).EndInit();
-            ((System.ComponentModel.ISupportInitialize)expenseTypeBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbExpenseTypeInformation.ResumeLayout(false);
             gbExpenseTypeInformation.PerformLayout();
             pnlExpenseTypeManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -386,21 +263,7 @@
         private Button btnCloseFormExpenseType;
         private Button btnNewExpenseType;
         private Button btnUpdateExpenseType;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
         private DataGridView dgvExpenseTypes;
-        private BindingSource itemBindingSource;
-        private BindingSource supplierBindingSource;
-        private BindingSource insuranceBindingSource;
-        private BindingSource expenseTypeBindingSource;
         private DataGridViewTextBoxColumn expenseTypeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expenseDescriptionDataGridViewTextBoxColumn;
     }

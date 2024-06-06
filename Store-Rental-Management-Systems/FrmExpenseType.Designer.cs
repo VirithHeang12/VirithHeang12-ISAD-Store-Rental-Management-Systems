@@ -44,6 +44,8 @@
             txtExpenseTypeID = new TextBox();
             lblExpenseDescription = new Label();
             txtExpenseDescription = new TextBox();
+            ExpenseTypeID = new DataGridViewTextBoxColumn();
+            ExpenseDescription = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenseTypes).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -95,6 +97,7 @@
             dgvExpenseTypes.AllowUserToAddRows = false;
             dgvExpenseTypes.AllowUserToDeleteRows = false;
             dgvExpenseTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpenseTypes.Columns.AddRange(new DataGridViewColumn[] { ExpenseTypeID, ExpenseDescription });
             dgvExpenseTypes.Location = new Point(82, 74);
             dgvExpenseTypes.Name = "dgvExpenseTypes";
             dgvExpenseTypes.ReadOnly = true;
@@ -223,6 +226,23 @@
             txtExpenseDescription.Size = new Size(970, 44);
             txtExpenseDescription.TabIndex = 13;
             // 
+            // ExpenseTypeID
+            // 
+            ExpenseTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ExpenseTypeID.HeaderText = "លេខសម្គាល់ប្រភេទចំណាយ";
+            ExpenseTypeID.MinimumWidth = 6;
+            ExpenseTypeID.Name = "ExpenseTypeID";
+            ExpenseTypeID.ReadOnly = true;
+            ExpenseTypeID.Width = 266;
+            // 
+            // ExpenseDescription
+            // 
+            ExpenseDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ExpenseDescription.HeaderText = "ពិពណ៌នាការចំណាយ";
+            ExpenseDescription.MinimumWidth = 6;
+            ExpenseDescription.Name = "ExpenseDescription";
+            ExpenseDescription.ReadOnly = true;
+            // 
             // FrmExpenseType
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -266,5 +286,7 @@
         private DataGridView dgvExpenseTypes;
         private DataGridViewTextBoxColumn expenseTypeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expenseDescriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ExpenseTypeID;
+        private DataGridViewTextBoxColumn ExpenseDescription;
     }
 }

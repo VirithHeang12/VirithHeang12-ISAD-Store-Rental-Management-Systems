@@ -65,30 +65,10 @@
             lblContractDate = new Label();
             dtpContractDate = new DateTimePicker();
             lblCustomerID = new Label();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             pnlContractManipulation.SuspendLayout();
             gbContractInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -473,46 +453,6 @@
             lblCustomerID.TabIndex = 12;
             lblCustomerID.Text = "លេខសម្គាល់អតិថិជន:";
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
             // FrmContract
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -532,16 +472,6 @@
             pnlContractManipulation.ResumeLayout(false);
             gbContractInformation.ResumeLayout(false);
             gbContractInformation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -554,30 +484,12 @@
         private ListBox lbContract;
         private Panel pnlRightSide;
         private Label lblContractID;
-        private Label lblStaffSex;
-        private TextBox txtStaffLastName;
-        private Label lblStaffLastName;
         private TextBox txtContractID;
-        private Label lblStaffBirthDate;
         private DateTimePicker dtpContractDate;
         private ComboBox cbStaffPosition;
         private Label lblStaffPosition;
-        private TextBox txtStaffIdentityCardNumber;
         private Label lblCustomerID;
-        private TextBox txtStaffStreetNo;
-        private Label lblStaffStreetNo;
-        private TextBox txtStaffHouseNo;
-        private Label lblStaffHouseNo;
-        private Label lblStaffProvinceOrCity;
-        private Label lblStaffKhan;
-        private TextBox txtStaffSangkat;
-        private Label lblStaffSangkat;
-        private TextBox txtStaffKhan;
         private GroupBox gbContractInformation;
-        private RadioButton rdbFemale;
-        private RadioButton rdbMale;
-        private GroupBox gbStaffAddress;
-        private ComboBox cbStaffCityOrProvince;
         private TextBox txtInsuranceName;
         private Label lblInsuranceName;
         private Label lblStaffName;
@@ -586,16 +498,6 @@
         private Button btnCloseFormContract;
         private Button btnNewContract;
         private Button btnUpdateContract;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
         private Label lblContractStartDate;
         private DateTimePicker dtpContractEndDate;
         private Label lblContractEndDate;

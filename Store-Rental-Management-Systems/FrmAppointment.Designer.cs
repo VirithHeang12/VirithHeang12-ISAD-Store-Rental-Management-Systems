@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbStaffAssignments = new GroupBox();
+            cbStaffID = new ComboBox();
             btnUpdateAppointmentStaff = new Button();
             btnInsertAppointmentStaff = new Button();
             lblStaffPosition = new Label();
@@ -39,7 +39,6 @@
             lblStaffName = new Label();
             txtStaffName = new TextBox();
             lblStaffID = new Label();
-            txtStaffID = new TextBox();
             gbAppointmentInformation = new GroupBox();
             cbCustomerID = new ComboBox();
             lblAppointmentID = new Label();
@@ -58,9 +57,9 @@
             dgvStaffAssignments = new DataGridView();
             lblSearchAppointment = new Label();
             txtSearchAppointment = new TextBox();
-            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            StaffNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            StaffID = new DataGridViewTextBoxColumn();
+            StaffName = new DataGridViewTextBoxColumn();
+            StaffPosition = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbStaffAssignments.SuspendLayout();
             gbAppointmentInformation.SuspendLayout();
@@ -93,6 +92,7 @@
             // 
             // gbStaffAssignments
             // 
+            gbStaffAssignments.Controls.Add(cbStaffID);
             gbStaffAssignments.Controls.Add(btnUpdateAppointmentStaff);
             gbStaffAssignments.Controls.Add(btnInsertAppointmentStaff);
             gbStaffAssignments.Controls.Add(lblStaffPosition);
@@ -100,7 +100,6 @@
             gbStaffAssignments.Controls.Add(lblStaffName);
             gbStaffAssignments.Controls.Add(txtStaffName);
             gbStaffAssignments.Controls.Add(lblStaffID);
-            gbStaffAssignments.Controls.Add(txtStaffID);
             gbStaffAssignments.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbStaffAssignments.Location = new Point(63, 164);
             gbStaffAssignments.Name = "gbStaffAssignments";
@@ -108,6 +107,16 @@
             gbStaffAssignments.TabIndex = 27;
             gbStaffAssignments.TabStop = false;
             gbStaffAssignments.Text = "សេចក្ដីលម្អិត";
+            // 
+            // cbStaffID
+            // 
+            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffID.FormattingEnabled = true;
+            cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbStaffID.Location = new Point(212, 43);
+            cbStaffID.Name = "cbStaffID";
+            cbStaffID.Size = new Size(261, 44);
+            cbStaffID.TabIndex = 36;
             // 
             // btnUpdateAppointmentStaff
             // 
@@ -181,14 +190,6 @@
             lblStaffID.TabIndex = 18;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
-            // txtStaffID
-            // 
-            txtStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffID.Location = new Point(223, 43);
-            txtStaffID.Name = "txtStaffID";
-            txtStaffID.Size = new Size(237, 44);
-            txtStaffID.TabIndex = 17;
-            // 
             // gbAppointmentInformation
             // 
             gbAppointmentInformation.Controls.Add(cbCustomerID);
@@ -229,6 +230,7 @@
             // 
             // cbAppointmentStatus
             // 
+            cbAppointmentStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAppointmentStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbAppointmentStatus.FormattingEnabled = true;
             cbAppointmentStatus.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
@@ -358,9 +360,8 @@
             // 
             dgvStaffAssignments.AllowUserToAddRows = false;
             dgvStaffAssignments.AllowUserToDeleteRows = false;
-            dgvStaffAssignments.AutoGenerateColumns = false;
             dgvStaffAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { staffIDDataGridViewTextBoxColumn, StaffNameDataGridViewTextBoxColumn, staffPositionDataGridViewTextBoxColumn });
+            dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { StaffID, StaffName, StaffPosition });
             dgvStaffAssignments.Location = new Point(63, 74);
             dgvStaffAssignments.Name = "dgvStaffAssignments";
             dgvStaffAssignments.ReadOnly = true;
@@ -385,33 +386,30 @@
             txtSearchAppointment.Size = new Size(501, 44);
             txtSearchAppointment.TabIndex = 2;
             // 
-            // staffIDDataGridViewTextBoxColumn
+            // StaffID
             // 
-            staffIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            staffIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់បុគ្គលិក";
-            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
-            staffIDDataGridViewTextBoxColumn.Width = 206;
+            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            StaffID.MinimumWidth = 6;
+            StaffID.Name = "StaffID";
+            StaffID.ReadOnly = true;
+            StaffID.Width = 206;
             // 
-            // StaffNameDataGridViewTextBoxColumn
+            // StaffName
             // 
-            StaffNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StaffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
-            StaffNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះបុគ្គលិក";
-            StaffNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            StaffNameDataGridViewTextBoxColumn.Name = "StaffNameDataGridViewTextBoxColumn";
-            StaffNameDataGridViewTextBoxColumn.ReadOnly = true;
+            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.HeaderText = "ឈ្មោះបុគ្គលិក";
+            StaffName.MinimumWidth = 6;
+            StaffName.Name = "StaffName";
+            StaffName.ReadOnly = true;
             // 
-            // staffPositionDataGridViewTextBoxColumn
+            // StaffPosition
             // 
-            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
-            staffPositionDataGridViewTextBoxColumn.HeaderText = "តួនាទីបុគ្គលិក";
-            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
-            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
+            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.HeaderText = "តួនាទីបុគ្គលិក";
+            StaffPosition.MinimumWidth = 6;
+            StaffPosition.Name = "StaffPosition";
+            StaffPosition.ReadOnly = true;
             // 
             // FrmAppointment
             // 
@@ -447,7 +445,6 @@
         private Label lblCustomerID;
         private Label lblAppointmentStatus;
         private TextBox txtAppointmentID;
-        private TextBox txtStaffID;
         private GroupBox gbAppointmentInformation;
         private GroupBox gbStaffAssignments;
         private DateTimePicker dtpAppointmentDate;
@@ -458,7 +455,6 @@
         private Button btnNewAppointment;
         private Button btnUpdateAppointment;
         private ComboBox cbAppointmentStatus;
-        private ComboBox cbStaffID;
         private Label lblAppointmentID;
         private Panel pnlLeftSide;
         private DataGridView dgvStaffAssignments;
@@ -475,5 +471,9 @@
         private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn StaffNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
+        private ComboBox cbStaffID;
+        private DataGridViewTextBoxColumn StaffID;
+        private DataGridViewTextBoxColumn StaffName;
+        private DataGridViewTextBoxColumn StaffPosition;
     }
 }

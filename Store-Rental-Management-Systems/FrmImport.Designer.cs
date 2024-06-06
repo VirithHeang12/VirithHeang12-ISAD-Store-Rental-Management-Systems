@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbImportDetails = new GroupBox();
@@ -39,7 +38,6 @@
             txtImportQty = new TextBox();
             lblItemDescription = new Label();
             txtItemDescription = new TextBox();
-            txtItemID = new TextBox();
             lblImportQty = new Label();
             lblItemID = new Label();
             lblUnitPrice = new Label();
@@ -47,6 +45,10 @@
             txtUnitPrice = new TextBox();
             lblCategory = new Label();
             gbImportInformation = new GroupBox();
+            txtOwedAmount = new TextBox();
+            lblOwedAmount = new Label();
+            txtPaidAmount = new TextBox();
+            lblPaidAmount = new Label();
             lblStaffID = new Label();
             lblSupplierName = new Label();
             lblSupplierID = new Label();
@@ -72,15 +74,12 @@
             dgvImportItems = new DataGridView();
             lblSearchImport = new Label();
             txtSearchImport = new TextBox();
-            lblPaidAmount = new Label();
-            txtPaidAmount = new TextBox();
-            lblOwedAmount = new Label();
-            txtOwedAmount = new TextBox();
-            itemIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            DescriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            importQtyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            unitPriceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            AmountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cbItemID = new ComboBox();
+            ItemID = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            Amount = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbImportDetails.SuspendLayout();
             gbImportInformation.SuspendLayout();
@@ -113,6 +112,7 @@
             // 
             // gbImportDetails
             // 
+            gbImportDetails.Controls.Add(cbItemID);
             gbImportDetails.Controls.Add(btnUpdateImportItem);
             gbImportDetails.Controls.Add(btnInsertImportItem);
             gbImportDetails.Controls.Add(txtUnit);
@@ -120,7 +120,6 @@
             gbImportDetails.Controls.Add(txtImportQty);
             gbImportDetails.Controls.Add(lblItemDescription);
             gbImportDetails.Controls.Add(txtItemDescription);
-            gbImportDetails.Controls.Add(txtItemID);
             gbImportDetails.Controls.Add(lblImportQty);
             gbImportDetails.Controls.Add(lblItemID);
             gbImportDetails.Controls.Add(lblUnitPrice);
@@ -204,14 +203,6 @@
             txtItemDescription.Name = "txtItemDescription";
             txtItemDescription.Size = new Size(219, 44);
             txtItemDescription.TabIndex = 19;
-            // 
-            // txtItemID
-            // 
-            txtItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtItemID.Location = new Point(199, 35);
-            txtItemID.Name = "txtItemID";
-            txtItemID.Size = new Size(245, 44);
-            txtItemID.TabIndex = 17;
             // 
             // lblImportQty
             // 
@@ -300,6 +291,43 @@
             gbImportInformation.TabIndex = 25;
             gbImportInformation.TabStop = false;
             gbImportInformation.Text = "ព័ត៌មានការនាំចូល";
+            // 
+            // txtOwedAmount
+            // 
+            txtOwedAmount.Enabled = false;
+            txtOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtOwedAmount.Location = new Point(670, 85);
+            txtOwedAmount.Name = "txtOwedAmount";
+            txtOwedAmount.Size = new Size(237, 44);
+            txtOwedAmount.TabIndex = 43;
+            // 
+            // lblOwedAmount
+            // 
+            lblOwedAmount.AutoSize = true;
+            lblOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOwedAmount.Location = new Point(482, 88);
+            lblOwedAmount.Name = "lblOwedAmount";
+            lblOwedAmount.Size = new Size(179, 36);
+            lblOwedAmount.TabIndex = 42;
+            lblOwedAmount.Text = "ចំនួនទឹកប្រាក់ជំពាក់:";
+            // 
+            // txtPaidAmount
+            // 
+            txtPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPaidAmount.Location = new Point(227, 85);
+            txtPaidAmount.Name = "txtPaidAmount";
+            txtPaidAmount.Size = new Size(235, 44);
+            txtPaidAmount.TabIndex = 41;
+            // 
+            // lblPaidAmount
+            // 
+            lblPaidAmount.AutoSize = true;
+            lblPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaidAmount.Location = new Point(18, 88);
+            lblPaidAmount.Name = "lblPaidAmount";
+            lblPaidAmount.Size = new Size(193, 36);
+            lblPaidAmount.TabIndex = 40;
+            lblPaidAmount.Text = "ចំនួនទឹកប្រាក់បានបង់:";
             // 
             // lblStaffID
             // 
@@ -527,9 +555,8 @@
             // 
             dgvImportItems.AllowUserToAddRows = false;
             dgvImportItems.AllowUserToDeleteRows = false;
-            dgvImportItems.AutoGenerateColumns = false;
             dgvImportItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvImportItems.Columns.AddRange(new DataGridViewColumn[] { itemIDDataGridViewTextBoxColumn, DescriptionDataGridViewTextBoxColumn, importQtyDataGridViewTextBoxColumn, unitPriceDataGridViewTextBoxColumn, AmountDataGridViewTextBoxColumn });
+            dgvImportItems.Columns.AddRange(new DataGridViewColumn[] { ItemID, Description, UnitPrice, Quantity, Amount });
             dgvImportItems.Location = new Point(63, 74);
             dgvImportItems.Name = "dgvImportItems";
             dgvImportItems.ReadOnly = true;
@@ -554,90 +581,59 @@
             txtSearchImport.Size = new Size(543, 44);
             txtSearchImport.TabIndex = 2;
             // 
-            // lblPaidAmount
+            // cbItemID
             // 
-            lblPaidAmount.AutoSize = true;
-            lblPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaidAmount.Location = new Point(18, 88);
-            lblPaidAmount.Name = "lblPaidAmount";
-            lblPaidAmount.Size = new Size(193, 36);
-            lblPaidAmount.TabIndex = 40;
-            lblPaidAmount.Text = "ចំនួនទឹកប្រាក់បានបង់:";
+            cbItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbItemID.FormattingEnabled = true;
+            cbItemID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbItemID.Location = new Point(199, 35);
+            cbItemID.Name = "cbItemID";
+            cbItemID.Size = new Size(263, 44);
+            cbItemID.TabIndex = 30;
             // 
-            // txtPaidAmount
+            // ItemID
             // 
-            txtPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPaidAmount.Location = new Point(227, 85);
-            txtPaidAmount.Name = "txtPaidAmount";
-            txtPaidAmount.Size = new Size(235, 44);
-            txtPaidAmount.TabIndex = 41;
+            ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ItemID.HeaderText = "លេខសម្គាល់សម្ភារៈ";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.ReadOnly = true;
+            ItemID.Width = 198;
             // 
-            // lblOwedAmount
+            // Description
             // 
-            lblOwedAmount.AutoSize = true;
-            lblOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOwedAmount.Location = new Point(482, 88);
-            lblOwedAmount.Name = "lblOwedAmount";
-            lblOwedAmount.Size = new Size(179, 36);
-            lblOwedAmount.TabIndex = 42;
-            lblOwedAmount.Text = "ចំនួនទឹកប្រាក់ជំពាក់:";
+            Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Description.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
             // 
-            // txtOwedAmount
+            // UnitPrice
             // 
-            txtOwedAmount.Enabled = false;
-            txtOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtOwedAmount.Location = new Point(670, 85);
-            txtOwedAmount.Name = "txtOwedAmount";
-            txtOwedAmount.Size = new Size(237, 44);
-            txtOwedAmount.TabIndex = 43;
+            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UnitPrice.HeaderText = "តម្លៃក្នុងមួយឯកតា";
+            UnitPrice.MinimumWidth = 6;
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            UnitPrice.Width = 188;
             // 
-            // itemIDDataGridViewTextBoxColumn
+            // Quantity
             // 
-            itemIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
-            itemIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់សម្ភារៈ";
-            itemIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            itemIDDataGridViewTextBoxColumn.ReadOnly = true;
-            itemIDDataGridViewTextBoxColumn.Width = 198;
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Quantity.HeaderText = "បរិមាណ";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
+            Quantity.Width = 111;
             // 
-            // DescriptionDataGridViewTextBoxColumn
+            // Amount
             // 
-            DescriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DescriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            DescriptionDataGridViewTextBoxColumn.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
-            DescriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            DescriptionDataGridViewTextBoxColumn.Name = "DescriptionDataGridViewTextBoxColumn";
-            DescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // importQtyDataGridViewTextBoxColumn
-            // 
-            importQtyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            importQtyDataGridViewTextBoxColumn.DataPropertyName = "ImportQty";
-            importQtyDataGridViewTextBoxColumn.HeaderText = "បរិមាណនាំចូល";
-            importQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            importQtyDataGridViewTextBoxColumn.Name = "importQtyDataGridViewTextBoxColumn";
-            importQtyDataGridViewTextBoxColumn.ReadOnly = true;
-            importQtyDataGridViewTextBoxColumn.Width = 165;
-            // 
-            // unitPriceDataGridViewTextBoxColumn
-            // 
-            unitPriceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            unitPriceDataGridViewTextBoxColumn.HeaderText = "តម្លៃក្នុងមួយឯកតា";
-            unitPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
-            unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
-            unitPriceDataGridViewTextBoxColumn.Width = 188;
-            // 
-            // AmountDataGridViewTextBoxColumn
-            // 
-            AmountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            AmountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            AmountDataGridViewTextBoxColumn.HeaderText = "តម្លៃ";
-            AmountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            AmountDataGridViewTextBoxColumn.Name = "AmountDataGridViewTextBoxColumn";
-            AmountDataGridViewTextBoxColumn.ReadOnly = true;
+            Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Amount.DataPropertyName = "Amount";
+            Amount.HeaderText = "តម្លៃ";
+            Amount.MinimumWidth = 6;
+            Amount.Name = "Amount";
+            Amount.ReadOnly = true;
             // 
             // FrmImport
             // 
@@ -673,7 +669,6 @@
         private TextBox txtImportID;
         private TextBox txtItemDescription;
         private Label lblItemDescription;
-        private TextBox txtItemID;
         private Label lblItemID;
         private Label lblImportQty;
         private Label lblCategory;
@@ -719,6 +714,11 @@
         private DataGridViewTextBoxColumn DescriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn importQtyDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn AmountDataGridViewTextBoxColumn;
+        private ComboBox cbItemID;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn UnitPrice;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn Amount;
     }
 }

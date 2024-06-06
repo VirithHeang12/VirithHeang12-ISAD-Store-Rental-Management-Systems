@@ -39,7 +39,6 @@
             lblUnitPrice = new Label();
             lblExpenseDescription = new Label();
             txtExpenseDescription = new TextBox();
-            txtExpenseTypeID = new TextBox();
             lblExpenseTypeID = new Label();
             txtAmount = new TextBox();
             lblAmount = new Label();
@@ -50,7 +49,6 @@
             txtStaffPosition = new TextBox();
             lblStaffPosition = new Label();
             lblStaffID = new Label();
-            cbStoreID = new ComboBox();
             txtOwedAmount = new TextBox();
             lblContractID = new Label();
             lblPaidAmount = new Label();
@@ -71,13 +69,15 @@
             btnInsertPayment = new Button();
             pnlLeftSide = new Panel();
             dgvExpenses = new DataGridView();
+            lblSearchPayment = new Label();
+            txtSearchPayment = new TextBox();
+            txtStoreID = new TextBox();
             ExpenseTypeID = new DataGridViewTextBoxColumn();
             ExpenseDescription = new DataGridViewTextBoxColumn();
             UnitPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
-            lblSearchPayment = new Label();
-            txtSearchPayment = new TextBox();
+            cbExpenseTypeID = new ComboBox();
             pnlRightSide.SuspendLayout();
             gbPaymentDetails.SuspendLayout();
             gbPaymentInformation.SuspendLayout();
@@ -110,6 +110,7 @@
             // 
             // gbPaymentDetails
             // 
+            gbPaymentDetails.Controls.Add(cbExpenseTypeID);
             gbPaymentDetails.Controls.Add(btnUpdateExpenseType);
             gbPaymentDetails.Controls.Add(btnInsertExpenseType);
             gbPaymentDetails.Controls.Add(txtExpenseQty);
@@ -118,7 +119,6 @@
             gbPaymentDetails.Controls.Add(lblUnitPrice);
             gbPaymentDetails.Controls.Add(lblExpenseDescription);
             gbPaymentDetails.Controls.Add(txtExpenseDescription);
-            gbPaymentDetails.Controls.Add(txtExpenseTypeID);
             gbPaymentDetails.Controls.Add(lblExpenseTypeID);
             gbPaymentDetails.Controls.Add(txtAmount);
             gbPaymentDetails.Controls.Add(lblAmount);
@@ -210,14 +210,6 @@
             txtExpenseDescription.Size = new Size(219, 44);
             txtExpenseDescription.TabIndex = 19;
             // 
-            // txtExpenseTypeID
-            // 
-            txtExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtExpenseTypeID.Location = new Point(267, 38);
-            txtExpenseTypeID.Name = "txtExpenseTypeID";
-            txtExpenseTypeID.Size = new Size(177, 44);
-            txtExpenseTypeID.TabIndex = 17;
-            // 
             // lblExpenseTypeID
             // 
             lblExpenseTypeID.AutoSize = true;
@@ -249,13 +241,13 @@
             // 
             // gbPaymentInformation
             // 
+            gbPaymentInformation.Controls.Add(txtStoreID);
             gbPaymentInformation.Controls.Add(cbStaffID);
             gbPaymentInformation.Controls.Add(txtStaffName);
             gbPaymentInformation.Controls.Add(lblStaffName);
             gbPaymentInformation.Controls.Add(txtStaffPosition);
             gbPaymentInformation.Controls.Add(lblStaffPosition);
             gbPaymentInformation.Controls.Add(lblStaffID);
-            gbPaymentInformation.Controls.Add(cbStoreID);
             gbPaymentInformation.Controls.Add(txtOwedAmount);
             gbPaymentInformation.Controls.Add(lblContractID);
             gbPaymentInformation.Controls.Add(lblPaidAmount);
@@ -334,16 +326,6 @@
             lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 42;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
-            // 
-            // cbStoreID
-            // 
-            cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStoreID.FormattingEnabled = true;
-            cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbStoreID.Location = new Point(173, 140);
-            cbStoreID.Name = "cbStoreID";
-            cbStoreID.Size = new Size(166, 44);
-            cbStoreID.TabIndex = 41;
             // 
             // txtOwedAmount
             // 
@@ -551,6 +533,31 @@
             dgvExpenses.Size = new Size(1427, 238);
             dgvExpenses.TabIndex = 4;
             // 
+            // lblSearchPayment
+            // 
+            lblSearchPayment.AutoSize = true;
+            lblSearchPayment.Location = new Point(64, 17);
+            lblSearchPayment.Name = "lblSearchPayment";
+            lblSearchPayment.Size = new Size(283, 36);
+            lblSearchPayment.TabIndex = 1;
+            lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
+            // 
+            // txtSearchPayment
+            // 
+            txtSearchPayment.Location = new Point(365, 11);
+            txtSearchPayment.Name = "txtSearchPayment";
+            txtSearchPayment.Size = new Size(370, 44);
+            txtSearchPayment.TabIndex = 2;
+            // 
+            // txtStoreID
+            // 
+            txtStoreID.Enabled = false;
+            txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStoreID.Location = new Point(188, 140);
+            txtStoreID.Name = "txtStoreID";
+            txtStoreID.Size = new Size(161, 44);
+            txtStoreID.TabIndex = 49;
+            // 
             // ExpenseTypeID
             // 
             ExpenseTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -592,29 +599,22 @@
             // 
             // Amount
             // 
-            Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Amount.DataPropertyName = "Amount";
             Amount.HeaderText = "តម្លៃ";
             Amount.MinimumWidth = 6;
             Amount.Name = "Amount";
             Amount.ReadOnly = true;
-            Amount.Width = 78;
             // 
-            // lblSearchPayment
+            // cbExpenseTypeID
             // 
-            lblSearchPayment.AutoSize = true;
-            lblSearchPayment.Location = new Point(64, 17);
-            lblSearchPayment.Name = "lblSearchPayment";
-            lblSearchPayment.Size = new Size(283, 36);
-            lblSearchPayment.TabIndex = 1;
-            lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
-            // 
-            // txtSearchPayment
-            // 
-            txtSearchPayment.Location = new Point(365, 11);
-            txtSearchPayment.Name = "txtSearchPayment";
-            txtSearchPayment.Size = new Size(370, 44);
-            txtSearchPayment.TabIndex = 2;
+            cbExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbExpenseTypeID.FormattingEnabled = true;
+            cbExpenseTypeID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbExpenseTypeID.Location = new Point(267, 38);
+            cbExpenseTypeID.Name = "cbExpenseTypeID";
+            cbExpenseTypeID.Size = new Size(177, 44);
+            cbExpenseTypeID.TabIndex = 49;
             // 
             // FrmPayment
             // 
@@ -650,7 +650,6 @@
         private TextBox txtPaymentID;
         private TextBox txtExpenseDescription;
         private Label lblExpenseDescription;
-        private TextBox txtExpenseTypeID;
         private Label lblExpenseTypeID;
         private Label lblAmount;
         private TextBox txtUnitPrice;
@@ -679,7 +678,6 @@
         private Label lblTotalAmount;
         private Label lblContractID;
         private TextBox txtOwedAmount;
-        private ComboBox cbStoreID;
         private GroupBox gbPaymentDetails;
         private TextBox txtPaidAmount;
         private Label lblStoreID;
@@ -692,10 +690,12 @@
         private ComboBox cbStaffID;
         private Button btnCloseFormPayment;
         private DataGridView dgvExpenses;
+        private TextBox txtStoreID;
         private DataGridViewTextBoxColumn ExpenseTypeID;
         private DataGridViewTextBoxColumn ExpenseDescription;
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Amount;
+        private ComboBox cbExpenseTypeID;
     }
 }

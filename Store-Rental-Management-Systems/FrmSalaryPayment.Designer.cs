@@ -359,6 +359,7 @@
             // StaffID
             // 
             StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.DataPropertyName = "StaffID";
             StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
             StaffID.MinimumWidth = 6;
             StaffID.Name = "StaffID";
@@ -368,6 +369,7 @@
             // StaffName
             // 
             StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.DataPropertyName = "StaffName";
             StaffName.HeaderText = "ឈ្មោះបុគ្គលិក";
             StaffName.MinimumWidth = 6;
             StaffName.Name = "StaffName";
@@ -376,6 +378,7 @@
             // StaffPosition
             // 
             StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.DataPropertyName = "StaffPosition";
             StaffPosition.HeaderText = "តួនាទីបុគ្គលិក";
             StaffPosition.MinimumWidth = 6;
             StaffPosition.Name = "StaffPosition";

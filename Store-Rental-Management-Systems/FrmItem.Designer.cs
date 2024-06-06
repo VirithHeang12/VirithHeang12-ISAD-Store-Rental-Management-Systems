@@ -339,21 +339,19 @@
             // 
             // Category
             // 
-            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Category.HeaderText = "ប្រភេទ";
             Category.MinimumWidth = 6;
             Category.Name = "Category";
             Category.ReadOnly = true;
-            Category.Width = 98;
             // 
             // Unit
             // 
-            Unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Unit.HeaderText = "ឯកតា";
             Unit.MinimumWidth = 6;
             Unit.Name = "Unit";
             Unit.ReadOnly = true;
-            Unit.Width = 92;
             // 
             // UnitPrice
             // 

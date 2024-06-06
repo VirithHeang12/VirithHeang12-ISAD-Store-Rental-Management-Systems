@@ -28,18 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchStore = new Label();
             txtSearchStore = new TextBox();
             pnlLeftSide = new Panel();
             dgvStores = new DataGridView();
-            storeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            floorNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            electricityLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            waterLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbStoreInformation = new GroupBox();
             cbStoreTypeID = new ComboBox();
@@ -60,6 +53,12 @@
             txtStoreID = new TextBox();
             lblElectricityLastRecord = new Label();
             txtElectricityLastRecord = new TextBox();
+            StoreID = new DataGridViewTextBoxColumn();
+            FloorNumber = new DataGridViewTextBoxColumn();
+            ElectricityLastRecord = new DataGridViewTextBoxColumn();
+            WaterLastRecord = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            StoreTypeID = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStores).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -85,13 +84,13 @@
             lblSearchStore.AutoSize = true;
             lblSearchStore.Location = new Point(82, 29);
             lblSearchStore.Name = "lblSearchStore";
-            lblSearchStore.Size = new Size(309, 36);
+            lblSearchStore.Size = new Size(237, 36);
             lblSearchStore.TabIndex = 1;
-            lblSearchStore.Text = "ស្វែងរក (លេខសម្គាល់អ្នកប្រើប្រាស់):";
+            lblSearchStore.Text = "ស្វែងរក (លេខសម្គាល់តូប):";
             // 
             // txtSearchStore
             // 
-            txtSearchStore.Location = new Point(411, 26);
+            txtSearchStore.Location = new Point(369, 26);
             txtSearchStore.Name = "txtSearchStore";
             txtSearchStore.Size = new Size(334, 44);
             txtSearchStore.TabIndex = 2;
@@ -110,9 +109,8 @@
             // 
             dgvStores.AllowUserToAddRows = false;
             dgvStores.AllowUserToDeleteRows = false;
-            dgvStores.AutoGenerateColumns = false;
             dgvStores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStores.Columns.AddRange(new DataGridViewColumn[] { storeIDDataGridViewTextBoxColumn, floorNumberDataGridViewTextBoxColumn, electricityLastRecordDataGridViewTextBoxColumn, waterLastRecordDataGridViewTextBoxColumn, statusDataGridViewCheckBoxColumn, storeTypeIDDataGridViewTextBoxColumn });
+            dgvStores.Columns.AddRange(new DataGridViewColumn[] { StoreID, FloorNumber, ElectricityLastRecord, WaterLastRecord, Status, StoreTypeID });
             dgvStores.Location = new Point(82, 82);
             dgvStores.Name = "dgvStores";
             dgvStores.ReadOnly = true;
@@ -121,64 +119,6 @@
             dgvStores.Size = new Size(1362, 325);
             dgvStores.TabIndex = 3;
             // 
-            // storeIDDataGridViewTextBoxColumn
-            // 
-            storeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            storeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreID";
-            storeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់តូប";
-            storeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeIDDataGridViewTextBoxColumn.Name = "storeIDDataGridViewTextBoxColumn";
-            storeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            storeIDDataGridViewTextBoxColumn.Width = 172;
-            // 
-            // floorNumberDataGridViewTextBoxColumn
-            // 
-            floorNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            floorNumberDataGridViewTextBoxColumn.DataPropertyName = "FloorNumber";
-            floorNumberDataGridViewTextBoxColumn.HeaderText = "ជាន់";
-            floorNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            floorNumberDataGridViewTextBoxColumn.Name = "floorNumberDataGridViewTextBoxColumn";
-            floorNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            floorNumberDataGridViewTextBoxColumn.Width = 78;
-            // 
-            // electricityLastRecordDataGridViewTextBoxColumn
-            // 
-            electricityLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            electricityLastRecordDataGridViewTextBoxColumn.DataPropertyName = "ElectricityLastRecord";
-            electricityLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាអគ្គិសនីចុងក្រោយ";
-            electricityLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            electricityLastRecordDataGridViewTextBoxColumn.Name = "electricityLastRecordDataGridViewTextBoxColumn";
-            electricityLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
-            electricityLastRecordDataGridViewTextBoxColumn.Width = 286;
-            // 
-            // waterLastRecordDataGridViewTextBoxColumn
-            // 
-            waterLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            waterLastRecordDataGridViewTextBoxColumn.DataPropertyName = "WaterLastRecord";
-            waterLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាទឹកចុងក្រោយ";
-            waterLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            waterLastRecordDataGridViewTextBoxColumn.Name = "waterLastRecordDataGridViewTextBoxColumn";
-            waterLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
-            waterLastRecordDataGridViewTextBoxColumn.Width = 252;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            statusDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            statusDataGridViewCheckBoxColumn.HeaderText = "ស្ថានភាព";
-            statusDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            statusDataGridViewCheckBoxColumn.Width = 95;
-            // 
-            // storeTypeIDDataGridViewTextBoxColumn
-            // 
-            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
-            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "ប្រភេទតូប";
-            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
-            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
             // pnlRightSide
             // 
             pnlRightSide.Controls.Add(gbStoreInformation);
@@ -400,6 +340,59 @@
             txtElectricityLastRecord.TabIndex = 13;
             txtElectricityLastRecord.UseSystemPasswordChar = true;
             // 
+            // StoreID
+            // 
+            StoreID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreID.HeaderText = "លេខសម្គាល់តូប";
+            StoreID.MinimumWidth = 6;
+            StoreID.Name = "StoreID";
+            StoreID.ReadOnly = true;
+            StoreID.Width = 172;
+            // 
+            // FloorNumber
+            // 
+            FloorNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            FloorNumber.HeaderText = "ជាន់";
+            FloorNumber.MinimumWidth = 6;
+            FloorNumber.Name = "FloorNumber";
+            FloorNumber.ReadOnly = true;
+            FloorNumber.Width = 78;
+            // 
+            // ElectricityLastRecord
+            // 
+            ElectricityLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ElectricityLastRecord.HeaderText = "នាឡិកាអគ្គិសនីចុងក្រោយ";
+            ElectricityLastRecord.MinimumWidth = 6;
+            ElectricityLastRecord.Name = "ElectricityLastRecord";
+            ElectricityLastRecord.ReadOnly = true;
+            ElectricityLastRecord.Width = 246;
+            // 
+            // WaterLastRecord
+            // 
+            WaterLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            WaterLastRecord.HeaderText = "នាឡិកាទឹកចុងក្រោយ";
+            WaterLastRecord.MinimumWidth = 6;
+            WaterLastRecord.Name = "WaterLastRecord";
+            WaterLastRecord.ReadOnly = true;
+            WaterLastRecord.Width = 212;
+            // 
+            // Status
+            // 
+            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Status.HeaderText = "ស្ថានភាព";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
+            // 
+            // StoreTypeID
+            // 
+            StoreTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreTypeID.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
+            StoreTypeID.MinimumWidth = 6;
+            StoreTypeID.Name = "StoreTypeID";
+            StoreTypeID.ReadOnly = true;
+            StoreTypeID.Width = 226;
+            // 
             // FrmStore
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -456,5 +449,11 @@
         private DataGridViewTextBoxColumn waterLastRecordDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn storeTypeIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn StoreID;
+        private DataGridViewTextBoxColumn FloorNumber;
+        private DataGridViewTextBoxColumn ElectricityLastRecord;
+        private DataGridViewTextBoxColumn WaterLastRecord;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn StoreTypeID;
     }
 }

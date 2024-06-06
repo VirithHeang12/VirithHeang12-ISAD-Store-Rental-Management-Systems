@@ -214,9 +214,9 @@
             lblExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseDescription.Location = new Point(18, 111);
             lblExpenseDescription.Name = "lblExpenseDescription";
-            lblExpenseDescription.Size = new Size(190, 36);
+            lblExpenseDescription.Size = new Size(218, 36);
             lblExpenseDescription.TabIndex = 6;
-            lblExpenseDescription.Text = "ពិព័ណ៌នាការចំណាយ:";
+            lblExpenseDescription.Text = "ពិព័ណ៌នាប្រភេទចំណាយ:";
             // 
             // txtExpenseDescription
             // 
@@ -238,7 +238,7 @@
             // ExpenseDescription
             // 
             ExpenseDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ExpenseDescription.HeaderText = "ពិពណ៌នាការចំណាយ";
+            ExpenseDescription.HeaderText = "ពិពណ៌នាប្រភេទចំណាយ";
             ExpenseDescription.MinimumWidth = 6;
             ExpenseDescription.Name = "ExpenseDescription";
             ExpenseDescription.ReadOnly = true;

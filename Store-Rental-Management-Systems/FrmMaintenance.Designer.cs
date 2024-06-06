@@ -36,11 +36,9 @@
             btnUpdateMaintenanceItem = new Button();
             btnInsertMaintenanceItem = new Button();
             txtUnit = new TextBox();
-            lblUnit = new Label();
             txtMaintenanceQty = new TextBox();
             lblItemDescription = new Label();
             txtItemDescription = new TextBox();
-            txtItemID = new TextBox();
             lblMaintenanceQty = new Label();
             lblItemID = new Label();
             lblUnitPrice = new Label();
@@ -54,7 +52,6 @@
             txtStaffPosition = new TextBox();
             lblStaffPosition = new Label();
             lblStaffID = new Label();
-            cbStoreID = new ComboBox();
             txtOwedAmount = new TextBox();
             lblContractID = new Label();
             lblPaidAmount = new Label();
@@ -77,6 +74,14 @@
             dgvMaintenanceItems = new DataGridView();
             lblSearchMaintenance = new Label();
             txtSearchMaintenance = new TextBox();
+            txtStoreID = new TextBox();
+            cbItemID = new ComboBox();
+            lblUnit = new Label();
+            ItemID = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            Amount = new DataGridViewTextBoxColumn();
             pnlRightSide.SuspendLayout();
             gbMaintenanceDetails.SuspendLayout();
             gbMaintenanceInformation.SuspendLayout();
@@ -109,6 +114,7 @@
             // 
             // gbMaintenanceDetails
             // 
+            gbMaintenanceDetails.Controls.Add(cbItemID);
             gbMaintenanceDetails.Controls.Add(txtAmount);
             gbMaintenanceDetails.Controls.Add(lblAmount);
             gbMaintenanceDetails.Controls.Add(btnUpdateMaintenanceItem);
@@ -118,7 +124,6 @@
             gbMaintenanceDetails.Controls.Add(txtMaintenanceQty);
             gbMaintenanceDetails.Controls.Add(lblItemDescription);
             gbMaintenanceDetails.Controls.Add(txtItemDescription);
-            gbMaintenanceDetails.Controls.Add(txtItemID);
             gbMaintenanceDetails.Controls.Add(lblMaintenanceQty);
             gbMaintenanceDetails.Controls.Add(lblItemID);
             gbMaintenanceDetails.Controls.Add(lblUnitPrice);
@@ -185,16 +190,6 @@
             txtUnit.Size = new Size(179, 44);
             txtUnit.TabIndex = 27;
             // 
-            // lblUnit
-            // 
-            lblUnit.AutoSize = true;
-            lblUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnit.Location = new Point(801, 46);
-            lblUnit.Name = "lblUnit";
-            lblUnit.Size = new Size(69, 36);
-            lblUnit.TabIndex = 26;
-            lblUnit.Text = "ឯកតា:";
-            // 
             // txtMaintenanceQty
             // 
             txtMaintenanceQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -221,14 +216,6 @@
             txtItemDescription.Name = "txtItemDescription";
             txtItemDescription.Size = new Size(198, 44);
             txtItemDescription.TabIndex = 19;
-            // 
-            // txtItemID
-            // 
-            txtItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtItemID.Location = new Point(199, 38);
-            txtItemID.Name = "txtItemID";
-            txtItemID.Size = new Size(163, 44);
-            txtItemID.TabIndex = 17;
             // 
             // lblMaintenanceQty
             // 
@@ -290,13 +277,13 @@
             // 
             // gbMaintenanceInformation
             // 
+            gbMaintenanceInformation.Controls.Add(txtStoreID);
             gbMaintenanceInformation.Controls.Add(cbStaffID);
             gbMaintenanceInformation.Controls.Add(txtStaffName);
             gbMaintenanceInformation.Controls.Add(lblStaffName);
             gbMaintenanceInformation.Controls.Add(txtStaffPosition);
             gbMaintenanceInformation.Controls.Add(lblStaffPosition);
             gbMaintenanceInformation.Controls.Add(lblStaffID);
-            gbMaintenanceInformation.Controls.Add(cbStoreID);
             gbMaintenanceInformation.Controls.Add(txtOwedAmount);
             gbMaintenanceInformation.Controls.Add(lblContractID);
             gbMaintenanceInformation.Controls.Add(lblPaidAmount);
@@ -375,17 +362,6 @@
             lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 42;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
-            // 
-            // cbStoreID
-            // 
-            cbStoreID.Enabled = false;
-            cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbStoreID.FormattingEnabled = true;
-            cbStoreID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbStoreID.Location = new Point(173, 140);
-            cbStoreID.Name = "cbStoreID";
-            cbStoreID.Size = new Size(189, 44);
-            cbStoreID.TabIndex = 41;
             // 
             // txtOwedAmount
             // 
@@ -584,6 +560,7 @@
             dgvMaintenanceItems.AllowUserToAddRows = false;
             dgvMaintenanceItems.AllowUserToDeleteRows = false;
             dgvMaintenanceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMaintenanceItems.Columns.AddRange(new DataGridViewColumn[] { ItemID, Description, UnitPrice, Quantity, Amount });
             dgvMaintenanceItems.Location = new Point(63, 74);
             dgvMaintenanceItems.Name = "dgvMaintenanceItems";
             dgvMaintenanceItems.ReadOnly = true;
@@ -607,6 +584,78 @@
             txtSearchMaintenance.Name = "txtSearchMaintenance";
             txtSearchMaintenance.Size = new Size(470, 44);
             txtSearchMaintenance.TabIndex = 2;
+            // 
+            // txtStoreID
+            // 
+            txtStoreID.Enabled = false;
+            txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStoreID.Location = new Point(199, 140);
+            txtStoreID.Name = "txtStoreID";
+            txtStoreID.Size = new Size(161, 44);
+            txtStoreID.TabIndex = 49;
+            // 
+            // cbItemID
+            // 
+            cbItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbItemID.FormattingEnabled = true;
+            cbItemID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbItemID.Location = new Point(199, 44);
+            cbItemID.Name = "cbItemID";
+            cbItemID.Size = new Size(161, 44);
+            cbItemID.TabIndex = 50;
+            // 
+            // lblUnit
+            // 
+            lblUnit.AutoSize = true;
+            lblUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUnit.Location = new Point(801, 46);
+            lblUnit.Name = "lblUnit";
+            lblUnit.Size = new Size(69, 36);
+            lblUnit.TabIndex = 26;
+            lblUnit.Text = "ឯកតា:";
+            // 
+            // ItemID
+            // 
+            ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ItemID.HeaderText = "លេខសម្គាល់សម្ភារៈ";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.ReadOnly = true;
+            ItemID.Width = 198;
+            // 
+            // Description
+            // 
+            Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Description.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UnitPrice.HeaderText = "តម្លៃក្នុងមួយឯកតា";
+            UnitPrice.MinimumWidth = 6;
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            UnitPrice.Width = 188;
+            // 
+            // Quantity
+            // 
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Quantity.HeaderText = "បរិមាណប្រើប្រាស់";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
+            Quantity.Width = 183;
+            // 
+            // Amount
+            // 
+            Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Amount.HeaderText = "តម្លៃ";
+            Amount.MinimumWidth = 6;
+            Amount.Name = "Amount";
+            Amount.ReadOnly = true;
             // 
             // FrmMaintenance
             // 
@@ -642,7 +691,6 @@
         private TextBox txtMaintenanceID;
         private TextBox txtItemDescription;
         private Label lblItemDescription;
-        private TextBox txtItemID;
         private Label lblItemID;
         private Label lblMaintenanceQty;
         private Label lblCategory;
@@ -663,7 +711,6 @@
         private TextBox txtStaffPosition;
         private Label lblMaintenanceID;
         private TextBox txtUnit;
-        private Label lblUnit;
         private TextBox txtMaintenanceQty;
         private Button btnUpdateMaintenanceItem;
         private Button btnInsertMaintenanceItem;
@@ -677,7 +724,6 @@
         private Label lblTotalAmount;
         private Label lblContractID;
         private TextBox txtOwedAmount;
-        private ComboBox cbStoreID;
         private GroupBox gbMaintenanceDetails;
         private TextBox txtPaidAmount;
         private Label lblStoreID;
@@ -692,5 +738,8 @@
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Amount;
+        private TextBox txtStoreID;
+        private ComboBox cbItemID;
+        private Label lblUnit;
     }
 }

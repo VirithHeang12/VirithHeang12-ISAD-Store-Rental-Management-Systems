@@ -38,7 +38,6 @@
             supplierNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             contactNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             supplierAddressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            supplierBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbSupplierInformation = new GroupBox();
             pnlSupplierManipulation = new Panel();
@@ -56,7 +55,6 @@
             txtContactNumber = new TextBox();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbSupplierInformation.SuspendLayout();
             pnlSupplierManipulation.SuspendLayout();
@@ -108,7 +106,6 @@
             dgvSuppliers.AutoGenerateColumns = false;
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { supplierIDDataGridViewTextBoxColumn, supplierNameDataGridViewTextBoxColumn, contactNumberDataGridViewTextBoxColumn, supplierAddressDataGridViewTextBoxColumn });
-            dgvSuppliers.DataSource = supplierBindingSource;
             dgvSuppliers.Location = new Point(82, 74);
             dgvSuppliers.Name = "dgvSuppliers";
             dgvSuppliers.ReadOnly = true;
@@ -155,10 +152,6 @@
             supplierAddressDataGridViewTextBoxColumn.MinimumWidth = 6;
             supplierAddressDataGridViewTextBoxColumn.Name = "supplierAddressDataGridViewTextBoxColumn";
             supplierAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
             // 
             // pnlRightSide
             // 
@@ -338,7 +331,6 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbSupplierInformation.ResumeLayout(false);
             gbSupplierInformation.PerformLayout();
@@ -367,7 +359,6 @@
         private Button btnUpdateSupplier;
         private Label lblSupplierAddress;
         private DataGridView dgvSuppliers;
-        private BindingSource supplierBindingSource;
         private DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn supplierNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn contactNumberDataGridViewTextBoxColumn;

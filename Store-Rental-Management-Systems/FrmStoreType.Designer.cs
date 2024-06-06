@@ -39,7 +39,6 @@
             threeMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sixMonthPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             oneYearPaymentDiscountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            storeTypeBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbStoreTypeInformation = new GroupBox();
             txtOneYearPaymentDiscount = new TextBox();
@@ -59,7 +58,6 @@
             txtThreeMonthPaymentDiscount = new TextBox();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStoreTypes).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)storeTypeBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbStoreTypeInformation.SuspendLayout();
             pnlStoreTypeManipulation.SuspendLayout();
@@ -111,7 +109,6 @@
             dgvStoreTypes.AutoGenerateColumns = false;
             dgvStoreTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStoreTypes.Columns.AddRange(new DataGridViewColumn[] { storeTypeIDDataGridViewTextBoxColumn, storeTypeDescriptionDataGridViewTextBoxColumn, threeMonthPaymentDiscountDataGridViewTextBoxColumn, sixMonthPaymentDiscountDataGridViewTextBoxColumn, oneYearPaymentDiscountDataGridViewTextBoxColumn });
-            dgvStoreTypes.DataSource = storeTypeBindingSource;
             dgvStoreTypes.Location = new Point(82, 81);
             dgvStoreTypes.Name = "dgvStoreTypes";
             dgvStoreTypes.ReadOnly = true;
@@ -165,10 +162,6 @@
             oneYearPaymentDiscountDataGridViewTextBoxColumn.MinimumWidth = 6;
             oneYearPaymentDiscountDataGridViewTextBoxColumn.Name = "oneYearPaymentDiscountDataGridViewTextBoxColumn";
             oneYearPaymentDiscountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // storeTypeBindingSource
-            // 
-            storeTypeBindingSource.DataSource = typeof(StoreRentalHelper.entities.StoreType);
             // 
             // pnlRightSide
             // 
@@ -366,7 +359,6 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStoreTypes).EndInit();
-            ((System.ComponentModel.ISupportInitialize)storeTypeBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbStoreTypeInformation.ResumeLayout(false);
             gbStoreTypeInformation.PerformLayout();
@@ -398,7 +390,6 @@
         private DataGridView dgvStoreTypes;
         private TextBox txtOneYearPaymentDiscount;
         private Label lblOneYearPaymentDiscount;
-        private BindingSource storeTypeBindingSource;
         private DataGridViewTextBoxColumn storeTypeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn storeTypeDescriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn threeMonthPaymentDiscountDataGridViewTextBoxColumn;

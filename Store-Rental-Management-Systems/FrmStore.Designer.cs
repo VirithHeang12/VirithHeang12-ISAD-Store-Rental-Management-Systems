@@ -33,19 +33,22 @@
             lblSearchStore = new Label();
             txtSearchStore = new TextBox();
             pnlLeftSide = new Panel();
-            dgvUsers = new DataGridView();
-            userBindingSource = new BindingSource(components);
-            supplierBindingSource = new BindingSource(components);
-            itemBindingSource = new BindingSource(components);
+            dgvStores = new DataGridView();
+            storeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            floorNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            electricityLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            waterLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
-            gbSupplierInformation = new GroupBox();
+            gbStoreInformation = new GroupBox();
             cbStoreTypeID = new ComboBox();
             rdbRented = new RadioButton();
             rdbFree = new RadioButton();
             txtWaterLastRecord = new TextBox();
             lblStoreTypeID = new Label();
             lblStatus = new Label();
-            pnlUserManipulation = new Panel();
+            pnlStoreManipulation = new Panel();
             btnCloseFormStore = new Button();
             btnNewStore = new Button();
             btnUpdateStore = new Button();
@@ -57,42 +60,11 @@
             txtStoreID = new TextBox();
             lblElectricityLastRecord = new Label();
             txtElectricityLastRecord = new TextBox();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
-            storeBindingSource = new BindingSource(components);
-            storeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            floorNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            electricityLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            waterLastRecordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            storeTypeIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStores).BeginInit();
             pnlRightSide.SuspendLayout();
-            gbSupplierInformation.SuspendLayout();
-            pnlUserManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)storeBindingSource).BeginInit();
+            gbStoreInformation.SuspendLayout();
+            pnlStoreManipulation.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitle
@@ -126,7 +98,7 @@
             // 
             // pnlLeftSide
             // 
-            pnlLeftSide.Controls.Add(dgvUsers);
+            pnlLeftSide.Controls.Add(dgvStores);
             pnlLeftSide.Controls.Add(lblSearchStore);
             pnlLeftSide.Controls.Add(txtSearchStore);
             pnlLeftSide.Location = new Point(266, 537);
@@ -134,65 +106,110 @@
             pnlLeftSide.Size = new Size(1534, 463);
             pnlLeftSide.TabIndex = 3;
             // 
-            // dgvUsers
+            // dgvStores
             // 
-            dgvUsers.AllowUserToAddRows = false;
-            dgvUsers.AllowUserToDeleteRows = false;
-            dgvUsers.AutoGenerateColumns = false;
-            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { storeIDDataGridViewTextBoxColumn, floorNumberDataGridViewTextBoxColumn, electricityLastRecordDataGridViewTextBoxColumn, waterLastRecordDataGridViewTextBoxColumn, statusDataGridViewCheckBoxColumn, storeTypeIDDataGridViewTextBoxColumn });
-            dgvUsers.DataSource = storeBindingSource;
-            dgvUsers.Location = new Point(82, 82);
-            dgvUsers.Name = "dgvUsers";
-            dgvUsers.ReadOnly = true;
-            dgvUsers.RowHeadersWidth = 51;
-            dgvUsers.RowTemplate.Height = 29;
-            dgvUsers.Size = new Size(1362, 325);
-            dgvUsers.TabIndex = 3;
+            dgvStores.AllowUserToAddRows = false;
+            dgvStores.AllowUserToDeleteRows = false;
+            dgvStores.AutoGenerateColumns = false;
+            dgvStores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStores.Columns.AddRange(new DataGridViewColumn[] { storeIDDataGridViewTextBoxColumn, floorNumberDataGridViewTextBoxColumn, electricityLastRecordDataGridViewTextBoxColumn, waterLastRecordDataGridViewTextBoxColumn, statusDataGridViewCheckBoxColumn, storeTypeIDDataGridViewTextBoxColumn });
+            dgvStores.Location = new Point(82, 82);
+            dgvStores.Name = "dgvStores";
+            dgvStores.ReadOnly = true;
+            dgvStores.RowHeadersWidth = 51;
+            dgvStores.RowTemplate.Height = 29;
+            dgvStores.Size = new Size(1362, 325);
+            dgvStores.TabIndex = 3;
             // 
-            // userBindingSource
+            // storeIDDataGridViewTextBoxColumn
             // 
-            userBindingSource.DataSource = typeof(StoreRentalHelper.entities.User);
+            storeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            storeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreID";
+            storeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់តូប";
+            storeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeIDDataGridViewTextBoxColumn.Name = "storeIDDataGridViewTextBoxColumn";
+            storeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            storeIDDataGridViewTextBoxColumn.Width = 172;
             // 
-            // supplierBindingSource
+            // floorNumberDataGridViewTextBoxColumn
             // 
-            supplierBindingSource.DataSource = typeof(StoreRentalHelper.entities.Supplier);
+            floorNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            floorNumberDataGridViewTextBoxColumn.DataPropertyName = "FloorNumber";
+            floorNumberDataGridViewTextBoxColumn.HeaderText = "ជាន់";
+            floorNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            floorNumberDataGridViewTextBoxColumn.Name = "floorNumberDataGridViewTextBoxColumn";
+            floorNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            floorNumberDataGridViewTextBoxColumn.Width = 78;
             // 
-            // itemBindingSource
+            // electricityLastRecordDataGridViewTextBoxColumn
             // 
-            itemBindingSource.DataSource = typeof(StoreRentalHelper.entities.Item);
+            electricityLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            electricityLastRecordDataGridViewTextBoxColumn.DataPropertyName = "ElectricityLastRecord";
+            electricityLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាអគ្គិសនីចុងក្រោយ";
+            electricityLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            electricityLastRecordDataGridViewTextBoxColumn.Name = "electricityLastRecordDataGridViewTextBoxColumn";
+            electricityLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
+            electricityLastRecordDataGridViewTextBoxColumn.Width = 286;
             // 
+            // waterLastRecordDataGridViewTextBoxColumn
+            // 
+            waterLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            waterLastRecordDataGridViewTextBoxColumn.DataPropertyName = "WaterLastRecord";
+            waterLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាទឹកចុងក្រោយ";
+            waterLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
+            waterLastRecordDataGridViewTextBoxColumn.Name = "waterLastRecordDataGridViewTextBoxColumn";
+            waterLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
+            waterLastRecordDataGridViewTextBoxColumn.Width = 252;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            statusDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            statusDataGridViewCheckBoxColumn.HeaderText = "ស្ថានភាព";
+            statusDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            statusDataGridViewCheckBoxColumn.Width = 95;
+            // 
+            // storeTypeIDDataGridViewTextBoxColumn
+            // 
+            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
+            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "ប្រភេទតូប";
+            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
+            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
             // pnlRightSide
             // 
-            pnlRightSide.Controls.Add(gbSupplierInformation);
+            pnlRightSide.Controls.Add(gbStoreInformation);
             pnlRightSide.Location = new Point(266, 184);
             pnlRightSide.Name = "pnlRightSide";
             pnlRightSide.Size = new Size(1534, 355);
             pnlRightSide.TabIndex = 4;
             // 
-            // gbSupplierInformation
+            // gbStoreInformation
             // 
-            gbSupplierInformation.Controls.Add(cbStoreTypeID);
-            gbSupplierInformation.Controls.Add(rdbRented);
-            gbSupplierInformation.Controls.Add(rdbFree);
-            gbSupplierInformation.Controls.Add(txtWaterLastRecord);
-            gbSupplierInformation.Controls.Add(lblStoreTypeID);
-            gbSupplierInformation.Controls.Add(lblStatus);
-            gbSupplierInformation.Controls.Add(pnlUserManipulation);
-            gbSupplierInformation.Controls.Add(lblWaterLastRecord);
-            gbSupplierInformation.Controls.Add(lblStoreID);
-            gbSupplierInformation.Controls.Add(txtFloorNumber);
-            gbSupplierInformation.Controls.Add(lblFloorNumber);
-            gbSupplierInformation.Controls.Add(txtStoreID);
-            gbSupplierInformation.Controls.Add(lblElectricityLastRecord);
-            gbSupplierInformation.Controls.Add(txtElectricityLastRecord);
-            gbSupplierInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            gbSupplierInformation.Location = new Point(82, 12);
-            gbSupplierInformation.Name = "gbSupplierInformation";
-            gbSupplierInformation.Size = new Size(1362, 335);
-            gbSupplierInformation.TabIndex = 25;
-            gbSupplierInformation.TabStop = false;
-            gbSupplierInformation.Text = "ព័ត៌មានតូប";
+            gbStoreInformation.Controls.Add(cbStoreTypeID);
+            gbStoreInformation.Controls.Add(rdbRented);
+            gbStoreInformation.Controls.Add(rdbFree);
+            gbStoreInformation.Controls.Add(txtWaterLastRecord);
+            gbStoreInformation.Controls.Add(lblStoreTypeID);
+            gbStoreInformation.Controls.Add(lblStatus);
+            gbStoreInformation.Controls.Add(pnlStoreManipulation);
+            gbStoreInformation.Controls.Add(lblWaterLastRecord);
+            gbStoreInformation.Controls.Add(lblStoreID);
+            gbStoreInformation.Controls.Add(txtFloorNumber);
+            gbStoreInformation.Controls.Add(lblFloorNumber);
+            gbStoreInformation.Controls.Add(txtStoreID);
+            gbStoreInformation.Controls.Add(lblElectricityLastRecord);
+            gbStoreInformation.Controls.Add(txtElectricityLastRecord);
+            gbStoreInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbStoreInformation.Location = new Point(82, 12);
+            gbStoreInformation.Name = "gbStoreInformation";
+            gbStoreInformation.Size = new Size(1362, 335);
+            gbStoreInformation.TabIndex = 25;
+            gbStoreInformation.TabStop = false;
+            gbStoreInformation.Text = "ព័ត៌មានតូប";
             // 
             // cbStoreTypeID
             // 
@@ -257,17 +274,17 @@
             lblStatus.TabIndex = 29;
             lblStatus.Text = "ស្ថានភាព:";
             // 
-            // pnlUserManipulation
+            // pnlStoreManipulation
             // 
-            pnlUserManipulation.Controls.Add(btnCloseFormStore);
-            pnlUserManipulation.Controls.Add(btnNewStore);
-            pnlUserManipulation.Controls.Add(btnUpdateStore);
-            pnlUserManipulation.Controls.Add(btnInsertStore);
-            pnlUserManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            pnlUserManipulation.Location = new Point(18, 232);
-            pnlUserManipulation.Name = "pnlUserManipulation";
-            pnlUserManipulation.Size = new Size(1301, 81);
-            pnlUserManipulation.TabIndex = 5;
+            pnlStoreManipulation.Controls.Add(btnCloseFormStore);
+            pnlStoreManipulation.Controls.Add(btnNewStore);
+            pnlStoreManipulation.Controls.Add(btnUpdateStore);
+            pnlStoreManipulation.Controls.Add(btnInsertStore);
+            pnlStoreManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlStoreManipulation.Location = new Point(18, 232);
+            pnlStoreManipulation.Name = "pnlStoreManipulation";
+            pnlStoreManipulation.Size = new Size(1301, 81);
+            pnlStoreManipulation.TabIndex = 5;
             // 
             // btnCloseFormStore
             // 
@@ -383,109 +400,6 @@
             txtElectricityLastRecord.TabIndex = 13;
             txtElectricityLastRecord.UseSystemPasswordChar = true;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
-            // storeBindingSource
-            // 
-            storeBindingSource.DataSource = typeof(StoreRentalHelper.entities.Store);
-            // 
-            // storeIDDataGridViewTextBoxColumn
-            // 
-            storeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            storeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreID";
-            storeIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់តូប";
-            storeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeIDDataGridViewTextBoxColumn.Name = "storeIDDataGridViewTextBoxColumn";
-            storeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            storeIDDataGridViewTextBoxColumn.Width = 172;
-            // 
-            // floorNumberDataGridViewTextBoxColumn
-            // 
-            floorNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            floorNumberDataGridViewTextBoxColumn.DataPropertyName = "FloorNumber";
-            floorNumberDataGridViewTextBoxColumn.HeaderText = "ជាន់";
-            floorNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            floorNumberDataGridViewTextBoxColumn.Name = "floorNumberDataGridViewTextBoxColumn";
-            floorNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            floorNumberDataGridViewTextBoxColumn.Width = 78;
-            // 
-            // electricityLastRecordDataGridViewTextBoxColumn
-            // 
-            electricityLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            electricityLastRecordDataGridViewTextBoxColumn.DataPropertyName = "ElectricityLastRecord";
-            electricityLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាអគ្គិសនីចុងក្រោយ";
-            electricityLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            electricityLastRecordDataGridViewTextBoxColumn.Name = "electricityLastRecordDataGridViewTextBoxColumn";
-            electricityLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
-            electricityLastRecordDataGridViewTextBoxColumn.Width = 286;
-            // 
-            // waterLastRecordDataGridViewTextBoxColumn
-            // 
-            waterLastRecordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            waterLastRecordDataGridViewTextBoxColumn.DataPropertyName = "WaterLastRecord";
-            waterLastRecordDataGridViewTextBoxColumn.HeaderText = "លេខនាឡិកាទឹកចុងក្រោយ";
-            waterLastRecordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            waterLastRecordDataGridViewTextBoxColumn.Name = "waterLastRecordDataGridViewTextBoxColumn";
-            waterLastRecordDataGridViewTextBoxColumn.ReadOnly = true;
-            waterLastRecordDataGridViewTextBoxColumn.Width = 252;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            statusDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            statusDataGridViewCheckBoxColumn.HeaderText = "ស្ថានភាព";
-            statusDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            statusDataGridViewCheckBoxColumn.Width = 95;
-            // 
-            // storeTypeIDDataGridViewTextBoxColumn
-            // 
-            storeTypeIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            storeTypeIDDataGridViewTextBoxColumn.DataPropertyName = "StoreTypeID";
-            storeTypeIDDataGridViewTextBoxColumn.HeaderText = "ប្រភេទតូប";
-            storeTypeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            storeTypeIDDataGridViewTextBoxColumn.Name = "storeTypeIDDataGridViewTextBoxColumn";
-            storeTypeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FrmStore
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -501,25 +415,11 @@
             Controls.SetChildIndex(pnlRightSide, 0);
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)itemBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvStores).EndInit();
             pnlRightSide.ResumeLayout(false);
-            gbSupplierInformation.ResumeLayout(false);
-            gbSupplierInformation.PerformLayout();
-            pnlUserManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)storeBindingSource).EndInit();
+            gbStoreInformation.ResumeLayout(false);
+            gbStoreInformation.PerformLayout();
+            pnlStoreManipulation.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -535,33 +435,17 @@
         private TextBox txtFloorNumber;
         private Label lblFloorNumber;
         private TextBox txtStoreID;
-        private Label lblStockQty;
         private TextBox txtElectricityLastRecord;
-        private Label lblUnitPrice;
-        private GroupBox gbSupplierInformation;
-        private Panel pnlUserManipulation;
+        private GroupBox gbStoreInformation;
+        private Panel pnlStoreManipulation;
         private Button btnInsertStore;
         private Button btnCloseFormStore;
         private Button btnNewStore;
         private Button btnUpdateStore;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
-        private TextBox txtStockQty;
         private Label lblWaterLastRecord;
-        private DataGridView dgvUsers;
-        private BindingSource itemBindingSource;
-        private BindingSource supplierBindingSource;
+        private DataGridView dgvStores;
         private Label lblStatus;
         private Label lblStoreTypeID;
-        private BindingSource userBindingSource;
         private TextBox txtWaterLastRecord;
         private RadioButton rdbFree;
         private RadioButton rdbRented;
@@ -572,6 +456,5 @@
         private DataGridViewTextBoxColumn waterLastRecordDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn storeTypeIDDataGridViewTextBoxColumn;
-        private BindingSource storeBindingSource;
     }
 }

@@ -1,6 +1,7 @@
 using StoreRentalLib;
 using Microsoft.Data.SqlClient;
 using StoreRentalHelper;
+using System.Data;
 
 namespace Store_Rental_Management_Systems
 {
@@ -14,35 +15,34 @@ namespace Store_Rental_Management_Systems
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ConnectToServer();
+            TryConnectingToServer();
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmMain());
         }
 
-        static void ConnectToServer()
+        static void TryConnectingToServer()
         {
             StoreRentalLib.Connection.ConnectionStringKey = "ConnectionString";
             try
             {
                 StoreRentalLib.Connection.LoadConfiguration("appsettings.json");
+                StoreRentalLib.Connection.Conn = Connection;
                 Connection = StoreRentalLib.Connection.OpenConnection();
-                InitCommands(Connection);
-    
+                InitCommands();
+                StoreRentalLib.Connection.CloseConnnection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Connecting", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Preparing a connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
         }
         public static SqlConnection Connection = default!;
-        private static void InitCommands(SqlConnection connection)
+        private static void InitCommands()
         {
-            StaffHelper.Connection = connection;
-            StaffHelper.GenerateCommands();
+            StaffHelper.Connection = Connection;
 
-            CustomerHelper.Connection = connection;
-            CustomerHelper.GenerateCommands();
+            //CustomerHelper.Connection = connection;
         }
     }
 }

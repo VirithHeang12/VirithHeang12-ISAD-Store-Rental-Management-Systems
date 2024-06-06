@@ -40,7 +40,6 @@
             staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             staffNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            userBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbUserInformation = new GroupBox();
             lblStaffPosition = new Label();
@@ -62,7 +61,6 @@
             txtPassword = new TextBox();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbUserInformation.SuspendLayout();
             pnlUserManipulation.SuspendLayout();
@@ -113,7 +111,6 @@
             dgvUsers.AutoGenerateColumns = false;
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsers.Columns.AddRange(new DataGridViewColumn[] { userIDDataGridViewTextBoxColumn, userNameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, staffIDDataGridViewTextBoxColumn, staffNameDataGridViewTextBoxColumn, staffPositionDataGridViewTextBoxColumn });
-            dgvUsers.DataSource = userBindingSource;
             dgvUsers.Location = new Point(82, 82);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.ReadOnly = true;
@@ -179,10 +176,6 @@
             staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
             staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
             staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // userBindingSource
-            // 
-            userBindingSource.DataSource = typeof(StoreRentalHelper.entities.User);
             // 
             // pnlRightSide
             // 
@@ -407,7 +400,6 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbUserInformation.ResumeLayout(false);
             gbUserInformation.PerformLayout();
@@ -440,7 +432,6 @@
         private Label lblStaffPosition;
         private TextBox txtStaffPosition;
         private TextBox txtStaffName;
-        private BindingSource userBindingSource;
         private DataGridViewTextBoxColumn userIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;

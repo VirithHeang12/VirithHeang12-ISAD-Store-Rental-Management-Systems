@@ -16,5 +16,6 @@ namespace Store_Rental_Management_Systems
         {
             InitializeComponent();
         }
+
     }
 }

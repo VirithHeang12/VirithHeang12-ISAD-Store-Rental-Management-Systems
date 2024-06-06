@@ -28,18 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchUser = new Label();
             txtSearchUser = new TextBox();
             pnlLeftSide = new Panel();
             dgvUsers = new DataGridView();
-            userIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            staffPositionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbUserInformation = new GroupBox();
             lblStaffPosition = new Label();
@@ -59,11 +52,18 @@
             txtUserID = new TextBox();
             lblPassword = new Label();
             txtPassword = new TextBox();
+            UserID = new DataGridViewTextBoxColumn();
+            UserName = new DataGridViewTextBoxColumn();
+            Password = new DataGridViewTextBoxColumn();
+            StaffID = new DataGridViewTextBoxColumn();
+            StaffName = new DataGridViewTextBoxColumn();
+            StaffPosition = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             pnlRightSide.SuspendLayout();
             gbUserInformation.SuspendLayout();
             pnlUserManipulation.SuspendLayout();
+            SuspendLayout();
             // 
             // lblTitle
             // 
@@ -108,9 +108,8 @@
             // 
             dgvUsers.AllowUserToAddRows = false;
             dgvUsers.AllowUserToDeleteRows = false;
-            dgvUsers.AutoGenerateColumns = false;
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { userIDDataGridViewTextBoxColumn, userNameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, staffIDDataGridViewTextBoxColumn, staffNameDataGridViewTextBoxColumn, staffPositionDataGridViewTextBoxColumn });
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { UserID, UserName, Password, StaffID, StaffName, StaffPosition });
             dgvUsers.Location = new Point(82, 82);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.ReadOnly = true;
@@ -118,64 +117,6 @@
             dgvUsers.RowTemplate.Height = 29;
             dgvUsers.Size = new Size(1362, 325);
             dgvUsers.TabIndex = 3;
-            // 
-            // userIDDataGridViewTextBoxColumn
-            // 
-            userIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            userIDDataGridViewTextBoxColumn.DataPropertyName = "UserID";
-            userIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
-            userIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
-            userIDDataGridViewTextBoxColumn.ReadOnly = true;
-            userIDDataGridViewTextBoxColumn.Width = 244;
-            // 
-            // userNameDataGridViewTextBoxColumn
-            // 
-            userNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-            userNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
-            userNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-            userNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            passwordDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            passwordDataGridViewTextBoxColumn.HeaderText = "លេខសម្ងាត់";
-            passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
-            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            passwordDataGridViewTextBoxColumn.Visible = false;
-            passwordDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // staffIDDataGridViewTextBoxColumn
-            // 
-            staffIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            staffIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់បុគ្គលិក";
-            staffIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            staffIDDataGridViewTextBoxColumn.ReadOnly = true;
-            staffIDDataGridViewTextBoxColumn.Width = 206;
-            // 
-            // staffNameDataGridViewTextBoxColumn
-            // 
-            staffNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
-            staffNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះបុគ្គលិក";
-            staffNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffNameDataGridViewTextBoxColumn.Name = "staffNameDataGridViewTextBoxColumn";
-            staffNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // staffPositionDataGridViewTextBoxColumn
-            // 
-            staffPositionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            staffPositionDataGridViewTextBoxColumn.DataPropertyName = "StaffPosition";
-            staffPositionDataGridViewTextBoxColumn.HeaderText = "តួនាទីបុគ្គលិក";
-            staffPositionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            staffPositionDataGridViewTextBoxColumn.Name = "staffPositionDataGridViewTextBoxColumn";
-            staffPositionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -384,6 +325,56 @@
             txtPassword.TabIndex = 13;
             txtPassword.UseSystemPasswordChar = true;
             // 
+            // UserID
+            // 
+            UserID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UserID.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
+            UserID.MinimumWidth = 6;
+            UserID.Name = "UserID";
+            UserID.ReadOnly = true;
+            UserID.Width = 244;
+            // 
+            // UserName
+            // 
+            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
+            UserName.MinimumWidth = 6;
+            UserName.Name = "UserName";
+            UserName.ReadOnly = true;
+            // 
+            // Password
+            // 
+            Password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Password.HeaderText = "លេខសម្ងាត់";
+            Password.MinimumWidth = 6;
+            Password.Name = "Password";
+            Password.ReadOnly = true;
+            // 
+            // StaffID
+            // 
+            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            StaffID.MinimumWidth = 6;
+            StaffID.Name = "StaffID";
+            StaffID.ReadOnly = true;
+            StaffID.Width = 206;
+            // 
+            // StaffName
+            // 
+            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
+            StaffName.MinimumWidth = 6;
+            StaffName.Name = "StaffName";
+            StaffName.ReadOnly = true;
+            // 
+            // StaffPosition
+            // 
+            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.HeaderText = "តួនាទីអ្នកប្រើប្រាស់";
+            StaffPosition.MinimumWidth = 6;
+            StaffPosition.Name = "StaffPosition";
+            StaffPosition.ReadOnly = true;
+            // 
             // FrmUser
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -404,6 +395,7 @@
             gbUserInformation.ResumeLayout(false);
             gbUserInformation.PerformLayout();
             pnlUserManipulation.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -438,5 +430,11 @@
         private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn staffNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn UserID;
+        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn Password;
+        private DataGridViewTextBoxColumn StaffID;
+        private DataGridViewTextBoxColumn StaffName;
+        private DataGridViewTextBoxColumn StaffPosition;
     }
 }

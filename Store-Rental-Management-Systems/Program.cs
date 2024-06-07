@@ -41,8 +41,7 @@ namespace Store_Rental_Management_Systems
         private static void InitCommands()
         {
             StaffHelper.Connection = Connection;
-
-            //CustomerHelper.Connection = connection;
+            InsuranceHelper.Connection = Connection;
         }
     }
 }

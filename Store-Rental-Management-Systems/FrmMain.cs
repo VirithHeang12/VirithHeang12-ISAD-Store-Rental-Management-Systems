@@ -20,6 +20,9 @@ namespace Store_Rental_Management_Systems
             InitializeComponent();
             this.Resize += handleFormResize;
 
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
+
             FrmLogin.LoggedIn += handleLoggedIn;
             FrmHome.NavButtonClicked += handleNavButtonClicked;
             FrmHome.ButtonLogoutClicked += handleButtonLogoutClick;

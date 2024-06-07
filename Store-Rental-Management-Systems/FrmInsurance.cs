@@ -41,7 +41,30 @@ namespace Store_Rental_Management_Systems
             btnInsertInsurance.Click += HandleBtnInsertInsuranceClicked;
             btnUpdateInsurance.Click += HandleBtnUpdateInsuranceClicked;
             _insuranceBindingSource.CurrentChanged += HandleBindingSourceCurrentChanged;
+
+            btnInsertInsurance.EnabledChanged += HandleBtnEnabledChanged;
+            btnInsertInsurance.Enabled = false;
+            btnCancelAddingInsurance.Enabled = false;
+            btnUpdateInsurance.Enabled = false;
+
+            btnInsertInsurance.ForeColor = Color.White;
+            btnCancelAddingInsurance.ForeColor = Color.White;
+            btnUpdateInsurance.ForeColor = Color.White;
             #endregion
+        }
+
+        private void HandleBtnEnabledChanged(object? sender, EventArgs e)
+        {
+            Button btn = (sender as Button)!;
+
+            if (btn != null && !btn.Enabled)
+            {
+                btn.ForeColor = Color.Gray;
+            }
+            else
+            {
+                btn!.ForeColor = Color.White;
+            }
         }
 
         private void HandleBindingSourceCurrentChanged(object? sender, EventArgs e)

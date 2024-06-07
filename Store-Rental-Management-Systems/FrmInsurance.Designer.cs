@@ -156,7 +156,6 @@
             // pnlRightSide
             // 
             pnlRightSide.Controls.Add(gbInsuranceInformation);
-            pnlRightSide.Enabled = false;
             pnlRightSide.Location = new Point(266, 184);
             pnlRightSide.Name = "pnlRightSide";
             pnlRightSide.Size = new Size(1534, 319);

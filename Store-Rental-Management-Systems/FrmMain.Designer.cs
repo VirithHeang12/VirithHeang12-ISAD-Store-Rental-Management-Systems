@@ -33,8 +33,8 @@
             // 
             // FrmMain
             // 
-            AutoScaleMode = AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            AutoScaleMode = AutoScaleMode.Dpi;
             IsMdiContainer = true;
             Name = "FrmMain";
             ShowIcon = false;

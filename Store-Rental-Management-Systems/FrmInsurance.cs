@@ -10,20 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Store_Rental_Management_Systems
 {
     public partial class FrmInsurance : FrmHome
     {
+        private const string TABLE_NAME = "tblInsurance";
         private DataSet _storeRentalDataSet = new();
         private SqlDataAdapter _insuranceDataAdapter = new();
         private BindingSource _insuranceBindingSource = new();
+
+        private ErrorProvider _errorProvider = new();
 
         private Binding? _insuranceIDBinding;
         private Binding? _insuranceNameBinding;
         private Binding? _insuranceWebsiteBinding;
 
-        private bool _isAdding = false;
-        private bool _isUpdatable = false;
+        private List<Control> _validatingControls = new();
 
         public FrmInsurance() : base()
         {
@@ -31,6 +34,8 @@ namespace Store_Rental_Management_Systems
             _insuranceDataAdapter.SelectCommand = InsuranceHelper.CreateGetAllInsurancesCommand();
             _insuranceDataAdapter.InsertCommand = InsuranceHelper.CreateInsertInsuranceCommand();
             _insuranceDataAdapter.UpdateCommand = InsuranceHelper.CreateUpdateInsuranceCommand();
+
+            _errorProvider.ContainerControl = this;
 
             LoadAllInsurances();
             InitBindings();
@@ -40,17 +45,54 @@ namespace Store_Rental_Management_Systems
             btnNewInsurance.Click += HandleBtnNewInsuranceClicked;
             btnInsertInsurance.Click += HandleBtnInsertInsuranceClicked;
             btnUpdateInsurance.Click += HandleBtnUpdateInsuranceClicked;
-            _insuranceBindingSource.CurrentChanged += HandleBindingSourceCurrentChanged;
+            btnCancelInsurance.Click += HandleBtnCancelInsuranceClicked;
 
             btnInsertInsurance.EnabledChanged += HandleBtnEnabledChanged;
-            btnInsertInsurance.Enabled = false;
-            btnCancelAddingInsurance.Enabled = false;
-            btnUpdateInsurance.Enabled = false;
+            btnNewInsurance.EnabledChanged += HandleBtnEnabledChanged;
+            btnUpdateInsurance.EnabledChanged += HandleBtnEnabledChanged;
+            btnCancelInsurance.EnabledChanged += HandleBtnEnabledChanged;
 
-            btnInsertInsurance.ForeColor = Color.White;
-            btnCancelAddingInsurance.ForeColor = Color.White;
-            btnUpdateInsurance.ForeColor = Color.White;
+            txtInsuranceName.Validating += ValidateTextBox;
+            txtInsuranceWebsite.Validating += ValidateTextBox;
+
+            _validatingControls.Add(txtInsuranceName);
+            _validatingControls.Add(txtInsuranceWebsite);
+
+            txtSearchInsurance.TextChanged += HandleSearchInsurance;
             #endregion
+        }
+
+        private void HandleSearchInsurance(object? sender, EventArgs e)
+        {
+            string searchText = txtSearchInsurance.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                _insuranceBindingSource.Filter = string.Empty;
+            }
+            else
+            {
+                _insuranceBindingSource.Filter = "InsuranceName LIKE '%" + searchText + "%'";
+            }
+        }
+
+        private void ValidateTextBox(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
+        }
+
+        private void HandleBtnCancelInsuranceClicked(object? sender, EventArgs e)
+        {
+            _storeRentalDataSet.RejectChanges();
+            RefreshDataGridView();
+
+            foreach (var control in _validatingControls)
+            {
+                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
+            }
+
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
+
         }
 
         private void HandleBtnEnabledChanged(object? sender, EventArgs e)
@@ -59,18 +101,12 @@ namespace Store_Rental_Management_Systems
 
             if (btn != null && !btn.Enabled)
             {
-                btn.ForeColor = Color.Gray;
+                btn.BackColor = Color.White;
             }
             else
             {
-                btn!.ForeColor = Color.White;
+                btn!.BackColor = Color.FromArgb(0, 28, 87);
             }
-        }
-
-        private void HandleBindingSourceCurrentChanged(object? sender, EventArgs e)
-        {
-            _isUpdatable = true;
-            btnUpdateInsurance.Enabled = _isUpdatable;
         }
 
         private void HandleBtnUpdateInsuranceClicked(object? sender, EventArgs e)
@@ -80,9 +116,9 @@ namespace Store_Rental_Management_Systems
 
         private void InitBindings()
         {
-            _insuranceIDBinding = new Binding(nameof(txtInsuranceID.Text), _insuranceBindingSource, "InsuranceID");
-            _insuranceNameBinding = new Binding(nameof(txtInsuranceName.Text), _insuranceBindingSource, "InsuranceName");
-            _insuranceWebsiteBinding = new Binding(nameof(txtInsuranceWebsite.Text), _insuranceBindingSource, "InsuranceWebsite");
+            _insuranceIDBinding = new Binding("Text", _insuranceBindingSource, "InsuranceID");
+            _insuranceNameBinding = new Binding("Text", _insuranceBindingSource, "InsuranceName");
+            _insuranceWebsiteBinding = new Binding("Text", _insuranceBindingSource, "InsuranceWebsite");
         }
         private void BindWithControls()
         {
@@ -92,33 +128,61 @@ namespace Store_Rental_Management_Systems
         }
 
         private void HandleBtnInsertInsuranceClicked(object? sender, EventArgs e)
-        {
+        { 
+            foreach (var control in _validatingControls)
+            {
+                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
+            }
+
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _insuranceBindingSource.EndEdit();
-            _insuranceDataAdapter.Update(_storeRentalDataSet);
+            try
+            {
+                _insuranceDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+            } catch (Exception)
+            {
+                MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
+            }
+            
             _insuranceBindingSource.ResetBindings(false);
 
             RefreshDataGridView();
         }
 
+        public bool HasErrors()
+        {
+            foreach (Control control in _validatingControls)
+            {
+                control.Focus();
+                var err = _errorProvider.GetError(control);
+
+                if (!string.IsNullOrEmpty(err))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void HandleBtnNewInsuranceClicked(object? sender, EventArgs e)
         {
             _insuranceBindingSource.AddNew();
+            txtInsuranceName.Focus();
         }
 
         private void LoadAllInsurances()
         {
-            _insuranceDataAdapter.TableMappings.Add("Table", "tblInsurance");
+            _insuranceDataAdapter.TableMappings.Add("Table", TABLE_NAME);
             _insuranceDataAdapter.Fill(_storeRentalDataSet);
 
-            _insuranceBindingSource.DataSource = _storeRentalDataSet.Tables["tblInsurance"];
+            _insuranceBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvInsurances.DataSource = _insuranceBindingSource;
         }
 
         private void RefreshDataGridView()
         {
-            _storeRentalDataSet.Tables["tblInsurance"]?.Clear();
-
-            _insuranceDataAdapter.Fill(_storeRentalDataSet);
+            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
+            _insuranceDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
         }
     }
 }

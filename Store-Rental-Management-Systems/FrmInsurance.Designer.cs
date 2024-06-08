@@ -41,7 +41,7 @@
             pnlRightSide = new Panel();
             gbInsuranceInformation = new GroupBox();
             pnlInsuranceManipulation = new Panel();
-            btnCancelAddingInsurance = new Button();
+            btnCancelInsurance = new Button();
             btnNewInsurance = new Button();
             btnUpdateInsurance = new Button();
             btnInsertInsurance = new Button();
@@ -51,18 +51,12 @@
             txtInsuranceID = new TextBox();
             lblInsuranceWebsite = new Label();
             txtInsuranceWebsite = new TextBox();
-            eprInsuranceID = new ErrorProvider(components);
-            eprInsuranceName = new ErrorProvider(components);
-            eprInsuranceWebsite = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).BeginInit();
             ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbInsuranceInformation.SuspendLayout();
             pnlInsuranceManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceID).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceWebsite).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -180,7 +174,7 @@
             // 
             // pnlInsuranceManipulation
             // 
-            pnlInsuranceManipulation.Controls.Add(btnCancelAddingInsurance);
+            pnlInsuranceManipulation.Controls.Add(btnCancelInsurance);
             pnlInsuranceManipulation.Controls.Add(btnNewInsurance);
             pnlInsuranceManipulation.Controls.Add(btnUpdateInsurance);
             pnlInsuranceManipulation.Controls.Add(btnInsertInsurance);
@@ -190,17 +184,17 @@
             pnlInsuranceManipulation.Size = new Size(1301, 81);
             pnlInsuranceManipulation.TabIndex = 5;
             // 
-            // btnCancelAddingInsurance
+            // btnCancelInsurance
             // 
-            btnCancelAddingInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelAddingInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelAddingInsurance.ForeColor = Color.White;
-            btnCancelAddingInsurance.Location = new Point(1100, 20);
-            btnCancelAddingInsurance.Name = "btnCancelAddingInsurance";
-            btnCancelAddingInsurance.Size = new Size(152, 52);
-            btnCancelAddingInsurance.TabIndex = 3;
-            btnCancelAddingInsurance.Text = "បោះបង់";
-            btnCancelAddingInsurance.UseVisualStyleBackColor = false;
+            btnCancelInsurance.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelInsurance.ForeColor = Color.White;
+            btnCancelInsurance.Location = new Point(1100, 20);
+            btnCancelInsurance.Name = "btnCancelInsurance";
+            btnCancelInsurance.Size = new Size(152, 52);
+            btnCancelInsurance.TabIndex = 3;
+            btnCancelInsurance.Text = "បោះបង់";
+            btnCancelInsurance.UseVisualStyleBackColor = false;
             // 
             // btnNewInsurance
             // 
@@ -217,7 +211,6 @@
             // btnUpdateInsurance
             // 
             btnUpdateInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateInsurance.Enabled = false;
             btnUpdateInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateInsurance.ForeColor = Color.White;
             btnUpdateInsurance.Location = new Point(380, 20);
@@ -230,7 +223,6 @@
             // btnInsertInsurance
             // 
             btnInsertInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertInsurance.Enabled = false;
             btnInsertInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertInsurance.ForeColor = Color.White;
             btnInsertInsurance.Location = new Point(20, 20);
@@ -295,18 +287,6 @@
             txtInsuranceWebsite.Size = new Size(1019, 44);
             txtInsuranceWebsite.TabIndex = 13;
             // 
-            // eprInsuranceID
-            // 
-            eprInsuranceID.ContainerControl = this;
-            // 
-            // eprInsuranceName
-            // 
-            eprInsuranceName.ContainerControl = this;
-            // 
-            // eprInsuranceWebsite
-            // 
-            eprInsuranceWebsite.ContainerControl = this;
-            // 
             // FrmInsurance
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -328,9 +308,6 @@
             gbInsuranceInformation.ResumeLayout(false);
             gbInsuranceInformation.PerformLayout();
             pnlInsuranceManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceID).EndInit();
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)eprInsuranceWebsite).EndInit();
             ResumeLayout(false);
         }
 
@@ -350,7 +327,7 @@
         private GroupBox gbInsuranceInformation;
         private Panel pnlInsuranceManipulation;
         private Button btnInsertInsurance;
-        private Button btnCancelAddingInsurance;
+        private Button btnCancelInsurance;
         private Button btnNewInsurance;
         private Button btnUpdateInsurance;
         private DataGridView dgvInsurances;
@@ -358,8 +335,5 @@
         private DataGridViewTextBoxColumn insuranceIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn insuranceNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn insuranceWebsiteDataGridViewTextBoxColumn;
-        private ErrorProvider eprInsuranceID;
-        private ErrorProvider eprInsuranceName;
-        private ErrorProvider eprInsuranceWebsite;
     }
 }

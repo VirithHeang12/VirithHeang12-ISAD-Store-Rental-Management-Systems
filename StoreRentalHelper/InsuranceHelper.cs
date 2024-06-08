@@ -11,7 +11,7 @@ namespace StoreRentalHelper
     public static class InsuranceHelper
     {
         #region Connection
-        public static SqlConnection Connection = default!;
+        public static SqlConnection Connection { get; set; } = default!;
         #endregion
 
         #region Procedure and View Names

@@ -42,6 +42,8 @@ namespace Store_Rental_Management_Systems
         {
             StaffHelper.Connection = Connection;
             InsuranceHelper.Connection = Connection;
+            StoreTypeHelper.Connection = Connection;
+            ExpenseTypeHelper.Connection = Connection;
         }
     }
 }

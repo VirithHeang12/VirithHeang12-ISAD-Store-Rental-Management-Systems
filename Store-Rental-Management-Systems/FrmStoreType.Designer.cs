@@ -111,7 +111,7 @@
             dgvStoreTypes.AllowUserToDeleteRows = false;
             dgvStoreTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStoreTypes.Columns.AddRange(new DataGridViewColumn[] { StoreTypeID, StoreTypeDescription, MonthlyLeasePrice, ThreeMonthPaymentDiscount, SixMonthPaymentDiscount, OneYearPaymentDiscount });
-            dgvStoreTypes.Location = new Point(82, 81);
+            dgvStoreTypes.Location = new Point(82, 90);
             dgvStoreTypes.Name = "dgvStoreTypes";
             dgvStoreTypes.ReadOnly = true;
             dgvStoreTypes.RowHeadersWidth = 51;
@@ -336,7 +336,7 @@
             StoreTypeID.MinimumWidth = 8;
             StoreTypeID.Name = "StoreTypeID";
             StoreTypeID.ReadOnly = true;
-            StoreTypeID.Width = 150;
+            StoreTypeID.Width = 240;
             // 
             // StoreTypeDescription
             // 
@@ -345,7 +345,7 @@
             StoreTypeDescription.MinimumWidth = 8;
             StoreTypeDescription.Name = "StoreTypeDescription";
             StoreTypeDescription.ReadOnly = true;
-            StoreTypeDescription.Width = 150;
+            StoreTypeDescription.Width = 180;
             // 
             // MonthlyLeasePrice
             // 
@@ -354,7 +354,7 @@
             MonthlyLeasePrice.MinimumWidth = 8;
             MonthlyLeasePrice.Name = "MonthlyLeasePrice";
             MonthlyLeasePrice.ReadOnly = true;
-            MonthlyLeasePrice.Width = 150;
+            MonthlyLeasePrice.Width = 200;
             // 
             // ThreeMonthPaymentDiscount
             // 
@@ -363,7 +363,7 @@
             ThreeMonthPaymentDiscount.MinimumWidth = 8;
             ThreeMonthPaymentDiscount.Name = "ThreeMonthPaymentDiscount";
             ThreeMonthPaymentDiscount.ReadOnly = true;
-            ThreeMonthPaymentDiscount.Width = 150;
+            ThreeMonthPaymentDiscount.Width = 270;
             // 
             // SixMonthPaymentDiscount
             // 
@@ -372,7 +372,7 @@
             SixMonthPaymentDiscount.MinimumWidth = 8;
             SixMonthPaymentDiscount.Name = "SixMonthPaymentDiscount";
             SixMonthPaymentDiscount.ReadOnly = true;
-            SixMonthPaymentDiscount.Width = 150;
+            SixMonthPaymentDiscount.Width = 250;
             // 
             // OneYearPaymentDiscount
             // 
@@ -381,7 +381,7 @@
             OneYearPaymentDiscount.MinimumWidth = 8;
             OneYearPaymentDiscount.Name = "OneYearPaymentDiscount";
             OneYearPaymentDiscount.ReadOnly = true;
-            OneYearPaymentDiscount.Width = 150;
+            OneYearPaymentDiscount.Width = 250;
             // 
             // FrmStoreType
             // 

@@ -247,7 +247,7 @@ namespace Store_Rental_Management_Systems
             dgvStoreTypes.DataSource = _storetypeBindingSource;
         }
 
-       
+
         private void RefreshDataGridView()
         {
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();

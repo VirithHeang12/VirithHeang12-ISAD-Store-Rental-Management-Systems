@@ -128,7 +128,7 @@ namespace Store_Rental_Management_Systems
         }
 
         private void HandleBtnInsertInsuranceClicked(object? sender, EventArgs e)
-        { 
+        {
             foreach (var control in _validatingControls)
             {
                 ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
@@ -139,11 +139,12 @@ namespace Store_Rental_Management_Systems
             try
             {
                 _insuranceDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
             }
-            
+
             _insuranceBindingSource.ResetBindings(false);
 
             RefreshDataGridView();

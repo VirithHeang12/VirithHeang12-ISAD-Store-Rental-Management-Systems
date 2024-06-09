@@ -13,7 +13,7 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmMain : Form
     {
-        
+
         public Form? FrmActive { get; set; } = null;
         public FrmMain()
         {
@@ -27,7 +27,7 @@ namespace Store_Rental_Management_Systems
             FrmHome.NavButtonClicked += handleNavButtonClicked;
             FrmHome.ButtonLogoutClicked += handleButtonLogoutClick;
             OpenChildForm(new FrmLogin());
-           
+
         }
 
         private void handleButtonLogoutClick(object? sender, EventArgs e)
@@ -37,13 +37,13 @@ namespace Store_Rental_Management_Systems
 
         private void handleNavButtonClicked(object? sender, FormEventArgs e)
         {
-            switch(e.Form)
+            switch (e.Form)
             {
                 case FormTypes.FrmHome:
                     OpenChildForm(new FrmHome());
                     break;
-                case FormTypes.FrmStaff: 
-                    OpenChildForm(new FrmStaff()); 
+                case FormTypes.FrmStaff:
+                    OpenChildForm(new FrmStaff());
                     break;
                 case FormTypes.FrmCustomer:
                     OpenChildForm(new FrmCustomer());
@@ -125,5 +125,7 @@ namespace Store_Rental_Management_Systems
             FrmActive.Show();
             AdjustChildFormSize(form);
         }
+
+
     }
 }

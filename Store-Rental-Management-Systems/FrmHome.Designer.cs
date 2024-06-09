@@ -50,6 +50,7 @@
             btnShowStaffForm = new Button();
             btnHome = new Button();
             panel1 = new Panel();
+            label1 = new Label();
             btnLogout = new Button();
             pnlSideNav.SuspendLayout();
             panel2.SuspendLayout();
@@ -81,7 +82,7 @@
             pnlSideNav.Dock = DockStyle.Left;
             pnlSideNav.Location = new Point(0, 0);
             pnlSideNav.Name = "pnlSideNav";
-            pnlSideNav.Size = new Size(266, 982);
+            pnlSideNav.Size = new Size(266, 1000);
             pnlSideNav.TabIndex = 0;
             // 
             // panel2
@@ -356,12 +357,23 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(btnLogout);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(266, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1516, 80);
+            panel1.Size = new Size(1534, 80);
             panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Khmer OS Siemreap", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(0, 28, 87);
+            label1.Location = new Point(393, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(793, 72);
+            label1.TabIndex = 5;
+            label1.Text = "ប្រព័ន្ធគ្រប់គ្រង ការជួលតូបក្នុងផ្សារទំនើប";
             // 
             // btnLogout
             // 
@@ -374,7 +386,7 @@
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
             btnLogout.Location = new Point(1376, 0);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(140, 80);
+            btnLogout.Size = new Size(158, 80);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "ចាកចេញ";
             btnLogout.TextAlign = ContentAlignment.MiddleRight;
@@ -382,9 +394,10 @@
             // 
             // FrmHome
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(13F, 43F);
+            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1782, 982);
+            ClientSize = new Size(1800, 1000);
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(pnlSideNav);
@@ -423,5 +436,6 @@
         private PictureBox pictureBox1;
         private Label lblCopyright;
         private Panel panel2;
+        private Label label1;
     }
 }

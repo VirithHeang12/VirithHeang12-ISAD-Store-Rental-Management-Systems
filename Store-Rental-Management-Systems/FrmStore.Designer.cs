@@ -33,6 +33,12 @@
             txtSearchStore = new TextBox();
             pnlLeftSide = new Panel();
             dgvStores = new DataGridView();
+            StoreID = new DataGridViewTextBoxColumn();
+            FloorNumber = new DataGridViewTextBoxColumn();
+            ElectricityLastRecord = new DataGridViewTextBoxColumn();
+            WaterLastRecord = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            StoreTypeID = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbStoreInformation = new GroupBox();
             cbStoreTypeID = new ComboBox();
@@ -53,12 +59,6 @@
             txtStoreID = new TextBox();
             lblElectricityLastRecord = new Label();
             txtElectricityLastRecord = new TextBox();
-            StoreID = new DataGridViewTextBoxColumn();
-            FloorNumber = new DataGridViewTextBoxColumn();
-            ElectricityLastRecord = new DataGridViewTextBoxColumn();
-            WaterLastRecord = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
-            StoreTypeID = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStores).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -84,7 +84,7 @@
             lblSearchStore.AutoSize = true;
             lblSearchStore.Location = new Point(82, 29);
             lblSearchStore.Name = "lblSearchStore";
-            lblSearchStore.Size = new Size(237, 36);
+            lblSearchStore.Size = new Size(279, 43);
             lblSearchStore.TabIndex = 1;
             lblSearchStore.Text = "ស្វែងរក (លេខសម្គាល់តូប):";
             // 
@@ -92,7 +92,7 @@
             // 
             txtSearchStore.Location = new Point(369, 26);
             txtSearchStore.Name = "txtSearchStore";
-            txtSearchStore.Size = new Size(334, 44);
+            txtSearchStore.Size = new Size(334, 51);
             txtSearchStore.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -118,6 +118,59 @@
             dgvStores.RowTemplate.Height = 29;
             dgvStores.Size = new Size(1362, 325);
             dgvStores.TabIndex = 3;
+            // 
+            // StoreID
+            // 
+            StoreID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreID.HeaderText = "លេខសម្គាល់តូប";
+            StoreID.MinimumWidth = 6;
+            StoreID.Name = "StoreID";
+            StoreID.ReadOnly = true;
+            StoreID.Width = 137;
+            // 
+            // FloorNumber
+            // 
+            FloorNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            FloorNumber.HeaderText = "ជាន់";
+            FloorNumber.MinimumWidth = 6;
+            FloorNumber.Name = "FloorNumber";
+            FloorNumber.ReadOnly = true;
+            FloorNumber.Width = 89;
+            // 
+            // ElectricityLastRecord
+            // 
+            ElectricityLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ElectricityLastRecord.HeaderText = "នាឡិកាអគ្គិសនីចុងក្រោយ";
+            ElectricityLastRecord.MinimumWidth = 6;
+            ElectricityLastRecord.Name = "ElectricityLastRecord";
+            ElectricityLastRecord.ReadOnly = true;
+            ElectricityLastRecord.Width = 153;
+            // 
+            // WaterLastRecord
+            // 
+            WaterLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            WaterLastRecord.HeaderText = "នាឡិកាទឹកចុងក្រោយ";
+            WaterLastRecord.MinimumWidth = 6;
+            WaterLastRecord.Name = "WaterLastRecord";
+            WaterLastRecord.ReadOnly = true;
+            WaterLastRecord.Width = 132;
+            // 
+            // Status
+            // 
+            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Status.HeaderText = "ស្ថានភាព";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
+            // 
+            // StoreTypeID
+            // 
+            StoreTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreTypeID.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
+            StoreTypeID.MinimumWidth = 6;
+            StoreTypeID.Name = "StoreTypeID";
+            StoreTypeID.ReadOnly = true;
+            StoreTypeID.Width = 132;
             // 
             // pnlRightSide
             // 
@@ -158,7 +211,7 @@
             cbStoreTypeID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStoreTypeID.Location = new Point(946, 174);
             cbStoreTypeID.Name = "cbStoreTypeID";
-            cbStoreTypeID.Size = new Size(373, 44);
+            cbStoreTypeID.Size = new Size(373, 51);
             cbStoreTypeID.TabIndex = 36;
             // 
             // rdbRented
@@ -167,7 +220,7 @@
             rdbRented.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rdbRented.Location = new Point(398, 175);
             rdbRented.Name = "rdbRented";
-            rdbRented.Size = new Size(104, 40);
+            rdbRented.Size = new Size(123, 47);
             rdbRented.TabIndex = 35;
             rdbRented.Text = "បានជួល";
             rdbRented.UseVisualStyleBackColor = true;
@@ -179,7 +232,7 @@
             rdbFree.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rdbFree.Location = new Point(287, 175);
             rdbFree.Name = "rdbFree";
-            rdbFree.Size = new Size(76, 40);
+            rdbFree.Size = new Size(92, 47);
             rdbFree.TabIndex = 34;
             rdbFree.TabStop = true;
             rdbFree.Text = "ទំនេរ";
@@ -190,7 +243,7 @@
             txtWaterLastRecord.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtWaterLastRecord.Location = new Point(946, 105);
             txtWaterLastRecord.Name = "txtWaterLastRecord";
-            txtWaterLastRecord.Size = new Size(373, 44);
+            txtWaterLastRecord.Size = new Size(373, 51);
             txtWaterLastRecord.TabIndex = 33;
             txtWaterLastRecord.UseSystemPasswordChar = true;
             // 
@@ -200,7 +253,7 @@
             lblStoreTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStoreTypeID.Location = new Point(711, 177);
             lblStoreTypeID.Name = "lblStoreTypeID";
-            lblStoreTypeID.Size = new Size(103, 36);
+            lblStoreTypeID.Size = new Size(122, 43);
             lblStoreTypeID.TabIndex = 32;
             lblStoreTypeID.Text = "ប្រភេទតូប:";
             // 
@@ -210,7 +263,7 @@
             lblStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.Location = new Point(18, 177);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(95, 36);
+            lblStatus.Size = new Size(113, 43);
             lblStatus.TabIndex = 29;
             lblStatus.Text = "ស្ថានភាព:";
             // 
@@ -280,7 +333,7 @@
             lblWaterLastRecord.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblWaterLastRecord.Location = new Point(711, 111);
             lblWaterLastRecord.Name = "lblWaterLastRecord";
-            lblWaterLastRecord.Size = new Size(229, 36);
+            lblWaterLastRecord.Size = new Size(273, 43);
             lblWaterLastRecord.TabIndex = 27;
             lblWaterLastRecord.Text = "លេខនាឡិកាទឹកចុងក្រោយ:";
             // 
@@ -290,7 +343,7 @@
             lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStoreID.Location = new Point(18, 41);
             lblStoreID.Name = "lblStoreID";
-            lblStoreID.Size = new Size(149, 36);
+            lblStoreID.Size = new Size(175, 43);
             lblStoreID.TabIndex = 0;
             lblStoreID.Text = "លេខសម្គាល់តូប:";
             // 
@@ -299,7 +352,7 @@
             txtFloorNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtFloorNumber.Location = new Point(946, 33);
             txtFloorNumber.Name = "txtFloorNumber";
-            txtFloorNumber.Size = new Size(373, 44);
+            txtFloorNumber.Size = new Size(373, 51);
             txtFloorNumber.TabIndex = 5;
             // 
             // lblFloorNumber
@@ -308,7 +361,7 @@
             lblFloorNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblFloorNumber.Location = new Point(711, 41);
             lblFloorNumber.Name = "lblFloorNumber";
-            lblFloorNumber.Size = new Size(55, 36);
+            lblFloorNumber.Size = new Size(66, 43);
             lblFloorNumber.TabIndex = 4;
             lblFloorNumber.Text = "ជាន់:";
             // 
@@ -318,7 +371,7 @@
             txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStoreID.Location = new Point(287, 33);
             txtStoreID.Name = "txtStoreID";
-            txtStoreID.Size = new Size(376, 44);
+            txtStoreID.Size = new Size(376, 51);
             txtStoreID.TabIndex = 3;
             // 
             // lblElectricityLastRecord
@@ -327,7 +380,7 @@
             lblElectricityLastRecord.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblElectricityLastRecord.Location = new Point(18, 111);
             lblElectricityLastRecord.Name = "lblElectricityLastRecord";
-            lblElectricityLastRecord.Size = new Size(263, 36);
+            lblElectricityLastRecord.Size = new Size(312, 43);
             lblElectricityLastRecord.TabIndex = 6;
             lblElectricityLastRecord.Text = "លេខនាឡិកាអគ្គិសនីចុងក្រោយ:";
             // 
@@ -336,66 +389,14 @@
             txtElectricityLastRecord.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtElectricityLastRecord.Location = new Point(287, 105);
             txtElectricityLastRecord.Name = "txtElectricityLastRecord";
-            txtElectricityLastRecord.Size = new Size(376, 44);
+            txtElectricityLastRecord.Size = new Size(376, 51);
             txtElectricityLastRecord.TabIndex = 13;
             txtElectricityLastRecord.UseSystemPasswordChar = true;
             // 
-            // StoreID
-            // 
-            StoreID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StoreID.HeaderText = "លេខសម្គាល់តូប";
-            StoreID.MinimumWidth = 6;
-            StoreID.Name = "StoreID";
-            StoreID.ReadOnly = true;
-            StoreID.Width = 172;
-            // 
-            // FloorNumber
-            // 
-            FloorNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            FloorNumber.HeaderText = "ជាន់";
-            FloorNumber.MinimumWidth = 6;
-            FloorNumber.Name = "FloorNumber";
-            FloorNumber.ReadOnly = true;
-            FloorNumber.Width = 78;
-            // 
-            // ElectricityLastRecord
-            // 
-            ElectricityLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ElectricityLastRecord.HeaderText = "នាឡិកាអគ្គិសនីចុងក្រោយ";
-            ElectricityLastRecord.MinimumWidth = 6;
-            ElectricityLastRecord.Name = "ElectricityLastRecord";
-            ElectricityLastRecord.ReadOnly = true;
-            ElectricityLastRecord.Width = 246;
-            // 
-            // WaterLastRecord
-            // 
-            WaterLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            WaterLastRecord.HeaderText = "នាឡិកាទឹកចុងក្រោយ";
-            WaterLastRecord.MinimumWidth = 6;
-            WaterLastRecord.Name = "WaterLastRecord";
-            WaterLastRecord.ReadOnly = true;
-            WaterLastRecord.Width = 212;
-            // 
-            // Status
-            // 
-            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Status.HeaderText = "ស្ថានភាព";
-            Status.MinimumWidth = 6;
-            Status.Name = "Status";
-            Status.ReadOnly = true;
-            // 
-            // StoreTypeID
-            // 
-            StoreTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StoreTypeID.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
-            StoreTypeID.MinimumWidth = 6;
-            StoreTypeID.Name = "StoreTypeID";
-            StoreTypeID.ReadOnly = true;
-            StoreTypeID.Width = 226;
-            // 
             // FrmStore
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(144F, 144F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(1800, 1000);
             ControlBox = true;
             Controls.Add(pnlRightSide);

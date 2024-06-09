@@ -34,7 +34,7 @@ namespace Store_Rental_Management_Systems
             btnShowPaymentForm.Click += HandleShowFormPayment;
             btnShowContractForm.Click += HandleShowFormContract;
             btnShowStoreForm.Click += HandleShowFormStore;
-          
+
             btnLogout.Click += HandleButtonLogoutClick;
         }
 
@@ -115,7 +115,7 @@ namespace Store_Rental_Management_Systems
             {
                 ButtonLogoutClicked?.Invoke(this, e);
             }
-            
+
         }
 
         private void HandleShowFormHome(object? sender, EventArgs e)
@@ -134,6 +134,6 @@ namespace Store_Rental_Management_Systems
             {
                 Form = ft,
             });
-        } 
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace StoreRentalHelper.entities
     {
         public int StoreTypeID { get; set; } = default;
         public string StoreTypeDescription { get; set; } = default!;
+
+        public double MonthlyLeasePrice { get; set; } = default;
         public byte ThreeMonthPaymentDiscount { get; set; } = default;
         public byte SixMonthPaymentDiscount { get; set; } = default;
         public byte OneYearPaymentDiscount { get; set; } = default;

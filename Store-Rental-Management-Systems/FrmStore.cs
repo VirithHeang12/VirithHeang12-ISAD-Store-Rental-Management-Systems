@@ -15,6 +15,7 @@ namespace Store_Rental_Management_Systems
         public FrmStore() : base()
         {
             InitializeComponent();
+
         }
     }
 }

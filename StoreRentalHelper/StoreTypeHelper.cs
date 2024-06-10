@@ -77,7 +77,7 @@ namespace StoreRentalHelper
         }
         #endregion
 
-        #region Generate Update Insurance Command
+        #region Generate Update StoreType Command
         public static SqlCommand CreateUpdateStoreTypeCommand()
         {
             var cmd = new SqlCommand(UPDATE, Connection);

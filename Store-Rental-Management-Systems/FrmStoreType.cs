@@ -44,7 +44,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllStoreTypes();
             InitBindings();
-            //BindWithControls();
+     
 
             #region event registrations
             btnNewStoreType.Click += HandleBtnNewStoreTypeClicked;
@@ -165,16 +165,6 @@ namespace Store_Rental_Management_Systems
             HandleBtnInsertStoreTypeClicked(null, EventArgs.Empty);
         }
 
-        //private void InitBindings()
-        //{
-        //    _storetypeIDBinding = new Binding("Text", _storetypeBindingSource, "StoreTypeID");
-        //    _storetypeDescriptionBinding = new Binding("Text", _storetypeDescriptionBinding, "StoreTypeDescription");
-        //    _storetypeMonthlyLeasePriceBinding = new Binding("Text", _storetypeMonthlyLeasePriceBinding, "MonthlyLeasePrice");
-        //    _storetypeThreeMonthPaymentDiscountBinding = new Binding("Text", _storetypeThreeMonthPaymentDiscountBinding, "ThreeMonthPaymentDiscount");
-        //    _storetypeSixMonthPaymentDiscountBinding = new Binding("Text", _storetypeSixMonthPaymentDiscountBinding, "SixMonthPaymentDiscount");
-        //    _storetypeOneYearPaymentDiscountBinding = new Binding("Text", _storetypeOneYearPaymentDiscountBinding, "OneYearPaymentDiscount");
-        //}
-
         private void InitBindings()
         {
             txtStoreTypeID.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "StoreTypeID"));
@@ -184,16 +174,6 @@ namespace Store_Rental_Management_Systems
             txtSixMonthPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "SixMonthPaymentDiscount"));
             txtOneYearPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "OneYearPaymentDiscount"));
         }
-
-        //private void BindWithControls()
-        //{
-        //    txtStoreTypeID.DataBindings.Add(_storetypeIDBinding);
-        //    txtStoreTypeDescription.DataBindings.Add(_storetypeDescriptionBinding);
-        //    txtMonthlyLeasePrice.DataBindings.Add(_storetypeMonthlyLeasePriceBinding);
-        //    txtThreeMonthPaymentDiscount.DataBindings.Add(_storetypeThreeMonthPaymentDiscountBinding);
-        //    txtSixMonthPaymentDiscount.DataBindings.Add(_storetypeSixMonthPaymentDiscountBinding);
-        //    txtOneYearPaymentDiscount.DataBindings.Add(_storetypeOneYearPaymentDiscountBinding);
-        //}
 
         private void HandleBtnInsertStoreTypeClicked(object? sender, EventArgs e)
         {

@@ -97,7 +97,14 @@ namespace Store_Rental_Management_Systems
 
             foreach (var control in _validatingControls)
             {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
+                if (control is TextBox textBox)
+                {
+                    ErrorHelper.ValidateTextBox(textBox, _errorProvider);
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
+                }
             }
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
@@ -131,11 +138,6 @@ namespace Store_Rental_Management_Systems
 
         private void HandleBtnInsertSupplierClicked(object? sender, EventArgs e)
         {
-            //foreach (var control in _validatingControls)
-            //{
-            //    ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
-
-            //}
 
             foreach (var control in _validatingControls)
             {
@@ -149,8 +151,11 @@ namespace Store_Rental_Management_Systems
                 }
             }
 
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider))
+            {
+                return;
+            }
 
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _supplierBindingSource.EndEdit();
             try
             {
@@ -162,7 +167,6 @@ namespace Store_Rental_Management_Systems
             }
 
             _supplierBindingSource.ResetBindings(false);
-
             RefreshDataGridView();
         }
         private void HandleBtnNewSupplierClicked(object? sender, EventArgs e)

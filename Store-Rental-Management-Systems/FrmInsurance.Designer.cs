@@ -63,7 +63,7 @@
             // 
             lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
-            lblTitle.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(266, 80);
             lblTitle.Name = "lblTitle";
@@ -77,7 +77,7 @@
             lblSearchInsurance.AutoSize = true;
             lblSearchInsurance.Location = new Point(82, 19);
             lblSearchInsurance.Name = "lblSearchInsurance";
-            lblSearchInsurance.Size = new Size(293, 25);
+            lblSearchInsurance.Size = new Size(364, 36);
             lblSearchInsurance.TabIndex = 1;
             lblSearchInsurance.Text = "ស្វែងរក​ (លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង):";
             // 
@@ -85,7 +85,7 @@
             // 
             txtSearchInsurance.Location = new Point(480, 11);
             txtSearchInsurance.Name = "txtSearchInsurance";
-            txtSearchInsurance.Size = new Size(512, 30);
+            txtSearchInsurance.Size = new Size(512, 44);
             txtSearchInsurance.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -122,7 +122,7 @@
             insuranceIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             insuranceIDDataGridViewTextBoxColumn.Name = "insuranceIDDataGridViewTextBoxColumn";
             insuranceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            insuranceIDDataGridViewTextBoxColumn.Width = 254;
+            insuranceIDDataGridViewTextBoxColumn.Width = 299;
             // 
             // insuranceNameDataGridViewTextBoxColumn
             // 
@@ -132,7 +132,7 @@
             insuranceNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             insuranceNameDataGridViewTextBoxColumn.Name = "insuranceNameDataGridViewTextBoxColumn";
             insuranceNameDataGridViewTextBoxColumn.ReadOnly = true;
-            insuranceNameDataGridViewTextBoxColumn.Width = 210;
+            insuranceNameDataGridViewTextBoxColumn.Width = 246;
             // 
             // insuranceWebsiteDataGridViewTextBoxColumn
             // 
@@ -164,7 +164,7 @@
             gbInsuranceInformation.Controls.Add(txtInsuranceID);
             gbInsuranceInformation.Controls.Add(lblInsuranceWebsite);
             gbInsuranceInformation.Controls.Add(txtInsuranceWebsite);
-            gbInsuranceInformation.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbInsuranceInformation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             gbInsuranceInformation.Location = new Point(82, 12);
             gbInsuranceInformation.Name = "gbInsuranceInformation";
             gbInsuranceInformation.Size = new Size(1362, 288);
@@ -178,7 +178,7 @@
             pnlInsuranceManipulation.Controls.Add(btnNewInsurance);
             pnlInsuranceManipulation.Controls.Add(btnUpdateInsurance);
             pnlInsuranceManipulation.Controls.Add(btnInsertInsurance);
-            pnlInsuranceManipulation.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlInsuranceManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             pnlInsuranceManipulation.Location = new Point(18, 175);
             pnlInsuranceManipulation.Name = "pnlInsuranceManipulation";
             pnlInsuranceManipulation.Size = new Size(1301, 81);
@@ -187,7 +187,7 @@
             // btnCancelInsurance
             // 
             btnCancelInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelInsurance.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelInsurance.ForeColor = Color.White;
             btnCancelInsurance.Location = new Point(1100, 20);
             btnCancelInsurance.Name = "btnCancelInsurance";
@@ -199,7 +199,7 @@
             // btnNewInsurance
             // 
             btnNewInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnNewInsurance.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewInsurance.ForeColor = Color.White;
             btnNewInsurance.Location = new Point(740, 20);
             btnNewInsurance.Name = "btnNewInsurance";
@@ -211,7 +211,7 @@
             // btnUpdateInsurance
             // 
             btnUpdateInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateInsurance.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdateInsurance.ForeColor = Color.White;
             btnUpdateInsurance.Location = new Point(380, 20);
             btnUpdateInsurance.Name = "btnUpdateInsurance";
@@ -223,7 +223,7 @@
             // btnInsertInsurance
             // 
             btnInsertInsurance.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertInsurance.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertInsurance.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnInsertInsurance.ForeColor = Color.White;
             btnInsertInsurance.Location = new Point(20, 20);
             btnInsertInsurance.Name = "btnInsertInsurance";
@@ -235,56 +235,56 @@
             // lblInsuranceID
             // 
             lblInsuranceID.AutoSize = true;
-            lblInsuranceID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceID.Location = new Point(18, 41);
             lblInsuranceID.Name = "lblInsuranceID";
-            lblInsuranceID.Size = new Size(228, 25);
+            lblInsuranceID.Size = new Size(276, 36);
             lblInsuranceID.TabIndex = 0;
             lblInsuranceID.Text = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
             // txtInsuranceName
             // 
-            txtInsuranceName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtInsuranceName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceName.Location = new Point(940, 33);
             txtInsuranceName.Name = "txtInsuranceName";
-            txtInsuranceName.Size = new Size(379, 30);
+            txtInsuranceName.Size = new Size(379, 44);
             txtInsuranceName.TabIndex = 5;
             // 
             // lblInsuranceName
             // 
             lblInsuranceName.AutoSize = true;
-            lblInsuranceName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInsuranceName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceName.Location = new Point(711, 41);
             lblInsuranceName.Name = "lblInsuranceName";
-            lblInsuranceName.Size = new Size(184, 25);
+            lblInsuranceName.Size = new Size(223, 36);
             lblInsuranceName.TabIndex = 4;
             lblInsuranceName.Text = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
             // txtInsuranceID
             // 
             txtInsuranceID.Enabled = false;
-            txtInsuranceID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceID.Location = new Point(300, 33);
             txtInsuranceID.Name = "txtInsuranceID";
-            txtInsuranceID.Size = new Size(363, 30);
+            txtInsuranceID.Size = new Size(363, 44);
             txtInsuranceID.TabIndex = 3;
             // 
             // lblInsuranceWebsite
             // 
             lblInsuranceWebsite.AutoSize = true;
-            lblInsuranceWebsite.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblInsuranceWebsite.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceWebsite.Location = new Point(18, 111);
             lblInsuranceWebsite.Name = "lblInsuranceWebsite";
-            lblInsuranceWebsite.Size = new Size(210, 25);
+            lblInsuranceWebsite.Size = new Size(250, 36);
             lblInsuranceWebsite.TabIndex = 6;
             lblInsuranceWebsite.Text = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
             // txtInsuranceWebsite
             // 
-            txtInsuranceWebsite.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtInsuranceWebsite.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceWebsite.Location = new Point(300, 111);
             txtInsuranceWebsite.Name = "txtInsuranceWebsite";
-            txtInsuranceWebsite.Size = new Size(1019, 30);
+            txtInsuranceWebsite.Size = new Size(1019, 44);
             txtInsuranceWebsite.TabIndex = 13;
             // 
             // FrmInsurance

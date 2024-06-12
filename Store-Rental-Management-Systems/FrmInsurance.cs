@@ -60,6 +60,7 @@ namespace Store_Rental_Management_Systems
 
             txtSearchInsurance.TextChanged += HandleSearchInsurance;
             #endregion
+            insuranceBindingSource.Position = -1;
         }
 
         private void HandleSearchInsurance(object? sender, EventArgs e)
@@ -178,6 +179,7 @@ namespace Store_Rental_Management_Systems
 
             _insuranceBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvInsurances.DataSource = _insuranceBindingSource;
+
         }
 
         private void RefreshDataGridView()

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using StoreRentalHelper.entities;
 using StoreRentalLib;
 using System;
 using System.Collections.Generic;

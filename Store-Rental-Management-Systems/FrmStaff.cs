@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using StoreRentalHelper;
-using StoreRentalHelper.entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,17 +89,17 @@ namespace Store_Rental_Management_Systems
         #region HandleStaffBindingSourceCurrentChanged
         private void HandleStaffBindingSourceCurrentChanged(object? sender, EventArgs e)
         {
-            if (StaffBindingSource.Current is Staff selectedStaff && selectedStaff.Photo != null)
-            {
-                using (MemoryStream ms = new MemoryStream(selectedStaff.Photo))
-                {
-                    pbStaffPhoto.Image = Image.FromStream(ms);
-                }
-            }
-            else
-            {
-                pbStaffPhoto.Image = null;
-            }
+            //if (StaffBindingSource.Current is Staff selectedStaff && selectedStaff.Photo != null)
+            //{
+            //    using (MemoryStream ms = new MemoryStream(selectedStaff.Photo))
+            //    {
+            //        pbStaffPhoto.Image = Image.FromStream(ms);
+            //    }
+            //}
+            //else
+            //{
+            //    pbStaffPhoto.Image = null;
+            //}
         }
         #endregion
 

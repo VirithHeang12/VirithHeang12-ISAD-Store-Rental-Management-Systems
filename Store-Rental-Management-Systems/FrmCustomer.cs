@@ -1,5 +1,4 @@
-﻿using StoreRentalHelper.entities;
-using StoreRentalHelper;
+﻿using StoreRentalHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,17 +62,17 @@ namespace Store_Rental_Management_Systems
         #region HandleCustomerBindingSourceCurrentChanged
         private void HandleCustomerBindingSourceCurrentChanged(object? sender, EventArgs e)
         {
-            if (CustomerBindingSource.Current is Customer selectedCustomer && selectedCustomer.Photo != null)
-            {
-                using (MemoryStream ms = new MemoryStream(selectedCustomer.Photo))
-                {
-                    pbCustomerPhoto.Image = Image.FromStream(ms);
-                }
-            }
-            else
-            {
-                pbCustomerPhoto.Image = null;
-            }
+            //if (CustomerBindingSource.Current is Customer selectedCustomer && selectedCustomer.Photo != null)
+            //{
+            //    using (MemoryStream ms = new MemoryStream(selectedCustomer.Photo))
+            //    {
+            //        pbCustomerPhoto.Image = Image.FromStream(ms);
+            //    }
+            //}
+            //else
+            //{
+            //    pbCustomerPhoto.Image = null;
+            //}
         }
         #endregion
 
@@ -232,26 +231,26 @@ namespace Store_Rental_Management_Systems
         #region Insert event handler
         private void HandleBtnInsertCustomerClick(object? sender, EventArgs e)
         {
-            if (ValidateTextBox(txtCustomerFirstName, epdCustomerFirstName) || ValidateTextBox(txtCustomerLastName, epdCustomerLastName) || ValidateTextBox(txtCustomerIdentityCardNumber, epdCustomerIdentityCardNumber) || ValidateMaskedTextBox(mtxtCustomerContactNumber, epdCustomerContactNumber) || ValidateTextBox(txtCustomerHouseNo, epdCustomerHouseNo) || ValidateTextBox(txtCustomerStreetNo, epdCustomerStreetNo) || ValidateTextBox(txtCustomerSangkat, epdCustomerSangkat) || ValidateTextBox(txtCustomerKhan, epdCustomerKhan))
-            {
-                CustomerHelper.AddCustomer(Program.Connection, new Customer()
-                {
-                    CustomerFirstName = txtCustomerFirstName.Text,
-                    CustomerLastName = txtCustomerLastName.Text,
-                    Sex = rdbFemale.Checked ? 'F' : 'M',
-                    BirthDate = DateOnly.Parse(dtpCustomerBirthDate.Text),
-                    IdentityCardNumber = txtCustomerIdentityCardNumber.Text,
-                    HouseNo = txtCustomerHouseNo.Text,
-                    StreetNo = txtCustomerStreetNo.Text,
-                    Sangkat = txtCustomerSangkat.Text,
-                    Khan = txtCustomerKhan.Text,
-                    ProvinceOrCity = cbCustomerCityOrProvince.Text,
-                    ContactNumber = mtxtCustomerContactNumber.Text,
-                    Photo = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image)),
-                });
-                ReloadCustomers();
-                BindListBoxToOtherControl();
-            }
+            //if (ValidateTextBox(txtCustomerFirstName, epdCustomerFirstName) || ValidateTextBox(txtCustomerLastName, epdCustomerLastName) || ValidateTextBox(txtCustomerIdentityCardNumber, epdCustomerIdentityCardNumber) || ValidateMaskedTextBox(mtxtCustomerContactNumber, epdCustomerContactNumber) || ValidateTextBox(txtCustomerHouseNo, epdCustomerHouseNo) || ValidateTextBox(txtCustomerStreetNo, epdCustomerStreetNo) || ValidateTextBox(txtCustomerSangkat, epdCustomerSangkat) || ValidateTextBox(txtCustomerKhan, epdCustomerKhan))
+            //{
+            //    CustomerHelper.AddCustomer(Program.Connection, new Customer()
+            //    {
+            //        CustomerFirstName = txtCustomerFirstName.Text,
+            //        CustomerLastName = txtCustomerLastName.Text,
+            //        Sex = rdbFemale.Checked ? 'F' : 'M',
+            //        BirthDate = DateOnly.Parse(dtpCustomerBirthDate.Text),
+            //        IdentityCardNumber = txtCustomerIdentityCardNumber.Text,
+            //        HouseNo = txtCustomerHouseNo.Text,
+            //        StreetNo = txtCustomerStreetNo.Text,
+            //        Sangkat = txtCustomerSangkat.Text,
+            //        Khan = txtCustomerKhan.Text,
+            //        ProvinceOrCity = cbCustomerCityOrProvince.Text,
+            //        ContactNumber = mtxtCustomerContactNumber.Text,
+            //        Photo = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image)),
+            //    });
+            //    ReloadCustomers();
+            //    BindListBoxToOtherControl();
+            //}
 
         }
         #endregion
@@ -312,27 +311,27 @@ namespace Store_Rental_Management_Systems
         #region Event handler for loading all Customers and render initial picture
         private void LoadAllCustomers(object? sender, EventArgs e)
         {
-            RenderInitialPicture();
-            var customers = CustomerHelper.GetAllCustomers(Program.Connection);
-            CustomerBindingSource.DataSource = customers;
-            lbCustomer.Items.Clear();
-            lbCustomer.DataSource = CustomerBindingSource;
-            lbCustomer.DisplayMember = "FullName";
-            lbCustomer.ValueMember = "CustomerID";
-            InstantiateBindings();
-            BindListBoxToOtherControl();
+            //RenderInitialPicture();
+            //var customers = CustomerHelper.GetAllCustomers(Program.Connection);
+            //CustomerBindingSource.DataSource = customers;
+            //lbCustomer.Items.Clear();
+            //lbCustomer.DataSource = CustomerBindingSource;
+            //lbCustomer.DisplayMember = "FullName";
+            //lbCustomer.ValueMember = "CustomerID";
+            //InstantiateBindings();
+            //BindListBoxToOtherControl();
         }
         #endregion
 
         #region Reload Customers
         private void ReloadCustomers()
         {
-            var customers = CustomerHelper.GetAllCustomers(Program.Connection);
-            CustomerBindingSource.DataSource = customers;
-            lbCustomer.DataSource = CustomerBindingSource;
-            lbCustomer.DisplayMember = "FullName";
-            lbCustomer.ValueMember = "CustomerID";
-            BindListBoxToOtherControl();
+            //var customers = CustomerHelper.GetAllCustomers(Program.Connection);
+            //CustomerBindingSource.DataSource = customers;
+            //lbCustomer.DataSource = CustomerBindingSource;
+            //lbCustomer.DisplayMember = "FullName";
+            //lbCustomer.ValueMember = "CustomerID";
+            //BindListBoxToOtherControl();
         }
         #endregion
 

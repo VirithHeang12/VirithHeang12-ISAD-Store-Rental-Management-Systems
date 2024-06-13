@@ -28,16 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchInsurance = new Label();
             txtSearchInsurance = new TextBox();
             pnlLeftSide = new Panel();
             dgvInsurances = new DataGridView();
-            insuranceIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            insuranceNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            insuranceWebsiteDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            insuranceBindingSource = new BindingSource(components);
             pnlRightSide = new Panel();
             gbInsuranceInformation = new GroupBox();
             pnlInsuranceManipulation = new Panel();
@@ -51,9 +46,11 @@
             txtInsuranceID = new TextBox();
             lblInsuranceWebsite = new Label();
             txtInsuranceWebsite = new TextBox();
+            InsuranceID = new DataGridViewTextBoxColumn();
+            InsuranceName = new DataGridViewTextBoxColumn();
+            InsuranceWebsite = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).BeginInit();
             pnlRightSide.SuspendLayout();
             gbInsuranceInformation.SuspendLayout();
             pnlInsuranceManipulation.SuspendLayout();
@@ -102,10 +99,8 @@
             // 
             dgvInsurances.AllowUserToAddRows = false;
             dgvInsurances.AllowUserToDeleteRows = false;
-            dgvInsurances.AutoGenerateColumns = false;
             dgvInsurances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInsurances.Columns.AddRange(new DataGridViewColumn[] { insuranceIDDataGridViewTextBoxColumn, insuranceNameDataGridViewTextBoxColumn, insuranceWebsiteDataGridViewTextBoxColumn });
-            dgvInsurances.DataSource = insuranceBindingSource;
+            dgvInsurances.Columns.AddRange(new DataGridViewColumn[] { InsuranceID, InsuranceName, InsuranceWebsite });
             dgvInsurances.Location = new Point(82, 74);
             dgvInsurances.Name = "dgvInsurances";
             dgvInsurances.ReadOnly = true;
@@ -113,39 +108,6 @@
             dgvInsurances.RowTemplate.Height = 29;
             dgvInsurances.Size = new Size(1362, 369);
             dgvInsurances.TabIndex = 3;
-            // 
-            // insuranceIDDataGridViewTextBoxColumn
-            // 
-            insuranceIDDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            insuranceIDDataGridViewTextBoxColumn.DataPropertyName = "InsuranceID";
-            insuranceIDDataGridViewTextBoxColumn.HeaderText = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង";
-            insuranceIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            insuranceIDDataGridViewTextBoxColumn.Name = "insuranceIDDataGridViewTextBoxColumn";
-            insuranceIDDataGridViewTextBoxColumn.ReadOnly = true;
-            insuranceIDDataGridViewTextBoxColumn.Width = 299;
-            // 
-            // insuranceNameDataGridViewTextBoxColumn
-            // 
-            insuranceNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            insuranceNameDataGridViewTextBoxColumn.DataPropertyName = "InsuranceName";
-            insuranceNameDataGridViewTextBoxColumn.HeaderText = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង";
-            insuranceNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            insuranceNameDataGridViewTextBoxColumn.Name = "insuranceNameDataGridViewTextBoxColumn";
-            insuranceNameDataGridViewTextBoxColumn.ReadOnly = true;
-            insuranceNameDataGridViewTextBoxColumn.Width = 246;
-            // 
-            // insuranceWebsiteDataGridViewTextBoxColumn
-            // 
-            insuranceWebsiteDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            insuranceWebsiteDataGridViewTextBoxColumn.DataPropertyName = "InsuranceWebsite";
-            insuranceWebsiteDataGridViewTextBoxColumn.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង";
-            insuranceWebsiteDataGridViewTextBoxColumn.MinimumWidth = 6;
-            insuranceWebsiteDataGridViewTextBoxColumn.Name = "insuranceWebsiteDataGridViewTextBoxColumn";
-            insuranceWebsiteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // insuranceBindingSource
-            // 
-            insuranceBindingSource.DataSource = typeof(StoreRentalHelper.entities.Insurance);
             // 
             // pnlRightSide
             // 
@@ -287,6 +249,34 @@
             txtInsuranceWebsite.Size = new Size(1019, 44);
             txtInsuranceWebsite.TabIndex = 13;
             // 
+            // InsuranceID
+            // 
+            InsuranceID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            InsuranceID.DataPropertyName = "InsuranceID";
+            InsuranceID.HeaderText = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceID.MinimumWidth = 6;
+            InsuranceID.Name = "InsuranceID";
+            InsuranceID.ReadOnly = true;
+            InsuranceID.Width = 299;
+            // 
+            // InsuranceName
+            // 
+            InsuranceName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InsuranceName.DataPropertyName = "InsuranceName";
+            InsuranceName.HeaderText = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceName.MinimumWidth = 6;
+            InsuranceName.Name = "InsuranceName";
+            InsuranceName.ReadOnly = true;
+            // 
+            // InsuranceWebsite
+            // 
+            InsuranceWebsite.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InsuranceWebsite.DataPropertyName = "InsuranceWebsite";
+            InsuranceWebsite.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceWebsite.MinimumWidth = 6;
+            InsuranceWebsite.Name = "InsuranceWebsite";
+            InsuranceWebsite.ReadOnly = true;
+            // 
             // FrmInsurance
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -303,7 +293,6 @@
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).EndInit();
-            ((System.ComponentModel.ISupportInitialize)insuranceBindingSource).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbInsuranceInformation.ResumeLayout(false);
             gbInsuranceInformation.PerformLayout();
@@ -331,9 +320,11 @@
         private Button btnNewInsurance;
         private Button btnUpdateInsurance;
         private DataGridView dgvInsurances;
-        private BindingSource insuranceBindingSource;
         private DataGridViewTextBoxColumn insuranceIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn insuranceNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn insuranceWebsiteDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn InsuranceID;
+        private DataGridViewTextBoxColumn InsuranceName;
+        private DataGridViewTextBoxColumn InsuranceWebsite;
     }
 }

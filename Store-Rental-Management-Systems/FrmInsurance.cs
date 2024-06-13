@@ -60,7 +60,7 @@ namespace Store_Rental_Management_Systems
 
             txtSearchInsurance.TextChanged += HandleSearchInsurance;
             #endregion
-            insuranceBindingSource.Position = -1;
+            _insuranceBindingSource.Position = -1;
         }
 
         private void HandleSearchInsurance(object? sender, EventArgs e)

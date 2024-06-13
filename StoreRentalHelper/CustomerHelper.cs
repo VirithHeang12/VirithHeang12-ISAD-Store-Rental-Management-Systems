@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using StoreRentalHelper.entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -120,66 +119,66 @@ namespace StoreRentalHelper
         #endregion
 
         #region Add New Customer
-        public static void AddCustomer(SqlConnection conn, Customer customer)
-        {
-            SqlCommand cmd = commands[INSERT_CUSTOMER];
-            cmd.Parameters["@CustomerFirstName"].Value = customer.CustomerFirstName;
-            cmd.Parameters["@CustomerLastName"].Value = customer.CustomerLastName;
-            cmd.Parameters["@Sex"].Value = customer.Sex;
-            cmd.Parameters["@BirthDate"].Value = customer.BirthDate;
-            cmd.Parameters["@IdentityCardNumber"].Value = customer.IdentityCardNumber;
-            cmd.Parameters["@HouseNo"].Value = customer.HouseNo;
-            cmd.Parameters["@StreetNo"].Value = customer.StreetNo;
-            cmd.Parameters["@Sangkat"].Value = customer.Sangkat;
-            cmd.Parameters["@Khan"].Value = customer.Khan;
-            cmd.Parameters["@ProvinceOrCity"].Value = customer.ProvinceOrCity;
-            cmd.Parameters["@ContactNumber"].Value = customer.ContactNumber;
-            cmd.Parameters["@Photo"].Value = customer.Photo;
+        //public static void AddCustomer(SqlConnection conn, Customer customer)
+        //{
+        //    SqlCommand cmd = commands[INSERT_CUSTOMER];
+        //    cmd.Parameters["@CustomerFirstName"].Value = customer.CustomerFirstName;
+        //    cmd.Parameters["@CustomerLastName"].Value = customer.CustomerLastName;
+        //    cmd.Parameters["@Sex"].Value = customer.Sex;
+        //    cmd.Parameters["@BirthDate"].Value = customer.BirthDate;
+        //    cmd.Parameters["@IdentityCardNumber"].Value = customer.IdentityCardNumber;
+        //    cmd.Parameters["@HouseNo"].Value = customer.HouseNo;
+        //    cmd.Parameters["@StreetNo"].Value = customer.StreetNo;
+        //    cmd.Parameters["@Sangkat"].Value = customer.Sangkat;
+        //    cmd.Parameters["@Khan"].Value = customer.Khan;
+        //    cmd.Parameters["@ProvinceOrCity"].Value = customer.ProvinceOrCity;
+        //    cmd.Parameters["@ContactNumber"].Value = customer.ContactNumber;
+        //    cmd.Parameters["@Photo"].Value = customer.Photo;
 
-            try
-            {
-                int effected = cmd.ExecuteNonQuery();
-                if (effected > 0) Added?.Invoke(null, EventArgs.Empty);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Failed in adding new customer > {ex.Message}");
-            }
-            finally
-            {
-                cmd.Dispose();
-            }
-        }
-        #endregion
+        //    try
+        //    {
+        //        int effected = cmd.ExecuteNonQuery();
+        //        if (effected > 0) Added?.Invoke(null, EventArgs.Empty);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Failed in adding new customer > {ex.Message}");
+        //    }
+        //    finally
+        //    {
+        //        cmd.Dispose();
+        //    }
+        //}
+        //#endregion
 
-        #region Get All Customers
-        public static IEnumerable<Customer> GetAllCustomers(SqlConnection conn)
-        {
-            SqlCommand cmd = commands[GET_ALL_CUSTOMERS];
-            SqlDataReader? reader = null;
-            try
-            {
-                reader = cmd.ExecuteReader();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error in getting all customers > {ex.Message}");
-            }
-            finally
-            {
-                cmd.Dispose();
-            }
+        //#region Get All Customers
+        //public static IEnumerable<Customer> GetAllCustomers(SqlConnection conn)
+        //{
+        //    SqlCommand cmd = commands[GET_ALL_CUSTOMERS];
+        //    SqlDataReader? reader = null;
+        //    try
+        //    {
+        //        reader = cmd.ExecuteReader();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Error in getting all customers > {ex.Message}");
+        //    }
+        //    finally
+        //    {
+        //        cmd.Dispose();
+        //    }
 
-            if (reader != null && reader.HasRows == true)
-            {
-                var queryable = reader.Cast<IDataRecord>().AsQueryable();
-                foreach (var record in queryable)
-                {
-                    yield return record.ToCustomer();
-                }
-            }
-            reader?.Close();
-        }
+        //    if (reader != null && reader.HasRows == true)
+        //    {
+        //        var queryable = reader.Cast<IDataRecord>().AsQueryable();
+        //        foreach (var record in queryable)
+        //        {
+        //            yield return record.ToCustomer();
+        //        }
+        //    }
+        //    reader?.Close();
+        //}
         #endregion
     }
 }

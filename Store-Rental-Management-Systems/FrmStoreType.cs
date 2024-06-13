@@ -24,13 +24,6 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private Binding? _storetypeIDBinding;
-        private Binding? _storetypeDescriptionBinding;
-        private Binding? _storetypeMonthlyLeasePriceBinding;
-        private Binding? _storetypeThreeMonthPaymentDiscountBinding;
-        private Binding? _storetypeSixMonthPaymentDiscountBinding;
-        private Binding? _storetypeOneYearPaymentDiscountBinding;
-
         private List<Control> _validatingControls = new();
         public FrmStoreType() : base()
         {
@@ -52,16 +45,11 @@ namespace Store_Rental_Management_Systems
             btnUpdateStoreType.Click += HandleBtnUpdateStoreTypeClicked;
             btnCancelStoreType.Click += HandleBtnCancelStoreTypeClicked;
 
-            btnInsertStoreType.EnabledChanged += HandleBtnEnabledChanged;
-            btnNewStoreType.EnabledChanged += HandleBtnEnabledChanged;
-            btnUpdateStoreType.EnabledChanged += HandleBtnEnabledChanged;
-            btnCancelStoreType.EnabledChanged += HandleBtnEnabledChanged;
-
             txtStoreTypeDescription.Validating += ValidateTextBox;
             txtMonthlyLeasePrice.Validating += ValidateTextBoxNumber;
-            txtThreeMonthPaymentDiscount.Validating += ValidateTextBoxNumber;
-            txtSixMonthPaymentDiscount.Validating += ValidateTextBoxNumber;
-            txtOneYearPaymentDiscount.Validating += ValidateTextBoxNumber;
+            txtThreeMonthPaymentDiscount.Validating += ValidateTextBoxIntegerOneToHundred;
+            txtSixMonthPaymentDiscount.Validating += ValidateTextBoxIntegerOneToHundred;
+            txtOneYearPaymentDiscount.Validating += ValidateTextBoxIntegerOneToHundred;
 
             _validatingControls.Add(txtStoreTypeDescription);
             _validatingControls.Add(txtMonthlyLeasePrice);
@@ -69,12 +57,37 @@ namespace Store_Rental_Management_Systems
             _validatingControls.Add(txtSixMonthPaymentDiscount);
             _validatingControls.Add(txtOneYearPaymentDiscount);
 
+            dgvStoreTypes.SelectionChanged += HandleSelectionChanged;
 
             txtSearchStoreType.TextChanged += HandleSearchStoreType;
             #endregion
 
-
         }
+
+        private void HandleSelectionChanged(object? sender, EventArgs e)
+        {
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
+            {
+                return;
+            }
+            else
+            {
+                btnCancelStoreType.PerformClick();
+            }
+        }
+
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
+
+            return changes != null && changes.Rows.Count > 0;
+        }
+
+        private void ValidateTextBoxIntegerOneToHundred(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxIntegerOneToHundred((sender as TextBox)!, _errorProvider);
+        }
+
         private void HandleSearchStoreType(object? sender, EventArgs e)
         {
             string searchText = txtSearchStoreType.Text.Trim().ToLower();
@@ -85,33 +98,10 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _storetypeBindingSource.Filter = "StoreTypeDescription LIKE '%" + searchText + "%'";
+                _storetypeBindingSource.Filter = "StoreTypeDescription LIKE '" + searchText + "%'";
 
             }
         }
-
-        //private void HandleSearchStoreType(object? sender, EventArgs e)
-        //{
-        //    string searchText = txtSearchStoreType.Text.Trim().ToLower();
-
-        //    if (string.IsNullOrEmpty(searchText))
-        //    {
-        //        _storetypeBindingSource.Filter = string.Empty;
-        //    }
-        //    else
-        //    {
-        //        if (int.TryParse(searchText, out int storeTypeId))
-        //        {
-        //            _storetypeBindingSource.Filter = $"StoreTypeID = {storeTypeId}";
-        //        }
-        //        else
-        //        {
-        //            _storetypeBindingSource.Filter = string.Empty;
-        //        }
-        //    }
-        //}
-
-
 
         private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
@@ -120,45 +110,15 @@ namespace Store_Rental_Management_Systems
 
         private void ValidateTextBoxNumber(object? sender, EventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-
-
-            if (!Regex.IsMatch(textBox.Text, @"^\d*\.?\d*$"))
-            {
-                _errorProvider.SetError(textBox, "Only numbers are allowed.");
-            }
-            else
-            {
-                _errorProvider.SetError(textBox, "");
-            }
+            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
         }
 
         private void HandleBtnCancelStoreTypeClicked(object? sender, EventArgs e)
         {
+            _errorProvider.Clear();
             _storeRentalDataSet.RejectChanges();
             RefreshDataGridView();
 
-            foreach (var control in _validatingControls)
-            {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
-            }
-
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
-
-        }
-
-        private void HandleBtnEnabledChanged(object? sender, EventArgs e)
-        {
-            Button btn = (sender as Button)!;
-
-            if (btn != null && !btn.Enabled)
-            {
-                btn.BackColor = Color.White;
-            }
-            else
-            {
-                btn!.BackColor = Color.FromArgb(0, 28, 87);
-            }
         }
         private void HandleBtnUpdateStoreTypeClicked(object? sender, EventArgs e)
         {
@@ -177,51 +137,74 @@ namespace Store_Rental_Management_Systems
 
         private void HandleBtnInsertStoreTypeClicked(object? sender, EventArgs e)
         {
-            foreach (var control in _validatingControls)
-            {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
-            }
+            CauseValidation();
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _storetypeBindingSource.EndEdit();
             try
             {
                 _storetypeDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _storetypeBindingSource.ResetBindings(false);
             }
             catch (Exception)
             {
-                MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            _storetypeBindingSource.ResetBindings(false);
 
             RefreshDataGridView();
         }
 
-        public bool HasErrors()
+        private void CauseValidation()
         {
-            foreach (Control control in _validatingControls)
+            foreach (var control in _validatingControls)
             {
-                control.Focus();
-                var err = _errorProvider.GetError(control);
-
-                if (!string.IsNullOrEmpty(err))
+                if (control is TextBox textBox)
                 {
-                    return true;
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals('d'))
+                        {
+                            ErrorHelper.ValidateTextBoxIntegerOneToHundred(textBox, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals('n'))
+                        {
+                            ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
+                        }
+                    } else
+                    {
+                        ErrorHelper.ValidateTextBox(textBox, _errorProvider);
+                    } 
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
                 }
             }
-            return false;
         }
 
         private void HandleBtnNewStoreTypeClicked(object? sender, EventArgs e)
         {
-            _storetypeBindingSource.AddNew();
+            try
+            {
+                _storetypeBindingSource.AddNew();
+            } catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             txtStoreTypeDescription.Focus();
         }
         private void LoadAllStoreTypes()
         {
             _storetypeDataAdapter.TableMappings.Add("Table", TABLE_NAME);
-            _storetypeDataAdapter.Fill(_storeRentalDataSet);
+            try
+            {
+                _storetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _storetypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvStoreTypes.DataSource = _storetypeBindingSource;
@@ -231,32 +214,13 @@ namespace Store_Rental_Management_Systems
         private void RefreshDataGridView()
         {
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
-            _storetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            try
+            {
+                _storetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            } catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }       
         }
-
-        //private void RefreshDataGridView()
-        //{
-        //    try
-        //    {
-        //        _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
-        //        _storetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
-
-        //        // Ensure the DataTable is not null and has data
-        //        if (_storeRentalDataSet.Tables[TABLE_NAME] == null || _storeRentalDataSet.Tables[TABLE_NAME].Rows.Count == 0)
-        //        {
-        //            MessageBox.Show("No data found.");
-        //            return;
-        //        }
-
-        //        _storetypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
-        //        dgvStoreTypes.DataSource = _storetypeBindingSource;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("An error occurred while refreshing data: " + ex.Message);
-        //    }
-        //}
-
-
     }
 }

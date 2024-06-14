@@ -46,6 +46,7 @@ namespace Store_Rental_Management_Systems
             ExpenseTypeHelper.Connection = Connection;
             SupplierHelper.Connection = Connection;
             ImportHelper.Connection = Connection;
+            ItemHelper.Connection = Connection;
         }
     }
 }

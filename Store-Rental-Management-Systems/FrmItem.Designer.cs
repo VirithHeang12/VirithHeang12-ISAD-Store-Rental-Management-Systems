@@ -33,10 +33,16 @@
             txtSearchItem = new TextBox();
             pnlLeftSide = new Panel();
             dgvItems = new DataGridView();
+            ItemID = new DataGridViewTextBoxColumn();
+            ItemDescription = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            Unit = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            StockQty = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbItemInformation = new GroupBox();
             pnlItemManipulation = new Panel();
-            btnCloseFormItem = new Button();
+            btnCancelItem = new Button();
             btnNewItem = new Button();
             btnUpdateItem = new Button();
             btnInsertItem = new Button();
@@ -52,12 +58,6 @@
             txtUnit = new TextBox();
             lblUnitPrice = new Label();
             txtUnitPrice = new TextBox();
-            ItemID = new DataGridViewTextBoxColumn();
-            ItemDescription = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            Unit = new DataGridViewTextBoxColumn();
-            UnitPrice = new DataGridViewTextBoxColumn();
-            StockQty = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItems).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -83,7 +83,7 @@
             lblSearchItem.AutoSize = true;
             lblSearchItem.Location = new Point(82, 19);
             lblSearchItem.Name = "lblSearchItem";
-            lblSearchItem.Size = new Size(263, 36);
+            lblSearchItem.Size = new Size(311, 43);
             lblSearchItem.TabIndex = 1;
             lblSearchItem.Text = "ស្វែងរក (លេខសម្គាល់សម្ភារៈ):";
             // 
@@ -91,7 +91,7 @@
             // 
             txtSearchItem.Location = new Point(377, 11);
             txtSearchItem.Name = "txtSearchItem";
-            txtSearchItem.Size = new Size(452, 44);
+            txtSearchItem.Size = new Size(452, 51);
             txtSearchItem.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -117,6 +117,63 @@
             dgvItems.RowTemplate.Height = 29;
             dgvItems.Size = new Size(1362, 337);
             dgvItems.TabIndex = 3;
+            // 
+            // ItemID
+            // 
+            ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ItemID.DataPropertyName = "ItemID";
+            ItemID.HeaderText = "លេខសម្គាល់សម្ភារៈ";
+            ItemID.MinimumWidth = 6;
+            ItemID.Name = "ItemID";
+            ItemID.ReadOnly = true;
+            ItemID.Width = 236;
+            // 
+            // ItemDescription
+            // 
+            ItemDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ItemDescription.DataPropertyName = "ItemDescription";
+            ItemDescription.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
+            ItemDescription.MinimumWidth = 6;
+            ItemDescription.Name = "ItemDescription";
+            ItemDescription.ReadOnly = true;
+            // 
+            // Category
+            // 
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Category.DataPropertyName = "Category";
+            Category.HeaderText = "ប្រភេទ";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.ReadOnly = true;
+            // 
+            // Unit
+            // 
+            Unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Unit.DataPropertyName = "Unit";
+            Unit.HeaderText = "ឯកតា";
+            Unit.MinimumWidth = 6;
+            Unit.Name = "Unit";
+            Unit.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UnitPrice.DataPropertyName = "UnitPrice";
+            UnitPrice.HeaderText = "តម្លៃក្នុងមួយឯកតា";
+            UnitPrice.MinimumWidth = 6;
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            UnitPrice.Width = 153;
+            // 
+            // StockQty
+            // 
+            StockQty.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StockQty.DataPropertyName = "StockQty";
+            StockQty.HeaderText = "បរិមាណក្នុងស្តុក";
+            StockQty.MinimumWidth = 6;
+            StockQty.Name = "StockQty";
+            StockQty.ReadOnly = true;
+            StockQty.Width = 139;
             // 
             // pnlRightSide
             // 
@@ -151,7 +208,7 @@
             // 
             // pnlItemManipulation
             // 
-            pnlItemManipulation.Controls.Add(btnCloseFormItem);
+            pnlItemManipulation.Controls.Add(btnCancelItem);
             pnlItemManipulation.Controls.Add(btnNewItem);
             pnlItemManipulation.Controls.Add(btnUpdateItem);
             pnlItemManipulation.Controls.Add(btnInsertItem);
@@ -161,17 +218,17 @@
             pnlItemManipulation.Size = new Size(1301, 81);
             pnlItemManipulation.TabIndex = 5;
             // 
-            // btnCloseFormItem
+            // btnCancelItem
             // 
-            btnCloseFormItem.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormItem.ForeColor = Color.White;
-            btnCloseFormItem.Location = new Point(1100, 20);
-            btnCloseFormItem.Name = "btnCloseFormItem";
-            btnCloseFormItem.Size = new Size(152, 52);
-            btnCloseFormItem.TabIndex = 3;
-            btnCloseFormItem.Text = "បិទ";
-            btnCloseFormItem.UseVisualStyleBackColor = false;
+            btnCancelItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelItem.ForeColor = Color.White;
+            btnCancelItem.Location = new Point(1100, 20);
+            btnCancelItem.Name = "btnCancelItem";
+            btnCancelItem.Size = new Size(152, 52);
+            btnCancelItem.TabIndex = 3;
+            btnCancelItem.Text = "បោះបង់";
+            btnCancelItem.UseVisualStyleBackColor = false;
             // 
             // btnNewItem
             // 
@@ -214,7 +271,7 @@
             txtStockQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStockQty.Location = new Point(907, 169);
             txtStockQty.Name = "txtStockQty";
-            txtStockQty.Size = new Size(412, 44);
+            txtStockQty.Size = new Size(412, 51);
             txtStockQty.TabIndex = 28;
             // 
             // lblUnit
@@ -223,7 +280,7 @@
             lblUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnit.Location = new Point(711, 111);
             lblUnit.Name = "lblUnit";
-            lblUnit.Size = new Size(69, 36);
+            lblUnit.Size = new Size(82, 43);
             lblUnit.TabIndex = 27;
             lblUnit.Text = "ឯកតា:";
             // 
@@ -231,10 +288,10 @@
             // 
             cbCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbCategory.FormattingEnabled = true;
-            cbCategory.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbCategory.Items.AddRange(new object[] { "សម្ភារៈសំណង់", "គ្រឿងអេឡិចត្រូនិច", "គ្រឿងបន្លាស់" });
             cbCategory.Location = new Point(209, 103);
             cbCategory.Name = "cbCategory";
-            cbCategory.Size = new Size(454, 44);
+            cbCategory.Size = new Size(454, 51);
             cbCategory.TabIndex = 15;
             // 
             // lblItemID
@@ -243,7 +300,7 @@
             lblItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemID.Location = new Point(18, 41);
             lblItemID.Name = "lblItemID";
-            lblItemID.Size = new Size(175, 36);
+            lblItemID.Size = new Size(207, 43);
             lblItemID.TabIndex = 0;
             lblItemID.Text = "លេខសម្គាល់សម្ភារៈ:";
             // 
@@ -253,7 +310,7 @@
             lblStockQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStockQty.Location = new Point(711, 177);
             lblStockQty.Name = "lblStockQty";
-            lblStockQty.Size = new Size(150, 36);
+            lblStockQty.Size = new Size(177, 43);
             lblStockQty.TabIndex = 14;
             lblStockQty.Text = "បរិមាណក្នុងស្តុក:";
             // 
@@ -262,7 +319,7 @@
             txtItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemDescription.Location = new Point(907, 33);
             txtItemDescription.Name = "txtItemDescription";
-            txtItemDescription.Size = new Size(412, 44);
+            txtItemDescription.Size = new Size(412, 51);
             txtItemDescription.TabIndex = 5;
             // 
             // lblItemDescription
@@ -271,7 +328,7 @@
             lblItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemDescription.Location = new Point(711, 41);
             lblItemDescription.Name = "lblItemDescription";
-            lblItemDescription.Size = new Size(190, 36);
+            lblItemDescription.Size = new Size(225, 43);
             lblItemDescription.TabIndex = 4;
             lblItemDescription.Text = "ពិពណ៌នារបស់សម្ភារៈ:";
             // 
@@ -281,7 +338,7 @@
             txtItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemID.Location = new Point(209, 33);
             txtItemID.Name = "txtItemID";
-            txtItemID.Size = new Size(454, 44);
+            txtItemID.Size = new Size(454, 51);
             txtItemID.TabIndex = 3;
             // 
             // lblCategory
@@ -290,7 +347,7 @@
             lblCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblCategory.Location = new Point(18, 111);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(75, 36);
+            lblCategory.Size = new Size(90, 43);
             lblCategory.TabIndex = 6;
             lblCategory.Text = "ប្រភេទ:";
             // 
@@ -299,7 +356,7 @@
             txtUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnit.Location = new Point(907, 103);
             txtUnit.Name = "txtUnit";
-            txtUnit.Size = new Size(412, 44);
+            txtUnit.Size = new Size(412, 51);
             txtUnit.TabIndex = 7;
             // 
             // lblUnitPrice
@@ -308,7 +365,7 @@
             lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnitPrice.Location = new Point(18, 177);
             lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(165, 36);
+            lblUnitPrice.Size = new Size(194, 43);
             lblUnitPrice.TabIndex = 12;
             lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
@@ -317,59 +374,8 @@
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnitPrice.Location = new Point(209, 169);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(454, 44);
+            txtUnitPrice.Size = new Size(454, 51);
             txtUnitPrice.TabIndex = 13;
-            // 
-            // ItemID
-            // 
-            ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ItemID.HeaderText = "លេខសម្គាល់សម្ភារៈ";
-            ItemID.MinimumWidth = 6;
-            ItemID.Name = "ItemID";
-            ItemID.ReadOnly = true;
-            ItemID.Width = 198;
-            // 
-            // ItemDescription
-            // 
-            ItemDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ItemDescription.HeaderText = "ពិព័ណ៌នារបស់សម្ភារៈ";
-            ItemDescription.MinimumWidth = 6;
-            ItemDescription.Name = "ItemDescription";
-            ItemDescription.ReadOnly = true;
-            // 
-            // Category
-            // 
-            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Category.HeaderText = "ប្រភេទ";
-            Category.MinimumWidth = 6;
-            Category.Name = "Category";
-            Category.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            Unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Unit.HeaderText = "ឯកតា";
-            Unit.MinimumWidth = 6;
-            Unit.Name = "Unit";
-            Unit.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            UnitPrice.HeaderText = "តម្លៃក្នុងមួយឯកតា";
-            UnitPrice.MinimumWidth = 6;
-            UnitPrice.Name = "UnitPrice";
-            UnitPrice.ReadOnly = true;
-            UnitPrice.Width = 188;
-            // 
-            // StockQty
-            // 
-            StockQty.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StockQty.HeaderText = "បរិមាណក្នុងស្តុក";
-            StockQty.MinimumWidth = 6;
-            StockQty.Name = "StockQty";
-            StockQty.ReadOnly = true;
-            StockQty.Width = 173;
             // 
             // FrmItem
             // 
@@ -414,7 +420,7 @@
         private GroupBox gbItemInformation;
         private Panel pnlItemManipulation;
         private Button btnInsertItem;
-        private Button btnCloseFormItem;
+        private Button btnCancelItem;
         private Button btnNewItem;
         private Button btnUpdateItem;
         private TextBox txtStockQty;

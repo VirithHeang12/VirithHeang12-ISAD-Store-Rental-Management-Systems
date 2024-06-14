@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Store_Rental_Management_Systems
 {
+    
     public partial class FrmUser : FrmHome
     {
         public FrmUser() : base()

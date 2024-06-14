@@ -12,18 +12,17 @@ namespace StoreRentalHelper
 {
     public static class StaffHelper
     {
-        public static SqlConnection Connection = default!;
+        public static SqlConnection Connection { get; set; } = default!;
         #region Procedure and View Names
-        private const string INSERT_STAFF = "sp_InsertNewStaff";
-        private const string UPDATE_STAFF = "sp_UpdateStaff";
-        private const string DELETE_STAFF = "sp_DeleteStaff";
-        private const string GET_ALL_STAFFS = "v_GetAllStaffs";
+        private const string INSERT = "sp_InsertNewStaff";
+        private const string UPDATE = "sp_UpdateStaff";
+        private const string GET_ALL = "v_GetAllStaffs";
         #endregion
 
         #region Generate Insert Staff Command
         public static SqlCommand CreateInsertStaffCommand()
         {
-            var cmd = new SqlCommand(INSERT_STAFF, Connection);
+            var cmd = new SqlCommand(INSERT, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@StaffFirstName", SqlDbType.NVarChar, 50)
             {
@@ -154,7 +153,7 @@ namespace StoreRentalHelper
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_STAFFS}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL}";
             return cmd;
         }
         #endregion
@@ -162,7 +161,7 @@ namespace StoreRentalHelper
         #region Generate Update Staff Command
         public static SqlCommand CreateUpdateStaffCommand()
         {
-            var cmd = new SqlCommand(UPDATE_STAFF, Connection);
+            var cmd = new SqlCommand(UPDATE, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
             {

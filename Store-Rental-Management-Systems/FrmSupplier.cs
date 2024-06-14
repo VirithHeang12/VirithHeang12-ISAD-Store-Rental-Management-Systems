@@ -39,7 +39,7 @@ namespace Store_Rental_Management_Systems
             _validatingControls.Add(txtSupplierAddress);
             #endregion
 
-            LoadAllSupplier();
+            LoadAllSuppliers();
             BindWithControls();
 
             #region Event Registrations
@@ -190,7 +190,7 @@ namespace Store_Rental_Management_Systems
         #endregion
 
         #region Load
-        private void LoadAllSupplier()
+        private void LoadAllSuppliers()
         {
             _supplierDataAdapter.TableMappings.Add("Table", TABLE_NAME);  
             try

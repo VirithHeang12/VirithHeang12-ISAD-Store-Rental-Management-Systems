@@ -21,65 +21,94 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-
         private List<Control> _validatingControls = new();
         public FrmItem() : base()
         {
             InitializeComponent();
+            #region Init DataAdapter Commands
             _itemDataAdapter.SelectCommand = ItemHelper.CreateGetAllItemsCommand();
             _itemDataAdapter.InsertCommand = ItemHelper.CreateInsertItemCommand();
             _itemDataAdapter.UpdateCommand = ItemHelper.CreateUpdateItemCommand();
+            #endregion
 
+            #region Add controls for validation
             _errorProvider.ContainerControl = this;
+            _validatingControls.Add(txtItemDescription);
+            _validatingControls.Add(txtUnit);
+            _validatingControls.Add(txtUnitPrice);
+            _validatingControls.Add(txtStockQty);
+            #endregion
 
             LoadAllItems();
             InitBindings();
 
-            #region event registrations
+            #region Event Registrations
             btnNewItem.Click += HandleBtnNewItemClicked;
             btnInsertItem.Click += HandleBtnInsertItemClicked;
             btnUpdateItem.Click += HandleBtnUpdateItemClicked;
             btnCancelItem.Click += HandleBtnCancelItemClicked;
 
-            btnInsertItem.EnabledChanged += HandleBtnEnabledChanged;
-            btnNewItem.EnabledChanged += HandleBtnEnabledChanged;
-            btnUpdateItem.EnabledChanged += HandleBtnEnabledChanged;
-            btnCancelItem.EnabledChanged += HandleBtnEnabledChanged;
-
             txtItemDescription.Validating += ValidateTextBox;
-            cbCategory.Validating += (sender, e) => ValidateComboBox((ComboBox)sender, _errorProvider);
             txtUnit.Validating += ValidateTextBox;
             txtUnitPrice.Validating += ValidateTextBoxNumber;
-            txtStockQty.Validating += ValidateTextBoxNumber;
+            txtStockQty.Validating += ValidateTextBoxInteger;
 
-
-
-            _validatingControls.Add(txtItemDescription);
-            _validatingControls.Add(cbCategory);
-            _validatingControls.Add(txtUnit);
-            _validatingControls.Add(txtUnitPrice);
-            _validatingControls.Add(txtStockQty);
-
+            dgvItems.SelectionChanged += HandleSelectionChanged;
 
             txtSearchItem.TextChanged += HandleSearchItem;
             #endregion
 
         }
+        #region Bind With Controls
+        private void InitBindings()
+        {
+            txtItemID.DataBindings.Add("Text", _itemBindingSource, "ItemID");
+            txtItemDescription.DataBindings.Add("Text", _itemBindingSource, "ItemDescription");
+            cbCategory.DataBindings.Add("SelectedItem", _itemBindingSource, "Category");
+            txtUnit.DataBindings.Add("Text", _itemBindingSource, "Unit");
+            txtUnitPrice.DataBindings.Add("Text", _itemBindingSource, "UnitPrice");
+            txtStockQty.DataBindings.Add("Text", _itemBindingSource, "StockQty");
+        }
+        #endregion
+
+        #region Handle DataGridView SelectionChanged
+        private void HandleSelectionChanged(object? sender, EventArgs e)
+        {
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
+            {
+                return;
+            }
+            else
+            {
+                btnCancelItem.PerformClick();
+            }
+        }
+
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
+
+            return changes != null && changes.Rows.Count > 0;
+        }
+        #endregion
+
+        #region Handle Search
         private void HandleSearchItem(object? sender, EventArgs e)
         {
             string searchText = txtSearchItem.Text.Trim().ToLower();
 
-            if (string.IsNullOrEmpty(searchText))
+            if (string.IsNullOrWhiteSpace(searchText))
             {
                 _itemBindingSource.Filter = string.Empty;
             }
             else
             {
-                _itemBindingSource.Filter = "ItemDescription LIKE '%" + searchText + "%'";
-
+                _itemBindingSource.Filter = "ItemDescription LIKE '" + searchText + "%'";
             }
         }
+        #endregion
 
+        #region Handle Validation
         private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
             ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
@@ -89,120 +118,125 @@ namespace Store_Rental_Management_Systems
             ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
 
         }
-
-        private void ValidateComboBox(object sender, ErrorProvider errorProvider)
+        private void ValidateTextBoxInteger(object? sender, CancelEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            if (comboBox.SelectedIndex == -1)
-            {
-                errorProvider.SetError(comboBox, "Please select a value.");
-            }
-            else
-            {
-                errorProvider.SetError(comboBox, string.Empty);
-            }
+            ErrorHelper.ValidateTextBoxInteger((sender as TextBox)!, _errorProvider);
         }
+        #endregion
 
-        private void HandleBtnCancelItemClicked(object? sender, EventArgs e)
+        #region Handle New
+        private void HandleBtnNewItemClicked(object? sender, EventArgs e)
         {
-            _storeRentalDataSet.RejectChanges();
-            RefreshDataGridView();
-
-            foreach (var control in _validatingControls)
+            try
             {
-                if (control is TextBox textBox)
-                {
-                    ErrorHelper.ValidateTextBox(textBox, _errorProvider);
-                }
-                else if (control is ComboBox comboBox)
-                {
-                    ValidateComboBox(comboBox, _errorProvider);
-                }
+                _itemBindingSource.AddNew();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
+            txtItemDescription.Focus();
+            cbCategory.SelectedIndex = 0;
         }
+        #endregion
 
-        private void HandleBtnEnabledChanged(object? sender, EventArgs e)
-        {
-            Button btn = (sender as Button)!;
-
-            if (btn != null && !btn.Enabled)
-            {
-                btn.BackColor = Color.White;
-            }
-            else
-            {
-                btn!.BackColor = Color.FromArgb(0, 28, 87);
-            }
-        }
-        private void HandleBtnUpdateItemClicked(object? sender, EventArgs e)
-        {
-            HandleBtnInsertItemClicked(null, EventArgs.Empty);
-        }
-        private void InitBindings()
-        {
-            txtItemID.DataBindings.Add("Text", _itemBindingSource, "ItemID");
-            txtItemDescription.DataBindings.Add("Text", _itemBindingSource, "ItemDescription");
-            cbCategory.DataBindings.Add("Text", _itemBindingSource, "Category");
-            txtUnit.DataBindings.Add("Text", _itemBindingSource, "Unit");
-            txtUnitPrice.DataBindings.Add("Text", _itemBindingSource, "UnitPrice");
-            txtStockQty.DataBindings.Add("Text", _itemBindingSource, "StockQty");
-        }
-
-
+        #region Handle Insert
         private void HandleBtnInsertItemClicked(object? sender, EventArgs e)
         {
-            foreach (var control in _validatingControls)
-            {
-                if (control is TextBox textBox)
-                {
-                    ErrorHelper.ValidateTextBox(textBox, _errorProvider);
-                }
-                else if (control is ComboBox comboBox)
-                {
-                    ValidateComboBox(comboBox, _errorProvider);
-                }
-            }
+            CauseValidation();
 
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider))
-            {
-                return;
-            }
-
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _itemBindingSource.EndEdit();
             try
             {
                 _itemDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _itemBindingSource.ResetBindings(false);
             }
             catch (Exception)
             {
-                MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            _itemBindingSource.ResetBindings(false);
             RefreshDataGridView();
         }
+        #endregion
 
-        private void HandleBtnNewItemClicked(object? sender, EventArgs e)
+        #region Handle Update
+        private void HandleBtnUpdateItemClicked(object? sender, EventArgs e)
         {
-            _itemBindingSource.AddNew();
-            txtItemDescription.Focus();
+            HandleBtnInsertItemClicked(null, EventArgs.Empty);
         }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelItemClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshDataGridView();
+        }
+        #endregion
+
+        #region Cause Validation
+        private void CauseValidation()
+        {
+            foreach (var control in _validatingControls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals('d'))
+                        {
+                            ErrorHelper.ValidateTextBoxInteger(textBox, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals('n'))
+                        {
+                            ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
+                        }
+                    }
+                    else
+                    {
+                        ErrorHelper.ValidateTextBox(textBox, _errorProvider);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Load
         private void LoadAllItems()
         {
             _itemDataAdapter.TableMappings.Add("Table", TABLE_NAME);
-            _itemDataAdapter.Fill(_storeRentalDataSet);
+            try
+            {
+                _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _itemBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvItems.DataSource = _itemBindingSource;
         }
+        #endregion
+
+        #region Refresh
         private void RefreshDataGridView()
         {
-            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
-            _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();      
+            try
+            {
+                _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
+        #endregion
 
     }
 }

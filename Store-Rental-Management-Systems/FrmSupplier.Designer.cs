@@ -110,6 +110,7 @@
             dgvSuppliers.ReadOnly = true;
             dgvSuppliers.RowHeadersWidth = 51;
             dgvSuppliers.RowTemplate.Height = 29;
+            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSuppliers.Size = new Size(1362, 369);
             dgvSuppliers.TabIndex = 3;
             dgvSuppliers.TabStop = false;

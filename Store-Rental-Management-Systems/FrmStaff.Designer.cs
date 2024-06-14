@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStaff));
             lblTitle = new Label();
             lblSearchStaff = new Label();
@@ -75,36 +74,16 @@
             lblStaffIdentityCardNumber = new Label();
             txtStaffIdentityCardNumber = new TextBox();
             pnlStaffManipulation = new Panel();
-            btnCloseFormStaff = new Button();
+            btnCancelStaff = new Button();
             btnNewStaff = new Button();
             btnUpdateStaff = new Button();
             btnInsertStaff = new Button();
-            epdStaffFirstName = new ErrorProvider(components);
-            epdStaffLastName = new ErrorProvider(components);
-            epdStaffIdentityCardNumber = new ErrorProvider(components);
-            epdStaffSalary = new ErrorProvider(components);
-            epdStaffContactNumber = new ErrorProvider(components);
-            epdStaffPersonalNumber = new ErrorProvider(components);
-            epdStaffHouseNo = new ErrorProvider(components);
-            epdStaffStreetNo = new ErrorProvider(components);
-            epdStaffSangkat = new ErrorProvider(components);
-            epdStaffKhan = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbStaffPhoto).BeginInit();
             gbStaffAddress.SuspendLayout();
             gbStaffInformation.SuspendLayout();
             pnlStaffManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -210,6 +189,7 @@
             // 
             // cbStaffCityOrProvince
             // 
+            cbStaffCityOrProvince.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffCityOrProvince.FormattingEnabled = true;
             cbStaffCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
@@ -378,6 +358,7 @@
             dtpStaffHiredDate.Name = "dtpStaffHiredDate";
             dtpStaffHiredDate.Size = new Size(219, 44);
             dtpStaffHiredDate.TabIndex = 20;
+            dtpStaffHiredDate.Tag = "hire";
             // 
             // lblStaffHiredDate
             // 
@@ -407,6 +388,7 @@
             txtStaffSalary.Name = "txtStaffSalary";
             txtStaffSalary.Size = new Size(164, 44);
             txtStaffSalary.TabIndex = 17;
+            txtStaffSalary.Tag = "n";
             // 
             // lblStaffSalary
             // 
@@ -546,6 +528,7 @@
             dtpStaffBirthDate.Name = "dtpStaffBirthDate";
             dtpStaffBirthDate.Size = new Size(312, 44);
             dtpStaffBirthDate.TabIndex = 11;
+            dtpStaffBirthDate.Tag = "bd";
             // 
             // lblStaffIdentityCardNumber
             // 
@@ -564,10 +547,11 @@
             txtStaffIdentityCardNumber.Name = "txtStaffIdentityCardNumber";
             txtStaffIdentityCardNumber.Size = new Size(205, 44);
             txtStaffIdentityCardNumber.TabIndex = 13;
+            txtStaffIdentityCardNumber.Tag = "card";
             // 
             // pnlStaffManipulation
             // 
-            pnlStaffManipulation.Controls.Add(btnCloseFormStaff);
+            pnlStaffManipulation.Controls.Add(btnCancelStaff);
             pnlStaffManipulation.Controls.Add(btnNewStaff);
             pnlStaffManipulation.Controls.Add(btnUpdateStaff);
             pnlStaffManipulation.Controls.Add(btnInsertStaff);
@@ -576,17 +560,17 @@
             pnlStaffManipulation.Size = new Size(925, 101);
             pnlStaffManipulation.TabIndex = 5;
             // 
-            // btnCloseFormStaff
+            // btnCancelStaff
             // 
-            btnCloseFormStaff.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormStaff.ForeColor = Color.White;
-            btnCloseFormStaff.Location = new Point(705, 20);
-            btnCloseFormStaff.Name = "btnCloseFormStaff";
-            btnCloseFormStaff.Size = new Size(152, 52);
-            btnCloseFormStaff.TabIndex = 3;
-            btnCloseFormStaff.Text = "បិទ";
-            btnCloseFormStaff.UseVisualStyleBackColor = false;
+            btnCancelStaff.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelStaff.ForeColor = Color.White;
+            btnCancelStaff.Location = new Point(705, 20);
+            btnCancelStaff.Name = "btnCancelStaff";
+            btnCancelStaff.Size = new Size(152, 52);
+            btnCancelStaff.TabIndex = 3;
+            btnCancelStaff.Text = "បោះបង់";
+            btnCancelStaff.UseVisualStyleBackColor = false;
             // 
             // btnNewStaff
             // 
@@ -624,46 +608,6 @@
             btnInsertStaff.Text = "បញ្ចូល";
             btnInsertStaff.UseVisualStyleBackColor = false;
             // 
-            // epdStaffFirstName
-            // 
-            epdStaffFirstName.ContainerControl = this;
-            // 
-            // epdStaffLastName
-            // 
-            epdStaffLastName.ContainerControl = this;
-            // 
-            // epdStaffIdentityCardNumber
-            // 
-            epdStaffIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdStaffSalary
-            // 
-            epdStaffSalary.ContainerControl = this;
-            // 
-            // epdStaffContactNumber
-            // 
-            epdStaffContactNumber.ContainerControl = this;
-            // 
-            // epdStaffPersonalNumber
-            // 
-            epdStaffPersonalNumber.ContainerControl = this;
-            // 
-            // epdStaffHouseNo
-            // 
-            epdStaffHouseNo.ContainerControl = this;
-            // 
-            // epdStaffStreetNo
-            // 
-            epdStaffStreetNo.ContainerControl = this;
-            // 
-            // epdStaffSangkat
-            // 
-            epdStaffSangkat.ContainerControl = this;
-            // 
-            // epdStaffKhan
-            // 
-            epdStaffKhan.ContainerControl = this;
-            // 
             // FrmStaff
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -688,16 +632,6 @@
             gbStaffInformation.ResumeLayout(false);
             gbStaffInformation.PerformLayout();
             pnlStaffManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdStaffFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSalary).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffPersonalNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdStaffKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -747,20 +681,10 @@
         private Label lblStaffPersonalNumber;
         private Panel pnlStaffManipulation;
         private Button btnInsertStaff;
-        private Button btnCloseFormStaff;
+        private Button btnCancelStaff;
         private Button btnNewStaff;
         private Button btnUpdateStaff;
-        private ErrorProvider epdStaffFirstName;
-        private ErrorProvider epdStaffLastName;
-        private ErrorProvider epdStaffIdentityCardNumber;
-        private ErrorProvider epdStaffSalary;
         private MaskedTextBox mtxtStaffPersonalNumber;
         private MaskedTextBox mtxtStaffContactNumber;
-        private ErrorProvider epdStaffContactNumber;
-        private ErrorProvider epdStaffPersonalNumber;
-        private ErrorProvider epdStaffHouseNo;
-        private ErrorProvider epdStaffStreetNo;
-        private ErrorProvider epdStaffSangkat;
-        private ErrorProvider epdStaffKhan;
     }
 }

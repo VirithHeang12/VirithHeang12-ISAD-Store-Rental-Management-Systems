@@ -6,11 +6,14 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Store_Rental_Management_Systems
 {
     public static class ErrorHelper
     {
         private const string NOT_EMPTY_MSG = "Cannot be empty!";
+        private const string NOT_FUTURE_MSG = "Cannot be in the future!";
+
         #region Validate TextBox
         public static void ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
         {
@@ -48,7 +51,7 @@ namespace Store_Rental_Management_Systems
 
         #endregion
 
-        #region Validate textbox integer input fields
+        #region Validate textbox integer from 1 to 100 input fields
         public static bool ValidateTextBoxIntegerOneToHundred(TextBox txt, ErrorProvider errorProvider)
         {
             string errMsg = "Only integeter from 1 to 100!";
@@ -108,6 +111,55 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
+        #region Validate Dtp Now or Past
+        public static bool ValidateDtpNowOrPast(DateTimePicker dtp, ErrorProvider errorProvider)
+        {
+            if (dtp.Value > DateTime.UtcNow)
+            {
+                errorProvider.SetError(dtp, NOT_FUTURE_MSG);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(dtp, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Validate Before 2005
+        public static bool ValidateDateBefore2005(DateTimePicker dtp, ErrorProvider errorProvider)
+        {
+            if (dtp.Value > DateTime.Parse("2005-01-01"))
+            {
+                errorProvider.SetError(dtp, "You need to be born before 2005!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(dtp, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Validate 9-digit Number
+        public static bool ValidateNineDigitNumber(TextBox txt, ErrorProvider errorProvider)
+        {
+            if (!Regex.IsMatch(txt.Text, @"^\d{9}$"))
+            {
+                errorProvider.SetError(txt, "9-digit number only!");
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txt, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Validate
         public static bool HasErrors(List<Control> controls, ErrorProvider errorProvider)
         {
             foreach (Control control in controls)
@@ -123,5 +175,6 @@ namespace Store_Rental_Management_Systems
             }
             return false;
         }
+        #endregion
     }
 }

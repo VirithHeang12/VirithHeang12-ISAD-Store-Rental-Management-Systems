@@ -33,6 +33,12 @@
             txtSearchUser = new TextBox();
             pnlLeftSide = new Panel();
             dgvUsers = new DataGridView();
+            UserID = new DataGridViewTextBoxColumn();
+            UserName = new DataGridViewTextBoxColumn();
+            Password = new DataGridViewTextBoxColumn();
+            StaffID = new DataGridViewTextBoxColumn();
+            StaffName = new DataGridViewTextBoxColumn();
+            StaffPosition = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbUserInformation = new GroupBox();
             lblStaffPosition = new Label();
@@ -52,12 +58,6 @@
             txtUserID = new TextBox();
             lblPassword = new Label();
             txtPassword = new TextBox();
-            UserID = new DataGridViewTextBoxColumn();
-            UserName = new DataGridViewTextBoxColumn();
-            Password = new DataGridViewTextBoxColumn();
-            StaffID = new DataGridViewTextBoxColumn();
-            StaffName = new DataGridViewTextBoxColumn();
-            StaffPosition = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -117,6 +117,56 @@
             dgvUsers.RowTemplate.Height = 29;
             dgvUsers.Size = new Size(1362, 325);
             dgvUsers.TabIndex = 3;
+            // 
+            // UserID
+            // 
+            UserID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UserID.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
+            UserID.MinimumWidth = 6;
+            UserID.Name = "UserID";
+            UserID.ReadOnly = true;
+            UserID.Width = 244;
+            // 
+            // UserName
+            // 
+            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
+            UserName.MinimumWidth = 6;
+            UserName.Name = "UserName";
+            UserName.ReadOnly = true;
+            // 
+            // Password
+            // 
+            Password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Password.HeaderText = "លេខសម្ងាត់";
+            Password.MinimumWidth = 6;
+            Password.Name = "Password";
+            Password.ReadOnly = true;
+            // 
+            // StaffID
+            // 
+            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            StaffID.MinimumWidth = 6;
+            StaffID.Name = "StaffID";
+            StaffID.ReadOnly = true;
+            StaffID.Width = 206;
+            // 
+            // StaffName
+            // 
+            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
+            StaffName.MinimumWidth = 6;
+            StaffName.Name = "StaffName";
+            StaffName.ReadOnly = true;
+            // 
+            // StaffPosition
+            // 
+            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.HeaderText = "តួនាទីអ្នកប្រើប្រាស់";
+            StaffPosition.MinimumWidth = 6;
+            StaffPosition.Name = "StaffPosition";
+            StaffPosition.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -194,7 +244,7 @@
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
-            cbStaffID.Location = new Point(907, 108);
+            cbStaffID.Location = new Point(906, 108);
             cbStaffID.Name = "cbStaffID";
             cbStaffID.Size = new Size(412, 44);
             cbStaffID.TabIndex = 28;
@@ -324,56 +374,6 @@
             txtPassword.Size = new Size(418, 44);
             txtPassword.TabIndex = 13;
             txtPassword.UseSystemPasswordChar = true;
-            // 
-            // UserID
-            // 
-            UserID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            UserID.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
-            UserID.MinimumWidth = 6;
-            UserID.Name = "UserID";
-            UserID.ReadOnly = true;
-            UserID.Width = 244;
-            // 
-            // UserName
-            // 
-            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UserName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
-            UserName.MinimumWidth = 6;
-            UserName.Name = "UserName";
-            UserName.ReadOnly = true;
-            // 
-            // Password
-            // 
-            Password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Password.HeaderText = "លេខសម្ងាត់";
-            Password.MinimumWidth = 6;
-            Password.Name = "Password";
-            Password.ReadOnly = true;
-            // 
-            // StaffID
-            // 
-            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
-            StaffID.MinimumWidth = 6;
-            StaffID.Name = "StaffID";
-            StaffID.ReadOnly = true;
-            StaffID.Width = 206;
-            // 
-            // StaffName
-            // 
-            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StaffName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
-            StaffName.MinimumWidth = 6;
-            StaffName.Name = "StaffName";
-            StaffName.ReadOnly = true;
-            // 
-            // StaffPosition
-            // 
-            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StaffPosition.HeaderText = "តួនាទីអ្នកប្រើប្រាស់";
-            StaffPosition.MinimumWidth = 6;
-            StaffPosition.Name = "StaffPosition";
-            StaffPosition.ReadOnly = true;
             // 
             // FrmUser
             // 

@@ -194,11 +194,11 @@ namespace Store_Rental_Management_Systems
                 {
                     if (control.Tag != null)
                     {
-                        if (control.Tag.ToString()!.Equals('d'))
+                        if (control.Tag.ToString()!.Equals('n'))
                         {
                             ErrorHelper.ValidateTextBoxIntegerOneToHundred(textBox, _errorProvider);
                         }
-                        else if (control.Tag.ToString()!.Equals('n'))
+                        else if (control.Tag.ToString()!.Equals('d'))
                         {
                             ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
                         }

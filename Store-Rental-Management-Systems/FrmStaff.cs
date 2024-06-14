@@ -15,336 +15,220 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmStaff : FrmHome
     {
-        public BindingSource StaffBindingSource { get; set; } = new BindingSource();
-        public SqlDataAdapter StaffDataAdapter { get; set; } = new SqlDataAdapter();
-        public DataSet StoreRentalDataSet { get; set; } = new DataSet();
+        private const string TABLE_NAME = "tblStaff";
+        public DataSet _storeRentalDataSet { get; set; } = new DataSet();
+        public SqlDataAdapter _staffDataAdapter { get; set; } = new SqlDataAdapter();
+        private BindingSource _staffBindingSource { get; set; } = new BindingSource();
 
-        private Binding? _staffIDBinding;
-        private Binding? _staffFirstNameBinding;
-        private Binding? _staffLastNameBinding;
-        private Binding? _staffIsMaleBinding;
-        private Binding? _staffIsFemaleBinding;
-        private Binding? _staffBirthDateBinding;
-        private Binding? _staffIdentityCardNumberBinding;
-        private Binding? _staffPositionBinding;
-        private Binding? _staffHouseNoBinding;
-        private Binding? _staffStreetNoBinding;
-        private Binding? _staffSangkatBinding;
-        private Binding? _staffKhanBinding;
-        private Binding? _staffProvinceOrCityBinding;
-        private Binding? _staffContactNumberBinding;
-        private Binding? _staffPersonalNumberBinding;
-        private Binding? _staffSalaryBinding;
-        private Binding? _staffHiredDateBinding;
-        private Binding? _staffStoppedWorkBinding;
+        private ErrorProvider _errorProvider = new();
 
+        private List<Control> _validatingControls = new();
         public FrmStaff() : base()
         {
 
             InitializeComponent();
 
-            StaffDataAdapter.SelectCommand = StaffHelper.CreateGetAllStaffsCommand();
-            StaffDataAdapter.InsertCommand = StaffHelper.CreateInsertStaffCommand();
-            StaffDataAdapter.UpdateCommand = StaffHelper.CreateUpdateStaffCommand();
-            ClearAllFields();
-
-            #region Load all staffs when form initializes
-            InstantiateBindings();
-            BindListBoxToOtherControl();
-            LoadAllStaffs(null, EventArgs.Empty);
-
+            #region Init DataAdapter Commands
+            _staffDataAdapter.SelectCommand = StaffHelper.CreateGetAllStaffsCommand();
+            _staffDataAdapter.InsertCommand = StaffHelper.CreateInsertStaffCommand();
+            _staffDataAdapter.UpdateCommand = StaffHelper.CreateUpdateStaffCommand();
             #endregion
 
-            #region Event registration for CRUD operations
-            btnPickStaffPhoto.Click += HandleBtnStaffPhotoClick;
-            btnNewStaff.Click += HandleBtnNewStaffClick;
-            btnInsertStaff.Click += HandleBtnInsertStaffClick;
-            btnCloseFormStaff.Click += HandleCloseFormStaff;
+            #region Add controls for validations
+            _errorProvider.ContainerControl = this;
+            _validatingControls.Add(txtStaffFirstName);
+            _validatingControls.Add(txtStaffLastName);
+            _validatingControls.Add(dtpStaffBirthDate);
+            _validatingControls.Add(txtStaffIdentityCardNumber);
+            _validatingControls.Add(txtStaffSalary);
+            _validatingControls.Add(dtpStaffHiredDate);
+            _validatingControls.Add(mtxtStaffContactNumber);
+            _validatingControls.Add(mtxtStaffPersonalNumber);
+            _validatingControls.Add(txtStaffHouseNo);
+            _validatingControls.Add(txtStaffStreetNo);
+            _validatingControls.Add(txtStaffSangkat);
+            _validatingControls.Add(txtStaffKhan);
             #endregion
 
-            #region Event registration for shutting down error on got focus
-            txtStaffFirstName.GotFocus += HandleTxtStaffFirstNameGotFocus;
-            txtStaffLastName.GotFocus += HandleTxtStaffLastNameGotFocus;
-            txtStaffIdentityCardNumber.GotFocus += HandleTxtIDCardNumberGotFocus;
-            txtStaffSalary.GotFocus += HandleTxtStaffSalaryGotFocus;
-            mtxtStaffContactNumber.GotFocus += HandleMTxtStaffContactNumberGotFocus;
-            mtxtStaffPersonalNumber.GotFocus += MtxtStaffPersonalNumberGotFocus;
-            txtStaffHouseNo.GotFocus += HandleStaffTxtHouseNoGotFocus;
-            txtStaffStreetNo.GotFocus += HandleStaffTxtStreetNoGotFocus;
-            txtStaffSangkat.GotFocus += HandleStaffTxtSangkatGotFocus;
-            txtStaffKhan.GotFocus += HandleStaffTxtKhanGotFocus;
+            LoadAllStaffs();
+            BindWithControls();
+
+            #region Event Registration
+            btnPickStaffPhoto.Click += HandleBtnStaffPhotoClicked;
+            btnNewStaff.Click += HandleBtnNewStaffClicked;
+            btnInsertStaff.Click += HandleBtnInsertStaffClicked;
+            btnUpdateStaff.Click += HandleBtnUpdateStaffClicked;
+            btnCancelStaff.Click += HandleBtnCancelStaffClicked;
+
+            txtStaffFirstName.Validating += ValidateTextBox;
+            txtStaffLastName.Validating += ValidateTextBox;
+            dtpStaffBirthDate.Validating += ValidateDtpBirthDate;
+            txtStaffIdentityCardNumber.Validating += ValidateIdentityCardNumber;
+            txtStaffSalary.Validating += ValidateTextBoxNumber;
+            dtpStaffHiredDate.Validating += ValidateDtpHiredDate;
+            mtxtStaffContactNumber.Validating += ValidateMaskedTextBox;
+            mtxtStaffPersonalNumber.Validating += ValidateMaskedTextBox;
+            txtStaffHouseNo.Validating += ValidateTextBox;
+            txtStaffStreetNo.Validating += ValidateTextBox;
+            txtStaffSangkat.Validating += ValidateTextBox;
+            txtStaffKhan.Validating += ValidateTextBox; ;
+
+            lbStaff.SelectedValueChanged += HandleSelectedValueChanged;
+
+            txtSearchStaff.TextChanged += HandleSearchStaff;
             #endregion
 
-            #region Register event for converting and changing image
-            StaffBindingSource.CurrentChanged += HandleStaffBindingSourceCurrentChanged;
-            #endregion
-
         }
-
-        private void HandleCloseFormStaff(object? sender, EventArgs e)
+        #region Bind With Controls
+        private void BindWithControls()
         {
-            throw new NotImplementedException();
-        }
+            txtStaffID.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffID"));
+            txtStaffFirstName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffFirstName"));
+            txtStaffLastName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffLastName"));
+            rdbFemale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsFemale"));
+            rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
+            dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
+            txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
+            cbStaffPosition.DataBindings.Add(new Binding("SelectedItem", _staffBindingSource, "StaffPosition"));
+            txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
+            txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
+            txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
+            txtStaffKhan.DataBindings.Add(new Binding("Text", _staffBindingSource, "Khan"));
+            cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", _staffBindingSource, "ProvinceOrCity"));
+            mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "ContactNumber"));
+            mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "PersonalNumber"));
+            txtStaffSalary.DataBindings.Add(new Binding("Text", _staffBindingSource, "Salary"));
+            dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
+            chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
 
-        #region HandleStaffBindingSourceCurrentChanged
-        private void HandleStaffBindingSourceCurrentChanged(object? sender, EventArgs e)
-        {
-            //if (StaffBindingSource.Current is Staff selectedStaff && selectedStaff.Photo != null)
-            //{
-            //    using (MemoryStream ms = new MemoryStream(selectedStaff.Photo))
-            //    {
-            //        pbStaffPhoto.Image = Image.FromStream(ms);
-            //    }
-            //}
-            //else
-            //{
-            //    pbStaffPhoto.Image = null;
-            //}
-        }
-        #endregion
-
-        #region Instantiate bindings
-
-        private void InstantiateBindings()
-        {
-            _staffIDBinding = new Binding("Text", StaffBindingSource, "StaffID");
-            _staffFirstNameBinding = new Binding("Text", StaffBindingSource, "StaffFirstName");
-            _staffLastNameBinding = new Binding("Text", StaffBindingSource, "StaffLastName");
-            _staffIsFemaleBinding = new Binding("Checked", StaffBindingSource, "IsFemale");
-            _staffIsMaleBinding = new Binding("Checked", StaffBindingSource, "IsMale");
-            _staffBirthDateBinding = new Binding("Text", StaffBindingSource, "BirthDate");
-            _staffIdentityCardNumberBinding = new Binding("Text", StaffBindingSource, "IdentityCardNumber");
-            _staffPositionBinding = new Binding("Text", StaffBindingSource, "StaffPosition");
-            _staffHouseNoBinding = new Binding("Text", StaffBindingSource, "HouseNo");
-            _staffStreetNoBinding = new Binding("Text", StaffBindingSource, "StreetNo");
-            _staffSangkatBinding = new Binding("Text", StaffBindingSource, "Sangkat");
-            _staffKhanBinding = new Binding("Text", StaffBindingSource, "Khan");
-            _staffProvinceOrCityBinding = new Binding("Text", StaffBindingSource, "ProvinceOrCity");
-            _staffContactNumberBinding = new Binding("Text", StaffBindingSource, "ContactNumber");
-            _staffPersonalNumberBinding = new Binding("Text", StaffBindingSource, "PersonalNumber");
-            _staffSalaryBinding = new Binding("Text", StaffBindingSource, "Salary");
-            _staffHiredDateBinding = new Binding("Text", StaffBindingSource, "HiredDate");
-            _staffStoppedWorkBinding = new Binding("Checked", StaffBindingSource, "StoppedWork");
         }
 
         #endregion
 
-        #region Bind bindings to controls
-        private void BindListBoxToOtherControl()
+        #region Handle ListBox SelectedValueChanged
+        private void HandleSelectedValueChanged(object? sender, EventArgs e)
         {
-            txtStaffID.DataBindings.Add(_staffIDBinding);
-            txtStaffFirstName.DataBindings.Add(_staffFirstNameBinding);
-            txtStaffLastName.DataBindings.Add(_staffLastNameBinding);
-            rdbFemale.DataBindings.Add(_staffIsFemaleBinding);
-            rdbMale.DataBindings.Add(_staffIsMaleBinding);
-            dtpStaffBirthDate.DataBindings.Add(_staffBirthDateBinding);
-            txtStaffIdentityCardNumber.DataBindings.Add(_staffIdentityCardNumberBinding);
-            cbStaffPosition.DataBindings.Add(_staffPositionBinding);
-            txtStaffHouseNo.DataBindings.Add(_staffHouseNoBinding);
-            txtStaffStreetNo.DataBindings.Add(_staffStreetNoBinding);
-            txtStaffSangkat.DataBindings.Add(_staffSangkatBinding);
-            txtStaffKhan.DataBindings.Add(_staffKhanBinding);
-            cbStaffCityOrProvince.DataBindings.Add(_staffProvinceOrCityBinding);
-            mtxtStaffContactNumber.DataBindings.Add(_staffContactNumberBinding);
-            mtxtStaffPersonalNumber.DataBindings.Add(_staffPersonalNumberBinding);
-            txtStaffSalary.DataBindings.Add(_staffSalaryBinding);
-            dtpStaffHiredDate.DataBindings.Add(_staffHiredDateBinding);
-            chbStaffStoppedWork.DataBindings.Add(_staffStoppedWorkBinding);
-
-        }
-        #endregion
-
-        #region Unbind bindings
-        private void UnBindListBoxToOtherControl()
-        {
-            if (txtStaffID.DataBindings.Count > 0)
-                txtStaffID.DataBindings.Remove(_staffIDBinding);
-
-            if (txtStaffFirstName.DataBindings.Count > 0)
-                txtStaffFirstName.DataBindings.Remove(_staffFirstNameBinding);
-
-            if (txtStaffLastName.DataBindings.Count > 0)
-                txtStaffLastName.DataBindings.Remove(_staffLastNameBinding);
-
-            if (rdbFemale.DataBindings.Count > 0)
-                rdbFemale.DataBindings.Remove(_staffIsFemaleBinding);
-
-            if (rdbMale.DataBindings.Count > 0)
-                rdbMale.DataBindings.Remove(_staffIsMaleBinding);
-
-            if (dtpStaffBirthDate.DataBindings.Count > 0)
-                dtpStaffBirthDate.DataBindings.Remove(_staffBirthDateBinding);
-
-            if (txtStaffIdentityCardNumber.DataBindings.Count > 0)
-                txtStaffIdentityCardNumber.DataBindings.Remove(_staffIdentityCardNumberBinding);
-
-            if (cbStaffPosition.DataBindings.Count > 0)
-                cbStaffPosition.DataBindings.Remove(_staffPositionBinding);
-
-            if (txtStaffHouseNo.DataBindings.Count > 0)
-                txtStaffHouseNo.DataBindings.Remove(_staffHouseNoBinding);
-
-            if (txtStaffStreetNo.DataBindings.Count > 0)
-                txtStaffStreetNo.DataBindings.Remove(_staffStreetNoBinding);
-
-            if (txtStaffSangkat.DataBindings.Count > 0)
-                txtStaffSangkat.DataBindings.Remove(_staffSangkatBinding);
-
-            if (txtStaffKhan.DataBindings.Count > 0)
-                txtStaffKhan.DataBindings.Remove(_staffKhanBinding);
-
-            if (cbStaffCityOrProvince.DataBindings.Count > 0)
-                cbStaffCityOrProvince.DataBindings.Remove(_staffProvinceOrCityBinding);
-
-            if (mtxtStaffContactNumber.DataBindings.Count > 0)
-                mtxtStaffContactNumber.DataBindings.Remove(_staffContactNumberBinding);
-
-            if (mtxtStaffPersonalNumber.DataBindings.Count > 0)
-                mtxtStaffPersonalNumber.DataBindings.Remove(_staffPersonalNumberBinding);
-
-            if (txtStaffSalary.DataBindings.Count > 0)
-                txtStaffSalary.DataBindings.Remove(_staffSalaryBinding);
-
-            if (dtpStaffHiredDate.DataBindings.Count > 0)
-                dtpStaffHiredDate.DataBindings.Remove(_staffHiredDateBinding);
-
-            if (chbStaffStoppedWork.DataBindings.Count > 0)
-                chbStaffStoppedWork.DataBindings.Remove(_staffStoppedWorkBinding);
-        }
-        #endregion
-
-        #region Error shutdown event handlers
-        private void HandleStaffTxtKhanGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffKhan, epdStaffKhan);
-        }
-
-        private void HandleStaffTxtSangkatGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffSangkat, epdStaffSangkat);
-        }
-
-        private void HandleStaffTxtStreetNoGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffStreetNo, epdStaffStreetNo);
-        }
-
-        private void HandleStaffTxtHouseNoGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffHouseNo, epdStaffHouseNo);
-        }
-
-        private void MtxtStaffPersonalNumberGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(mtxtStaffPersonalNumber, epdStaffPersonalNumber);
-        }
-
-        private void HandleMTxtStaffContactNumberGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(mtxtStaffContactNumber, epdStaffContactNumber);
-        }
-
-        private void HandleTxtStaffSalaryGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffSalary, epdStaffSalary);
-        }
-
-        private void HandleTxtIDCardNumberGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber);
-        }
-
-        private void HandleTxtStaffLastNameGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffLastName, epdStaffLastName);
-        }
-
-        private void HandleTxtStaffFirstNameGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtStaffFirstName, epdStaffFirstName);
-        }
-        #endregion
-
-        #region Insert event handler
-        private void HandleBtnInsertStaffClick(object? sender, EventArgs e)
-        {
-            var currentStaff = (DataRowView)StaffBindingSource.Current;
-            if (currentStaff != null && currentStaff.IsNew)
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
             {
-                if (ValidateTextBox(txtStaffFirstName, epdStaffFirstName) || ValidateTextBox(txtStaffLastName, epdStaffLastName) || ValidateTextBox(txtStaffIdentityCardNumber, epdStaffIdentityCardNumber) || ValidateTextBoxNumber(txtStaffSalary, epdStaffSalary) || ValidateMaskedTextBox(mtxtStaffContactNumber, epdStaffContactNumber) || ValidateMaskedTextBox(mtxtStaffPersonalNumber, epdStaffPersonalNumber) || ValidateTextBox(txtStaffHouseNo, epdStaffHouseNo) || ValidateTextBox(txtStaffStreetNo, epdStaffStreetNo) || ValidateTextBox(txtStaffSangkat, epdStaffSangkat) || ValidateTextBox(txtStaffKhan, epdStaffKhan))
-                {
-
-                    currentStaff["StaffFirstName"] = txtStaffFirstName.Text;
-                    currentStaff["StaffLastName"] = txtStaffLastName.Text;
-                    currentStaff["Sex"] = rdbFemale.Checked ? 'F' : 'M';
-                    currentStaff["BirthDate"] = dtpStaffBirthDate.Value;
-                    currentStaff["IdentityCardNumber"] = txtStaffIdentityCardNumber.Text;
-                    currentStaff["StaffPosition"] = cbStaffPosition.Text;
-                    currentStaff["HouseNo"] = txtStaffHouseNo.Text;
-                    currentStaff["StreetNo"] = txtStaffStreetNo.Text;
-                    currentStaff["Sangkat"] = txtStaffSangkat.Text;
-                    currentStaff["Khan"] = txtStaffKhan.Text;
-                    currentStaff["ProvinceOrCity"] = cbStaffCityOrProvince.Text;
-                    currentStaff["ContactNumber"] = mtxtStaffContactNumber.Text;
-                    currentStaff["PersonalNumber"] = mtxtStaffPersonalNumber.Text;
-                    currentStaff["Salary"] = decimal.Parse(txtStaffSalary.Text);
-                    currentStaff["HiredDate"] = dtpStaffHiredDate.Value;
-                    currentStaff["Photo"] = BitmapToByteArray(new Bitmap(pbStaffPhoto.Image));
-                    currentStaff["StoppedWork"] = chbStaffStoppedWork.Checked;
-                    StaffBindingSource.EndEdit();
-                    StaffDataAdapter.Update(StoreRentalDataSet);
-                    StaffBindingSource.ResetBindings(false);
-                    //ReloadStaffs();
-                }
-            } else
+                return;
+            }
+            else
             {
-                MessageBox.Show("dfdfdf");
+                btnCancelStaff.PerformClick();
+            }
+        }
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
+
+            return changes != null && changes.Rows.Count > 0;
+        }
+        #endregion
+
+        #region Handle Search
+        private void HandleSearchStaff(object? sender, EventArgs e)
+        {
+            string searchText = txtSearchStaff.Text.Trim().ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                _staffBindingSource.Filter = string.Empty;
+            }
+            else
+            {
+                _staffBindingSource.Filter = "StaffName LIKE '" + searchText + "%'";
+
             }
         }
         #endregion
 
-        #region New event handler
-        private void HandleBtnNewStaffClick(object? sender, EventArgs e)
+        #region Handle Validation
+        private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
-            StaffBindingSource.Add(new object());
-            StaffBindingSource.Position = StaffBindingSource.Count - 1;
-            Console.WriteLine(StaffBindingSource.Current);
-            lbStaff.SelectedIndex = StaffBindingSource.Count - 1;
-            //ClearAllFields();
+            ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
+        }
 
+        private void ValidateMaskedTextBox(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateMaskedTextBox((sender as MaskedTextBox)!, _errorProvider);
+        }
 
+        private void ValidateDtpHiredDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDtpNowOrPast((sender as DateTimePicker)!, _errorProvider);
+        }
+
+        private void ValidateTextBoxNumber(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);    
+        }
+
+        private void ValidateIdentityCardNumber(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateNineDigitNumber((sender as TextBox)!, _errorProvider);
+        }
+
+        private void ValidateDtpBirthDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDateBefore2005((sender as DateTimePicker)!, _errorProvider);
         }
         #endregion
 
-        #region Clear all input fields
-        private void ClearAllFields()
+        #region Handle New
+        private void HandleBtnNewStaffClicked(object? sender, EventArgs e)
         {
-            txtStaffID.Text = string.Empty;
-            chbStaffStoppedWork.Checked = false;
-            txtStaffFirstName.Text = string.Empty;
-            txtStaffLastName.Text = string.Empty;
-            rdbFemale.Checked = false;
-            rdbMale.Checked = true;
-            dtpStaffBirthDate.Value = DateTime.Parse("01-01-2005");
-            txtStaffIdentityCardNumber.Text = string.Empty;
-            cbStaffPosition.SelectedIndex = 0;
-            txtStaffSalary.Text = string.Empty;
-            dtpStaffHiredDate.Value = DateTime.Parse("01-01-2023");
-            mtxtStaffContactNumber.Text = string.Empty;
-            mtxtStaffPersonalNumber.Text = string.Empty;
-            txtStaffHouseNo.Text = string.Empty;
-            txtStaffStreetNo.Text = string.Empty;
-            txtStaffSangkat.Text = string.Empty;
-            txtStaffKhan.Text = string.Empty;
-            cbStaffCityOrProvince.SelectedIndex = 0;
+            try
+            {
+                _staffBindingSource.AddNew();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             txtStaffFirstName.Focus();
-            RenderInitialPicture();
-
         }
         #endregion
 
-        #region Event handler for staff photo click
-        private void HandleBtnStaffPhotoClick(object? sender, EventArgs e)
+        #region Handle Insert
+        private void HandleBtnInsertStaffClicked(object? sender, EventArgs e)
+        {
+            CauseValidation();
+
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
+            _staffBindingSource.EndEdit();
+            try
+            {
+                _staffDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _staffBindingSource.ResetBindings(false);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            RefreshListBox();
+        }
+        #endregion
+
+        #region Handle Update
+        private void HandleBtnUpdateStaffClicked(object? sender, EventArgs e)
+        {
+            HandleBtnInsertStaffClicked(null, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelStaffClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshListBox();
+        }
+        #endregion
+
+        #region Handle Staff Photo
+        private void HandleBtnStaffPhotoClicked(object? sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
@@ -365,103 +249,87 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
-        #region Event handler for loading all staffs and render initial picture
-        private void LoadAllStaffs(object? sender, EventArgs e)
+        #region Cause Validation
+        private void CauseValidation()
         {
-            StaffDataAdapter.TableMappings.Add("Table", "tblStaff");
-            StaffDataAdapter.Fill(StoreRentalDataSet, "Table");
-            StaffBindingSource.DataSource = StoreRentalDataSet.Tables["tblStaff"];
-            lbStaff.DataSource = StaffBindingSource;
+            foreach (var control in _validatingControls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals('d'))
+                        {
+                            ErrorHelper.ValidateTextBoxIntegerOneToHundred(textBox, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals('n'))
+                        {
+                            ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
+                        } 
+                        else if (control.Tag.ToString()!.Equals("card"))
+                        {
+                            ErrorHelper.ValidateNineDigitNumber(textBox, _errorProvider);
+                        }
+                    }
+                    else
+                    {
+                        ErrorHelper.ValidateTextBox(textBox, _errorProvider);
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
+                } else if (control is DateTimePicker dtp)
+                {
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals("bd"))
+                        {
+                            ErrorHelper.ValidateDateBefore2005(dtp, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals("hire"))
+                        {
+                            ErrorHelper.ValidateDtpNowOrPast(dtp, _errorProvider);
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Load
+        private void LoadAllStaffs()
+        {
+            _staffDataAdapter.TableMappings.Add("Table", TABLE_NAME);
+            try
+            {
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
+            lbStaff.DataSource = _staffBindingSource;
             lbStaff.DisplayMember = "StaffName";
             lbStaff.ValueMember = "StaffID";
         }
         #endregion
 
-        #region Reload Staffs
-        private void ReloadStaffs()
+        #region Refresh
+        private void RefreshListBox()
         {
-            //var staffs = StaffHelper.GetAllStaffs(Program.Connection);
-            //if (staffs.Any())
-            //{
-            //    StaffBindingSource.DataSource = staffs;
-            //    lbStaff.Items.Clear();
-            //    lbStaff.DataSource = StaffBindingSource;
-            //    lbStaff.DisplayMember = "FullName";
-            //    lbStaff.ValueMember = "StaffID";
-            //    InstantiateBindings();
-            //    BindListBoxToOtherControl();
-            //}
-            //else
-            //{
-            //    lbStaff.Items.Clear();
-            //    lbStaff.DataSource = null;
-            //    lbStaff.DisplayMember = string.Empty;
-            //    lbStaff.ValueMember = string.Empty;
-            //}
-        }
-        #endregion
+            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
+            try
+            {
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-        #region Validate textbox number input fields
-        private bool ValidateTextBoxNumber(TextBox txt, ErrorProvider errorProvider)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
-                return false;
-            }
-            else if (!double.TryParse(txt.Text, out double _))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} must be a number!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(txt, string.Empty);
-                return true;
-            }
-        }
-
-        #endregion
-
-        #region Validate TextBox
-        private bool ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(txt, string.Empty);
-                return true;
-            }
-        }
-        #endregion
-
-        #region Validate MaskedTextBox
-        private bool ValidateMaskedTextBox(MaskedTextBox mtxt, ErrorProvider errorProvider)
-        {
-            if (!mtxt.MaskCompleted)
-            {
-                errorProvider.SetError(mtxt, $"{nameof(mtxt)} cannot be empty!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(mtxt, string.Empty);
-                return true;
-            }
-        }
-        #endregion
-
-        #region Shutdown Error
-        private void ShutDownError(TextBoxBase txt, ErrorProvider errorProvider)
-        {
-            if (errorProvider != null)
-            {
-                errorProvider.Clear();
-            }
         }
         #endregion
 

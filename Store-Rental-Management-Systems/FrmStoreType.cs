@@ -27,18 +27,26 @@ namespace Store_Rental_Management_Systems
         public FrmStoreType() : base()
         {
             InitializeComponent();
+            #region Init DataAdapter Commands
             _storetypeDataAdapter.SelectCommand = StoreTypeHelper.CreateGetAllStoreTypesCommand();
             _storetypeDataAdapter.InsertCommand = StoreTypeHelper.CreateInsertStoreTypeCommand();
             _storetypeDataAdapter.UpdateCommand = StoreTypeHelper.CreateUpdateStoreTypeCommand();
+            #endregion
 
+            #region Add controls for validation
             _errorProvider.ContainerControl = this;
-
+            _validatingControls.Add(txtStoreTypeDescription);
+            _validatingControls.Add(txtMonthlyLeasePrice);
+            _validatingControls.Add(txtThreeMonthPaymentDiscount);
+            _validatingControls.Add(txtSixMonthPaymentDiscount);
+            _validatingControls.Add(txtOneYearPaymentDiscount);
+            #endregion
 
             LoadAllStoreTypes();
-            InitBindings();
+            BindWithControls();
      
 
-            #region event registrations
+            #region Event Registrations
             btnNewStoreType.Click += HandleBtnNewStoreTypeClicked;
             btnInsertStoreType.Click += HandleBtnInsertStoreTypeClicked;
             btnUpdateStoreType.Click += HandleBtnUpdateStoreTypeClicked;
@@ -50,12 +58,6 @@ namespace Store_Rental_Management_Systems
             txtSixMonthPaymentDiscount.Validating += ValidateTextBoxIntegerOneToHundred;
             txtOneYearPaymentDiscount.Validating += ValidateTextBoxIntegerOneToHundred;
 
-            _validatingControls.Add(txtStoreTypeDescription);
-            _validatingControls.Add(txtMonthlyLeasePrice);
-            _validatingControls.Add(txtThreeMonthPaymentDiscount);
-            _validatingControls.Add(txtSixMonthPaymentDiscount);
-            _validatingControls.Add(txtOneYearPaymentDiscount);
-
             dgvStoreTypes.SelectionChanged += HandleSelectionChanged;
 
             txtSearchStoreType.TextChanged += HandleSearchStoreType;
@@ -63,6 +65,19 @@ namespace Store_Rental_Management_Systems
 
         }
 
+        #region Bind With Controls
+        private void BindWithControls()
+        {
+            txtStoreTypeID.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "StoreTypeID"));
+            txtStoreTypeDescription.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "StoreTypeDescription"));
+            txtMonthlyLeasePrice.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "MonthlyLeasePrice"));
+            txtThreeMonthPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "ThreeMonthPaymentDiscount"));
+            txtSixMonthPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "SixMonthPaymentDiscount"));
+            txtOneYearPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "OneYearPaymentDiscount"));
+        }
+        #endregion
+        
+        #region Handle DataGridView SelectionChanged
         private void HandleSelectionChanged(object? sender, EventArgs e)
         {
             if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
@@ -81,17 +96,14 @@ namespace Store_Rental_Management_Systems
 
             return changes != null && changes.Rows.Count > 0;
         }
+        #endregion
 
-        private void ValidateTextBoxIntegerOneToHundred(object? sender, CancelEventArgs e)
-        {
-            ErrorHelper.ValidateTextBoxIntegerOneToHundred((sender as TextBox)!, _errorProvider);
-        }
-
+        #region Handle Search
         private void HandleSearchStoreType(object? sender, EventArgs e)
         {
             string searchText = txtSearchStoreType.Text.Trim().ToLower();
 
-            if (string.IsNullOrEmpty(searchText))
+            if (string.IsNullOrWhiteSpace(searchText))
             {
                 _storetypeBindingSource.Filter = string.Empty;
             }
@@ -100,6 +112,13 @@ namespace Store_Rental_Management_Systems
                 _storetypeBindingSource.Filter = "StoreTypeDescription LIKE '" + searchText + "%'";
 
             }
+        }
+        #endregion
+
+        #region Handle Validation
+        private void ValidateTextBoxIntegerOneToHundred(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxIntegerOneToHundred((sender as TextBox)!, _errorProvider);
         }
 
         private void ValidateTextBox(object? sender, CancelEventArgs e)
@@ -111,29 +130,24 @@ namespace Store_Rental_Management_Systems
         {
             ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
         }
+        #endregion
 
-        private void HandleBtnCancelStoreTypeClicked(object? sender, EventArgs e)
+        #region Handle New
+        private void HandleBtnNewStoreTypeClicked(object? sender, EventArgs e)
         {
-            _errorProvider.Clear();
-            _storeRentalDataSet.RejectChanges();
-            RefreshDataGridView();
-
+            try
+            {
+                _storetypeBindingSource.AddNew();
+            } catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            txtStoreTypeDescription.Focus();
         }
-        private void HandleBtnUpdateStoreTypeClicked(object? sender, EventArgs e)
-        {
-            HandleBtnInsertStoreTypeClicked(null, EventArgs.Empty);
-        }
+        #endregion
 
-        private void InitBindings()
-        {
-            txtStoreTypeID.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "StoreTypeID"));
-            txtStoreTypeDescription.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "StoreTypeDescription"));
-            txtMonthlyLeasePrice.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "MonthlyLeasePrice"));
-            txtThreeMonthPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "ThreeMonthPaymentDiscount"));
-            txtSixMonthPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "SixMonthPaymentDiscount"));
-            txtOneYearPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "OneYearPaymentDiscount"));
-        }
-
+        #region Handle Insert
         private void HandleBtnInsertStoreTypeClicked(object? sender, EventArgs e)
         {
             CauseValidation();
@@ -152,7 +166,26 @@ namespace Store_Rental_Management_Systems
 
             RefreshDataGridView();
         }
+        #endregion
 
+        #region Handle Update
+        private void HandleBtnUpdateStoreTypeClicked(object? sender, EventArgs e)
+        {
+            HandleBtnInsertStoreTypeClicked(null, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelStoreTypeClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshDataGridView();
+
+        }
+        #endregion
+
+        #region Cause Validation
         private void CauseValidation()
         {
             foreach (var control in _validatingControls)
@@ -169,10 +202,11 @@ namespace Store_Rental_Management_Systems
                         {
                             ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
                         }
-                    } else
+                    }
+                    else
                     {
                         ErrorHelper.ValidateTextBox(textBox, _errorProvider);
-                    } 
+                    }
                 }
                 else if (control is MaskedTextBox maskedTextBox)
                 {
@@ -180,19 +214,9 @@ namespace Store_Rental_Management_Systems
                 }
             }
         }
+        #endregion
 
-        private void HandleBtnNewStoreTypeClicked(object? sender, EventArgs e)
-        {
-            try
-            {
-                _storetypeBindingSource.AddNew();
-            } catch (Exception)
-            {
-                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-            txtStoreTypeDescription.Focus();
-        }
+        #region Load
         private void LoadAllStoreTypes()
         {
             _storetypeDataAdapter.TableMappings.Add("Table", TABLE_NAME);
@@ -208,8 +232,9 @@ namespace Store_Rental_Management_Systems
             _storetypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvStoreTypes.DataSource = _storetypeBindingSource;
         }
+        #endregion
 
-
+        #region Refresh
         private void RefreshDataGridView()
         {
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
@@ -221,5 +246,6 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }       
         }
+        #endregion
     }
 }

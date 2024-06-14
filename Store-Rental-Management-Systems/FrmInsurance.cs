@@ -22,170 +22,191 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private Binding? _insuranceIDBinding;
-        private Binding? _insuranceNameBinding;
-        private Binding? _insuranceWebsiteBinding;
-
         private List<Control> _validatingControls = new();
 
         public FrmInsurance() : base()
         {
             InitializeComponent();
+            #region Init DataAdapter Commands
             _insuranceDataAdapter.SelectCommand = InsuranceHelper.CreateGetAllInsurancesCommand();
             _insuranceDataAdapter.InsertCommand = InsuranceHelper.CreateInsertInsuranceCommand();
             _insuranceDataAdapter.UpdateCommand = InsuranceHelper.CreateUpdateInsuranceCommand();
+            #endregion
 
+            #region Add controls for validation
             _errorProvider.ContainerControl = this;
+            _validatingControls.Add(txtInsuranceName);
+            _validatingControls.Add(txtInsuranceWebsite);
+            #endregion
 
             LoadAllInsurances();
-            InitBindings();
             BindWithControls();
 
-            #region event registrations
+            #region Event Registrations
             btnNewInsurance.Click += HandleBtnNewInsuranceClicked;
             btnInsertInsurance.Click += HandleBtnInsertInsuranceClicked;
             btnUpdateInsurance.Click += HandleBtnUpdateInsuranceClicked;
             btnCancelInsurance.Click += HandleBtnCancelInsuranceClicked;
 
-            btnInsertInsurance.EnabledChanged += HandleBtnEnabledChanged;
-            btnNewInsurance.EnabledChanged += HandleBtnEnabledChanged;
-            btnUpdateInsurance.EnabledChanged += HandleBtnEnabledChanged;
-            btnCancelInsurance.EnabledChanged += HandleBtnEnabledChanged;
-
             txtInsuranceName.Validating += ValidateTextBox;
             txtInsuranceWebsite.Validating += ValidateTextBox;
 
-            _validatingControls.Add(txtInsuranceName);
-            _validatingControls.Add(txtInsuranceWebsite);
+            dgvInsurances.SelectionChanged += HandleSelectionChanged;
 
             txtSearchInsurance.TextChanged += HandleSearchInsurance;
             #endregion
-            _insuranceBindingSource.Position = -1;
         }
 
+        #region Bind With Controls
+        private void BindWithControls()
+        {
+            txtInsuranceID.DataBindings.Add(new Binding("Text", _insuranceBindingSource, "InsuranceID"));
+            txtInsuranceName.DataBindings.Add(new Binding("Text", _insuranceBindingSource, "InsuranceName"));
+            txtInsuranceWebsite.DataBindings.Add(new Binding("Text", _insuranceBindingSource, "InsuranceWebsite"));
+        }
+
+        #endregion
+
+        #region Handle DataGridView SelectionChanged
+        private void HandleSelectionChanged(object? sender, EventArgs e)
+        {
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
+            {
+                return;
+            }
+            else
+            {
+                btnCancelInsurance.PerformClick();
+            }
+        }
+
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
+
+            return changes != null && changes.Rows.Count > 0;
+        }
+
+        #endregion
+
+        #region Handle Search
         private void HandleSearchInsurance(object? sender, EventArgs e)
         {
             string searchText = txtSearchInsurance.Text.Trim().ToLower();
 
-            if (string.IsNullOrEmpty(searchText))
+            if (string.IsNullOrWhiteSpace(searchText))
             {
                 _insuranceBindingSource.Filter = string.Empty;
             }
             else
             {
-                _insuranceBindingSource.Filter = "InsuranceName LIKE '%" + searchText + "%'";
+                _insuranceBindingSource.Filter = "InsuranceName LIKE '" + searchText + "%'";
             }
         }
+        #endregion
+
+        #region Handle Validation
 
         private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
             ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
         }
 
-        private void HandleBtnCancelInsuranceClicked(object? sender, EventArgs e)
-        {
-            _storeRentalDataSet.RejectChanges();
-            RefreshDataGridView();
+        #endregion
 
-            foreach (var control in _validatingControls)
+        #region Handle New
+        private void HandleBtnNewInsuranceClicked(object? sender, EventArgs e)
+        {
+            try
             {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
+                _insuranceBindingSource.AddNew();
             }
-
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
-
-        }
-
-        private void HandleBtnEnabledChanged(object? sender, EventArgs e)
-        {
-            Button btn = (sender as Button)!;
-
-            if (btn != null && !btn.Enabled)
+            catch (Exception)
             {
-                btn.BackColor = Color.White;
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                btn!.BackColor = Color.FromArgb(0, 28, 87);
-            }
+            txtInsuranceName.Focus();
         }
+        #endregion
 
-        private void HandleBtnUpdateInsuranceClicked(object? sender, EventArgs e)
-        {
-            HandleBtnInsertInsuranceClicked(null, EventArgs.Empty);
-        }
-
-        private void InitBindings()
-        {
-            _insuranceIDBinding = new Binding("Text", _insuranceBindingSource, "InsuranceID");
-            _insuranceNameBinding = new Binding("Text", _insuranceBindingSource, "InsuranceName");
-            _insuranceWebsiteBinding = new Binding("Text", _insuranceBindingSource, "InsuranceWebsite");
-        }
-        private void BindWithControls()
-        {
-            txtInsuranceID.DataBindings.Add(_insuranceIDBinding);
-            txtInsuranceName.DataBindings.Add(_insuranceNameBinding);
-            txtInsuranceWebsite.DataBindings.Add(_insuranceWebsiteBinding);
-        }
-
+        #region Handle Insert
         private void HandleBtnInsertInsuranceClicked(object? sender, EventArgs e)
         {
-            foreach (var control in _validatingControls)
-            {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
-            }
+            CauseValidation();
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _insuranceBindingSource.EndEdit();
             try
             {
                 _insuranceDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _insuranceBindingSource.ResetBindings(false);
             }
             catch (Exception)
             {
-                MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            _insuranceBindingSource.ResetBindings(false);
 
             RefreshDataGridView();
         }
+        #endregion
 
-        public bool HasErrors()
+        #region Handle Update
+        private void HandleBtnUpdateInsuranceClicked(object? sender, EventArgs e)
         {
-            foreach (Control control in _validatingControls)
+            HandleBtnInsertInsuranceClicked(null, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelInsuranceClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshDataGridView();
+        }
+        #endregion
+
+        #region Cause Validation
+        private void CauseValidation()
+        {
+            foreach (var control in _validatingControls)
             {
-                control.Focus();
-                var err = _errorProvider.GetError(control);
-
-                if (!string.IsNullOrEmpty(err))
-                {
-                    return true;
-                }
+                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
             }
-            return false;
         }
+        #endregion
 
-        private void HandleBtnNewInsuranceClicked(object? sender, EventArgs e)
-        {
-            _insuranceBindingSource.AddNew();
-            txtInsuranceName.Focus();
-        }
-
+        #region Load
         private void LoadAllInsurances()
         {
             _insuranceDataAdapter.TableMappings.Add("Table", TABLE_NAME);
-            _insuranceDataAdapter.Fill(_storeRentalDataSet);
+            try
+            {
+                _insuranceDataAdapter.Fill(_storeRentalDataSet);
+            } catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _insuranceBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvInsurances.DataSource = _insuranceBindingSource;
 
         }
+        #endregion
 
+        #region Refresh
         private void RefreshDataGridView()
         {
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
-            _insuranceDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            try
+            {
+                _insuranceDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }         
         }
+        #endregion
     }
 }

@@ -33,6 +33,10 @@
             txtSearchSupplier = new TextBox();
             pnlLeftSide = new Panel();
             dgvSuppliers = new DataGridView();
+            SupplierID = new DataGridViewTextBoxColumn();
+            SupplierName = new DataGridViewTextBoxColumn();
+            ContactNumber = new DataGridViewTextBoxColumn();
+            SupplierAddress = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbSupplierInformation = new GroupBox();
             mtxtContactNumber = new MaskedTextBox();
@@ -48,10 +52,6 @@
             txtSupplierID = new TextBox();
             lblContactNumber = new Label();
             txtSupplierAddress = new TextBox();
-            SupplierID = new DataGridViewTextBoxColumn();
-            SupplierName = new DataGridViewTextBoxColumn();
-            ContactNumber = new DataGridViewTextBoxColumn();
-            SupplierAddress = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -77,16 +77,17 @@
             lblSearchSupplier.AutoSize = true;
             lblSearchSupplier.Location = new Point(82, 19);
             lblSearchSupplier.Name = "lblSearchSupplier";
-            lblSearchSupplier.Size = new Size(343, 43);
+            lblSearchSupplier.Size = new Size(240, 36);
             lblSearchSupplier.TabIndex = 1;
-            lblSearchSupplier.Text = "ស្វែងរក (លេខសម្គាល់អ្នកផ្គត់ផ្គង់):";
+            lblSearchSupplier.Text = "ស្វែងរក (ឈ្មោះអ្នកផ្គត់ផ្គង់):";
             // 
             // txtSearchSupplier
             // 
             txtSearchSupplier.Location = new Point(396, 11);
             txtSearchSupplier.Name = "txtSearchSupplier";
-            txtSearchSupplier.Size = new Size(349, 51);
+            txtSearchSupplier.Size = new Size(349, 44);
             txtSearchSupplier.TabIndex = 2;
+            txtSearchSupplier.TabStop = false;
             // 
             // pnlLeftSide
             // 
@@ -111,6 +112,45 @@
             dgvSuppliers.RowTemplate.Height = 29;
             dgvSuppliers.Size = new Size(1362, 369);
             dgvSuppliers.TabIndex = 3;
+            dgvSuppliers.TabStop = false;
+            // 
+            // SupplierID
+            // 
+            SupplierID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            SupplierID.DataPropertyName = "SupplierID";
+            SupplierID.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
+            SupplierID.MinimumWidth = 6;
+            SupplierID.Name = "SupplierID";
+            SupplierID.ReadOnly = true;
+            SupplierID.Width = 228;
+            // 
+            // SupplierName
+            // 
+            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SupplierName.DataPropertyName = "SupplierName";
+            SupplierName.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
+            SupplierName.MinimumWidth = 6;
+            SupplierName.Name = "SupplierName";
+            SupplierName.ReadOnly = true;
+            // 
+            // ContactNumber
+            // 
+            ContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ContactNumber.DataPropertyName = "ContactNumber";
+            ContactNumber.HeaderText = "លេខទំនាក់ទំនង";
+            ContactNumber.MinimumWidth = 6;
+            ContactNumber.Name = "ContactNumber";
+            ContactNumber.ReadOnly = true;
+            ContactNumber.Width = 174;
+            // 
+            // SupplierAddress
+            // 
+            SupplierAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SupplierAddress.DataPropertyName = "SupplierAddress";
+            SupplierAddress.HeaderText = "អាសយដ្ឋាន";
+            SupplierAddress.MinimumWidth = 6;
+            SupplierAddress.Name = "SupplierAddress";
+            SupplierAddress.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -145,8 +185,8 @@
             mtxtContactNumber.Location = new Point(229, 111);
             mtxtContactNumber.Mask = "(999) 00-000-0000";
             mtxtContactNumber.Name = "mtxtContactNumber";
-            mtxtContactNumber.Size = new Size(434, 45);
-            mtxtContactNumber.TabIndex = 28;
+            mtxtContactNumber.Size = new Size(434, 39);
+            mtxtContactNumber.TabIndex = 2;
             // 
             // pnlSupplierManipulation
             // 
@@ -169,6 +209,7 @@
             btnCancelSupplier.Name = "btnCancelSupplier";
             btnCancelSupplier.Size = new Size(152, 52);
             btnCancelSupplier.TabIndex = 3;
+            btnCancelSupplier.TabStop = false;
             btnCancelSupplier.Text = "បោះបង់";
             btnCancelSupplier.UseVisualStyleBackColor = false;
             // 
@@ -181,6 +222,7 @@
             btnNewSupplier.Name = "btnNewSupplier";
             btnNewSupplier.Size = new Size(152, 52);
             btnNewSupplier.TabIndex = 2;
+            btnNewSupplier.TabStop = false;
             btnNewSupplier.Text = "បង្កើតថ្មី";
             btnNewSupplier.UseVisualStyleBackColor = false;
             // 
@@ -193,6 +235,7 @@
             btnUpdateSupplier.Name = "btnUpdateSupplier";
             btnUpdateSupplier.Size = new Size(152, 52);
             btnUpdateSupplier.TabIndex = 1;
+            btnUpdateSupplier.TabStop = false;
             btnUpdateSupplier.Text = "កែប្រែ";
             btnUpdateSupplier.UseVisualStyleBackColor = false;
             // 
@@ -205,6 +248,7 @@
             btnInsertSupplier.Name = "btnInsertSupplier";
             btnInsertSupplier.Size = new Size(152, 52);
             btnInsertSupplier.TabIndex = 0;
+            btnInsertSupplier.TabStop = false;
             btnInsertSupplier.Text = "បញ្ចូល";
             btnInsertSupplier.UseVisualStyleBackColor = false;
             // 
@@ -214,7 +258,7 @@
             lblSupplierAddress.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSupplierAddress.Location = new Point(711, 111);
             lblSupplierAddress.Name = "lblSupplierAddress";
-            lblSupplierAddress.Size = new Size(137, 43);
+            lblSupplierAddress.Size = new Size(115, 36);
             lblSupplierAddress.TabIndex = 27;
             lblSupplierAddress.Text = "អាសយដ្ឋាន:";
             // 
@@ -224,7 +268,7 @@
             lblSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSupplierID.Location = new Point(18, 41);
             lblSupplierID.Name = "lblSupplierID";
-            lblSupplierID.Size = new Size(239, 43);
+            lblSupplierID.Size = new Size(205, 36);
             lblSupplierID.TabIndex = 0;
             lblSupplierID.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
             // 
@@ -233,8 +277,8 @@
             txtSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSupplierName.Location = new Point(907, 33);
             txtSupplierName.Name = "txtSupplierName";
-            txtSupplierName.Size = new Size(412, 51);
-            txtSupplierName.TabIndex = 5;
+            txtSupplierName.Size = new Size(412, 44);
+            txtSupplierName.TabIndex = 1;
             // 
             // lblSupplierName
             // 
@@ -242,7 +286,7 @@
             lblSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSupplierName.Location = new Point(711, 41);
             lblSupplierName.Name = "lblSupplierName";
-            lblSupplierName.Size = new Size(180, 43);
+            lblSupplierName.Size = new Size(152, 36);
             lblSupplierName.TabIndex = 4;
             lblSupplierName.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
             // 
@@ -252,7 +296,7 @@
             txtSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSupplierID.Location = new Point(229, 33);
             txtSupplierID.Name = "txtSupplierID";
-            txtSupplierID.Size = new Size(434, 51);
+            txtSupplierID.Size = new Size(434, 44);
             txtSupplierID.TabIndex = 3;
             // 
             // lblContactNumber
@@ -261,7 +305,7 @@
             lblContactNumber.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblContactNumber.Location = new Point(18, 111);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(177, 43);
+            lblContactNumber.Size = new Size(151, 36);
             lblContactNumber.TabIndex = 6;
             lblContactNumber.Text = "លេខទំនាក់ទំនង:";
             // 
@@ -270,46 +314,8 @@
             txtSupplierAddress.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSupplierAddress.Location = new Point(907, 103);
             txtSupplierAddress.Name = "txtSupplierAddress";
-            txtSupplierAddress.Size = new Size(412, 51);
-            txtSupplierAddress.TabIndex = 7;
-            // 
-            // SupplierID
-            // 
-            SupplierID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            SupplierID.DataPropertyName = "SupplierID";
-            SupplierID.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
-            SupplierID.MinimumWidth = 6;
-            SupplierID.Name = "SupplierID";
-            SupplierID.ReadOnly = true;
-            SupplierID.Width = 268;
-            // 
-            // SupplierName
-            // 
-            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SupplierName.DataPropertyName = "SupplierName";
-            SupplierName.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
-            SupplierName.MinimumWidth = 6;
-            SupplierName.Name = "SupplierName";
-            SupplierName.ReadOnly = true;
-            // 
-            // ContactNumber
-            // 
-            ContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ContactNumber.DataPropertyName = "ContactNumber";
-            ContactNumber.HeaderText = "លេខទំនាក់ទំនង";
-            ContactNumber.MinimumWidth = 6;
-            ContactNumber.Name = "ContactNumber";
-            ContactNumber.ReadOnly = true;
-            ContactNumber.Width = 206;
-            // 
-            // SupplierAddress
-            // 
-            SupplierAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SupplierAddress.DataPropertyName = "SupplierAddress";
-            SupplierAddress.HeaderText = "អាសយដ្ឋាន";
-            SupplierAddress.MinimumWidth = 6;
-            SupplierAddress.Name = "SupplierAddress";
-            SupplierAddress.ReadOnly = true;
+            txtSupplierAddress.Size = new Size(412, 44);
+            txtSupplierAddress.TabIndex = 3;
             // 
             // FrmSupplier
             // 

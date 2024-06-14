@@ -21,169 +21,188 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private Binding? _expenseTypeIDBinding;
-        private Binding? _expenseDescriptionBinding;
-
-
         private List<Control> _validatingControls = new();
 
         public FrmExpenseType() : base()
         {
             InitializeComponent();
+            #region Init DataAdapter Commands
             _expenseTypeDataAdapter.SelectCommand = ExpenseTypeHelper.CreateGetAllExpenseTypesCommand();
             _expenseTypeDataAdapter.InsertCommand = ExpenseTypeHelper.CreateInsertExpenseTypeCommand();
             _expenseTypeDataAdapter.UpdateCommand = ExpenseTypeHelper.CreateUpdateExpenseTypeCommand();
+            #endregion
 
+            #region Add controls for validation
             _errorProvider.ContainerControl = this;
+            _validatingControls.Add(txtExpenseDescription);
+            #endregion
 
             LoadAllExpenseTypes();
-            InitBindings();
             BindWithControls();
 
-            #region event registrations
+            #region Event Registrations
             btnNewExpenseType.Click += HandleBtnNewExpenseTypeClicked;
             btnInsertExpenseType.Click += HandleBtnInsertExpenseTypeClicked;
             btnUpdateExpenseType.Click += HandleBtnUpdateExpenseTypeClicked;
             btnCancelExpenseType.Click += HandleBtnCancelExpenseTypeClicked;
 
-            btnInsertExpenseType.EnabledChanged += HandleBtnEnabledChanged;
-            btnNewExpenseType.EnabledChanged += HandleBtnEnabledChanged;
-            btnUpdateExpenseType.EnabledChanged += HandleBtnEnabledChanged;
-            btnCancelExpenseType.EnabledChanged += HandleBtnEnabledChanged;
-
             txtExpenseDescription.Validating += ValidateTextBox;
 
-
-            _validatingControls.Add(txtExpenseDescription);
-
+            dgvExpenseTypes.SelectionChanged += HandleSelectionChanged;
 
             txtSearchExpenseType.TextChanged += HandleSearchExpenseType;
             #endregion
         }
+        #region Bind With Controls
+        private void BindWithControls()
+        {
+            txtExpenseTypeID.DataBindings.Add(new Binding("Text", _expenseTypeBindingSource, "ExpenseTypeID"));
+            txtExpenseDescription.DataBindings.Add(new Binding("Text", _expenseTypeBindingSource, "ExpenseDescription"));
 
+        }
+        #endregion
+
+        #region Handle DataGridView SelectionChanged
+        private void HandleSelectionChanged(object? sender, EventArgs e)
+        {
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
+            {
+                return;
+            }
+            else
+            {
+                btnCancelExpenseType.PerformClick();
+            }
+        }
+
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
+
+            return changes != null && changes.Rows.Count > 0;
+        }
+
+        #endregion
+
+        #region Handle Search
         private void HandleSearchExpenseType(object? sender, EventArgs e)
         {
             string searchText = txtSearchExpenseType.Text.Trim().ToLower();
 
-            if (string.IsNullOrEmpty(searchText))
+            if (string.IsNullOrWhiteSpace(searchText))
             {
                 _expenseTypeBindingSource.Filter = string.Empty;
             }
             else
             {
-                _expenseTypeBindingSource.Filter = "ExpenseDescription LIKE '%" + searchText + "%'";
+                _expenseTypeBindingSource.Filter = "ExpenseDescription LIKE '" + searchText + "%'";
             }
         }
+        #endregion
 
+        #region Handle Validation
         private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
             ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
         }
+        #endregion
 
-        private void HandleBtnCancelExpenseTypeClicked(object? sender, EventArgs e)
+        #region Handle New
+
+        private void HandleBtnNewExpenseTypeClicked(object? sender, EventArgs e)
         {
-            _storeRentalDataSet.RejectChanges();
-            RefreshDataGridView();
-
-            foreach (var control in _validatingControls)
+            try
             {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
+                _expenseTypeBindingSource.AddNew();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
-
+            txtExpenseDescription.Focus();
         }
 
-        private void HandleBtnEnabledChanged(object? sender, EventArgs e)
-        {
-            Button btn = (sender as Button)!;
+        #endregion
 
-            if (btn != null && !btn.Enabled)
-            {
-                btn.BackColor = Color.White;
-            }
-            else
-            {
-                btn!.BackColor = Color.FromArgb(0, 28, 87);
-            }
-        }
-
-        private void HandleBtnUpdateExpenseTypeClicked(object? sender, EventArgs e)
-        {
-            HandleBtnInsertExpenseTypeClicked(null, EventArgs.Empty);
-        }
-
-        private void InitBindings()
-        {
-            //txtExpenseTypeID.DataBindings.Add(new Binding("Text", _expenseTypeBindingSource, "ExpenseTypeID"));
-            //txtExpenseDescription.DataBindings.Add(new Binding("Text", _expenseTypeBindingSource, "ExpenseDescription"));
-            _expenseTypeIDBinding = new Binding("Text", _expenseTypeBindingSource, "ExpenseTypeID");
-            _expenseDescriptionBinding = new Binding("Text", _expenseTypeBindingSource, "ExpenseDescription");
-        }
-        private void BindWithControls()
-        {
-            txtExpenseTypeID.DataBindings.Add(_expenseTypeIDBinding);
-            txtExpenseDescription.DataBindings.Add(_expenseDescriptionBinding);
-
-        }
-
+        #region Handle Insert
         private void HandleBtnInsertExpenseTypeClicked(object? sender, EventArgs e)
         {
-            foreach (var control in _validatingControls)
-            {
-                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
-            }
+            CauseValidation();
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             _expenseTypeBindingSource.EndEdit();
             try
             {
                 _expenseTypeDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _expenseTypeBindingSource.ResetBindings(false);
             }
             catch (Exception)
             {
-                MessageBox.Show("ការបញ្ចូលមិនបានសម្រេច");
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            _expenseTypeBindingSource.ResetBindings(false);
 
             RefreshDataGridView();
         }
+        #endregion
 
-        public bool HasErrors()
+        #region Handle Update
+        private void HandleBtnUpdateExpenseTypeClicked(object? sender, EventArgs e)
         {
-            foreach (Control control in _validatingControls)
+            HandleBtnInsertExpenseTypeClicked(null, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelExpenseTypeClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshDataGridView();
+        }
+        #endregion
+
+        #region Cause Validation
+        private void CauseValidation()
+        {
+            foreach (var control in _validatingControls)
             {
-                control.Focus();
-                var err = _errorProvider.GetError(control);
-
-                if (!string.IsNullOrEmpty(err))
-                {
-                    return true;
-                }
+                ErrorHelper.ValidateTextBox((control as TextBox)!, _errorProvider);
             }
-            return false;
         }
+        #endregion
 
-        private void HandleBtnNewExpenseTypeClicked(object? sender, EventArgs e)
-        {
-            _expenseTypeBindingSource.AddNew();
-            txtExpenseDescription.Focus();
-        }
-
+        #region Load
         private void LoadAllExpenseTypes()
         {
             _expenseTypeDataAdapter.TableMappings.Add("Table", TABLE_NAME);
-            _expenseTypeDataAdapter.Fill(_storeRentalDataSet);
+            try
+            {
+                _expenseTypeDataAdapter.Fill(_storeRentalDataSet);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _expenseTypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             dgvExpenseTypes.DataSource = _expenseTypeBindingSource;
         }
+        #endregion
 
+        #region Refresh
         private void RefreshDataGridView()
         {
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
-            _expenseTypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            try
+            {
+                _expenseTypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        #endregion
     }
 }

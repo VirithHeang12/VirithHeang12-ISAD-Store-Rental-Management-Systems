@@ -95,7 +95,7 @@ namespace Store_Rental_Management_Systems
         #region Validate MaskedTextBox
         public static bool ValidateMaskedTextBox(MaskedTextBox mtxt, ErrorProvider errorProvider)
         {
-            if (!string.IsNullOrWhiteSpace(mtxt.Text))
+            if (string.IsNullOrWhiteSpace(mtxt.Text))
             {
                 errorProvider.SetError(mtxt, NOT_EMPTY_MSG);
                 return false;

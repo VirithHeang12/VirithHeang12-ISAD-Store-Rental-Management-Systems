@@ -81,6 +81,7 @@
             txtSearchExpenseType.Name = "txtSearchExpenseType";
             txtSearchExpenseType.Size = new Size(556, 44);
             txtSearchExpenseType.TabIndex = 2;
+            txtSearchExpenseType.TabStop = false;
             // 
             // pnlLeftSide
             // 
@@ -105,6 +106,7 @@
             dgvExpenseTypes.RowTemplate.Height = 29;
             dgvExpenseTypes.Size = new Size(1362, 369);
             dgvExpenseTypes.TabIndex = 3;
+            dgvExpenseTypes.TabStop = false;
             // 
             // ExpenseTypeID
             // 
@@ -169,6 +171,7 @@
             btnCancelExpenseType.Name = "btnCancelExpenseType";
             btnCancelExpenseType.Size = new Size(152, 52);
             btnCancelExpenseType.TabIndex = 3;
+            btnCancelExpenseType.TabStop = false;
             btnCancelExpenseType.Text = "បោះបង់";
             btnCancelExpenseType.UseVisualStyleBackColor = false;
             // 
@@ -181,6 +184,7 @@
             btnNewExpenseType.Name = "btnNewExpenseType";
             btnNewExpenseType.Size = new Size(152, 52);
             btnNewExpenseType.TabIndex = 2;
+            btnNewExpenseType.TabStop = false;
             btnNewExpenseType.Text = "បង្កើតថ្មី";
             btnNewExpenseType.UseVisualStyleBackColor = false;
             // 
@@ -193,6 +197,7 @@
             btnUpdateExpenseType.Name = "btnUpdateExpenseType";
             btnUpdateExpenseType.Size = new Size(152, 52);
             btnUpdateExpenseType.TabIndex = 1;
+            btnUpdateExpenseType.TabStop = false;
             btnUpdateExpenseType.Text = "កែប្រែ";
             btnUpdateExpenseType.UseVisualStyleBackColor = false;
             // 
@@ -205,6 +210,7 @@
             btnInsertExpenseType.Name = "btnInsertExpenseType";
             btnInsertExpenseType.Size = new Size(152, 52);
             btnInsertExpenseType.TabIndex = 0;
+            btnInsertExpenseType.TabStop = false;
             btnInsertExpenseType.Text = "បញ្ចូល";
             btnInsertExpenseType.UseVisualStyleBackColor = false;
             // 

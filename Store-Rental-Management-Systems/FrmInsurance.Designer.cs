@@ -33,6 +33,9 @@
             txtSearchInsurance = new TextBox();
             pnlLeftSide = new Panel();
             dgvInsurances = new DataGridView();
+            InsuranceID = new DataGridViewTextBoxColumn();
+            InsuranceName = new DataGridViewTextBoxColumn();
+            InsuranceWebsite = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbInsuranceInformation = new GroupBox();
             pnlInsuranceManipulation = new Panel();
@@ -46,9 +49,6 @@
             txtInsuranceID = new TextBox();
             lblInsuranceWebsite = new Label();
             txtInsuranceWebsite = new TextBox();
-            InsuranceID = new DataGridViewTextBoxColumn();
-            InsuranceName = new DataGridViewTextBoxColumn();
-            InsuranceWebsite = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInsurances).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -74,9 +74,9 @@
             lblSearchInsurance.AutoSize = true;
             lblSearchInsurance.Location = new Point(82, 19);
             lblSearchInsurance.Name = "lblSearchInsurance";
-            lblSearchInsurance.Size = new Size(364, 36);
+            lblSearchInsurance.Size = new Size(311, 36);
             lblSearchInsurance.TabIndex = 1;
-            lblSearchInsurance.Text = "ស្វែងរក​ (លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង):";
+            lblSearchInsurance.Text = "ស្វែងរក​ (ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង):";
             // 
             // txtSearchInsurance
             // 
@@ -84,6 +84,7 @@
             txtSearchInsurance.Name = "txtSearchInsurance";
             txtSearchInsurance.Size = new Size(512, 44);
             txtSearchInsurance.TabIndex = 2;
+            txtSearchInsurance.TabStop = false;
             // 
             // pnlLeftSide
             // 
@@ -106,8 +107,38 @@
             dgvInsurances.ReadOnly = true;
             dgvInsurances.RowHeadersWidth = 51;
             dgvInsurances.RowTemplate.Height = 29;
+            dgvInsurances.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInsurances.Size = new Size(1362, 369);
             dgvInsurances.TabIndex = 3;
+            dgvInsurances.TabStop = false;
+            // 
+            // InsuranceID
+            // 
+            InsuranceID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            InsuranceID.DataPropertyName = "InsuranceID";
+            InsuranceID.HeaderText = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceID.MinimumWidth = 6;
+            InsuranceID.Name = "InsuranceID";
+            InsuranceID.ReadOnly = true;
+            InsuranceID.Width = 299;
+            // 
+            // InsuranceName
+            // 
+            InsuranceName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InsuranceName.DataPropertyName = "InsuranceName";
+            InsuranceName.HeaderText = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceName.MinimumWidth = 6;
+            InsuranceName.Name = "InsuranceName";
+            InsuranceName.ReadOnly = true;
+            // 
+            // InsuranceWebsite
+            // 
+            InsuranceWebsite.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InsuranceWebsite.DataPropertyName = "InsuranceWebsite";
+            InsuranceWebsite.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង";
+            InsuranceWebsite.MinimumWidth = 6;
+            InsuranceWebsite.Name = "InsuranceWebsite";
+            InsuranceWebsite.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -155,6 +186,7 @@
             btnCancelInsurance.Name = "btnCancelInsurance";
             btnCancelInsurance.Size = new Size(152, 52);
             btnCancelInsurance.TabIndex = 3;
+            btnCancelInsurance.TabStop = false;
             btnCancelInsurance.Text = "បោះបង់";
             btnCancelInsurance.UseVisualStyleBackColor = false;
             // 
@@ -167,6 +199,7 @@
             btnNewInsurance.Name = "btnNewInsurance";
             btnNewInsurance.Size = new Size(152, 52);
             btnNewInsurance.TabIndex = 2;
+            btnNewInsurance.TabStop = false;
             btnNewInsurance.Text = "បង្កើតថ្មី";
             btnNewInsurance.UseVisualStyleBackColor = false;
             // 
@@ -179,6 +212,7 @@
             btnUpdateInsurance.Name = "btnUpdateInsurance";
             btnUpdateInsurance.Size = new Size(152, 52);
             btnUpdateInsurance.TabIndex = 1;
+            btnUpdateInsurance.TabStop = false;
             btnUpdateInsurance.Text = "កែប្រែ";
             btnUpdateInsurance.UseVisualStyleBackColor = false;
             // 
@@ -191,6 +225,7 @@
             btnInsertInsurance.Name = "btnInsertInsurance";
             btnInsertInsurance.Size = new Size(152, 52);
             btnInsertInsurance.TabIndex = 0;
+            btnInsertInsurance.TabStop = false;
             btnInsertInsurance.Text = "បញ្ចូល";
             btnInsertInsurance.UseVisualStyleBackColor = false;
             // 
@@ -248,34 +283,6 @@
             txtInsuranceWebsite.Name = "txtInsuranceWebsite";
             txtInsuranceWebsite.Size = new Size(1019, 44);
             txtInsuranceWebsite.TabIndex = 13;
-            // 
-            // InsuranceID
-            // 
-            InsuranceID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            InsuranceID.DataPropertyName = "InsuranceID";
-            InsuranceID.HeaderText = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង";
-            InsuranceID.MinimumWidth = 6;
-            InsuranceID.Name = "InsuranceID";
-            InsuranceID.ReadOnly = true;
-            InsuranceID.Width = 299;
-            // 
-            // InsuranceName
-            // 
-            InsuranceName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            InsuranceName.DataPropertyName = "InsuranceName";
-            InsuranceName.HeaderText = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង";
-            InsuranceName.MinimumWidth = 6;
-            InsuranceName.Name = "InsuranceName";
-            InsuranceName.ReadOnly = true;
-            // 
-            // InsuranceWebsite
-            // 
-            InsuranceWebsite.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            InsuranceWebsite.DataPropertyName = "InsuranceWebsite";
-            InsuranceWebsite.HeaderText = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង";
-            InsuranceWebsite.MinimumWidth = 6;
-            InsuranceWebsite.Name = "InsuranceWebsite";
-            InsuranceWebsite.ReadOnly = true;
             // 
             // FrmInsurance
             // 

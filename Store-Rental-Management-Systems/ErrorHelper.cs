@@ -114,7 +114,7 @@ namespace Store_Rental_Management_Systems
         #region Validate Dtp Now or Past
         public static bool ValidateDtpNowOrPast(DateTimePicker dtp, ErrorProvider errorProvider)
         {
-            if (dtp.Value > DateTime.UtcNow)
+            if (dtp.Value > DateTime.Now)
             {
                 errorProvider.SetError(dtp, NOT_FUTURE_MSG);
                 return false;

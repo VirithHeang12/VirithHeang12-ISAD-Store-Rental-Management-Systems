@@ -21,11 +21,11 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-
         private List<Control> _validatingControls = new();
         public FrmSupplier() : base()
         {
             InitializeComponent();
+
             #region Init DataAdapter Commands
             _supplierDataAdapter.SelectCommand = SupplierHelper.CreateGetAllSuppliersCommand();
             _supplierDataAdapter.InsertCommand = SupplierHelper.CreateInsertSupplierCommand();

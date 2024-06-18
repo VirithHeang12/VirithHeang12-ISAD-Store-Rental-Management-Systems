@@ -32,7 +32,6 @@
             lblSearchSalaryPayment = new Label();
             txtSearchSalaryPayment = new TextBox();
             pnlLeftSide = new Panel();
-            dgvSalaryPayments = new DataGridView();
             pnlRightSide = new Panel();
             gbSalaryPaymentInformation = new GroupBox();
             dtpSalaryPaymentDate = new DateTimePicker();
@@ -42,7 +41,7 @@
             lblStaffName = new Label();
             cbStaffID = new ComboBox();
             pnlSalaryPaymentManipulation = new Panel();
-            btnCloseFormSalaryPayment = new Button();
+            btnCancelSalaryPayment = new Button();
             btnNewSalaryPayment = new Button();
             btnUpdateSalaryPayment = new Button();
             btnInsertSalaryPayment = new Button();
@@ -52,6 +51,7 @@
             txtSalaryPaymentID = new TextBox();
             lblSalaryPaymentAmount = new Label();
             txtSalaryPaymentAmount = new TextBox();
+            dgvSalaryPayments = new DataGridView();
             SalaryPaymentID = new DataGridViewTextBoxColumn();
             SalaryPaymentDate = new DataGridViewTextBoxColumn();
             SalaryPaymentAmount = new DataGridViewTextBoxColumn();
@@ -59,10 +59,10 @@
             StaffName = new DataGridViewTextBoxColumn();
             StaffPosition = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).BeginInit();
             pnlRightSide.SuspendLayout();
             gbSalaryPaymentInformation.SuspendLayout();
             pnlSalaryPaymentManipulation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -103,20 +103,6 @@
             pnlLeftSide.Name = "pnlLeftSide";
             pnlLeftSide.Size = new Size(1534, 463);
             pnlLeftSide.TabIndex = 3;
-            // 
-            // dgvSalaryPayments
-            // 
-            dgvSalaryPayments.AllowUserToAddRows = false;
-            dgvSalaryPayments.AllowUserToDeleteRows = false;
-            dgvSalaryPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSalaryPayments.Columns.AddRange(new DataGridViewColumn[] { SalaryPaymentID, SalaryPaymentDate, SalaryPaymentAmount, StaffID, StaffName, StaffPosition });
-            dgvSalaryPayments.Location = new Point(34, 94);
-            dgvSalaryPayments.Name = "dgvSalaryPayments";
-            dgvSalaryPayments.ReadOnly = true;
-            dgvSalaryPayments.RowHeadersWidth = 51;
-            dgvSalaryPayments.RowTemplate.Height = 29;
-            dgvSalaryPayments.Size = new Size(1448, 327);
-            dgvSalaryPayments.TabIndex = 3;
             // 
             // pnlRightSide
             // 
@@ -170,13 +156,12 @@
             // 
             // txtStaffPosition
             // 
-            txtStaffPosition.Enabled = false;
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1013, 185);
             txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.ReadOnly = true;
             txtStaffPosition.Size = new Size(366, 44);
             txtStaffPosition.TabIndex = 31;
-            txtStaffPosition.UseSystemPasswordChar = true;
             // 
             // txtStaffName
             // 
@@ -184,9 +169,9 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(303, 182);
             txtStaffName.Name = "txtStaffName";
+            txtStaffName.ReadOnly = true;
             txtStaffName.Size = new Size(360, 44);
             txtStaffName.TabIndex = 30;
-            txtStaffName.UseSystemPasswordChar = true;
             // 
             // lblStaffName
             // 
@@ -200,9 +185,9 @@
             // 
             // cbStaffID
             // 
+            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
-            cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbStaffID.Location = new Point(1013, 116);
             cbStaffID.Name = "cbStaffID";
             cbStaffID.Size = new Size(366, 44);
@@ -210,7 +195,7 @@
             // 
             // pnlSalaryPaymentManipulation
             // 
-            pnlSalaryPaymentManipulation.Controls.Add(btnCloseFormSalaryPayment);
+            pnlSalaryPaymentManipulation.Controls.Add(btnCancelSalaryPayment);
             pnlSalaryPaymentManipulation.Controls.Add(btnNewSalaryPayment);
             pnlSalaryPaymentManipulation.Controls.Add(btnUpdateSalaryPayment);
             pnlSalaryPaymentManipulation.Controls.Add(btnInsertSalaryPayment);
@@ -220,17 +205,17 @@
             pnlSalaryPaymentManipulation.Size = new Size(1375, 81);
             pnlSalaryPaymentManipulation.TabIndex = 5;
             // 
-            // btnCloseFormSalaryPayment
+            // btnCancelSalaryPayment
             // 
-            btnCloseFormSalaryPayment.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormSalaryPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormSalaryPayment.ForeColor = Color.White;
-            btnCloseFormSalaryPayment.Location = new Point(1102, 20);
-            btnCloseFormSalaryPayment.Name = "btnCloseFormSalaryPayment";
-            btnCloseFormSalaryPayment.Size = new Size(152, 52);
-            btnCloseFormSalaryPayment.TabIndex = 3;
-            btnCloseFormSalaryPayment.Text = "បិទ";
-            btnCloseFormSalaryPayment.UseVisualStyleBackColor = false;
+            btnCancelSalaryPayment.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelSalaryPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelSalaryPayment.ForeColor = Color.White;
+            btnCancelSalaryPayment.Location = new Point(1102, 20);
+            btnCancelSalaryPayment.Name = "btnCancelSalaryPayment";
+            btnCancelSalaryPayment.Size = new Size(152, 52);
+            btnCancelSalaryPayment.TabIndex = 3;
+            btnCancelSalaryPayment.Text = "បោះបង់";
+            btnCancelSalaryPayment.UseVisualStyleBackColor = false;
             // 
             // btnNewSalaryPayment
             // 
@@ -324,7 +309,22 @@
             txtSalaryPaymentAmount.Name = "txtSalaryPaymentAmount";
             txtSalaryPaymentAmount.Size = new Size(360, 44);
             txtSalaryPaymentAmount.TabIndex = 13;
-            txtSalaryPaymentAmount.UseSystemPasswordChar = true;
+            // 
+            // dgvSalaryPayments
+            // 
+            dgvSalaryPayments.AllowUserToAddRows = false;
+            dgvSalaryPayments.AllowUserToDeleteRows = false;
+            dgvSalaryPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSalaryPayments.Columns.AddRange(new DataGridViewColumn[] { SalaryPaymentID, SalaryPaymentDate, SalaryPaymentAmount, StaffID, StaffName, StaffPosition });
+            dgvSalaryPayments.Location = new Point(34, 76);
+            dgvSalaryPayments.Name = "dgvSalaryPayments";
+            dgvSalaryPayments.ReadOnly = true;
+            dgvSalaryPayments.RowHeadersWidth = 51;
+            dgvSalaryPayments.RowTemplate.Height = 29;
+            dgvSalaryPayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSalaryPayments.Size = new Size(1448, 346);
+            dgvSalaryPayments.TabIndex = 4;
+            dgvSalaryPayments.TabStop = false;
             // 
             // SalaryPaymentID
             // 
@@ -399,11 +399,11 @@
             Controls.SetChildIndex(pnlRightSide, 0);
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbSalaryPaymentInformation.ResumeLayout(false);
             gbSalaryPaymentInformation.PerformLayout();
             pnlSalaryPaymentManipulation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).EndInit();
             ResumeLayout(false);
         }
 
@@ -422,11 +422,10 @@
         private GroupBox gbSalaryPaymentInformation;
         private Panel pnlSalaryPaymentManipulation;
         private Button btnInsertSalaryPayment;
-        private Button btnCloseFormSalaryPayment;
+        private Button btnCancelSalaryPayment;
         private Button btnNewSalaryPayment;
         private Button btnUpdateSalaryPayment;
         private Label lblStaffID;
-        private DataGridView dgvSalaryPayments;
         private Label lblStaffName;
         private ComboBox cbStaffID;
         private Label lblStaffPosition;
@@ -436,6 +435,7 @@
         private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn staffNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
+        private DataGridView dgvSalaryPayments;
         private DataGridViewTextBoxColumn SalaryPaymentID;
         private DataGridViewTextBoxColumn SalaryPaymentDate;
         private DataGridViewTextBoxColumn SalaryPaymentAmount;

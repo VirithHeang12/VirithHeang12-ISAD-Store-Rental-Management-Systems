@@ -48,7 +48,7 @@
             lblStoreTypeID = new Label();
             lblStatus = new Label();
             pnlStoreManipulation = new Panel();
-            btnCloseFormStore = new Button();
+            btnCancelStore = new Button();
             btnNewStore = new Button();
             btnUpdateStore = new Button();
             btnInsertStore = new Button();
@@ -116,12 +116,14 @@
             dgvStores.ReadOnly = true;
             dgvStores.RowHeadersWidth = 51;
             dgvStores.RowTemplate.Height = 29;
+            dgvStores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStores.Size = new Size(1362, 325);
             dgvStores.TabIndex = 3;
             // 
             // StoreID
             // 
             StoreID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreID.DataPropertyName = "StoreID";
             StoreID.HeaderText = "លេខសម្គាល់តូប";
             StoreID.MinimumWidth = 6;
             StoreID.Name = "StoreID";
@@ -131,6 +133,7 @@
             // FloorNumber
             // 
             FloorNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            FloorNumber.DataPropertyName = "FloorNumber";
             FloorNumber.HeaderText = "ជាន់";
             FloorNumber.MinimumWidth = 6;
             FloorNumber.Name = "FloorNumber";
@@ -140,6 +143,7 @@
             // ElectricityLastRecord
             // 
             ElectricityLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ElectricityLastRecord.DataPropertyName = "ElectricityLastRecord";
             ElectricityLastRecord.HeaderText = "នាឡិកាអគ្គិសនីចុងក្រោយ";
             ElectricityLastRecord.MinimumWidth = 6;
             ElectricityLastRecord.Name = "ElectricityLastRecord";
@@ -149,6 +153,7 @@
             // WaterLastRecord
             // 
             WaterLastRecord.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            WaterLastRecord.DataPropertyName = "WaterLastRecord";
             WaterLastRecord.HeaderText = "នាឡិកាទឹកចុងក្រោយ";
             WaterLastRecord.MinimumWidth = 6;
             WaterLastRecord.Name = "WaterLastRecord";
@@ -158,6 +163,7 @@
             // Status
             // 
             Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Status.DataPropertyName = "Status";
             Status.HeaderText = "ស្ថានភាព";
             Status.MinimumWidth = 6;
             Status.Name = "Status";
@@ -166,6 +172,7 @@
             // StoreTypeID
             // 
             StoreTypeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StoreTypeID.DataPropertyName = "StoreTypeID";
             StoreTypeID.HeaderText = "លេខសម្គាល់ប្រភេទតូប";
             StoreTypeID.MinimumWidth = 6;
             StoreTypeID.Name = "StoreTypeID";
@@ -212,7 +219,7 @@
             cbStoreTypeID.Location = new Point(946, 174);
             cbStoreTypeID.Name = "cbStoreTypeID";
             cbStoreTypeID.Size = new Size(373, 51);
-            cbStoreTypeID.TabIndex = 36;
+            cbStoreTypeID.TabIndex = 6;
             // 
             // rdbRented
             // 
@@ -221,20 +228,18 @@
             rdbRented.Location = new Point(398, 175);
             rdbRented.Name = "rdbRented";
             rdbRented.Size = new Size(123, 47);
-            rdbRented.TabIndex = 35;
+            rdbRented.TabIndex = 5;
             rdbRented.Text = "បានជួល";
             rdbRented.UseVisualStyleBackColor = true;
             // 
             // rdbFree
             // 
             rdbFree.AutoSize = true;
-            rdbFree.Checked = true;
             rdbFree.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rdbFree.Location = new Point(287, 175);
             rdbFree.Name = "rdbFree";
             rdbFree.Size = new Size(92, 47);
-            rdbFree.TabIndex = 34;
-            rdbFree.TabStop = true;
+            rdbFree.TabIndex = 4;
             rdbFree.Text = "ទំនេរ";
             rdbFree.UseVisualStyleBackColor = true;
             // 
@@ -244,8 +249,7 @@
             txtWaterLastRecord.Location = new Point(946, 105);
             txtWaterLastRecord.Name = "txtWaterLastRecord";
             txtWaterLastRecord.Size = new Size(373, 51);
-            txtWaterLastRecord.TabIndex = 33;
-            txtWaterLastRecord.UseSystemPasswordChar = true;
+            txtWaterLastRecord.TabIndex = 3;
             // 
             // lblStoreTypeID
             // 
@@ -269,7 +273,7 @@
             // 
             // pnlStoreManipulation
             // 
-            pnlStoreManipulation.Controls.Add(btnCloseFormStore);
+            pnlStoreManipulation.Controls.Add(btnCancelStore);
             pnlStoreManipulation.Controls.Add(btnNewStore);
             pnlStoreManipulation.Controls.Add(btnUpdateStore);
             pnlStoreManipulation.Controls.Add(btnInsertStore);
@@ -279,17 +283,17 @@
             pnlStoreManipulation.Size = new Size(1301, 81);
             pnlStoreManipulation.TabIndex = 5;
             // 
-            // btnCloseFormStore
+            // btnCancelStore
             // 
-            btnCloseFormStore.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormStore.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormStore.ForeColor = Color.White;
-            btnCloseFormStore.Location = new Point(1100, 20);
-            btnCloseFormStore.Name = "btnCloseFormStore";
-            btnCloseFormStore.Size = new Size(152, 52);
-            btnCloseFormStore.TabIndex = 3;
-            btnCloseFormStore.Text = "បិទ";
-            btnCloseFormStore.UseVisualStyleBackColor = false;
+            btnCancelStore.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelStore.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelStore.ForeColor = Color.White;
+            btnCancelStore.Location = new Point(1100, 20);
+            btnCancelStore.Name = "btnCancelStore";
+            btnCancelStore.Size = new Size(152, 52);
+            btnCancelStore.TabIndex = 3;
+            btnCancelStore.Text = "បោះបង់";
+            btnCancelStore.UseVisualStyleBackColor = false;
             // 
             // btnNewStore
             // 
@@ -353,7 +357,7 @@
             txtFloorNumber.Location = new Point(946, 33);
             txtFloorNumber.Name = "txtFloorNumber";
             txtFloorNumber.Size = new Size(373, 51);
-            txtFloorNumber.TabIndex = 5;
+            txtFloorNumber.TabIndex = 1;
             // 
             // lblFloorNumber
             // 
@@ -390,8 +394,7 @@
             txtElectricityLastRecord.Location = new Point(287, 105);
             txtElectricityLastRecord.Name = "txtElectricityLastRecord";
             txtElectricityLastRecord.Size = new Size(376, 51);
-            txtElectricityLastRecord.TabIndex = 13;
-            txtElectricityLastRecord.UseSystemPasswordChar = true;
+            txtElectricityLastRecord.TabIndex = 2;
             // 
             // FrmStore
             // 
@@ -433,7 +436,7 @@
         private GroupBox gbStoreInformation;
         private Panel pnlStoreManipulation;
         private Button btnInsertStore;
-        private Button btnCloseFormStore;
+        private Button btnCancelStore;
         private Button btnNewStore;
         private Button btnUpdateStore;
         private Label lblWaterLastRecord;

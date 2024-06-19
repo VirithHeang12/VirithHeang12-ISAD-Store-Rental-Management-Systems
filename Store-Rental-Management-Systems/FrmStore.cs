@@ -39,6 +39,7 @@ namespace Store_Rental_Management_Systems
             LoadAllData();
             BindToControls();
 
+           
             #region Event Registrations
             btnNewStore.Click += HandleBtnNewStoreClicked;
             btnInsertStore.Click += HandleBtnInsertStoreClicked;
@@ -50,6 +51,8 @@ namespace Store_Rental_Management_Systems
             txtWaterLastRecord.Validating += ValidateTextBoxNumber;
 
             dgvStores.SelectionChanged += HandleSelectionChanged;
+            dgvStores.CellFormatting += HandleCellFormatting;
+
 
             txtSearchStore.TextChanged += HandleSearchStore;
             #endregion
@@ -250,6 +253,8 @@ namespace Store_Rental_Management_Systems
             cbStoreTypeID.DataSource = _storetypeBindingSource;
             cbStoreTypeID.DisplayMember = "StoreTypeDescription";
             cbStoreTypeID.ValueMember = "StoreTypeID";
+
+
         }
         #endregion
 
@@ -266,6 +271,18 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        #endregion
+
+        #region Handle Checkbox CellFormatting
+        private void HandleCellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && dgvStores.Columns[e.ColumnIndex].Name == "Status" && e.Value != null && e.Value != DBNull.Value)
+            {
+                bool status = Convert.ToBoolean(e.Value);
+                e.Value = status ? "បានជួល" : "ទំនេរ";
+                e.FormattingApplied = true;
+            }
         }
         #endregion
 

@@ -54,12 +54,27 @@ namespace Store_Rental_Management_Systems
             dgvSalaryPayments.SelectionChanged += HandleSelectionChanged;
 
             txtSearchSalaryPayment.TextChanged += HandleSearchSalaryPayment;
+            txtSalaryPaymentAmount.GotFocus += HandleGotFocusEN;
+            txtSearchSalaryPayment.GotFocus += HandleGotFocusEN;
 
             cbStaffID.SelectedIndexChanged += HandleSelectedIndexChanged;
 
             #endregion
         }
 
+        #region HandleGotFocusKM
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        #endregion
+
+        #region HandleGotFocusEN
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
 
         #region Init Commands
         private void InitCommands()

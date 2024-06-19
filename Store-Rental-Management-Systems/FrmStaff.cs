@@ -76,11 +76,37 @@ namespace Store_Rental_Management_Systems
             lbStaff.SelectedValueChanged += HandleSelectedValueChanged;
 
             txtSearchStaff.TextChanged += HandleSearchStaff;
+            txtStaffFirstName.GotFocus += HandleGotFocusKM;
+            txtStaffLastName.GotFocus += HandleGotFocusKM;
+            txtStaffIdentityCardNumber.GotFocus += HandleGotFocusEN;
+            txtStaffSalary.GotFocus += HandleGotFocusEN;
+            mtxtStaffContactNumber.GotFocus += HandleGotFocusEN;
+            mtxtStaffPersonalNumber.GotFocus += HandleGotFocusEN;
+            txtStaffHouseNo.GotFocus += HandleGotFocusEN;
+            txtStaffStreetNo.GotFocus += HandleGotFocusEN;
+            txtStaffSangkat.GotFocus += HandleGotFocusKM;
+            txtStaffKhan.GotFocus += HandleGotFocusKM;
+            txtSearchStaff.GotFocus += HandleGotFocusEN;
+
             rdbFemale.Click += HandleRdbFemaleClick;
             rdbMale.Click += HandleRdbMaleClick;
             #endregion
 
         }
+
+        #region HandleGotFocusKM
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        #endregion
+
+        #region HandleGotFocusEN
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
 
         private void HandleRdbMaleClick(object? sender, EventArgs e)
         {
@@ -122,7 +148,7 @@ namespace Store_Rental_Management_Systems
             dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
             chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
 
-           
+
         }
 
         #endregion
@@ -213,7 +239,7 @@ namespace Store_Rental_Management_Systems
 
         private void ValidateTextBoxNumber(object? sender, CancelEventArgs e)
         {
-            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);    
+            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
         }
 
         private void ValidateIdentityCardNumber(object? sender, CancelEventArgs e)
@@ -237,7 +263,7 @@ namespace Store_Rental_Management_Systems
 
                 var newRowView = (_staffBindingSource.Current as DataRowView)!;
 
-                newRowView["StoppedWork"] = 0;  
+                newRowView["StoppedWork"] = 0;
                 newRowView["IsFemale"] = 0;
                 newRowView["IsMale"] = 1;
                 newRowView["BirthDate"] = DateTime.Parse("2005-01-01");
@@ -273,7 +299,7 @@ namespace Store_Rental_Management_Systems
             CauseValidation();
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
-            
+
             _staffBindingSource.EndEdit();
             try
             {
@@ -346,7 +372,7 @@ namespace Store_Rental_Management_Systems
                         else if (control.Tag.ToString()!.Equals('n'))
                         {
                             ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
-                        } 
+                        }
                         else if (control.Tag.ToString()!.Equals("card"))
                         {
                             ErrorHelper.ValidateNineDigitNumber(textBox, _errorProvider);
@@ -360,7 +386,8 @@ namespace Store_Rental_Management_Systems
                 else if (control is MaskedTextBox maskedTextBox)
                 {
                     ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
-                } else if (control is DateTimePicker dtp)
+                }
+                else if (control is DateTimePicker dtp)
                 {
                     if (control.Tag != null)
                     {

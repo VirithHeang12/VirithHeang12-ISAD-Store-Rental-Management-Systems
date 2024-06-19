@@ -34,12 +34,12 @@ namespace Store_Rental_Management_Systems
             InitializeComponent();
 
             _errorProvider.ContainerControl = this;
-          
+
             InitCommands();
             LoadAllData();
             BindToControls();
 
-           
+
             #region Event Registrations
             btnNewStore.Click += HandleBtnNewStoreClicked;
             btnInsertStore.Click += HandleBtnInsertStoreClicked;
@@ -55,9 +55,28 @@ namespace Store_Rental_Management_Systems
 
 
             txtSearchStore.TextChanged += HandleSearchStore;
+            txtFloorNumber.GotFocus += HandleGotFocusEN;
+            txtElectricityLastRecord.GotFocus += HandleGotFocusEN;
+            txtWaterLastRecord.GotFocus += HandleGotFocusEN;
+            txtSearchStore.GotFocus += HandleGotFocusEN;
             #endregion
 
         }
+
+        #region HandleGotFocusKM
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        #endregion
+
+        #region HandleGotFocusEN
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
+
         #region InitCommands
         private void InitCommands()
         {
@@ -153,19 +172,19 @@ namespace Store_Rental_Management_Systems
                 cbStoreTypeID.SelectedIndex = 0;
                 newRowView["StoreTypeID"] = cbStoreTypeID.SelectedValue;
 
-                if (cbStoreTypeID.DataBindings.Count == 0) 
+                if (cbStoreTypeID.DataBindings.Count == 0)
                 {
                     cbStoreTypeID.DataBindings.Add(new Binding("SelectedValue", _storeBindingSource, "StoreTypeID"));
                 }
-                
-                if (chbStatus.DataBindings.Count == 0) 
+
+                if (chbStatus.DataBindings.Count == 0)
                 {
                     chbStatus.DataBindings.Add("Checked", _storeBindingSource, "Status");
                 }
 
                 int lastRowIndex = dgvStores.Rows.Count - 1;
-                    dgvStores.CurrentCell = dgvStores.Rows[lastRowIndex].Cells[0];
-                
+                dgvStores.CurrentCell = dgvStores.Rows[lastRowIndex].Cells[0];
+
             }
             catch (Exception ex)
             {

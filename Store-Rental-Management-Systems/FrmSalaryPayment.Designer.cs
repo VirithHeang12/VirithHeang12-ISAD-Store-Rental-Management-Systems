@@ -93,6 +93,7 @@
             txtSearchSalaryPayment.Name = "txtSearchSalaryPayment";
             txtSearchSalaryPayment.Size = new Size(338, 44);
             txtSearchSalaryPayment.TabIndex = 2;
+            txtSearchSalaryPayment.TabStop = false;
             // 
             // pnlLeftSide
             // 
@@ -216,7 +217,7 @@
             dtpSalaryPaymentDate.Location = new Point(1013, 41);
             dtpSalaryPaymentDate.Name = "dtpSalaryPaymentDate";
             dtpSalaryPaymentDate.Size = new Size(366, 44);
-            dtpSalaryPaymentDate.TabIndex = 33;
+            dtpSalaryPaymentDate.TabIndex = 1;
             // 
             // lblStaffPosition
             // 
@@ -236,6 +237,7 @@
             txtStaffPosition.ReadOnly = true;
             txtStaffPosition.Size = new Size(366, 44);
             txtStaffPosition.TabIndex = 31;
+            txtStaffPosition.TabStop = false;
             // 
             // txtStaffName
             // 
@@ -245,6 +247,7 @@
             txtStaffName.ReadOnly = true;
             txtStaffName.Size = new Size(360, 44);
             txtStaffName.TabIndex = 30;
+            txtStaffName.TabStop = false;
             // 
             // lblStaffName
             // 
@@ -264,7 +267,7 @@
             cbStaffID.Location = new Point(1013, 116);
             cbStaffID.Name = "cbStaffID";
             cbStaffID.Size = new Size(366, 44);
-            cbStaffID.TabIndex = 28;
+            cbStaffID.TabIndex = 3;
             // 
             // pnlSalaryPaymentManipulation
             // 
@@ -287,6 +290,7 @@
             btnCancelSalaryPayment.Name = "btnCancelSalaryPayment";
             btnCancelSalaryPayment.Size = new Size(152, 52);
             btnCancelSalaryPayment.TabIndex = 3;
+            btnCancelSalaryPayment.TabStop = false;
             btnCancelSalaryPayment.Text = "បោះបង់";
             btnCancelSalaryPayment.UseVisualStyleBackColor = false;
             // 
@@ -299,6 +303,7 @@
             btnNewSalaryPayment.Name = "btnNewSalaryPayment";
             btnNewSalaryPayment.Size = new Size(152, 52);
             btnNewSalaryPayment.TabIndex = 2;
+            btnNewSalaryPayment.TabStop = false;
             btnNewSalaryPayment.Text = "បង្កើតថ្មី";
             btnNewSalaryPayment.UseVisualStyleBackColor = false;
             // 
@@ -311,6 +316,7 @@
             btnUpdateSalaryPayment.Name = "btnUpdateSalaryPayment";
             btnUpdateSalaryPayment.Size = new Size(152, 52);
             btnUpdateSalaryPayment.TabIndex = 1;
+            btnUpdateSalaryPayment.TabStop = false;
             btnUpdateSalaryPayment.Text = "កែប្រែ";
             btnUpdateSalaryPayment.UseVisualStyleBackColor = false;
             // 
@@ -323,6 +329,7 @@
             btnInsertSalaryPayment.Name = "btnInsertSalaryPayment";
             btnInsertSalaryPayment.Size = new Size(152, 52);
             btnInsertSalaryPayment.TabIndex = 0;
+            btnInsertSalaryPayment.TabStop = false;
             btnInsertSalaryPayment.Text = "បញ្ចូល";
             btnInsertSalaryPayment.UseVisualStyleBackColor = false;
             // 
@@ -381,7 +388,7 @@
             txtSalaryPaymentAmount.Location = new Point(303, 111);
             txtSalaryPaymentAmount.Name = "txtSalaryPaymentAmount";
             txtSalaryPaymentAmount.Size = new Size(360, 44);
-            txtSalaryPaymentAmount.TabIndex = 13;
+            txtSalaryPaymentAmount.TabIndex = 2;
             // 
             // FrmSalaryPayment
             // 

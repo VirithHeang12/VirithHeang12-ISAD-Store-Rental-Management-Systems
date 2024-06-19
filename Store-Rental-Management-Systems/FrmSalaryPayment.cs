@@ -55,9 +55,11 @@ namespace Store_Rental_Management_Systems
 
             txtSearchSalaryPayment.TextChanged += HandleSearchSalaryPayment;
 
-            //cbStaffID.SelectedIndexChanged += HandleSelectedIndexChanged;
+            cbStaffID.SelectedIndexChanged += HandleSelectedIndexChanged;
+
             #endregion
         }
+
 
         #region Init Commands
         private void InitCommands()
@@ -125,6 +127,7 @@ namespace Store_Rental_Management_Systems
         #region Handle Search
         private void HandleSearchSalaryPayment(object? sender, EventArgs e)
         {
+            UnbindWithControls();
             string searchText = txtSearchSalaryPayment.Text.Trim().ToLower();
 
             if (string.IsNullOrWhiteSpace(searchText))
@@ -133,9 +136,10 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _salaryPaymentBindingSource.Filter = "StaffName LIKE '" + searchText + "%'";
+                _salaryPaymentBindingSource.Filter = "StaffName LIKE '%" + searchText + "%'";
 
             }
+            BindWithControls();
         }
         #endregion
 
@@ -156,39 +160,27 @@ namespace Store_Rental_Management_Systems
         {
             try
             {
-                if (cbStaffID.DataBindings.Count != 0)
-                {
-                    cbStaffID.DataBindings.Clear();
-                }
-                if (dtpSalaryPaymentDate.DataBindings.Count != 0)
-                {
-                    dtpSalaryPaymentDate.DataBindings.Clear();
-                }
+                UnbindWithControls();
 
                 _salaryPaymentBindingSource.AddNew();
 
                 var newRowView = (_salaryPaymentBindingSource.Current as DataRowView)!;
 
                 cbStaffID.SelectedIndex = 0;
-                //newRowView["StaffID"] = cbStaffID.SelectedValue;
+                newRowView["StaffID"] = cbStaffID.SelectedValue;
 
-                //var dataRowView = cbStaffID.SelectedItem as DataRowView;
-                //newRowView["StaffName"] = dataRowView?["StaffName"];
-                //newRowView["StaffPosition"] = dataRowView?["StaffPosition"];
+                var dataRowView = cbStaffID.SelectedItem as DataRowView;
+                newRowView["StaffName"] = dataRowView?["StaffName"];
+                newRowView["StaffPosition"] = dataRowView?["StaffPosition"];
 
-                if (cbStaffID.DataBindings.Count == 0)
-                {      
-                    cbStaffID.DataBindings.Add(new Binding("SelectedValue", _salaryPaymentBindingSource, "StaffID"));
-                }
-                if (dtpSalaryPaymentDate.DataBindings.Count == 0)
-                {
-                    dtpSalaryPaymentDate.DataBindings.Add(new Binding("Value", _salaryPaymentBindingSource, "SalaryPaymentDate"));
-                }
+                newRowView["SalaryPaymentDate"] = DateTime.Now;
+
+                BindWithControls();
 
                 int lastRowIndex = dgvSalaryPayments.Rows.Count - 1;
                 dgvSalaryPayments.CurrentCell = dgvSalaryPayments.Rows[lastRowIndex].Cells[0];
             }
-            catch (Exception ex)
+            catch (Exception)
             { 
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -209,7 +201,7 @@ namespace Store_Rental_Management_Systems
                 _salaryPaymentDataAdapter.Update(_storeRentalDataSet, TABLE_SALARY_PAYMENT_NAME);
                 _salaryPaymentBindingSource.ResetBindings(false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -229,13 +221,7 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnCancelSalaryPaymentClicked(object? sender, EventArgs e)
         {
             _errorProvider.Clear();
-            try
-            {
-                _storeRentalDataSet.RejectChanges();
-            } catch (Exception)
-            {
-                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            _storeRentalDataSet.RejectChanges();
             RefreshDataGridView();
         }
         #endregion
@@ -272,32 +258,35 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            _storeRentalDataSet.Tables[TABLE_SALARY_PAYMENT_NAME]!.Columns["SalaryPaymentDate"]!.DefaultValue = DateTime.Now;
             _salaryPaymentBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_SALARY_PAYMENT_NAME];
             dgvSalaryPayments.DataSource = _salaryPaymentBindingSource;
 
-            //_storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]! };
+            _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]! };
             _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
             cbStaffID.DataSource = _staffBindingSource;
             cbStaffID.ValueMember = "StaffID";
             cbStaffID.DisplayMember = "StaffID";
 
-            //HandleSelectedIndexChanged(null, EventArgs.Empty);
+            HandleSelectedIndexChanged(null, EventArgs.Empty);
         }
         #endregion
 
         #region Refresh
         private void RefreshDataGridView()
         {
+            UnbindWithControls();
             _storeRentalDataSet.Tables[TABLE_SALARY_PAYMENT_NAME]?.Clear();
             try
             {
+
                 _salaryPaymentDataAdapter.Fill(_storeRentalDataSet, TABLE_SALARY_PAYMENT_NAME);
+
             }
             catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            } 
+            BindWithControls();
 
         }
         #endregion

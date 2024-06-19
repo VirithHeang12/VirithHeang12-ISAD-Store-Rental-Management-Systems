@@ -57,7 +57,7 @@
             // 
             lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
-            lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(266, 80);
             lblTitle.Name = "lblTitle";
@@ -71,7 +71,7 @@
             lblSearchExpenseType.AutoSize = true;
             lblSearchExpenseType.Location = new Point(82, 19);
             lblSearchExpenseType.Name = "lblSearchExpenseType";
-            lblSearchExpenseType.Size = new Size(306, 36);
+            lblSearchExpenseType.Size = new Size(234, 25);
             lblSearchExpenseType.TabIndex = 1;
             lblSearchExpenseType.Text = "ស្វែងរក (ពិពណ៌នាប្រភេទចំណាយ):";
             // 
@@ -79,7 +79,7 @@
             // 
             txtSearchExpenseType.Location = new Point(436, 11);
             txtSearchExpenseType.Name = "txtSearchExpenseType";
-            txtSearchExpenseType.Size = new Size(556, 44);
+            txtSearchExpenseType.Size = new Size(556, 30);
             txtSearchExpenseType.TabIndex = 2;
             txtSearchExpenseType.TabStop = false;
             // 
@@ -116,7 +116,7 @@
             ExpenseTypeID.MinimumWidth = 6;
             ExpenseTypeID.Name = "ExpenseTypeID";
             ExpenseTypeID.ReadOnly = true;
-            ExpenseTypeID.Width = 266;
+            ExpenseTypeID.Width = 216;
             // 
             // ExpenseDescription
             // 
@@ -142,7 +142,7 @@
             gbExpenseTypeInformation.Controls.Add(txtExpenseTypeID);
             gbExpenseTypeInformation.Controls.Add(lblExpenseDescription);
             gbExpenseTypeInformation.Controls.Add(txtExpenseDescription);
-            gbExpenseTypeInformation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            gbExpenseTypeInformation.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             gbExpenseTypeInformation.Location = new Point(82, 12);
             gbExpenseTypeInformation.Name = "gbExpenseTypeInformation";
             gbExpenseTypeInformation.Size = new Size(1362, 288);
@@ -156,7 +156,7 @@
             pnlExpenseTypeManipulation.Controls.Add(btnNewExpenseType);
             pnlExpenseTypeManipulation.Controls.Add(btnUpdateExpenseType);
             pnlExpenseTypeManipulation.Controls.Add(btnInsertExpenseType);
-            pnlExpenseTypeManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlExpenseTypeManipulation.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             pnlExpenseTypeManipulation.Location = new Point(18, 175);
             pnlExpenseTypeManipulation.Name = "pnlExpenseTypeManipulation";
             pnlExpenseTypeManipulation.Size = new Size(1301, 81);
@@ -165,7 +165,7 @@
             // btnCancelExpenseType
             // 
             btnCancelExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelExpenseType.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelExpenseType.ForeColor = Color.White;
             btnCancelExpenseType.Location = new Point(1100, 20);
             btnCancelExpenseType.Name = "btnCancelExpenseType";
@@ -178,7 +178,7 @@
             // btnNewExpenseType
             // 
             btnNewExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnNewExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewExpenseType.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewExpenseType.ForeColor = Color.White;
             btnNewExpenseType.Location = new Point(740, 20);
             btnNewExpenseType.Name = "btnNewExpenseType";
@@ -191,7 +191,7 @@
             // btnUpdateExpenseType
             // 
             btnUpdateExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateExpenseType.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdateExpenseType.ForeColor = Color.White;
             btnUpdateExpenseType.Location = new Point(380, 20);
             btnUpdateExpenseType.Name = "btnUpdateExpenseType";
@@ -204,7 +204,7 @@
             // btnInsertExpenseType
             // 
             btnInsertExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInsertExpenseType.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnInsertExpenseType.ForeColor = Color.White;
             btnInsertExpenseType.Location = new Point(20, 20);
             btnInsertExpenseType.Name = "btnInsertExpenseType";
@@ -217,38 +217,38 @@
             // lblExpenseTypeID
             // 
             lblExpenseTypeID.AutoSize = true;
-            lblExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblExpenseTypeID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseTypeID.Location = new Point(18, 41);
             lblExpenseTypeID.Name = "lblExpenseTypeID";
-            lblExpenseTypeID.Size = new Size(243, 36);
+            lblExpenseTypeID.Size = new Size(190, 25);
             lblExpenseTypeID.TabIndex = 0;
             lblExpenseTypeID.Text = "លេខសម្គាល់ប្រភេទចំណាយ:";
             // 
             // txtExpenseTypeID
             // 
             txtExpenseTypeID.Enabled = false;
-            txtExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtExpenseTypeID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseTypeID.Location = new Point(300, 33);
             txtExpenseTypeID.Name = "txtExpenseTypeID";
-            txtExpenseTypeID.Size = new Size(363, 44);
+            txtExpenseTypeID.Size = new Size(363, 30);
             txtExpenseTypeID.TabIndex = 3;
             // 
             // lblExpenseDescription
             // 
             lblExpenseDescription.AutoSize = true;
-            lblExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblExpenseDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseDescription.Location = new Point(18, 111);
             lblExpenseDescription.Name = "lblExpenseDescription";
-            lblExpenseDescription.Size = new Size(218, 36);
+            lblExpenseDescription.Size = new Size(169, 25);
             lblExpenseDescription.TabIndex = 6;
             lblExpenseDescription.Text = "ពិព័ណ៌នាប្រភេទចំណាយ:";
             // 
             // txtExpenseDescription
             // 
-            txtExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtExpenseDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseDescription.Location = new Point(300, 111);
             txtExpenseDescription.Name = "txtExpenseDescription";
-            txtExpenseDescription.Size = new Size(970, 44);
+            txtExpenseDescription.Size = new Size(970, 30);
             txtExpenseDescription.TabIndex = 13;
             // 
             // FrmExpenseType

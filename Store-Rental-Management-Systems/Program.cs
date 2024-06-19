@@ -48,6 +48,7 @@ namespace Store_Rental_Management_Systems
             ImportHelper.Connection = Connection;
             ItemHelper.Connection = Connection;
             SalaryPaymentHelper.Connection = Connection;
+            StoreHelper.Connection = Connection;
         }
     }
 }

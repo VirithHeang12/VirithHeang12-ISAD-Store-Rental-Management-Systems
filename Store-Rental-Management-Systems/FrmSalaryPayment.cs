@@ -15,12 +15,15 @@ namespace Store_Rental_Management_Systems
     public partial class FrmSalaryPayment : FrmHome
     {
         private const string TABLE_SALARY_PAYMENT_NAME = "tblSalaryPayment";
-        //private const string TABLE_STAFF_NAME = "tblStaff";
+        private const string TABLE_STAFF_NAME = "tblStaff";
+
         private DataSet _storeRentalDataSet = new DataSet();
+
         private SqlDataAdapter _salaryPaymentDataAdapter = new();
+        private SqlDataAdapter _staffDataAdapter = new();
+
         private BindingSource _salaryPaymentBindingSource = new();
-        //private SqlDataAdapter _staffDataAdapter = new();
-        //private BindingSource _staffBindingSource = new();
+        private BindingSource _staffBindingSource = new();
 
         private ErrorProvider _errorProvider = new();
 
@@ -29,21 +32,14 @@ namespace Store_Rental_Management_Systems
         {
             InitializeComponent();
 
-            #region Init DataAdapter Commands
-            _salaryPaymentDataAdapter.SelectCommand = SalaryPaymentHelper.CreateGetAllSalaryPaymentsCommand();
-            _salaryPaymentDataAdapter.InsertCommand = SalaryPaymentHelper.CreateInsertSalaryPaymentCommand();
-            _salaryPaymentDataAdapter.UpdateCommand = SalaryPaymentHelper.CreateUpdateSalaryPaymentCommand();
-
-            //_staffDataAdapter.SelectCommand = SalaryPaymentHelper.CreateGetAllStaffsForComboBoxCommand();
-            #endregion
-
             #region Add controls for validation
             _errorProvider.ContainerControl = this;
             _validatingControls.Add(dtpSalaryPaymentDate);
             _validatingControls.Add(txtSalaryPaymentAmount);
             #endregion
 
-            LoadAllSalaryPayments();
+            InitCommands();
+            LoadAllData();
             BindWithControls();
 
             #region Event Registrations
@@ -63,15 +59,36 @@ namespace Store_Rental_Management_Systems
             #endregion
         }
 
+        #region Init Commands
+        private void InitCommands()
+        {
+            _salaryPaymentDataAdapter.SelectCommand = SalaryPaymentHelper.CreateGetAllSalaryPaymentsCommand();
+            _salaryPaymentDataAdapter.InsertCommand = SalaryPaymentHelper.CreateInsertSalaryPaymentCommand();
+            _salaryPaymentDataAdapter.UpdateCommand = SalaryPaymentHelper.CreateUpdateSalaryPaymentCommand();
+
+            _staffDataAdapter.SelectCommand = SalaryPaymentHelper.CreateGetAllStaffsForComboBoxCommand();
+        }
+        #endregion
+
         #region Bind With Controls
         private void BindWithControls()
         {
             txtSalaryPaymentID.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "SalaryPaymentID"));
             dtpSalaryPaymentDate.DataBindings.Add(new Binding("Value", _salaryPaymentBindingSource, "SalaryPaymentDate"));
             txtSalaryPaymentAmount.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "SalaryPaymentAmount"));
-            //cbStaffID.DataBindings.Add(new Binding("SelectedValue", _salaryPaymentBindingSource, "StaffID"));
-            //txtStaffName.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "StaffName"));
-            //txtStaffPosition.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "StaffPosition"));
+            cbStaffID.DataBindings.Add(new Binding("SelectedValue", _salaryPaymentBindingSource, "StaffID"));
+            txtStaffName.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "StaffName"));
+            txtStaffPosition.DataBindings.Add(new Binding("Text", _salaryPaymentBindingSource, "StaffPosition"));
+        }
+
+        private void UnbindWithControls()
+        {
+            txtSalaryPaymentID.DataBindings.Clear();
+            dtpSalaryPaymentDate.DataBindings.Clear();
+            txtSalaryPaymentAmount.DataBindings.Clear();
+            cbStaffID.DataBindings.Clear();
+            txtStaffName.DataBindings.Clear();
+            txtStaffPosition.DataBindings.Clear();
         }
         #endregion
 
@@ -139,10 +156,40 @@ namespace Store_Rental_Management_Systems
         {
             try
             {
+                if (cbStaffID.DataBindings.Count != 0)
+                {
+                    cbStaffID.DataBindings.Clear();
+                }
+                if (dtpSalaryPaymentDate.DataBindings.Count != 0)
+                {
+                    dtpSalaryPaymentDate.DataBindings.Clear();
+                }
+
                 _salaryPaymentBindingSource.AddNew();
+
+                var newRowView = (_salaryPaymentBindingSource.Current as DataRowView)!;
+
+                cbStaffID.SelectedIndex = 0;
+                //newRowView["StaffID"] = cbStaffID.SelectedValue;
+
+                //var dataRowView = cbStaffID.SelectedItem as DataRowView;
+                //newRowView["StaffName"] = dataRowView?["StaffName"];
+                //newRowView["StaffPosition"] = dataRowView?["StaffPosition"];
+
+                if (cbStaffID.DataBindings.Count == 0)
+                {      
+                    cbStaffID.DataBindings.Add(new Binding("SelectedValue", _salaryPaymentBindingSource, "StaffID"));
+                }
+                if (dtpSalaryPaymentDate.DataBindings.Count == 0)
+                {
+                    dtpSalaryPaymentDate.DataBindings.Add(new Binding("Value", _salaryPaymentBindingSource, "SalaryPaymentDate"));
+                }
+
+                int lastRowIndex = dgvSalaryPayments.Rows.Count - 1;
+                dgvSalaryPayments.CurrentCell = dgvSalaryPayments.Rows[lastRowIndex].Cells[0];
             }
-            catch (Exception)
-            {
+            catch (Exception ex)
+            { 
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -162,7 +209,7 @@ namespace Store_Rental_Management_Systems
                 _salaryPaymentDataAdapter.Update(_storeRentalDataSet, TABLE_SALARY_PAYMENT_NAME);
                 _salaryPaymentBindingSource.ResetBindings(false);
             }
-            catch (Exception) 
+            catch (Exception ex)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -182,7 +229,13 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnCancelSalaryPaymentClicked(object? sender, EventArgs e)
         {
             _errorProvider.Clear();
-            _storeRentalDataSet.RejectChanges();
+            try
+            {
+                _storeRentalDataSet.RejectChanges();
+            } catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             RefreshDataGridView();
         }
         #endregion
@@ -205,28 +258,29 @@ namespace Store_Rental_Management_Systems
         #endregion
 
         #region Load
-        private void LoadAllSalaryPayments()
+        private void LoadAllData()
         {
             _salaryPaymentDataAdapter.TableMappings.Add("Table", TABLE_SALARY_PAYMENT_NAME);
-            //_staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
+            _staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
             try
             {
                 _salaryPaymentDataAdapter.Fill(_storeRentalDataSet, TABLE_SALARY_PAYMENT_NAME);
-                //_staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
             }
             catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            _storeRentalDataSet.Tables[TABLE_SALARY_PAYMENT_NAME]!.Columns["SalaryPaymentDate"]!.DefaultValue = DateTime.Now;
             _salaryPaymentBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_SALARY_PAYMENT_NAME];
             dgvSalaryPayments.DataSource = _salaryPaymentBindingSource;
 
             //_storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]! };
-            //_staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME];
-            //cbStaffID.DataSource = _staffBindingSource;
-            //cbStaffID.ValueMember = "StaffID";
-            //cbStaffID.DisplayMember = "StaffID";
+            _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
+            cbStaffID.DataSource = _staffBindingSource;
+            cbStaffID.ValueMember = "StaffID";
+            cbStaffID.DisplayMember = "StaffID";
 
             //HandleSelectedIndexChanged(null, EventArgs.Empty);
         }
@@ -247,6 +301,6 @@ namespace Store_Rental_Management_Systems
 
         }
         #endregion
- 
+
     }
 }

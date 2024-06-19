@@ -32,6 +32,13 @@
             lblSearchSalaryPayment = new Label();
             txtSearchSalaryPayment = new TextBox();
             pnlLeftSide = new Panel();
+            dgvSalaryPayments = new DataGridView();
+            SalaryPaymentID = new DataGridViewTextBoxColumn();
+            SalaryPaymentDate = new DataGridViewTextBoxColumn();
+            SalaryPaymentAmount = new DataGridViewTextBoxColumn();
+            StaffID = new DataGridViewTextBoxColumn();
+            StaffName = new DataGridViewTextBoxColumn();
+            StaffPosition = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbSalaryPaymentInformation = new GroupBox();
             dtpSalaryPaymentDate = new DateTimePicker();
@@ -51,18 +58,11 @@
             txtSalaryPaymentID = new TextBox();
             lblSalaryPaymentAmount = new Label();
             txtSalaryPaymentAmount = new TextBox();
-            dgvSalaryPayments = new DataGridView();
-            SalaryPaymentID = new DataGridViewTextBoxColumn();
-            SalaryPaymentDate = new DataGridViewTextBoxColumn();
-            SalaryPaymentAmount = new DataGridViewTextBoxColumn();
-            StaffID = new DataGridViewTextBoxColumn();
-            StaffName = new DataGridViewTextBoxColumn();
-            StaffPosition = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).BeginInit();
             pnlRightSide.SuspendLayout();
             gbSalaryPaymentInformation.SuspendLayout();
             pnlSalaryPaymentManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -83,9 +83,9 @@
             lblSearchSalaryPayment.AutoSize = true;
             lblSearchSalaryPayment.Location = new Point(34, 29);
             lblSearchSalaryPayment.Name = "lblSearchSalaryPayment";
-            lblSearchSalaryPayment.Size = new Size(329, 36);
+            lblSearchSalaryPayment.Size = new Size(271, 36);
             lblSearchSalaryPayment.TabIndex = 1;
-            lblSearchSalaryPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបើកប្រាក់ខែ):";
+            lblSearchSalaryPayment.Text = "ស្វែងរក (លេខសម្គាល់បុគ្គលិក):";
             // 
             // txtSearchSalaryPayment
             // 
@@ -103,6 +103,80 @@
             pnlLeftSide.Name = "pnlLeftSide";
             pnlLeftSide.Size = new Size(1534, 463);
             pnlLeftSide.TabIndex = 3;
+            // 
+            // dgvSalaryPayments
+            // 
+            dgvSalaryPayments.AllowUserToAddRows = false;
+            dgvSalaryPayments.AllowUserToDeleteRows = false;
+            dgvSalaryPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSalaryPayments.Columns.AddRange(new DataGridViewColumn[] { SalaryPaymentID, SalaryPaymentDate, SalaryPaymentAmount, StaffID, StaffName, StaffPosition });
+            dgvSalaryPayments.Location = new Point(34, 76);
+            dgvSalaryPayments.Name = "dgvSalaryPayments";
+            dgvSalaryPayments.ReadOnly = true;
+            dgvSalaryPayments.RowHeadersWidth = 51;
+            dgvSalaryPayments.RowTemplate.Height = 29;
+            dgvSalaryPayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSalaryPayments.Size = new Size(1448, 346);
+            dgvSalaryPayments.TabIndex = 4;
+            dgvSalaryPayments.TabStop = false;
+            // 
+            // SalaryPaymentID
+            // 
+            SalaryPaymentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            SalaryPaymentID.DataPropertyName = "SalaryPaymentID";
+            SalaryPaymentID.HeaderText = "លេខសម្គាល់ការបើកប្រាក់ខែ";
+            SalaryPaymentID.MinimumWidth = 6;
+            SalaryPaymentID.Name = "SalaryPaymentID";
+            SalaryPaymentID.ReadOnly = true;
+            SalaryPaymentID.Width = 264;
+            // 
+            // SalaryPaymentDate
+            // 
+            SalaryPaymentDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            SalaryPaymentDate.DataPropertyName = "SalaryPaymentDate";
+            SalaryPaymentDate.HeaderText = "កាលបរិច្ឆេទបើកប្រាក់ខែ";
+            SalaryPaymentDate.MinimumWidth = 6;
+            SalaryPaymentDate.Name = "SalaryPaymentDate";
+            SalaryPaymentDate.ReadOnly = true;
+            SalaryPaymentDate.Width = 232;
+            // 
+            // SalaryPaymentAmount
+            // 
+            SalaryPaymentAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            SalaryPaymentAmount.DataPropertyName = "SalaryPaymentAmount";
+            SalaryPaymentAmount.HeaderText = "ចំនួនទឹកប្រាក់";
+            SalaryPaymentAmount.MinimumWidth = 6;
+            SalaryPaymentAmount.Name = "SalaryPaymentAmount";
+            SalaryPaymentAmount.ReadOnly = true;
+            SalaryPaymentAmount.Width = 154;
+            // 
+            // StaffID
+            // 
+            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.DataPropertyName = "StaffID";
+            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
+            StaffID.MinimumWidth = 6;
+            StaffID.Name = "StaffID";
+            StaffID.ReadOnly = true;
+            StaffID.Width = 206;
+            // 
+            // StaffName
+            // 
+            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.DataPropertyName = "StaffName";
+            StaffName.HeaderText = "ឈ្មោះបុគ្គលិក";
+            StaffName.MinimumWidth = 6;
+            StaffName.Name = "StaffName";
+            StaffName.ReadOnly = true;
+            // 
+            // StaffPosition
+            // 
+            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.DataPropertyName = "StaffPosition";
+            StaffPosition.HeaderText = "តួនាទីបុគ្គលិក";
+            StaffPosition.MinimumWidth = 6;
+            StaffPosition.Name = "StaffPosition";
+            StaffPosition.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -165,7 +239,6 @@
             // 
             // txtStaffName
             // 
-            txtStaffName.Enabled = false;
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(303, 182);
             txtStaffName.Name = "txtStaffName";
@@ -202,7 +275,7 @@
             pnlSalaryPaymentManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             pnlSalaryPaymentManipulation.Location = new Point(18, 247);
             pnlSalaryPaymentManipulation.Name = "pnlSalaryPaymentManipulation";
-            pnlSalaryPaymentManipulation.Size = new Size(1375, 81);
+            pnlSalaryPaymentManipulation.Size = new Size(1361, 81);
             pnlSalaryPaymentManipulation.TabIndex = 5;
             // 
             // btnCancelSalaryPayment
@@ -310,80 +383,6 @@
             txtSalaryPaymentAmount.Size = new Size(360, 44);
             txtSalaryPaymentAmount.TabIndex = 13;
             // 
-            // dgvSalaryPayments
-            // 
-            dgvSalaryPayments.AllowUserToAddRows = false;
-            dgvSalaryPayments.AllowUserToDeleteRows = false;
-            dgvSalaryPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSalaryPayments.Columns.AddRange(new DataGridViewColumn[] { SalaryPaymentID, SalaryPaymentDate, SalaryPaymentAmount, StaffID, StaffName, StaffPosition });
-            dgvSalaryPayments.Location = new Point(34, 76);
-            dgvSalaryPayments.Name = "dgvSalaryPayments";
-            dgvSalaryPayments.ReadOnly = true;
-            dgvSalaryPayments.RowHeadersWidth = 51;
-            dgvSalaryPayments.RowTemplate.Height = 29;
-            dgvSalaryPayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSalaryPayments.Size = new Size(1448, 346);
-            dgvSalaryPayments.TabIndex = 4;
-            dgvSalaryPayments.TabStop = false;
-            // 
-            // SalaryPaymentID
-            // 
-            SalaryPaymentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            SalaryPaymentID.DataPropertyName = "SalaryPaymentID";
-            SalaryPaymentID.HeaderText = "លេខសម្គាល់ការបើកប្រាក់ខែ";
-            SalaryPaymentID.MinimumWidth = 6;
-            SalaryPaymentID.Name = "SalaryPaymentID";
-            SalaryPaymentID.ReadOnly = true;
-            SalaryPaymentID.Width = 264;
-            // 
-            // SalaryPaymentDate
-            // 
-            SalaryPaymentDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            SalaryPaymentDate.DataPropertyName = "SalaryPaymentDate";
-            SalaryPaymentDate.HeaderText = "កាលបរិច្ឆេទបើកប្រាក់ខែ";
-            SalaryPaymentDate.MinimumWidth = 6;
-            SalaryPaymentDate.Name = "SalaryPaymentDate";
-            SalaryPaymentDate.ReadOnly = true;
-            SalaryPaymentDate.Width = 232;
-            // 
-            // SalaryPaymentAmount
-            // 
-            SalaryPaymentAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            SalaryPaymentAmount.DataPropertyName = "SalaryPaymentAmount";
-            SalaryPaymentAmount.HeaderText = "ចំនួនទឹកប្រាក់";
-            SalaryPaymentAmount.MinimumWidth = 6;
-            SalaryPaymentAmount.Name = "SalaryPaymentAmount";
-            SalaryPaymentAmount.ReadOnly = true;
-            SalaryPaymentAmount.Width = 154;
-            // 
-            // StaffID
-            // 
-            StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            StaffID.DataPropertyName = "StaffID";
-            StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
-            StaffID.MinimumWidth = 6;
-            StaffID.Name = "StaffID";
-            StaffID.ReadOnly = true;
-            StaffID.Width = 206;
-            // 
-            // StaffName
-            // 
-            StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StaffName.DataPropertyName = "StaffName";
-            StaffName.HeaderText = "ឈ្មោះបុគ្គលិក";
-            StaffName.MinimumWidth = 6;
-            StaffName.Name = "StaffName";
-            StaffName.ReadOnly = true;
-            // 
-            // StaffPosition
-            // 
-            StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StaffPosition.DataPropertyName = "StaffPosition";
-            StaffPosition.HeaderText = "តួនាទីបុគ្គលិក";
-            StaffPosition.MinimumWidth = 6;
-            StaffPosition.Name = "StaffPosition";
-            StaffPosition.ReadOnly = true;
-            // 
             // FrmSalaryPayment
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -399,11 +398,11 @@
             Controls.SetChildIndex(pnlRightSide, 0);
             pnlLeftSide.ResumeLayout(false);
             pnlLeftSide.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).EndInit();
             pnlRightSide.ResumeLayout(false);
             gbSalaryPaymentInformation.ResumeLayout(false);
             gbSalaryPaymentInformation.PerformLayout();
             pnlSalaryPaymentManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvSalaryPayments).EndInit();
             ResumeLayout(false);
         }
 

@@ -8,136 +8,137 @@ using System.Threading.Tasks;
 
 namespace StoreRentalHelper
 {
-    public static class SalaryPaymentHelper
+    public static class StoreHelper
     {
         #region Connection
         public static SqlConnection Connection { get; set; } = default!;
-
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewSalaryPayment";
-        private const string UPDATE = "sp_UpdateSalaryPayment";
-        private const string GET_ALL = "v_GetAllSalaryPayments";
-        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "v_GetAllStaffsForComboBox";
+        private const string INSERT_STORE = "sp_InsertNewStore";
+        private const string UPDATE_STORE = "sp_UpdateStore";
+        private const string GET_ALL_STORES = "v_GetAllStores";
+
+
+        private const string GET_ALL_STORETYPES_FOR_COMBO_BOX = "v_GetAllStoreTypesForComboBox";
         #endregion
 
-        #region Generate Insert SalaryPayment Command
-        public static SqlCommand CreateInsertSalaryPaymentCommand()
+        #region Generate Insert Store Command
+        public static SqlCommand CreateInsertStoreCommand()
         {
-            var cmd = new SqlCommand(INSERT, Connection);
+            var cmd = new SqlCommand(INSERT_STORE, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentDate", SqlDbType.DateTime)
+            cmd.Parameters.Add(new SqlParameter("@FloorNumber", SqlDbType.TinyInt)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SalaryPaymentDate"
+                SourceColumn = "FloorNumber"
             });
-            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentAmount", SqlDbType.Money)
+            cmd.Parameters.Add(new SqlParameter("@ElectricityLastRecord", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SalaryPaymentAmount"
+                SourceColumn = "ElectricityLastRecord"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
+            cmd.Parameters.Add(new SqlParameter("@WaterLastRecord", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffID"
+                SourceColumn = "WaterLastRecord"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffName", SqlDbType.NVarChar, 100)
+            cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffName"
+                SourceColumn = "Status"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffPosition", SqlDbType.NVarChar, 100)
+            cmd.Parameters.Add(new SqlParameter("@StoreTypeID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffPosition"
+                SourceColumn = "StoreTypeID"
             });
             return cmd;
         }
         #endregion
 
-        #region Generate Get All SalaryPayments Command
-        public static SqlCommand CreateGetAllSalaryPaymentsCommand()
+        #region Generate Update Store Command
+        public static SqlCommand CreateUpdateStoreCommand()
         {
-            var cmd = new SqlCommand();
-            cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL}";
-            return cmd;
-        }
-        #endregion
-
-        #region Generate Update SalaryPayment Command
-        public static SqlCommand CreateUpdateSalaryPaymentCommand()
-        {
-            var cmd = new SqlCommand(UPDATE, Connection);
+            var cmd = new SqlCommand(UPDATE_STORE, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentID", SqlDbType.Int)
+            cmd.Parameters.Add(new SqlParameter("@StoreID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Original,
-                SourceColumn = "SalaryPaymentID"
+                SourceColumn = "StoreID"
             });
-            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentDate", SqlDbType.DateTime)
+            cmd.Parameters.Add(new SqlParameter("@FloorNumber", SqlDbType.TinyInt)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SalaryPaymentDate"
+                SourceColumn = "FloorNumber"
             });
-            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentAmount", SqlDbType.Money)
+            cmd.Parameters.Add(new SqlParameter("@ElectricityLastRecord", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SalaryPaymentAmount"
+                SourceColumn = "ElectricityLastRecord"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
+            cmd.Parameters.Add(new SqlParameter("@WaterLastRecord", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffID"
+                SourceColumn = "WaterLastRecord"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffName", SqlDbType.NVarChar, 100)
+            cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffName"
+                SourceColumn = "Status"
             });
-            cmd.Parameters.Add(new SqlParameter("@StaffPosition", SqlDbType.NVarChar, 100)
+            cmd.Parameters.Add(new SqlParameter("@StoreTypeID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffPosition"
+                SourceColumn = "StoreTypeID"
             });
             return cmd;
+
         }
         #endregion
 
-        #region Generate Get All Staffs For Combo Box Command
-        public static SqlCommand CreateGetAllStaffsForComboBoxCommand()
+        #region Generate Get All Stores Command
+        public static SqlCommand CreateGetAllStoresCommand()
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_STAFFS_FOR_COMBO_BOX}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_STORES}";
             return cmd;
         }
         #endregion
 
+        #region Generate Get All StoreTypes For Combo Box Command
+        public static SqlCommand CreateGetAllStoreTypesForComboBoxCommand()
+        {
+            var cmd = new SqlCommand();
+            cmd.Connection = Connection;
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_STORETYPES_FOR_COMBO_BOX}";
+            return cmd;
+        }
+        #endregion
+
+        
     }
 }

@@ -33,10 +33,6 @@
             txtSearchSupplier = new TextBox();
             pnlLeftSide = new Panel();
             dgvSuppliers = new DataGridView();
-            SupplierID = new DataGridViewTextBoxColumn();
-            SupplierName = new DataGridViewTextBoxColumn();
-            ContactNumber = new DataGridViewTextBoxColumn();
-            SupplierAddress = new DataGridViewTextBoxColumn();
             pnlRightSide = new Panel();
             gbSupplierInformation = new GroupBox();
             mtxtContactNumber = new MaskedTextBox();
@@ -52,6 +48,10 @@
             txtSupplierID = new TextBox();
             lblContactNumber = new Label();
             txtSupplierAddress = new TextBox();
+            SupplierID = new DataGridViewTextBoxColumn();
+            SupplierName = new DataGridViewTextBoxColumn();
+            ContactNumber = new DataGridViewTextBoxColumn();
+            SupplierAddress = new DataGridViewTextBoxColumn();
             pnlLeftSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
             pnlRightSide.SuspendLayout();
@@ -114,44 +114,6 @@
             dgvSuppliers.Size = new Size(1362, 369);
             dgvSuppliers.TabIndex = 3;
             dgvSuppliers.TabStop = false;
-            // 
-            // SupplierID
-            // 
-            SupplierID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            SupplierID.DataPropertyName = "SupplierID";
-            SupplierID.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
-            SupplierID.MinimumWidth = 6;
-            SupplierID.Name = "SupplierID";
-            SupplierID.ReadOnly = true;
-            SupplierID.Width = 228;
-            // 
-            // SupplierName
-            // 
-            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SupplierName.DataPropertyName = "SupplierName";
-            SupplierName.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
-            SupplierName.MinimumWidth = 6;
-            SupplierName.Name = "SupplierName";
-            SupplierName.ReadOnly = true;
-            // 
-            // ContactNumber
-            // 
-            ContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ContactNumber.DataPropertyName = "ContactNumber";
-            ContactNumber.HeaderText = "លេខទំនាក់ទំនង";
-            ContactNumber.MinimumWidth = 6;
-            ContactNumber.Name = "ContactNumber";
-            ContactNumber.ReadOnly = true;
-            ContactNumber.Width = 174;
-            // 
-            // SupplierAddress
-            // 
-            SupplierAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SupplierAddress.DataPropertyName = "SupplierAddress";
-            SupplierAddress.HeaderText = "អាសយដ្ឋាន";
-            SupplierAddress.MinimumWidth = 6;
-            SupplierAddress.Name = "SupplierAddress";
-            SupplierAddress.ReadOnly = true;
             // 
             // pnlRightSide
             // 
@@ -317,6 +279,43 @@
             txtSupplierAddress.Name = "txtSupplierAddress";
             txtSupplierAddress.Size = new Size(412, 44);
             txtSupplierAddress.TabIndex = 3;
+            // 
+            // SupplierID
+            // 
+            SupplierID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            SupplierID.DataPropertyName = "SupplierID";
+            SupplierID.HeaderText = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់";
+            SupplierID.MinimumWidth = 6;
+            SupplierID.Name = "SupplierID";
+            SupplierID.ReadOnly = true;
+            SupplierID.Width = 228;
+            // 
+            // SupplierName
+            // 
+            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SupplierName.DataPropertyName = "SupplierName";
+            SupplierName.HeaderText = "ឈ្មោះអ្នកផ្គត់ផ្គង់";
+            SupplierName.MinimumWidth = 6;
+            SupplierName.Name = "SupplierName";
+            SupplierName.ReadOnly = true;
+            // 
+            // ContactNumber
+            // 
+            ContactNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ContactNumber.DataPropertyName = "ContactNumber";
+            ContactNumber.HeaderText = "លេខទំនាក់ទំនង";
+            ContactNumber.MinimumWidth = 6;
+            ContactNumber.Name = "ContactNumber";
+            ContactNumber.ReadOnly = true;
+            // 
+            // SupplierAddress
+            // 
+            SupplierAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SupplierAddress.DataPropertyName = "SupplierAddress";
+            SupplierAddress.HeaderText = "អាសយដ្ឋាន";
+            SupplierAddress.MinimumWidth = 6;
+            SupplierAddress.Name = "SupplierAddress";
+            SupplierAddress.ReadOnly = true;
             // 
             // FrmSupplier
             // 

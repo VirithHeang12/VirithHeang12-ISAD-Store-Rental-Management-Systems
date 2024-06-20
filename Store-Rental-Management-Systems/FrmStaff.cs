@@ -27,6 +27,9 @@ namespace Store_Rental_Management_Systems
         {
 
             InitializeComponent();
+            pbStaffPhoto.Visible = true;
+            pbStaffPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            
 
             #region Init DataAdapter Commands
             _staffDataAdapter.SelectCommand = StaffHelper.CreateGetAllStaffsCommand();
@@ -90,8 +93,34 @@ namespace Store_Rental_Management_Systems
 
             rdbFemale.Click += HandleRdbFemaleClick;
             rdbMale.Click += HandleRdbMaleClick;
+
+            _staffBindingSource.CurrentChanged += HandleCurrentChanged;
             #endregion
 
+        }
+
+        private void HandleCurrentChanged(object? sender, EventArgs e)
+        {
+            var rowView = (_staffBindingSource.Current as DataRowView);
+            if (rowView != null)
+            {
+                byte[]? imageBytes = (rowView["Photo"] as byte[]);
+                if (imageBytes != null)
+                {
+                    using (var ms = new MemoryStream(imageBytes))
+                    {
+                        Image image = Image.FromStream(ms);
+
+                        pbStaffPhoto.Image = image;
+                    }
+                }
+                else
+                {
+                    pbStaffPhoto.Image = null;
+                }
+            }
+                
+            
         }
 
         #region HandleGotFocusKM
@@ -129,26 +158,32 @@ namespace Store_Rental_Management_Systems
         #region Bind With Controls
         private void BindWithControls()
         {
-            txtStaffID.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffID"));
-            txtStaffFirstName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffFirstName"));
-            txtStaffLastName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffLastName"));
-            rdbFemale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsFemale"));
-            rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
-            dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
-            txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
-            cbStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
-            txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
-            txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
-            txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
-            txtStaffKhan.DataBindings.Add(new Binding("Text", _staffBindingSource, "Khan"));
-            cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", _staffBindingSource, "ProvinceOrCity"));
-            mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "ContactNumber"));
-            mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "PersonalNumber"));
-            txtStaffSalary.DataBindings.Add(new Binding("Text", _staffBindingSource, "Salary"));
-            dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
-            chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
-
-
+            try
+            {
+                if (txtStaffFirstName.DataBindings.Count == 0)
+                {
+                    txtStaffID.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffID"));
+                    txtStaffFirstName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffFirstName"));
+                    txtStaffLastName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffLastName"));
+                    rdbFemale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsFemale"));
+                    rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
+                    dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
+                    txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
+                    cbStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
+                    txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
+                    txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
+                    txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
+                    txtStaffKhan.DataBindings.Add(new Binding("Text", _staffBindingSource, "Khan"));
+                    cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", _staffBindingSource, "ProvinceOrCity"));
+                    mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "ContactNumber"));
+                    mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "PersonalNumber"));
+                    txtStaffSalary.DataBindings.Add(new Binding("Text", _staffBindingSource, "Salary"));
+                    dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
+                    chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
+                }
+            } catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -182,13 +217,6 @@ namespace Store_Rental_Management_Systems
         {
             if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
             {
-                //var rowView = (_staffBindingSource.Current as DataRowView)!;
-                //using (var ms = new MemoryStream((rowView["Photo"] as byte[])!))
-                //{
-                //    Image image = Image.FromStream(ms);
-
-                //    pbStaffPhoto.Image = image;
-                //}
                 return;
             }
             else
@@ -207,6 +235,7 @@ namespace Store_Rental_Management_Systems
         #region Handle Search
         private void HandleSearchStaff(object? sender, EventArgs e)
         {
+            UnbindWithControls();
             string searchText = txtSearchStaff.Text.Trim().ToLower();
 
             if (string.IsNullOrWhiteSpace(searchText))
@@ -218,6 +247,7 @@ namespace Store_Rental_Management_Systems
                 _staffBindingSource.Filter = "StaffName LIKE '" + searchText + "%'";
 
             }
+            BindWithControls();
         }
         #endregion
 
@@ -266,6 +296,7 @@ namespace Store_Rental_Management_Systems
                 newRowView["StoppedWork"] = 0;
                 newRowView["IsFemale"] = 0;
                 newRowView["IsMale"] = 1;
+                newRowView["Sex"] = 'M';
                 newRowView["BirthDate"] = DateTime.Parse("2005-01-01");
                 cbStaffPosition.SelectedIndex = 0;
                 newRowView["StaffPosition"] = cbStaffPosition.Text;
@@ -275,6 +306,11 @@ namespace Store_Rental_Management_Systems
                 Bitmap initialImage = Properties.Resources.account_search;
                 newRowView["Photo"] = BitmapToByteArray(initialImage);
 
+                lbStaff.DataSource = null;
+                lbStaff.DataSource = _staffBindingSource;
+                lbStaff.DisplayMember = "StaffName";
+                lbStaff.ValueMember = "StaffID";
+
                 Console.WriteLine(newRowView);
 
                 RenderInitialPicture();
@@ -283,6 +319,7 @@ namespace Store_Rental_Management_Systems
 
                 int lastRowIndex = lbStaff.Items.Count - 1;
                 lbStaff.SelectedIndex = lastRowIndex;
+
             }
             catch (Exception)
             {
@@ -300,6 +337,7 @@ namespace Store_Rental_Management_Systems
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
+            lbStaff.SelectedValueChanged -= HandleSelectedValueChanged;
             _staffBindingSource.EndEdit();
             try
             {
@@ -310,8 +348,10 @@ namespace Store_Rental_Management_Systems
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
             RefreshListBox();
+            BindWithControls();
+            lbStaff.SelectedValueChanged += HandleSelectedValueChanged;
         }
         #endregion
 
@@ -418,14 +458,12 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            _storeRentalDataSet.Tables[TABLE_NAME]!.PrimaryKey = new DataColumn[]
-            {
-                _storeRentalDataSet.Tables[TABLE_NAME]!.Columns["StaffID"]!,
-            };
             _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             lbStaff.DataSource = _staffBindingSource;
             lbStaff.DisplayMember = "StaffName";
             lbStaff.ValueMember = "StaffID";
+
+            HandleCurrentChanged(null, EventArgs.Empty);
         }
         #endregion
 
@@ -445,7 +483,7 @@ namespace Store_Rental_Management_Systems
             }
 
             BindWithControls();
-
+            txtSearchStaff.Text = string.Empty;
         }
         #endregion
 

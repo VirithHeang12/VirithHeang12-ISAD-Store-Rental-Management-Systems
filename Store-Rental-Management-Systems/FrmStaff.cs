@@ -29,7 +29,7 @@ namespace Store_Rental_Management_Systems
             InitializeComponent();
             pbStaffPhoto.Visible = true;
             pbStaffPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-            
+
 
             #region Init DataAdapter Commands
             _staffDataAdapter.SelectCommand = StaffHelper.CreateGetAllStaffsCommand();
@@ -52,7 +52,7 @@ namespace Store_Rental_Management_Systems
             _validatingControls.Add(txtStaffSangkat);
             _validatingControls.Add(txtStaffKhan);
             #endregion
-
+            
             LoadAllStaffs();
             BindWithControls();
 
@@ -119,8 +119,8 @@ namespace Store_Rental_Management_Systems
                     pbStaffPhoto.Image = null;
                 }
             }
-                
-            
+
+
         }
 
         #region HandleGotFocusKM
@@ -343,7 +343,7 @@ namespace Store_Rental_Management_Systems
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             RefreshListBox();
             BindWithControls();
             lbStaff.SelectedValueChanged += HandleSelectedValueChanged;

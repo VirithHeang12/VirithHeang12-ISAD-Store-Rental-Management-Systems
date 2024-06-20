@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreRentalHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace Store_Rental_Management_Systems
         public FrmContract() : base()
         {
             InitializeComponent();
+            dtpContractDate.GotFocus += HandleGotFocusEN;
+            dtpLeaseStartDate.GotFocus += HandleGotFocusEN;
+            dtpLeaseEndDate.GotFocus += HandleGotFocusEN;
+            cbStoreID.GotFocus += HandleGotFocusEN;
+            cbCustomerID.GotFocus += HandleGotFocusEN;
+            cbInsuranceID.GotFocus += HandleGotFocusEN;
+            cbStaffID.GotFocus += HandleGotFocusEN;
         }
+
+        #region HandleGotFocus
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
     }
 }

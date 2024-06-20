@@ -47,7 +47,7 @@
             lblStaffName = new Label();
             cbStaffID = new ComboBox();
             pnlUserManipulation = new Panel();
-            btnCloseFormUser = new Button();
+            btnCancelFormUser = new Button();
             btnNewUser = new Button();
             btnUpdateUser = new Button();
             btnInsertUser = new Button();
@@ -69,7 +69,7 @@
             // 
             lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
-            lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(266, 80);
             lblTitle.Name = "lblTitle";
@@ -83,7 +83,7 @@
             lblSearchUser.AutoSize = true;
             lblSearchUser.Location = new Point(82, 29);
             lblSearchUser.Name = "lblSearchUser";
-            lblSearchUser.Size = new Size(309, 36);
+            lblSearchUser.Size = new Size(244, 25);
             lblSearchUser.TabIndex = 1;
             lblSearchUser.Text = "ស្វែងរក (លេខសម្គាល់អ្នកប្រើប្រាស់):";
             // 
@@ -91,7 +91,7 @@
             // 
             txtSearchUser.Location = new Point(411, 26);
             txtSearchUser.Name = "txtSearchUser";
-            txtSearchUser.Size = new Size(334, 44);
+            txtSearchUser.Size = new Size(334, 30);
             txtSearchUser.TabIndex = 2;
             // 
             // pnlLeftSide
@@ -115,21 +115,24 @@
             dgvUsers.ReadOnly = true;
             dgvUsers.RowHeadersWidth = 51;
             dgvUsers.RowTemplate.Height = 29;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.Size = new Size(1362, 325);
             dgvUsers.TabIndex = 3;
             // 
             // UserID
             // 
             UserID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            UserID.DataPropertyName = "UserID";
             UserID.HeaderText = "លេខសម្គាល់អ្នកប្រើប្រាស់";
             UserID.MinimumWidth = 6;
             UserID.Name = "UserID";
             UserID.ReadOnly = true;
-            UserID.Width = 244;
+            UserID.Width = 205;
             // 
             // UserName
             // 
             UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.DataPropertyName = "UserName";
             UserName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
             UserName.MinimumWidth = 6;
             UserName.Name = "UserName";
@@ -138,6 +141,7 @@
             // Password
             // 
             Password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Password.DataPropertyName = "Password";
             Password.HeaderText = "លេខសម្ងាត់";
             Password.MinimumWidth = 6;
             Password.Name = "Password";
@@ -146,15 +150,17 @@
             // StaffID
             // 
             StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StaffID.DataPropertyName = "StaffID";
             StaffID.HeaderText = "លេខសម្គាល់បុគ្គលិក";
             StaffID.MinimumWidth = 6;
             StaffID.Name = "StaffID";
             StaffID.ReadOnly = true;
-            StaffID.Width = 206;
+            StaffID.Width = 173;
             // 
             // StaffName
             // 
             StaffName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffName.DataPropertyName = "StaffName";
             StaffName.HeaderText = "ឈ្មោះអ្នកប្រើប្រាស់";
             StaffName.MinimumWidth = 6;
             StaffName.Name = "StaffName";
@@ -163,6 +169,7 @@
             // StaffPosition
             // 
             StaffPosition.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StaffPosition.DataPropertyName = "StaffPosition";
             StaffPosition.HeaderText = "តួនាទីអ្នកប្រើប្រាស់";
             StaffPosition.MinimumWidth = 6;
             StaffPosition.Name = "StaffPosition";
@@ -191,7 +198,7 @@
             gbUserInformation.Controls.Add(txtUserID);
             gbUserInformation.Controls.Add(lblPassword);
             gbUserInformation.Controls.Add(txtPassword);
-            gbUserInformation.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbUserInformation.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbUserInformation.Location = new Point(82, 12);
             gbUserInformation.Name = "gbUserInformation";
             gbUserInformation.Size = new Size(1362, 335);
@@ -202,177 +209,180 @@
             // lblStaffPosition
             // 
             lblStaffPosition.AutoSize = true;
-            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPosition.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(711, 185);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.Size = new Size(110, 25);
             lblStaffPosition.TabIndex = 32;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
             // txtStaffPosition
             // 
             txtStaffPosition.Enabled = false;
-            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPosition.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(907, 177);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(412, 44);
+            txtStaffPosition.Size = new Size(412, 30);
             txtStaffPosition.TabIndex = 31;
-            txtStaffPosition.UseSystemPasswordChar = true;
             // 
             // txtStaffName
             // 
             txtStaffName.Enabled = false;
-            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(245, 182);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(418, 44);
+            txtStaffName.Size = new Size(418, 30);
             txtStaffName.TabIndex = 30;
-            txtStaffName.UseSystemPasswordChar = true;
             // 
             // lblStaffName
             // 
             lblStaffName.AutoSize = true;
-            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(18, 185);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(130, 36);
+            lblStaffName.Size = new Size(103, 25);
             lblStaffName.TabIndex = 29;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
             // cbStaffID
             // 
-            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStaffID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbStaffID.Location = new Point(906, 108);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(412, 44);
+            cbStaffID.Size = new Size(412, 33);
             cbStaffID.TabIndex = 28;
             // 
             // pnlUserManipulation
             // 
-            pnlUserManipulation.Controls.Add(btnCloseFormUser);
+            pnlUserManipulation.Controls.Add(btnCancelFormUser);
             pnlUserManipulation.Controls.Add(btnNewUser);
             pnlUserManipulation.Controls.Add(btnUpdateUser);
             pnlUserManipulation.Controls.Add(btnInsertUser);
-            pnlUserManipulation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            pnlUserManipulation.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             pnlUserManipulation.Location = new Point(18, 232);
             pnlUserManipulation.Name = "pnlUserManipulation";
             pnlUserManipulation.Size = new Size(1301, 81);
             pnlUserManipulation.TabIndex = 5;
             // 
-            // btnCloseFormUser
+            // btnCancelFormUser
             // 
-            btnCloseFormUser.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormUser.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormUser.ForeColor = Color.White;
-            btnCloseFormUser.Location = new Point(1100, 20);
-            btnCloseFormUser.Name = "btnCloseFormUser";
-            btnCloseFormUser.Size = new Size(152, 52);
-            btnCloseFormUser.TabIndex = 3;
-            btnCloseFormUser.Text = "បិទ";
-            btnCloseFormUser.UseVisualStyleBackColor = false;
+            btnCancelFormUser.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelFormUser.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelFormUser.ForeColor = Color.White;
+            btnCancelFormUser.Location = new Point(1100, 20);
+            btnCancelFormUser.Name = "btnCancelFormUser";
+            btnCancelFormUser.Size = new Size(152, 52);
+            btnCancelFormUser.TabIndex = 3;
+            btnCancelFormUser.TabStop = false;
+            btnCancelFormUser.Text = "បោះបង់";
+            btnCancelFormUser.UseVisualStyleBackColor = false;
             // 
             // btnNewUser
             // 
             btnNewUser.BackColor = Color.FromArgb(0, 28, 87);
-            btnNewUser.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewUser.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnNewUser.ForeColor = Color.White;
             btnNewUser.Location = new Point(740, 20);
             btnNewUser.Name = "btnNewUser";
             btnNewUser.Size = new Size(152, 52);
             btnNewUser.TabIndex = 2;
+            btnNewUser.TabStop = false;
             btnNewUser.Text = "បង្កើតថ្មី";
             btnNewUser.UseVisualStyleBackColor = false;
             // 
             // btnUpdateUser
             // 
             btnUpdateUser.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateUser.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateUser.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateUser.ForeColor = Color.White;
             btnUpdateUser.Location = new Point(380, 20);
             btnUpdateUser.Name = "btnUpdateUser";
             btnUpdateUser.Size = new Size(152, 52);
             btnUpdateUser.TabIndex = 1;
+            btnUpdateUser.TabStop = false;
             btnUpdateUser.Text = "កែប្រែ";
             btnUpdateUser.UseVisualStyleBackColor = false;
             // 
             // btnInsertUser
             // 
             btnInsertUser.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertUser.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertUser.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertUser.ForeColor = Color.White;
             btnInsertUser.Location = new Point(20, 20);
             btnInsertUser.Name = "btnInsertUser";
             btnInsertUser.Size = new Size(152, 52);
             btnInsertUser.TabIndex = 0;
+            btnInsertUser.TabStop = false;
             btnInsertUser.Text = "បញ្ចូល";
             btnInsertUser.UseVisualStyleBackColor = false;
             // 
             // lblStaffID
             // 
             lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(711, 111);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.Size = new Size(147, 25);
             lblStaffID.TabIndex = 27;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
             // lblUserID
             // 
             lblUserID.AutoSize = true;
-            lblUserID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUserID.Location = new Point(18, 41);
             lblUserID.Name = "lblUserID";
-            lblUserID.Size = new Size(221, 36);
+            lblUserID.Size = new Size(179, 25);
             lblUserID.TabIndex = 0;
             lblUserID.Text = "លេខសម្គាល់អ្នកប្រើប្រាស់:";
             // 
             // txtUserName
             // 
-            txtUserName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUserName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUserName.Location = new Point(907, 33);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(412, 44);
-            txtUserName.TabIndex = 5;
+            txtUserName.Size = new Size(412, 30);
+            txtUserName.TabIndex = 1;
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUserName.Location = new Point(711, 41);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(168, 36);
+            lblUserName.Size = new Size(135, 25);
             lblUserName.TabIndex = 4;
             lblUserName.Text = "ឈ្មោះអ្នកប្រើប្រាស់:";
             // 
             // txtUserID
             // 
             txtUserID.Enabled = false;
-            txtUserID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUserID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUserID.Location = new Point(245, 33);
             txtUserID.Name = "txtUserID";
-            txtUserID.Size = new Size(418, 44);
+            txtUserID.Size = new Size(418, 30);
             txtUserID.TabIndex = 3;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPassword.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPassword.Location = new Point(18, 111);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(115, 36);
+            lblPassword.Size = new Size(93, 25);
             lblPassword.TabIndex = 6;
             lblPassword.Text = "លេខសម្ងាត់:";
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(245, 111);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(418, 44);
-            txtPassword.TabIndex = 13;
+            txtPassword.Size = new Size(418, 30);
+            txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // FrmUser
@@ -414,7 +424,7 @@
         private GroupBox gbUserInformation;
         private Panel pnlUserManipulation;
         private Button btnInsertUser;
-        private Button btnCloseFormUser;
+        private Button btnCancelFormUser;
         private Button btnNewUser;
         private Button btnUpdateUser;
         private Label lblStaffID;

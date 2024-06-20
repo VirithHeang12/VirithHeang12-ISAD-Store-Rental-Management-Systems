@@ -158,31 +158,26 @@ namespace Store_Rental_Management_Systems
         #region Bind With Controls
         private void BindWithControls()
         {
-            try
+            if (txtStaffFirstName.DataBindings.Count == 0)
             {
-                if (txtStaffFirstName.DataBindings.Count == 0)
-                {
-                    txtStaffID.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffID"));
-                    txtStaffFirstName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffFirstName"));
-                    txtStaffLastName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffLastName"));
-                    rdbFemale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsFemale"));
-                    rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
-                    dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
-                    txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
-                    cbStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
-                    txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
-                    txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
-                    txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
-                    txtStaffKhan.DataBindings.Add(new Binding("Text", _staffBindingSource, "Khan"));
-                    cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", _staffBindingSource, "ProvinceOrCity"));
-                    mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "ContactNumber"));
-                    mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "PersonalNumber"));
-                    txtStaffSalary.DataBindings.Add(new Binding("Text", _staffBindingSource, "Salary"));
-                    dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
-                    chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
-                }
-            } catch (Exception)
-            {
+                txtStaffID.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffID"));
+                txtStaffFirstName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffFirstName"));
+                txtStaffLastName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffLastName"));
+                rdbFemale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsFemale"));
+                rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
+                dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
+                txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
+                cbStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
+                txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
+                txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
+                txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
+                txtStaffKhan.DataBindings.Add(new Binding("Text", _staffBindingSource, "Khan"));
+                cbStaffCityOrProvince.DataBindings.Add(new Binding("Text", _staffBindingSource, "ProvinceOrCity"));
+                mtxtStaffContactNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "ContactNumber"));
+                mtxtStaffPersonalNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "PersonalNumber"));
+                txtStaffSalary.DataBindings.Add(new Binding("Text", _staffBindingSource, "Salary"));
+                dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
+                chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
             }
         }
 
@@ -482,6 +477,7 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            lbStaff.SelectedIndex = 0;
             BindWithControls();
             txtSearchStaff.Text = string.Empty;
         }

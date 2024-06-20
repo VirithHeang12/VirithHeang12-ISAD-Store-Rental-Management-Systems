@@ -76,9 +76,56 @@ namespace Store_Rental_Management_Systems
             lbStaff.SelectedValueChanged += HandleSelectedValueChanged;
 
             txtSearchStaff.TextChanged += HandleSearchStaff;
+            txtStaffFirstName.GotFocus += HandleGotFocusKM;
+            txtStaffLastName.GotFocus += HandleGotFocusKM;
+            txtStaffIdentityCardNumber.GotFocus += HandleGotFocusEN;
+            txtStaffSalary.GotFocus += HandleGotFocusEN;
+            mtxtStaffContactNumber.GotFocus += HandleGotFocusEN;
+            mtxtStaffPersonalNumber.GotFocus += HandleGotFocusEN;
+            txtStaffHouseNo.GotFocus += HandleGotFocusEN;
+            txtStaffStreetNo.GotFocus += HandleGotFocusEN;
+            txtStaffSangkat.GotFocus += HandleGotFocusKM;
+            txtStaffKhan.GotFocus += HandleGotFocusKM;
+            txtSearchStaff.GotFocus += HandleGotFocusEN;
+
+            rdbFemale.Click += HandleRdbFemaleClick;
+            rdbMale.Click += HandleRdbMaleClick;
             #endregion
 
         }
+
+        #region HandleGotFocusKM
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        #endregion
+
+        #region HandleGotFocusEN
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
+
+        private void HandleRdbMaleClick(object? sender, EventArgs e)
+        {
+            var newRowView = (_staffBindingSource.Current as DataRowView)!;
+            if (newRowView != null)
+            {
+                newRowView["Sex"] = 'M';
+            }
+        }
+
+        private void HandleRdbFemaleClick(object? sender, EventArgs e)
+        {
+            var newRowView = (_staffBindingSource.Current as DataRowView)!;
+            if (newRowView != null)
+            {
+                newRowView["Sex"] = 'F';
+            }
+        }
+
         #region Bind With Controls
         private void BindWithControls()
         {
@@ -89,7 +136,7 @@ namespace Store_Rental_Management_Systems
             rdbMale.DataBindings.Add(new Binding("Checked", _staffBindingSource, "IsMale"));
             dtpStaffBirthDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "BirthDate"));
             txtStaffIdentityCardNumber.DataBindings.Add(new Binding("Text", _staffBindingSource, "IdentityCardNumber"));
-            cbStaffPosition.DataBindings.Add(new Binding("SelectedItem", _staffBindingSource, "StaffPosition"));
+            cbStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
             txtStaffHouseNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "HouseNo"));
             txtStaffStreetNo.DataBindings.Add(new Binding("Text", _staffBindingSource, "StreetNo"));
             txtStaffSangkat.DataBindings.Add(new Binding("Text", _staffBindingSource, "Sangkat"));
@@ -101,8 +148,33 @@ namespace Store_Rental_Management_Systems
             dtpStaffHiredDate.DataBindings.Add(new Binding("Value", _staffBindingSource, "HiredDate"));
             chbStaffStoppedWork.DataBindings.Add(new Binding("Checked", _staffBindingSource, "StoppedWork"));
 
+
         }
 
+        #endregion
+
+        #region Unbind With Controls
+        private void UnbindWithControls()
+        {
+            txtStaffID.DataBindings.Clear();
+            txtStaffFirstName.DataBindings.Clear();
+            txtStaffLastName.DataBindings.Clear();
+            rdbFemale.DataBindings.Clear();
+            rdbMale.DataBindings.Clear();
+            dtpStaffBirthDate.DataBindings.Clear();
+            txtStaffIdentityCardNumber.DataBindings.Clear();
+            cbStaffPosition.DataBindings.Clear();
+            txtStaffHouseNo.DataBindings.Clear();
+            txtStaffStreetNo.DataBindings.Clear();
+            txtStaffSangkat.DataBindings.Clear();
+            txtStaffKhan.DataBindings.Clear();
+            cbStaffCityOrProvince.DataBindings.Clear();
+            mtxtStaffContactNumber.DataBindings.Clear();
+            mtxtStaffPersonalNumber.DataBindings.Clear();
+            txtStaffSalary.DataBindings.Clear();
+            dtpStaffHiredDate.DataBindings.Clear();
+            chbStaffStoppedWork.DataBindings.Clear();
+        }
         #endregion
 
         #region Handle ListBox SelectedValueChanged
@@ -110,6 +182,13 @@ namespace Store_Rental_Management_Systems
         {
             if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
             {
+                //var rowView = (_staffBindingSource.Current as DataRowView)!;
+                //using (var ms = new MemoryStream((rowView["Photo"] as byte[])!))
+                //{
+                //    Image image = Image.FromStream(ms);
+
+                //    pbStaffPhoto.Image = image;
+                //}
                 return;
             }
             else
@@ -160,7 +239,7 @@ namespace Store_Rental_Management_Systems
 
         private void ValidateTextBoxNumber(object? sender, CancelEventArgs e)
         {
-            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);    
+            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
         }
 
         private void ValidateIdentityCardNumber(object? sender, CancelEventArgs e)
@@ -179,7 +258,31 @@ namespace Store_Rental_Management_Systems
         {
             try
             {
+                UnbindWithControls();
                 _staffBindingSource.AddNew();
+
+                var newRowView = (_staffBindingSource.Current as DataRowView)!;
+
+                newRowView["StoppedWork"] = 0;
+                newRowView["IsFemale"] = 0;
+                newRowView["IsMale"] = 1;
+                newRowView["BirthDate"] = DateTime.Parse("2005-01-01");
+                cbStaffPosition.SelectedIndex = 0;
+                newRowView["StaffPosition"] = cbStaffPosition.Text;
+                newRowView["HiredDate"] = DateTime.Now;
+                cbStaffCityOrProvince.SelectedIndex = 0;
+                newRowView["ProvinceOrCity"] = cbStaffCityOrProvince.Text;
+                Bitmap initialImage = Properties.Resources.account_search;
+                newRowView["Photo"] = BitmapToByteArray(initialImage);
+
+                Console.WriteLine(newRowView);
+
+                RenderInitialPicture();
+
+                BindWithControls();
+
+                int lastRowIndex = lbStaff.Items.Count - 1;
+                lbStaff.SelectedIndex = lastRowIndex;
             }
             catch (Exception)
             {
@@ -196,13 +299,14 @@ namespace Store_Rental_Management_Systems
             CauseValidation();
 
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
+
             _staffBindingSource.EndEdit();
             try
             {
                 _staffDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
                 _staffBindingSource.ResetBindings(false);
             }
-            catch (Exception)
+            catch (Exceptio​n ex)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -245,6 +349,9 @@ namespace Store_Rental_Management_Systems
                 // Load the selected image into the PictureBox
                 pbStaffPhoto.Image = System.Drawing.Image.FromFile(selectedFilePath);
                 pbStaffPhoto.SizeMode = PictureBoxSizeMode.StretchImage; //
+
+                var newRowView = (_staffBindingSource.Current as DataRowView)!;
+                newRowView["Photo"] = BitmapToByteArray(new Bitmap(pbStaffPhoto.Image));
             }
         }
         #endregion
@@ -265,7 +372,7 @@ namespace Store_Rental_Management_Systems
                         else if (control.Tag.ToString()!.Equals('n'))
                         {
                             ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
-                        } 
+                        }
                         else if (control.Tag.ToString()!.Equals("card"))
                         {
                             ErrorHelper.ValidateNineDigitNumber(textBox, _errorProvider);
@@ -279,7 +386,8 @@ namespace Store_Rental_Management_Systems
                 else if (control is MaskedTextBox maskedTextBox)
                 {
                     ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
-                } else if (control is DateTimePicker dtp)
+                }
+                else if (control is DateTimePicker dtp)
                 {
                     if (control.Tag != null)
                     {
@@ -310,6 +418,10 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            _storeRentalDataSet.Tables[TABLE_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_NAME]!.Columns["StaffID"]!,
+            };
             _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
             lbStaff.DataSource = _staffBindingSource;
             lbStaff.DisplayMember = "StaffName";
@@ -320,6 +432,8 @@ namespace Store_Rental_Management_Systems
         #region Refresh
         private void RefreshListBox()
         {
+            UnbindWithControls();
+
             _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
             try
             {
@@ -329,6 +443,8 @@ namespace Store_Rental_Management_Systems
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            BindWithControls();
 
         }
         #endregion

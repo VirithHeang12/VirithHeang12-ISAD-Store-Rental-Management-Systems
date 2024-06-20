@@ -61,9 +61,29 @@ namespace Store_Rental_Management_Systems
             dgvStoreTypes.SelectionChanged += HandleSelectionChanged;
 
             txtSearchStoreType.TextChanged += HandleSearchStoreType;
+            txtStoreTypeDescription.GotFocus += HandleGotFocusKM;
+            txtMonthlyLeasePrice.GotFocus += HandleGotFocusEN;
+            txtThreeMonthPaymentDiscount.GotFocus += HandleGotFocusEN;
+            txtSixMonthPaymentDiscount.GotFocus += HandleGotFocusEN;
+            txtOneYearPaymentDiscount.GotFocus += HandleGotFocusEN;
+            txtSearchStoreType.GotFocus += HandleGotFocusEN;
             #endregion
 
         }
+
+        #region HandleGotFocusKM
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        #endregion
+
+        #region HandleGotFocusEN
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
 
         #region Bind With Controls
         private void BindWithControls()

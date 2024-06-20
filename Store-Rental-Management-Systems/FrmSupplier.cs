@@ -55,7 +55,20 @@ namespace Store_Rental_Management_Systems
             dgvSuppliers.SelectionChanged += HandleSelectionChanged;
 
             txtSearchSupplier.TextChanged += HandleSearchSupplier;
+
+            mtxtContactNumber.GotFocus += HandleGotFocusEN;
+            txtSupplierName.GotFocus += HandleGotFocusKM;
             #endregion
+        }
+
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
         }
         #region Bind With Controls
         private void BindWithControls()

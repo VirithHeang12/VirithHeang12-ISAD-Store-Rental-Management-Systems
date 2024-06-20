@@ -52,7 +52,20 @@ namespace Store_Rental_Management_Systems
             cbStaffID.TextChanged += HandleTextCbStaffIDChanged;
             cbItemID.TextChanged += HandleTextcbItemIDChanged;
 
+            cbSupplierID.GotFocus += HandleGotFocusEN;
+            cbStaffID.GotFocus += HandleGotFocusEN;
+            cbItemID.GotFocus += HandleGotFocusEN;
+            txtImportQty.GotFocus += HandleGotFocusEN;
+
         }
+
+        #region HandleGotFocus
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+
+        #endregion
 
         private void HandleTextcbItemIDChanged(object? sender, EventArgs e)
         {

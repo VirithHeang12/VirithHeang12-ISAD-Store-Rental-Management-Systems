@@ -35,6 +35,19 @@ namespace Store_Rental_Management_Systems
             CustomerBindingSource = new BindingSource();
             ConfigDefaultValues();
 
+
+            txtCustomerFirstName.GotFocus += HandleGotFocusKM;
+            txtCustomerLastName.GotFocus += HandleGotFocusKM;
+            dtpCustomerBirthDate.GotFocus += HandleGotFocusEN;
+            mtxtCustomerContactNumber.GotFocus += HandleGotFocusEN;
+            txtCustomerIdentityCardNumber.GotFocus += HandleGotFocusEN;
+            txtCustomerHouseNo.GotFocus += HandleGotFocusEN;
+            txtCustomerStreetNo.GotFocus += HandleGotFocusEN;
+            txtCustomerSangkat.GotFocus += HandleGotFocusKM;
+            txtCustomerKhan.GotFocus += HandleGotFocusKM;
+            cbCustomerCityOrProvince.GotFocus += HandleGotFocusKM;
+
+
             #region Event registration for CRUD operations
             //this.Load += LoadAllCustomers;
             btnPickCustomerPhoto.Click += HandleBtnCustomerPhotoClick;
@@ -58,6 +71,17 @@ namespace Store_Rental_Management_Systems
             #endregion
 
         }
+
+        #region HandleGotFocus
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+        #endregion
 
         #region HandleCustomerBindingSourceCurrentChanged
         private void HandleCustomerBindingSourceCurrentChanged(object? sender, EventArgs e)

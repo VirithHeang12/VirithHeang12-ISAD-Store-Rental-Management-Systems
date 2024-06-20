@@ -39,6 +39,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllExpenseTypes();
             BindWithControls();
+            
 
             #region Event Registrations
             btnNewExpenseType.Click += HandleBtnNewExpenseTypeClicked;
@@ -51,8 +52,19 @@ namespace Store_Rental_Management_Systems
             dgvExpenseTypes.SelectionChanged += HandleSelectionChanged;
 
             txtSearchExpenseType.TextChanged += HandleSearchExpenseType;
+
+            txtExpenseDescription.GotFocus += HandleGotFocusKM;
             #endregion
         }
+
+        #region HandleGotFocus
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+     
+        #endregion
+
         #region Bind With Controls
         private void BindWithControls()
         {

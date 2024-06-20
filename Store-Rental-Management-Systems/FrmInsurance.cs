@@ -41,6 +41,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllInsurances();
             BindWithControls();
+            
 
             #region Event Registrations
             btnNewInsurance.Click += HandleBtnNewInsuranceClicked;
@@ -54,8 +55,25 @@ namespace Store_Rental_Management_Systems
             dgvInsurances.SelectionChanged += HandleSelectionChanged;
 
             txtSearchInsurance.TextChanged += HandleSearchInsurance;
+
+            txtInsuranceName.GotFocus += HandleGotFocusEN;
+            txtInsuranceWebsite.GotFocus += HandleGotFocusEN;
+            txtSearchInsurance.GotFocus += HandleGotFocusEN;
+
             #endregion
         }
+
+        #region HandleGotFocus
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
+        }
+
+        #endregion
 
         #region Bind With Controls
         private void BindWithControls()

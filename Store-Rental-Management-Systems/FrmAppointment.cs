@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreRentalHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,21 @@ namespace Store_Rental_Management_Systems
         public FrmAppointment() : base()
         {
             InitializeComponent();
+            
+            dtpAppointmentDate.GotFocus += HandleGotFocusEN;
+            cbAppointmentStatus.GotFocus += HandleGotFocusKM;
+            cbCustomerID.GotFocus += HandleGotFocusEN;
+            cbStaffID.GotFocus += HandleGotFocusEN;
+        }
+
+        private void HandleGotFocusKM(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+        }
+
+        private void HandleGotFocusEN(object? sender, EventArgs e)
+        {
+            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
         }
     }
 }

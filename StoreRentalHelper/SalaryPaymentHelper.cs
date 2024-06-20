@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoreRentalHelper
 {
-    public class UserHelper
+    public static class SalaryPaymentHelper
     {
         #region Connection
         public static SqlConnection Connection { get; set; } = default!;
@@ -16,31 +16,31 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT_NEW_USER = "sp_InsertNewUser";
-        private const string UPDATE_USER = "sp_UpdateUser";
-        private const string GET_ALL_USERS = "v_GetAllUsers";
+        private const string INSERT = "sp_InsertNewSalaryPayment";
+        private const string UPDATE = "sp_UpdateSalaryPayment";
+        private const string GET_ALL = "v_GetAllSalaryPayments";
         private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "v_GetAllStaffsForComboBox";
         #endregion
 
-        #region Generate Insert User Command
-        public static SqlCommand CreateInsertUserCommand()
+        #region Generate Insert SalaryPayment Command
+        public static SqlCommand CreateInsertSalaryPaymentCommand()
         {
-            var cmd = new SqlCommand(INSERT_NEW_USER, Connection);
+            var cmd = new SqlCommand(INSERT, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add(new SqlParameter("@UserName ", SqlDbType.NVarChar, 100)
+            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentDate", SqlDbType.DateTime)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "UserName"
+                SourceColumn = "SalaryPaymentDate"
             });
-            cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.VarChar, 255)
+            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentAmount", SqlDbType.Money)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "Password"
+                SourceColumn = "SalaryPaymentAmount"
             });
             cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
             {
@@ -49,7 +49,6 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "StaffID"
             });
-
             cmd.Parameters.Add(new SqlParameter("@StaffName", SqlDbType.NVarChar, 100)
             {
                 Direction = ParameterDirection.Input,
@@ -64,72 +63,68 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "StaffPosition"
             });
-
             return cmd;
         }
         #endregion
 
-
-        #region Generate Update User Command
-        public static SqlCommand CreateUpdateUserCommand()
-        {
-            var cmd = new SqlCommand(UPDATE_USER, Connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@UserID", SqlDbType.Int)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
-                SourceColumn = "UserID"
-            });
-            cmd.Parameters.Add(new SqlParameter("@UserName", SqlDbType.NVarChar,100)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
-                SourceColumn = "UserName"
-            });
-            cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.VarChar,255)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
-                SourceColumn = "Password"
-            });
-            cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
-                SourceColumn = "StaffID"
-            });
-
-            cmd.Parameters.Add(new SqlParameter("@StaffName", SqlDbType.NVarChar, 100)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffName"
-            });
-            cmd.Parameters.Add(new SqlParameter("@StaffPosition", SqlDbType.NVarChar, 100)
-            {
-                Direction = ParameterDirection.Input,
-                IsNullable = false,
-                SourceVersion = DataRowVersion.Current,
-                SourceColumn = "StaffPosition"
-            });
-
-            return cmd;
-        }
-        #endregion
-
-
-        #region Generate Get All Users Command
-        public static SqlCommand CreateGetAllUsersCommand()
+        #region Generate Get All SalaryPayments Command
+        public static SqlCommand CreateGetAllSalaryPaymentsCommand()
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_USERS}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL}";
+            return cmd;
+        }
+        #endregion
+
+        #region Generate Update SalaryPayment Command
+        public static SqlCommand CreateUpdateSalaryPaymentCommand()
+        {
+            var cmd = new SqlCommand(UPDATE, Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Original,
+                SourceColumn = "SalaryPaymentID"
+            });
+            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentDate", SqlDbType.DateTime)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "SalaryPaymentDate"
+            });
+            cmd.Parameters.Add(new SqlParameter("@SalaryPaymentAmount", SqlDbType.Money)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "SalaryPaymentAmount"
+            });
+            cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "StaffID"
+            });
+            cmd.Parameters.Add(new SqlParameter("@StaffName", SqlDbType.NVarChar, 100)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "StaffName"
+            });
+            cmd.Parameters.Add(new SqlParameter("@StaffPosition", SqlDbType.NVarChar, 100)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "StaffPosition"
+            });
             return cmd;
         }
         #endregion

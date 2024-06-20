@@ -18,7 +18,7 @@ namespace Store_Rental_Management_Systems
         private const string TABLE_NAME = "tblUser";
         private const string TABLE_STAFF_NAME = "tblStaff";
 
-        private DataSet _storeRentalDataSet = new();
+        private DataSet _storeRentalDataSet = new DataSet();
 
         private SqlDataAdapter _userDataAdapter = new();
         private SqlDataAdapter _staffDataAdapter = new();
@@ -50,89 +50,31 @@ namespace Store_Rental_Management_Systems
             btnInsertUser.Click += HandleBtnInsertUserClicked;
             btnUpdateUser.Click += HandleBtnUpdateUserClicked;
             btnCancelFormUser.Click += HandleBtnCancelFormUserClicked;
+
+            txtUserName.Validating += ValidateUserName;
+
+            dgvUsers.SelectionChanged += HandleSelectionChanged;
+
+            txtSearchUser.TextChanged += HandleSearchUser;
+
+            cbStaffID.SelectedIndexChanged += HandleSelectedIndexChanged;
             #endregion
 
             InitCommands();
             LoadAllData();
-            LoadAllUsers();
             BindWithControls();
-            cbStaffID.TextChanged += HandleTextCbStaffIDChanged;
-            dgvUsers.SelectionChanged += HandleSelectionChanged;
         }
 
-        #region HandleTextCbStaffIDChanged
-        private void HandleTextCbStaffIDChanged(object? sender, EventArgs e)
+        #region InitCommands
+        private void InitCommands()
         {
-            string searchID = cbStaffID.Text.Trim();
+            //user
+            _userDataAdapter.SelectCommand = UserHelper.CreateGetAllUsersCommand();
+            _userDataAdapter.InsertCommand = UserHelper.CreateInsertUserCommand();
+            _userDataAdapter.UpdateCommand = UserHelper.CreateUpdateUserCommand();
 
-            var dataView = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
-
-            if (string.IsNullOrEmpty(searchID))
-            {
-                dataView.RowFilter = string.Empty;
-                cbStaffID.DroppedDown = true;
-            }
-            else
-            {
-                dataView.RowFilter = $"CONVERT(StaffID, 'System.String') LIKE '%{searchID}%'";
-
-                if (dataView.Count > 0)
-                {
-                    dataView.RowFilter = string.Empty;
-                }
-            }
-
-            if (dataView.Count > 0)
-            {
-                cbStaffID.Select(cbStaffID.Text.Length, 0); // Keep the caret at the end
-            }
-            else
-            {
-                cbStaffID.DroppedDown = false;
-            }
-
-
-            // Set the original text back to the ComboBox (to keep the user input)
-            cbStaffID.Text = searchID;
-            cbStaffID.SelectionStart = searchID.Length;
-            cbStaffID.SelectionLength = 0;
-
-        }
-        #endregion
-
-        #region LoadAllData
-        private void LoadAllData()
-        {
-            // filling tblStaff DataTable
-            _staffDataAdapter.TableMappings.Add("Table1", TABLE_STAFF_NAME);
-            _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
-
-            // bind to StoreTypeID combo box
-            _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
-            cbStaffID.DataSource = _staffBindingSource;
-            cbStaffID.DisplayMember = "StaffID";
-            cbStaffID.ValueMember = "StaffID";
-
-        }
-        #endregion
-
-        #region Load
-        private void LoadAllUsers()
-        {
-            _userDataAdapter.TableMappings.Add("Table", TABLE_NAME);
-            _userDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
-            try
-            {
-
-                _userDataAdapter.Fill(_storeRentalDataSet);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            _userBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
-            dgvUsers.DataSource = _userBindingSource;
+            // staff
+            _staffDataAdapter.SelectCommand = UserHelper.CreateGetAllStaffsForComboBoxCommand();
         }
         #endregion
 
@@ -150,18 +92,24 @@ namespace Store_Rental_Management_Systems
             txtStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
 
         }
+
+        private void UnbindWithControls()
+        {
+            txtUserID.DataBindings.Clear();
+            txtUserName.DataBindings.Clear();
+            txtPassword.DataBindings.Clear();
+            cbStaffID.DataBindings.Clear();
+            txtStaffName.DataBindings.Clear();
+            txtStaffPosition.DataBindings.Clear();
+        }
         #endregion
 
-        #region InitCommands
-        private void InitCommands()
+        #region Handle SelectedIndexChanged
+        private void HandleSelectedIndexChanged(object? sender, EventArgs e)
         {
-            //user
-            _userDataAdapter.SelectCommand = UserHelper.CreateGetAllUsersCommand();
-            _userDataAdapter.InsertCommand = UserHelper.CreateInsertUserCommand();
-            _userDataAdapter.UpdateCommand = UserHelper.CreateUpdateUserCommand();
-
-            // staff
-            _staffDataAdapter.SelectCommand = UserHelper.CreateGetAllStaffsForComboBoxCommand();
+            var dataRowView = cbStaffID.SelectedItem as DataRowView;
+            txtStaffName.Text = dataRowView?["StaffName"] as string ?? string.Empty;
+            txtStaffPosition.Text = dataRowView?["StaffPosition"] as string ?? string.Empty;
         }
         #endregion
 
@@ -186,12 +134,56 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
+        #region Handle SearchUser
+        private void HandleSearchUser(object? sender, EventArgs e)
+        {
+            UnbindWithControls();
+            string searchText = txtSearchUser.Text.Trim().ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                _userBindingSource.Filter = string.Empty;
+            }
+            else
+            {
+                _userBindingSource.Filter = "StaffName LIKE '%" + searchText + "%'";
+
+            }
+            BindWithControls();
+        }
+        #endregion
+
+        #region Handle Validate
+        private void ValidateUserName(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
+        }
+        #endregion
+
         #region Handle New
         private void HandleBtnNewUserClicked(object? sender, EventArgs e)
         {
             try
             {
+                UnbindWithControls();
+
                 _userBindingSource.AddNew();
+
+                var newRowView = (_userBindingSource.Current as DataRowView)!;
+
+                cbStaffID.SelectedIndex = 0;
+                newRowView["StaffID"] = cbStaffID.SelectedValue;
+
+                var dataRowView = cbStaffID.SelectedItem as DataRowView;
+                newRowView["StaffName"] = dataRowView?["StaffName"];
+                newRowView["StaffPosition"] = dataRowView?["StaffPosition"];
+
+                //newRowView["SalaryPaymentDate"] = DateTime.Now;
+
+                BindWithControls();
+
+                int lastRowIndex = dgvUsers.Rows.Count - 1;
+                dgvUsers.CurrentCell = dgvUsers.Rows[lastRowIndex].Cells[0];
             }
             catch (Exception)
             {
@@ -214,7 +206,7 @@ namespace Store_Rental_Management_Systems
                 _userDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
                 _userBindingSource.ResetBindings(false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -250,12 +242,71 @@ namespace Store_Rental_Management_Systems
                 {
                     ErrorHelper.ValidateTextBox(textBox, _errorProvider);
                 }
-                else if (control is MaskedTextBox maskedTextBox)
-                {
-                    ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
-                }
             }
         }
+        #endregion
+
+        #region LoadAllData
+        private void LoadAllData()
+        {
+            _userDataAdapter.TableMappings.Add("Table", TABLE_NAME);
+            _staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
+            try
+            {
+                _userDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            _userBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
+            dgvUsers.DataSource = _userBindingSource;
+
+            //_storeRentalDataSet.Tables[TABLE_STAFF_NAME].PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME].Columns["StaffID"] };
+
+            _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]! };
+            _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
+            cbStaffID.DataSource = _staffBindingSource;
+            cbStaffID.ValueMember = "StaffID";
+            cbStaffID.DisplayMember = "StaffID";
+
+
+
+            HandleSelectedIndexChanged(null, EventArgs.Empty);
+        }
+
+        //private void LoadAllData()
+        //{
+        //    // Try filling the dataset with data
+        //    try
+        //    {
+        //        _userDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+        //        _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+        //    }
+        //    catch (SqlException ex) // Replace with specific exception for data filling errors
+        //    {
+        //        MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្ន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return; // Exit the method if data loading fails
+        //    }
+
+        //    // Check if the staff table has data before accessing it
+        //    if (_storeRentalDataSet.Tables.Contains(TABLE_STAFF_NAME))
+        //    {
+        //        _storeRentalDataSet.Tables[TABLE_STAFF_NAME].PrimaryKey = new DataColumn[] { _storeRentalDataSet.Tables[TABLE_STAFF_NAME].Columns["StaffID"] };
+
+        //        _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME].AsDataView();
+        //        cbStaffID.DataSource = _staffBindingSource;
+        //        cbStaffID.ValueMember = "StaffID";
+        //        cbStaffID.DisplayMember = "StaffID";
+        //    }
+
+        //    _userBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
+        //    dgvUsers.DataSource = _userBindingSource;
+
+        //    HandleSelectedIndexChanged(null, EventArgs.Empty);
+        //}
         #endregion
 
         #region Refresh
@@ -272,10 +323,6 @@ namespace Store_Rental_Management_Systems
             }
 
         }
-        #endregion
-
-        #region Refresh
-
         #endregion
 
     }

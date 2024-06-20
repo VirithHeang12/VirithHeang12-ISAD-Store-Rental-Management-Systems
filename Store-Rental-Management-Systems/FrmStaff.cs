@@ -89,7 +89,7 @@ namespace Store_Rental_Management_Systems
             txtStaffStreetNo.GotFocus += HandleGotFocusEN;
             txtStaffSangkat.GotFocus += HandleGotFocusKM;
             txtStaffKhan.GotFocus += HandleGotFocusKM;
-            txtSearchStaff.GotFocus += HandleGotFocusEN;
+            txtSearchStaff.GotFocus += HandleGotFocusKM;
 
             rdbFemale.Click += HandleRdbFemaleClick;
             rdbMale.Click += HandleRdbMaleClick;

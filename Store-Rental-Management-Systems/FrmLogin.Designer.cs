@@ -136,6 +136,7 @@
             txtLoginPassword.Name = "txtLoginPassword";
             txtLoginPassword.Size = new Size(423, 44);
             txtLoginPassword.TabIndex = 4;
+            txtLoginPassword.UseSystemPasswordChar = true;
             // 
             // txtLoginUserName
             // 

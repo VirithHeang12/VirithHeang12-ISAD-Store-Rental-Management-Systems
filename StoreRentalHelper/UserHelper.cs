@@ -69,7 +69,6 @@ namespace StoreRentalHelper
         }
         #endregion
 
-
         #region Generate Update User Command
         public static SqlCommand CreateUpdateUserCommand()
         {
@@ -86,21 +85,21 @@ namespace StoreRentalHelper
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
+                SourceVersion = DataRowVersion.Current,
                 SourceColumn = "UserName"
             });
             cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.VarChar,255)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
+                SourceVersion = DataRowVersion.Current,
                 SourceColumn = "Password"
             });
             cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
-                SourceVersion = DataRowVersion.Original,
+                SourceVersion = DataRowVersion.Current,
                 SourceColumn = "StaffID"
             });
 
@@ -122,7 +121,6 @@ namespace StoreRentalHelper
             return cmd;
         }
         #endregion
-
 
         #region Generate Get All Users Command
         public static SqlCommand CreateGetAllUsersCommand()

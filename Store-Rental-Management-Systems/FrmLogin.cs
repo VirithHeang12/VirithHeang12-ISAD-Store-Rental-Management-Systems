@@ -51,6 +51,7 @@ namespace Store_Rental_Management_Systems
                 }
             }
             MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         private void InitCommands()

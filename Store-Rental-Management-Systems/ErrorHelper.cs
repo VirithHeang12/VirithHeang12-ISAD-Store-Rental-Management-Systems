@@ -127,6 +127,22 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
+        #region Validate Dtp Present or Future
+        public static bool ValidateDtpPresentOrFuture(DateTimePicker dtp, ErrorProvider errorProvider)
+        {
+            if (dtp.Value <= DateTime.Now)
+            {
+                errorProvider.SetError(dtp, NOT_FUTURE_MSG);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(dtp, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
         #region Validate Before 2005
         public static bool ValidateDateBefore2005(DateTimePicker dtp, ErrorProvider errorProvider)
         {

@@ -50,7 +50,6 @@
             btnShowStaffForm = new Button();
             btnHome = new Button();
             panel1 = new Panel();
-            label1 = new Label();
             btnLogout = new Button();
             pnlSideNav.SuspendLayout();
             panel2.SuspendLayout();
@@ -373,23 +372,12 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label1);
             panel1.Controls.Add(btnLogout);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(266, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1534, 80);
             panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Khmer OS Siemreap", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(0, 28, 87);
-            label1.Location = new Point(393, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(793, 72);
-            label1.TabIndex = 5;
-            label1.Text = "ប្រព័ន្ធគ្រប់គ្រង ការជួលតូបក្នុងផ្សារទំនើប";
             // 
             // btnLogout
             // 
@@ -411,7 +399,7 @@
             // 
             // FrmHome
             // 
-            AutoScaleDimensions = new SizeF(11F, 36F);
+            AutoScaleDimensions = new SizeF(13F, 43F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1800, 1000);
@@ -453,6 +441,5 @@
         private PictureBox pictureBox1;
         private Label lblCopyright;
         private Panel panel2;
-        private Label label1;
     }
 }

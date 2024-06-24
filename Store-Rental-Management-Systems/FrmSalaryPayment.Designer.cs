@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             lblSearchSalaryPayment = new Label();
             txtSearchSalaryPayment = new TextBox();
@@ -83,7 +85,7 @@
             lblSearchSalaryPayment.AutoSize = true;
             lblSearchSalaryPayment.Location = new Point(34, 29);
             lblSearchSalaryPayment.Name = "lblSearchSalaryPayment";
-            lblSearchSalaryPayment.Size = new Size(271, 36);
+            lblSearchSalaryPayment.Size = new Size(318, 43);
             lblSearchSalaryPayment.TabIndex = 1;
             lblSearchSalaryPayment.Text = "ស្វែងរក (លេខសម្គាល់បុគ្គលិក):";
             // 
@@ -91,7 +93,7 @@
             // 
             txtSearchSalaryPayment.Location = new Point(470, 21);
             txtSearchSalaryPayment.Name = "txtSearchSalaryPayment";
-            txtSearchSalaryPayment.Size = new Size(338, 44);
+            txtSearchSalaryPayment.Size = new Size(338, 51);
             txtSearchSalaryPayment.TabIndex = 2;
             txtSearchSalaryPayment.TabStop = false;
             // 
@@ -109,8 +111,25 @@
             // 
             dgvSalaryPayments.AllowUserToAddRows = false;
             dgvSalaryPayments.AllowUserToDeleteRows = false;
+            dgvSalaryPayments.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvSalaryPayments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvSalaryPayments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSalaryPayments.Columns.AddRange(new DataGridViewColumn[] { SalaryPaymentID, SalaryPaymentDate, SalaryPaymentAmount, StaffID, StaffName, StaffPosition });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvSalaryPayments.DefaultCellStyle = dataGridViewCellStyle2;
             dgvSalaryPayments.Location = new Point(34, 76);
             dgvSalaryPayments.Name = "dgvSalaryPayments";
             dgvSalaryPayments.ReadOnly = true;
@@ -129,7 +148,7 @@
             SalaryPaymentID.MinimumWidth = 6;
             SalaryPaymentID.Name = "SalaryPaymentID";
             SalaryPaymentID.ReadOnly = true;
-            SalaryPaymentID.Width = 264;
+            SalaryPaymentID.Width = 201;
             // 
             // SalaryPaymentDate
             // 
@@ -139,7 +158,7 @@
             SalaryPaymentDate.MinimumWidth = 6;
             SalaryPaymentDate.Name = "SalaryPaymentDate";
             SalaryPaymentDate.ReadOnly = true;
-            SalaryPaymentDate.Width = 232;
+            SalaryPaymentDate.Width = 138;
             // 
             // SalaryPaymentAmount
             // 
@@ -149,7 +168,7 @@
             SalaryPaymentAmount.MinimumWidth = 6;
             SalaryPaymentAmount.Name = "SalaryPaymentAmount";
             SalaryPaymentAmount.ReadOnly = true;
-            SalaryPaymentAmount.Width = 154;
+            SalaryPaymentAmount.Width = 110;
             // 
             // StaffID
             // 
@@ -159,7 +178,7 @@
             StaffID.MinimumWidth = 6;
             StaffID.Name = "StaffID";
             StaffID.ReadOnly = true;
-            StaffID.Width = 206;
+            StaffID.Width = 137;
             // 
             // StaffName
             // 
@@ -216,7 +235,7 @@
             dtpSalaryPaymentDate.Format = DateTimePickerFormat.Short;
             dtpSalaryPaymentDate.Location = new Point(1013, 41);
             dtpSalaryPaymentDate.Name = "dtpSalaryPaymentDate";
-            dtpSalaryPaymentDate.Size = new Size(366, 44);
+            dtpSalaryPaymentDate.Size = new Size(366, 51);
             dtpSalaryPaymentDate.TabIndex = 1;
             // 
             // lblStaffPosition
@@ -225,7 +244,7 @@
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(771, 193);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.Size = new Size(153, 43);
             lblStaffPosition.TabIndex = 32;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
@@ -235,7 +254,7 @@
             txtStaffPosition.Location = new Point(1013, 185);
             txtStaffPosition.Name = "txtStaffPosition";
             txtStaffPosition.ReadOnly = true;
-            txtStaffPosition.Size = new Size(366, 44);
+            txtStaffPosition.Size = new Size(366, 51);
             txtStaffPosition.TabIndex = 31;
             txtStaffPosition.TabStop = false;
             // 
@@ -245,7 +264,7 @@
             txtStaffName.Location = new Point(303, 182);
             txtStaffName.Name = "txtStaffName";
             txtStaffName.ReadOnly = true;
-            txtStaffName.Size = new Size(360, 44);
+            txtStaffName.Size = new Size(360, 51);
             txtStaffName.TabIndex = 30;
             txtStaffName.TabStop = false;
             // 
@@ -255,7 +274,7 @@
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(18, 185);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(130, 36);
+            lblStaffName.Size = new Size(155, 43);
             lblStaffName.TabIndex = 29;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
@@ -266,7 +285,7 @@
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Location = new Point(1013, 116);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(366, 44);
+            cbStaffID.Size = new Size(366, 51);
             cbStaffID.TabIndex = 3;
             // 
             // pnlSalaryPaymentManipulation
@@ -339,7 +358,7 @@
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(771, 119);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.Size = new Size(214, 43);
             lblStaffID.TabIndex = 27;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -349,7 +368,7 @@
             lblSalaryPaymentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSalaryPaymentID.Location = new Point(18, 41);
             lblSalaryPaymentID.Name = "lblSalaryPaymentID";
-            lblSalaryPaymentID.Size = new Size(241, 36);
+            lblSalaryPaymentID.Size = new Size(287, 43);
             lblSalaryPaymentID.TabIndex = 0;
             lblSalaryPaymentID.Text = "លេខសម្គាល់ការបើកប្រាក់ខែ:";
             // 
@@ -359,7 +378,7 @@
             lblSalaryPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSalaryPaymentDate.Location = new Point(771, 49);
             lblSalaryPaymentDate.Name = "lblSalaryPaymentDate";
-            lblSalaryPaymentDate.Size = new Size(209, 36);
+            lblSalaryPaymentDate.Size = new Size(249, 43);
             lblSalaryPaymentDate.TabIndex = 4;
             lblSalaryPaymentDate.Text = "កាលបរិច្ឆេទបើកប្រាក់ខែ:";
             // 
@@ -369,7 +388,7 @@
             txtSalaryPaymentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSalaryPaymentID.Location = new Point(303, 33);
             txtSalaryPaymentID.Name = "txtSalaryPaymentID";
-            txtSalaryPaymentID.Size = new Size(360, 44);
+            txtSalaryPaymentID.Size = new Size(360, 51);
             txtSalaryPaymentID.TabIndex = 3;
             // 
             // lblSalaryPaymentAmount
@@ -378,7 +397,7 @@
             lblSalaryPaymentAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSalaryPaymentAmount.Location = new Point(18, 111);
             lblSalaryPaymentAmount.Name = "lblSalaryPaymentAmount";
-            lblSalaryPaymentAmount.Size = new Size(131, 36);
+            lblSalaryPaymentAmount.Size = new Size(154, 43);
             lblSalaryPaymentAmount.TabIndex = 6;
             lblSalaryPaymentAmount.Text = "ចំនួនទឹកប្រាក់:";
             // 
@@ -387,7 +406,7 @@
             txtSalaryPaymentAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSalaryPaymentAmount.Location = new Point(303, 111);
             txtSalaryPaymentAmount.Name = "txtSalaryPaymentAmount";
-            txtSalaryPaymentAmount.Size = new Size(360, 44);
+            txtSalaryPaymentAmount.Size = new Size(360, 51);
             txtSalaryPaymentAmount.TabIndex = 2;
             // 
             // FrmSalaryPayment

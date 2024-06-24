@@ -25,7 +25,7 @@ namespace Store_Rental_Management_Systems
         private SqlDataAdapter _importDataAdapter = new();
         private SqlDataAdapter _importDetailDataAdapter = new();
         private SqlDataAdapter _supplierDataAdapter = new();
-        private SqlDataAdapter _staffDataAdapter =  new();
+        private SqlDataAdapter _staffDataAdapter = new();
         private SqlDataAdapter _itemDataAdapter = new();
 
         private BindingSource _importBindingSource = new();
@@ -155,7 +155,7 @@ namespace Store_Rental_Management_Systems
             {
                 dataView.RowFilter = string.Empty;
                 cbSupplierID.DroppedDown = true;
-            } 
+            }
             else
             {
                 dataView.RowFilter = $"CONVERT(SupplierID, 'System.String') LIKE '%{searchID}%'";
@@ -194,7 +194,7 @@ namespace Store_Rental_Management_Systems
             // import detail
             _importDetailDataAdapter.SelectCommand = ImportHelper.CreateGetAllImportDetailsCommand();
             _importDetailDataAdapter.InsertCommand = ImportHelper.CreateInsertImportDetailCommand();
-            _importDetailDataAdapter.UpdateCommand= ImportHelper.CreateUpdateImportDetailCommand();
+            _importDetailDataAdapter.UpdateCommand = ImportHelper.CreateUpdateImportDetailCommand();
 
             // supplier
             _supplierDataAdapter.SelectCommand = ImportHelper.CreateGetAllSuppliersForComboBoxCommand();
@@ -289,7 +289,7 @@ namespace Store_Rental_Management_Systems
             cbItemID.DataSource = _itemBindingSource;
             cbItemID.DisplayMember = "ItemID";
             cbItemID.ValueMember = "ItemID";
-   
+
         }
     }
 }

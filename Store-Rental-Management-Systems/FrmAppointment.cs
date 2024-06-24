@@ -16,7 +16,7 @@ namespace Store_Rental_Management_Systems
         public FrmAppointment() : base()
         {
             InitializeComponent();
-            
+
             dtpAppointmentDate.GotFocus += HandleGotFocusEN;
             cbAppointmentStatus.GotFocus += HandleGotFocusKM;
             cbCustomerID.GotFocus += HandleGotFocusEN;

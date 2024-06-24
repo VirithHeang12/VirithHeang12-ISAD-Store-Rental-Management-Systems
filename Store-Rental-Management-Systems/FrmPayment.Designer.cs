@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbPaymentDetails = new GroupBox();
+            cbExpenseTypeID = new ComboBox();
             btnUpdateExpenseType = new Button();
             btnInsertExpenseType = new Button();
             txtExpenseQty = new TextBox();
@@ -43,6 +46,7 @@
             txtAmount = new TextBox();
             lblAmount = new Label();
             gbPaymentInformation = new GroupBox();
+            txtStoreID = new TextBox();
             cbStaffID = new ComboBox();
             txtStaffName = new TextBox();
             lblStaffName = new Label();
@@ -69,15 +73,13 @@
             btnInsertPayment = new Button();
             pnlLeftSide = new Panel();
             dgvExpenses = new DataGridView();
-            lblSearchPayment = new Label();
-            txtSearchPayment = new TextBox();
-            txtStoreID = new TextBox();
             ExpenseTypeID = new DataGridViewTextBoxColumn();
             ExpenseDescription = new DataGridViewTextBoxColumn();
             UnitPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
-            cbExpenseTypeID = new ComboBox();
+            lblSearchPayment = new Label();
+            txtSearchPayment = new TextBox();
             pnlRightSide.SuspendLayout();
             gbPaymentDetails.SuspendLayout();
             gbPaymentInformation.SuspendLayout();
@@ -130,6 +132,16 @@
             gbPaymentDetails.TabStop = false;
             gbPaymentDetails.Text = "សេចក្ដីលម្អិត";
             // 
+            // cbExpenseTypeID
+            // 
+            cbExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbExpenseTypeID.FormattingEnabled = true;
+            cbExpenseTypeID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbExpenseTypeID.Location = new Point(267, 38);
+            cbExpenseTypeID.Name = "cbExpenseTypeID";
+            cbExpenseTypeID.Size = new Size(177, 51);
+            cbExpenseTypeID.TabIndex = 49;
+            // 
             // btnUpdateExpenseType
             // 
             btnUpdateExpenseType.BackColor = Color.FromArgb(0, 28, 87);
@@ -159,7 +171,7 @@
             txtExpenseQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseQty.Location = new Point(267, 98);
             txtExpenseQty.Name = "txtExpenseQty";
-            txtExpenseQty.Size = new Size(177, 44);
+            txtExpenseQty.Size = new Size(177, 51);
             txtExpenseQty.TabIndex = 27;
             // 
             // lblExpenseQty
@@ -168,7 +180,7 @@
             lblExpenseQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseQty.Location = new Point(18, 101);
             lblExpenseQty.Name = "lblExpenseQty";
-            lblExpenseQty.Size = new Size(88, 36);
+            lblExpenseQty.Size = new Size(106, 43);
             lblExpenseQty.TabIndex = 26;
             lblExpenseQty.Text = "បរិមាណ:";
             // 
@@ -178,7 +190,7 @@
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnitPrice.Location = new Point(1120, 38);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(278, 44);
+            txtUnitPrice.Size = new Size(278, 51);
             txtUnitPrice.TabIndex = 21;
             // 
             // lblUnitPrice
@@ -187,7 +199,7 @@
             lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnitPrice.Location = new Point(947, 46);
             lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(165, 36);
+            lblUnitPrice.Size = new Size(194, 43);
             lblUnitPrice.TabIndex = 20;
             lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
@@ -197,7 +209,7 @@
             lblExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseDescription.Location = new Point(482, 47);
             lblExpenseDescription.Name = "lblExpenseDescription";
-            lblExpenseDescription.Size = new Size(190, 36);
+            lblExpenseDescription.Size = new Size(226, 43);
             lblExpenseDescription.TabIndex = 18;
             lblExpenseDescription.Text = "ពិព័ណ៌នាការចំណាយ:";
             // 
@@ -207,7 +219,7 @@
             txtExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseDescription.Location = new Point(681, 38);
             txtExpenseDescription.Name = "txtExpenseDescription";
-            txtExpenseDescription.Size = new Size(219, 44);
+            txtExpenseDescription.Size = new Size(219, 51);
             txtExpenseDescription.TabIndex = 19;
             // 
             // lblExpenseTypeID
@@ -216,7 +228,7 @@
             lblExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseTypeID.Location = new Point(18, 46);
             lblExpenseTypeID.Name = "lblExpenseTypeID";
-            lblExpenseTypeID.Size = new Size(243, 36);
+            lblExpenseTypeID.Size = new Size(287, 43);
             lblExpenseTypeID.TabIndex = 16;
             lblExpenseTypeID.Text = "លេខសម្គាល់ប្រភេទចំណាយ:";
             // 
@@ -226,7 +238,7 @@
             txtAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtAmount.Location = new Point(681, 98);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(219, 44);
+            txtAmount.Size = new Size(219, 51);
             txtAmount.TabIndex = 23;
             // 
             // lblAmount
@@ -235,7 +247,7 @@
             lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAmount.Location = new Point(482, 101);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(55, 36);
+            lblAmount.Size = new Size(66, 43);
             lblAmount.TabIndex = 22;
             lblAmount.Text = "តម្លៃ:";
             // 
@@ -269,6 +281,15 @@
             gbPaymentInformation.TabStop = false;
             gbPaymentInformation.Text = "ព័ត៌មានការបង់ថ្លៃ";
             // 
+            // txtStoreID
+            // 
+            txtStoreID.Enabled = false;
+            txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStoreID.Location = new Point(188, 140);
+            txtStoreID.Name = "txtStoreID";
+            txtStoreID.Size = new Size(161, 51);
+            txtStoreID.TabIndex = 49;
+            // 
             // cbStaffID
             // 
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -276,7 +297,7 @@
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffID.Location = new Point(555, 140);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(166, 44);
+            cbStaffID.Size = new Size(166, 51);
             cbStaffID.TabIndex = 48;
             // 
             // txtStaffName
@@ -285,7 +306,7 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(928, 140);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(161, 44);
+            txtStaffName.Size = new Size(161, 51);
             txtStaffName.TabIndex = 47;
             // 
             // lblStaffName
@@ -294,7 +315,7 @@
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(730, 143);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(192, 36);
+            lblStaffName.Size = new Size(226, 43);
             lblStaffName.TabIndex = 46;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិកបុគ្គលិក:";
             // 
@@ -304,7 +325,7 @@
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1241, 140);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(157, 44);
+            txtStaffPosition.Size = new Size(157, 51);
             txtStaffPosition.TabIndex = 45;
             // 
             // lblStaffPosition
@@ -313,7 +334,7 @@
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(1104, 143);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.Size = new Size(153, 43);
             lblStaffPosition.TabIndex = 44;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
@@ -323,7 +344,7 @@
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(366, 143);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.Size = new Size(214, 43);
             lblStaffID.TabIndex = 42;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -333,7 +354,7 @@
             txtOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtOwedAmount.Location = new Point(681, 85);
             txtOwedAmount.Name = "txtOwedAmount";
-            txtOwedAmount.Size = new Size(189, 44);
+            txtOwedAmount.Size = new Size(189, 51);
             txtOwedAmount.TabIndex = 40;
             // 
             // lblContractID
@@ -342,7 +363,7 @@
             lblContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblContractID.Location = new Point(905, 88);
             lblContractID.Name = "lblContractID";
-            lblContractID.Size = new Size(196, 36);
+            lblContractID.Size = new Size(229, 43);
             lblContractID.TabIndex = 39;
             lblContractID.Text = "លេខសម្គាល់កិច្ចសន្យា:";
             // 
@@ -352,7 +373,7 @@
             lblPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPaidAmount.Location = new Point(18, 88);
             lblPaidAmount.Name = "lblPaidAmount";
-            lblPaidAmount.Size = new Size(193, 36);
+            lblPaidAmount.Size = new Size(226, 43);
             lblPaidAmount.TabIndex = 38;
             lblPaidAmount.Text = "ចំនួនទឹកប្រាក់បានបង់:";
             // 
@@ -362,7 +383,7 @@
             lblOwedAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblOwedAmount.Location = new Point(482, 88);
             lblOwedAmount.Name = "lblOwedAmount";
-            lblOwedAmount.Size = new Size(179, 36);
+            lblOwedAmount.Size = new Size(210, 43);
             lblOwedAmount.TabIndex = 37;
             lblOwedAmount.Text = "ចំនួនទឹកប្រាក់ជំពាក់:";
             // 
@@ -371,7 +392,7 @@
             txtTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTotalAmount.Location = new Point(1109, 33);
             txtTotalAmount.Name = "txtTotalAmount";
-            txtTotalAmount.Size = new Size(289, 44);
+            txtTotalAmount.Size = new Size(289, 51);
             txtTotalAmount.TabIndex = 36;
             // 
             // lblTotalAmount
@@ -380,7 +401,7 @@
             lblTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblTotalAmount.Location = new Point(905, 41);
             lblTotalAmount.Name = "lblTotalAmount";
-            lblTotalAmount.Size = new Size(171, 36);
+            lblTotalAmount.Size = new Size(201, 43);
             lblTotalAmount.TabIndex = 35;
             lblTotalAmount.Text = "ចំនួនទឹកប្រាក់សរុប:";
             // 
@@ -390,7 +411,7 @@
             lblPaymentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPaymentID.Location = new Point(18, 41);
             lblPaymentID.Name = "lblPaymentID";
-            lblPaymentID.Size = new Size(195, 36);
+            lblPaymentID.Size = new Size(231, 43);
             lblPaymentID.TabIndex = 34;
             lblPaymentID.Text = "លេខសម្គាល់ការបង់ថ្លៃ:";
             // 
@@ -400,7 +421,7 @@
             lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStoreID.Location = new Point(18, 143);
             lblStoreID.Name = "lblStoreID";
-            lblStoreID.Size = new Size(149, 36);
+            lblStoreID.Size = new Size(175, 43);
             lblStoreID.TabIndex = 30;
             lblStoreID.Text = "លេខសម្គាល់តូប:";
             // 
@@ -411,7 +432,7 @@
             cbContractID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbContractID.Location = new Point(1109, 85);
             cbContractID.Name = "cbContractID";
-            cbContractID.Size = new Size(289, 44);
+            cbContractID.Size = new Size(289, 51);
             cbContractID.TabIndex = 29;
             // 
             // txtPaidAmount
@@ -419,7 +440,7 @@
             txtPaidAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPaidAmount.Location = new Point(227, 85);
             txtPaidAmount.Name = "txtPaidAmount";
-            txtPaidAmount.Size = new Size(217, 44);
+            txtPaidAmount.Size = new Size(217, 51);
             txtPaidAmount.TabIndex = 28;
             // 
             // dtpPaymentDate
@@ -428,7 +449,7 @@
             dtpPaymentDate.Format = DateTimePickerFormat.Short;
             dtpPaymentDate.Location = new Point(681, 33);
             dtpPaymentDate.Name = "dtpPaymentDate";
-            dtpPaymentDate.Size = new Size(189, 44);
+            dtpPaymentDate.Size = new Size(189, 51);
             dtpPaymentDate.TabIndex = 20;
             // 
             // lblPaymentDate
@@ -437,7 +458,7 @@
             lblPaymentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPaymentDate.Location = new Point(482, 41);
             lblPaymentDate.Name = "lblPaymentDate";
-            lblPaymentDate.Size = new Size(163, 36);
+            lblPaymentDate.Size = new Size(193, 43);
             lblPaymentDate.TabIndex = 19;
             lblPaymentDate.Text = "កាលបរិច្ឆេទបង់ថ្លៃ:";
             // 
@@ -447,7 +468,7 @@
             txtPaymentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPaymentID.Location = new Point(227, 33);
             txtPaymentID.Name = "txtPaymentID";
-            txtPaymentID.Size = new Size(217, 44);
+            txtPaymentID.Size = new Size(217, 51);
             txtPaymentID.TabIndex = 3;
             // 
             // pnlPaymentManipulation
@@ -523,8 +544,25 @@
             // 
             dgvExpenses.AllowUserToAddRows = false;
             dgvExpenses.AllowUserToDeleteRows = false;
+            dgvExpenses.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvExpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExpenses.Columns.AddRange(new DataGridViewColumn[] { ExpenseTypeID, ExpenseDescription, UnitPrice, Quantity, Amount });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvExpenses.DefaultCellStyle = dataGridViewCellStyle2;
             dgvExpenses.Location = new Point(64, 70);
             dgvExpenses.Name = "dgvExpenses";
             dgvExpenses.ReadOnly = true;
@@ -532,31 +570,6 @@
             dgvExpenses.RowTemplate.Height = 29;
             dgvExpenses.Size = new Size(1427, 238);
             dgvExpenses.TabIndex = 4;
-            // 
-            // lblSearchPayment
-            // 
-            lblSearchPayment.AutoSize = true;
-            lblSearchPayment.Location = new Point(64, 17);
-            lblSearchPayment.Name = "lblSearchPayment";
-            lblSearchPayment.Size = new Size(283, 36);
-            lblSearchPayment.TabIndex = 1;
-            lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
-            // 
-            // txtSearchPayment
-            // 
-            txtSearchPayment.Location = new Point(365, 11);
-            txtSearchPayment.Name = "txtSearchPayment";
-            txtSearchPayment.Size = new Size(370, 44);
-            txtSearchPayment.TabIndex = 2;
-            // 
-            // txtStoreID
-            // 
-            txtStoreID.Enabled = false;
-            txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStoreID.Location = new Point(188, 140);
-            txtStoreID.Name = "txtStoreID";
-            txtStoreID.Size = new Size(161, 44);
-            txtStoreID.TabIndex = 49;
             // 
             // ExpenseTypeID
             // 
@@ -566,7 +579,7 @@
             ExpenseTypeID.MinimumWidth = 6;
             ExpenseTypeID.Name = "ExpenseTypeID";
             ExpenseTypeID.ReadOnly = true;
-            ExpenseTypeID.Width = 266;
+            ExpenseTypeID.Width = 201;
             // 
             // ExpenseDescription
             // 
@@ -585,7 +598,7 @@
             UnitPrice.MinimumWidth = 6;
             UnitPrice.Name = "UnitPrice";
             UnitPrice.ReadOnly = true;
-            UnitPrice.Width = 188;
+            UnitPrice.Width = 153;
             // 
             // Quantity
             // 
@@ -595,7 +608,7 @@
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
             Quantity.ReadOnly = true;
-            Quantity.Width = 111;
+            Quantity.Width = 125;
             // 
             // Amount
             // 
@@ -606,15 +619,21 @@
             Amount.Name = "Amount";
             Amount.ReadOnly = true;
             // 
-            // cbExpenseTypeID
+            // lblSearchPayment
             // 
-            cbExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbExpenseTypeID.FormattingEnabled = true;
-            cbExpenseTypeID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbExpenseTypeID.Location = new Point(267, 38);
-            cbExpenseTypeID.Name = "cbExpenseTypeID";
-            cbExpenseTypeID.Size = new Size(177, 44);
-            cbExpenseTypeID.TabIndex = 49;
+            lblSearchPayment.AutoSize = true;
+            lblSearchPayment.Location = new Point(64, 17);
+            lblSearchPayment.Name = "lblSearchPayment";
+            lblSearchPayment.Size = new Size(335, 43);
+            lblSearchPayment.TabIndex = 1;
+            lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
+            // 
+            // txtSearchPayment
+            // 
+            txtSearchPayment.Location = new Point(365, 11);
+            txtSearchPayment.Name = "txtSearchPayment";
+            txtSearchPayment.Size = new Size(370, 51);
+            txtSearchPayment.TabIndex = 2;
             // 
             // FrmPayment
             // 

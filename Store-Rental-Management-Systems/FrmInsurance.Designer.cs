@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             lblSearchInsurance = new Label();
             txtSearchInsurance = new TextBox();
@@ -74,7 +76,7 @@
             lblSearchInsurance.AutoSize = true;
             lblSearchInsurance.Location = new Point(82, 19);
             lblSearchInsurance.Name = "lblSearchInsurance";
-            lblSearchInsurance.Size = new Size(311, 36);
+            lblSearchInsurance.Size = new Size(371, 43);
             lblSearchInsurance.TabIndex = 1;
             lblSearchInsurance.Text = "ស្វែងរក​ (ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង):";
             // 
@@ -82,7 +84,7 @@
             // 
             txtSearchInsurance.Location = new Point(480, 11);
             txtSearchInsurance.Name = "txtSearchInsurance";
-            txtSearchInsurance.Size = new Size(512, 44);
+            txtSearchInsurance.Size = new Size(512, 51);
             txtSearchInsurance.TabIndex = 2;
             txtSearchInsurance.TabStop = false;
             // 
@@ -100,8 +102,26 @@
             // 
             dgvInsurances.AllowUserToAddRows = false;
             dgvInsurances.AllowUserToDeleteRows = false;
+            dgvInsurances.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvInsurances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvInsurances.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInsurances.Columns.AddRange(new DataGridViewColumn[] { InsuranceID, InsuranceName, InsuranceWebsite });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvInsurances.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvInsurances.GridColor = Color.White;
             dgvInsurances.Location = new Point(82, 74);
             dgvInsurances.Name = "dgvInsurances";
             dgvInsurances.ReadOnly = true;
@@ -120,7 +140,7 @@
             InsuranceID.MinimumWidth = 6;
             InsuranceID.Name = "InsuranceID";
             InsuranceID.ReadOnly = true;
-            InsuranceID.Width = 299;
+            InsuranceID.Width = 230;
             // 
             // InsuranceName
             // 
@@ -235,7 +255,7 @@
             lblInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceID.Location = new Point(18, 41);
             lblInsuranceID.Name = "lblInsuranceID";
-            lblInsuranceID.Size = new Size(276, 36);
+            lblInsuranceID.Size = new Size(326, 43);
             lblInsuranceID.TabIndex = 0;
             lblInsuranceID.Text = "លេខសម្គាល់ក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
@@ -244,7 +264,7 @@
             txtInsuranceName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceName.Location = new Point(940, 33);
             txtInsuranceName.Name = "txtInsuranceName";
-            txtInsuranceName.Size = new Size(379, 44);
+            txtInsuranceName.Size = new Size(379, 51);
             txtInsuranceName.TabIndex = 5;
             // 
             // lblInsuranceName
@@ -253,7 +273,7 @@
             lblInsuranceName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceName.Location = new Point(711, 41);
             lblInsuranceName.Name = "lblInsuranceName";
-            lblInsuranceName.Size = new Size(223, 36);
+            lblInsuranceName.Size = new Size(267, 43);
             lblInsuranceName.TabIndex = 4;
             lblInsuranceName.Text = "ឈ្មោះក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
@@ -263,7 +283,7 @@
             txtInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceID.Location = new Point(300, 33);
             txtInsuranceID.Name = "txtInsuranceID";
-            txtInsuranceID.Size = new Size(363, 44);
+            txtInsuranceID.Size = new Size(363, 51);
             txtInsuranceID.TabIndex = 3;
             // 
             // lblInsuranceWebsite
@@ -272,7 +292,7 @@
             lblInsuranceWebsite.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblInsuranceWebsite.Location = new Point(18, 111);
             lblInsuranceWebsite.Name = "lblInsuranceWebsite";
-            lblInsuranceWebsite.Size = new Size(250, 36);
+            lblInsuranceWebsite.Size = new Size(297, 43);
             lblInsuranceWebsite.TabIndex = 6;
             lblInsuranceWebsite.Text = "គេហទំព័រក្រុមហ៊ុនធានារ៉ាប់រង:";
             // 
@@ -281,7 +301,7 @@
             txtInsuranceWebsite.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceWebsite.Location = new Point(300, 111);
             txtInsuranceWebsite.Name = "txtInsuranceWebsite";
-            txtInsuranceWebsite.Size = new Size(1019, 44);
+            txtInsuranceWebsite.Size = new Size(1019, 51);
             txtInsuranceWebsite.TabIndex = 13;
             // 
             // FrmInsurance

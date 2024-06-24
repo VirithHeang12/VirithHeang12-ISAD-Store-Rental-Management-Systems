@@ -196,7 +196,7 @@ namespace Store_Rental_Management_Systems
                 dgvSalaryPayments.CurrentCell = dgvSalaryPayments.Rows[lastRowIndex].Cells[0];
             }
             catch (Exception)
-            { 
+            {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -300,7 +300,7 @@ namespace Store_Rental_Management_Systems
             catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
             BindWithControls();
 
         }

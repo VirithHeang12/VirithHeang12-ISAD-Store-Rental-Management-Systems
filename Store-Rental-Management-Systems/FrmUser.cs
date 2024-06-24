@@ -62,10 +62,10 @@ namespace Store_Rental_Management_Systems
             txtUserName.GotFocus += HandleGotFocusEN;
             txtPassword.GotFocus += HandleGotFocusEN;
             txtSearchUser.GotFocus += HandleGotFocusEN;
-            
+
             #endregion
 
-            
+
         }
 
         private void HandleGotFocusEN(object? sender, EventArgs e)

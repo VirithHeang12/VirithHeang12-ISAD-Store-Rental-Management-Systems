@@ -13,13 +13,13 @@ namespace StoreRentalHelper
         public static SqlConnection Connection { get; set; } = default!;
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewContract";
-        private const string UPDATE = "sp_UpdateExistingContract";
-        private const string GET_ALL = "v_GetAllContracts";
-        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "v_GetAllStaffsForComboBox";
-        private const string GET_ALL_INSURANCES_FOR_COMBO_BOX = "v_GetAllInsurancesForComboBox";
-        private const string GET_ALL_STORES_FOR_COMBO_BOX = "v_GetAllStoresForComboBox";
-        private const string GET_ALL_CUSTOMERS_FOR_COMBO_BOX = "v_GetAllCustomersForComboBox";
+        private const string INSERT = "spInsertNewContract";
+        private const string UPDATE = "spUpdateContract";
+        private const string GET_ALL = "vGetAllContracts";
+        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "vGetAllStaffsForComboBox";
+        private const string GET_ALL_INSURANCES_FOR_COMBO_BOX = "vGetAllInsurancesForComboBox";
+        private const string GET_ALL_STORES_FOR_COMBO_BOX = "vGetAllStoresForComboBox";
+        private const string GET_ALL_CUSTOMERS_FOR_COMBO_BOX = "vGetAllCustomersForComboBox";
         #endregion
 
         #region Generate Insert Contract Command
@@ -34,19 +34,19 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "ContractDate"
             });
-            cmd.Parameters.Add(new SqlParameter("@ContractStartDate", SqlDbType.Date)
+            cmd.Parameters.Add(new SqlParameter("@LeaseStartDate", SqlDbType.Date)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ContractStartDate"
+                SourceColumn = "LeaseStartDate"
             });
-            cmd.Parameters.Add(new SqlParameter("@ContractEndDate", SqlDbType.Date)
+            cmd.Parameters.Add(new SqlParameter("@LeaseEndDate", SqlDbType.Date)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ContractEndDate"
+                SourceColumn = "LeaseEndDate"
             });
             cmd.Parameters.Add(new SqlParameter("@NextPaymentDate", SqlDbType.Date)
             {
@@ -137,19 +137,19 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "ContractDate"
             });
-            cmd.Parameters.Add(new SqlParameter("@ContractStartDate", SqlDbType.Date)
+            cmd.Parameters.Add(new SqlParameter("@LeaseStartDate", SqlDbType.Date)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ContractStartDate"
+                SourceColumn = "LeaseStartDate"
             });
-            cmd.Parameters.Add(new SqlParameter("@ContractEndDate", SqlDbType.Date)
+            cmd.Parameters.Add(new SqlParameter("@LeaseEndDate", SqlDbType.Date)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ContractEndDate"
+                SourceColumn = "LeaseEndDate"
             });
             cmd.Parameters.Add(new SqlParameter("@NextPaymentDate", SqlDbType.Date)
             {

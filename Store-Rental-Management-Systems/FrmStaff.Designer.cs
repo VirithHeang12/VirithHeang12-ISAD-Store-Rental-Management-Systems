@@ -104,9 +104,9 @@
             lblSearchStaff.AutoSize = true;
             lblSearchStaff.Location = new Point(21, 24);
             lblSearchStaff.Name = "lblSearchStaff";
-            lblSearchStaff.Size = new Size(311, 43);
+            lblSearchStaff.Size = new Size(252, 43);
             lblSearchStaff.TabIndex = 1;
-            lblSearchStaff.Text = "ស្វែងរក​(លេខសម្គាល់បុគ្គលិក):";
+            lblSearchStaff.Text = "ស្វែងរក​(ឈ្មោះបុគ្គលិក):";
             // 
             // txtSearchStaff
             // 

@@ -1,4 +1,5 @@
-﻿using StoreRentalHelper;
+﻿using Microsoft.Data.SqlClient;
+using StoreRentalHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,29 +14,65 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmCustomer : FrmHome
     {
-        public BindingSource CustomerBindingSource { get; set; }
-        private Binding? _customerIDBinding;
-        private Binding? _customerFirstNameBinding;
-        private Binding? _customerLastNameBinding;
-        private Binding? _customerIsMaleBinding;
-        private Binding? _customerIsFemaleBinding;
-        private Binding? _customerBirthDateBinding;
-        private Binding? _customerIdentityCardNumberBinding;
-        private Binding? _customerHouseNoBinding;
-        private Binding? _customerStreetNoBinding;
-        private Binding? _customerSangkatBinding;
-        private Binding? _customerKhanBinding;
-        private Binding? _customerProvinceOrCityBinding;
-        private Binding? _customerContactNumberBinding;
+        private const string TABLE_NAME = "tblCustomer";
+        public DataSet _storeRentalDataSet { get; set; } = new DataSet();
+        public SqlDataAdapter _customerDataAdapter { get; set; } = new SqlDataAdapter();
+        private BindingSource _customerBindingSource { get; set; } = new BindingSource();
+
+        private ErrorProvider _errorProvider = new();
+
+        private List<Control> _validatingControls = new();
 
         public FrmCustomer() : base()
         {
 
             InitializeComponent();
-            CustomerBindingSource = new BindingSource();
-            ConfigDefaultValues();
+            pbCustomerPhoto.Visible = true;
+            pbCustomerPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
+            #region Init DataAdapter Commands
+            _customerDataAdapter.SelectCommand = CustomerHelper.CreateGetAllCustomersCommand();
+            _customerDataAdapter.InsertCommand = CustomerHelper.CreateInsertCustomerCommand();
+            _customerDataAdapter.UpdateCommand = CustomerHelper.CreateUpdateCustomerCommand();
+            #endregion
+
+            #region Add controls for validations
+            _errorProvider.ContainerControl = this;
+            _validatingControls.Add(txtCustomerFirstName);
+            _validatingControls.Add(txtCustomerLastName);
+            _validatingControls.Add(dtpCustomerBirthDate);
+            _validatingControls.Add(txtCustomerIdentityCardNumber);
+            _validatingControls.Add(mtxtCustomerContactNumber);
+            _validatingControls.Add(txtCustomerHouseNo);
+            _validatingControls.Add(txtCustomerStreetNo);
+            _validatingControls.Add(txtCustomerSangkat);
+            _validatingControls.Add(txtCustomerKhan);
+            #endregion
+
+            LoadAllCustomers();
+            BindWithControls();
+
+            #region Event Registration
+            btnPickCustomerPhoto.Click += HandleBtnCustomerPhotoClicked;
+            btnNewCustomer.Click += HandleBtnNewCustomerClicked;
+            btnInsertCustomer.Click += HandleBtnInsertCustomerClicked;
+            btnUpdateCustomer.Click += HandleBtnUpdateCustomerClicked;
+            btnCancelCustomer.Click += HandleBtnCancelCustomerClicked;
+
+            txtCustomerFirstName.Validating += ValidateTextBox;
+            txtCustomerLastName.Validating += ValidateTextBox;
+            dtpCustomerBirthDate.Validating += ValidateDtpBirthDate;
+            txtCustomerIdentityCardNumber.Validating += ValidateIdentityCardNumber;
+            mtxtCustomerContactNumber.Validating += ValidateMaskedTextBox;
+            txtCustomerHouseNo.Validating += ValidateTextBox;
+            txtCustomerStreetNo.Validating += ValidateTextBox;
+            txtCustomerSangkat.Validating += ValidateTextBox;
+            txtCustomerKhan.Validating += ValidateTextBox; ;
+
+            lbCustomer.SelectedValueChanged += HandleSelectedValueChanged;
+
+            txtSearchCustomer.TextChanged += HandleSearchCustomer;
             txtCustomerFirstName.GotFocus += HandleGotFocusKM;
             txtCustomerLastName.GotFocus += HandleGotFocusKM;
             dtpCustomerBirthDate.GotFocus += HandleGotFocusEN;
@@ -47,271 +84,258 @@ namespace Store_Rental_Management_Systems
             txtCustomerKhan.GotFocus += HandleGotFocusKM;
             cbCustomerCityOrProvince.GotFocus += HandleGotFocusKM;
 
+            rdbFemale.Click += HandleRdbFemaleClick;
+            rdbMale.Click += HandleRdbMaleClick;
 
-            #region Event registration for CRUD operations
-            //this.Load += LoadAllCustomers;
-            btnPickCustomerPhoto.Click += HandleBtnCustomerPhotoClick;
-            btnNewCustomer.Click += HandleBtnNewCustomerClick;
-            btnInsertCustomer.Click += HandleBtnInsertCustomerClick;
-            #endregion
-
-            #region Event registration for shutting down error on got focus
-            txtCustomerFirstName.GotFocus += HandleTxtCustomerFirstNameGotFocus;
-            txtCustomerLastName.GotFocus += HandleTxtCustomerLastNameGotFocus;
-            txtCustomerIdentityCardNumber.GotFocus += HandleTxtIDCardNumberGotFocus;
-            mtxtCustomerContactNumber.GotFocus += HandleMTxtCustomerContactNumberGotFocus;
-            txtCustomerHouseNo.GotFocus += HandleCustomerTxtHouseNoGotFocus;
-            txtCustomerStreetNo.GotFocus += HandleCustomerTxtStreetNoGotFocus;
-            txtCustomerSangkat.GotFocus += HandleCustomerTxtSangkatGotFocus;
-            txtCustomerKhan.GotFocus += HandleCustomerTxtKhanGotFocus;
-            #endregion
-
-            #region Register event for converting and changing image
-            CustomerBindingSource.CurrentChanged += HandleCustomerBindingSourceCurrentChanged;
+            _customerBindingSource.CurrentChanged += HandleCurrentChanged;
             #endregion
 
         }
+        private void HandleCurrentChanged(object? sender, EventArgs e)
+        {
+            var rowView = (_customerBindingSource.Current as DataRowView);
+            if (rowView != null)
+            {
+                byte[]? imageBytes = (rowView["Photo"] as byte[]);
+                if (imageBytes != null)
+                {
+                    using (var ms = new MemoryStream(imageBytes))
+                    {
+                        Image image = Image.FromStream(ms);
 
-        #region HandleGotFocus
+                        pbCustomerPhoto.Image = image;
+                    }
+                }
+                else
+                {
+                    pbCustomerPhoto.Image = null;
+                }
+            }
+
+
+        }
+
+        #region HandleGotFocusKM
         private void HandleGotFocusKM(object? sender, EventArgs e)
         {
             KeyboardLayoutHelper.SwitchToKhmerKeyboard();
         }
+        #endregion
+
+        #region HandleGotFocusEN
         private void HandleGotFocusEN(object? sender, EventArgs e)
         {
             KeyboardLayoutHelper.SwitchToEnglishKeyboard();
         }
         #endregion
 
-        #region HandleCustomerBindingSourceCurrentChanged
-        private void HandleCustomerBindingSourceCurrentChanged(object? sender, EventArgs e)
+        private void HandleRdbMaleClick(object? sender, EventArgs e)
         {
-            //if (CustomerBindingSource.Current is Customer selectedCustomer && selectedCustomer.Photo != null)
-            //{
-            //    using (MemoryStream ms = new MemoryStream(selectedCustomer.Photo))
-            //    {
-            //        pbCustomerPhoto.Image = Image.FromStream(ms);
-            //    }
-            //}
-            //else
-            //{
-            //    pbCustomerPhoto.Image = null;
-            //}
-        }
-        #endregion
-
-        #region Instantiate bindings
-
-        private void InstantiateBindings()
-        {
-            _customerIDBinding = new Binding("Text", CustomerBindingSource, "CustomerID");
-            _customerFirstNameBinding = new Binding("Text", CustomerBindingSource, "CustomerFirstName");
-            _customerLastNameBinding = new Binding("Text", CustomerBindingSource, "CustomerLastName");
-            _customerIsFemaleBinding = new Binding("Checked", CustomerBindingSource, "IsFemale");
-            _customerIsMaleBinding = new Binding("Checked", CustomerBindingSource, "IsMale");
-            _customerBirthDateBinding = new Binding("Text", CustomerBindingSource, "BirthDate");
-            _customerIdentityCardNumberBinding = new Binding("Text", CustomerBindingSource, "IdentityCardNumber");
-            _customerHouseNoBinding = new Binding("Text", CustomerBindingSource, "HouseNo");
-            _customerStreetNoBinding = new Binding("Text", CustomerBindingSource, "StreetNo");
-            _customerSangkatBinding = new Binding("Text", CustomerBindingSource, "Sangkat");
-            _customerKhanBinding = new Binding("Text", CustomerBindingSource, "Khan");
-            _customerProvinceOrCityBinding = new Binding("Text", CustomerBindingSource, "ProvinceOrCity");
-            _customerContactNumberBinding = new Binding("Text", CustomerBindingSource, "ContactNumber");
+            var newRowView = (_customerBindingSource.Current as DataRowView)!;
+            if (newRowView != null)
+            {
+                newRowView["Sex"] = 'M';
+            }
         }
 
-        #endregion
-
-        #region Bind bindings to controls
-        private void BindListBoxToOtherControl()
+        private void HandleRdbFemaleClick(object? sender, EventArgs e)
         {
-            if (txtCustomerID.DataBindings.Count == 0)
-                txtCustomerID.DataBindings.Add(_customerIDBinding);
+            var newRowView = (_customerBindingSource.Current as DataRowView)!;
+            if (newRowView != null)
+            {
+                newRowView["Sex"] = 'F';
+            }
+        }
 
+        #region Bind With Controls
+        private void BindWithControls()
+        {
             if (txtCustomerFirstName.DataBindings.Count == 0)
-                txtCustomerFirstName.DataBindings.Add(_customerFirstNameBinding);
+            {
+                txtCustomerID.DataBindings.Add(new Binding("Text", _customerBindingSource, "CustomerID"));
+                txtCustomerFirstName.DataBindings.Add(new Binding("Text", _customerBindingSource, "CustomerFirstName"));
+                txtCustomerLastName.DataBindings.Add(new Binding("Text", _customerBindingSource, "CustomerLastName"));
+                rdbFemale.DataBindings.Add(new Binding("Checked", _customerBindingSource, "IsFemale"));
+                rdbMale.DataBindings.Add(new Binding("Checked", _customerBindingSource, "IsMale"));
+                dtpCustomerBirthDate.DataBindings.Add(new Binding("Value", _customerBindingSource, "BirthDate"));
+                txtCustomerIdentityCardNumber.DataBindings.Add(new Binding("Text", _customerBindingSource, "IdentityCardNumber"));
+                txtCustomerHouseNo.DataBindings.Add(new Binding("Text", _customerBindingSource, "HouseNo"));
+                txtCustomerStreetNo.DataBindings.Add(new Binding("Text", _customerBindingSource, "StreetNo"));
+                txtCustomerSangkat.DataBindings.Add(new Binding("Text", _customerBindingSource, "Sangkat"));
+                txtCustomerKhan.DataBindings.Add(new Binding("Text", _customerBindingSource, "Khan"));
+                cbCustomerCityOrProvince.DataBindings.Add(new Binding("Text", _customerBindingSource, "ProvinceOrCity"));
+                mtxtCustomerContactNumber.DataBindings.Add(new Binding("Text", _customerBindingSource, "ContactNumber"));
 
-            if (txtCustomerLastName.DataBindings.Count == 0)
-                txtCustomerLastName.DataBindings.Add(_customerLastNameBinding);
+            }
+        }
 
-            if (rdbFemale.DataBindings.Count == 0)
-                rdbFemale.DataBindings.Add(_customerIsFemaleBinding);
+        #endregion
 
-            if (rdbMale.DataBindings.Count == 0)
-                rdbMale.DataBindings.Add(_customerIsMaleBinding);
-
-            if (dtpCustomerBirthDate.DataBindings.Count == 0)
-                dtpCustomerBirthDate.DataBindings.Add(_customerBirthDateBinding);
-
-            if (txtCustomerIdentityCardNumber.DataBindings.Count == 0)
-                txtCustomerIdentityCardNumber.DataBindings.Add(_customerIdentityCardNumberBinding);
-
-            if (txtCustomerHouseNo.DataBindings.Count == 0)
-                txtCustomerHouseNo.DataBindings.Add(_customerHouseNoBinding);
-
-            if (txtCustomerStreetNo.DataBindings.Count == 0)
-                txtCustomerStreetNo.DataBindings.Add(_customerStreetNoBinding);
-
-            if (txtCustomerSangkat.DataBindings.Count == 0)
-                txtCustomerSangkat.DataBindings.Add(_customerSangkatBinding);
-
-            if (txtCustomerKhan.DataBindings.Count == 0)
-                txtCustomerKhan.DataBindings.Add(_customerKhanBinding);
-
-            if (cbCustomerCityOrProvince.DataBindings.Count == 0)
-                cbCustomerCityOrProvince.DataBindings.Add(_customerProvinceOrCityBinding);
-
-            if (mtxtCustomerContactNumber.DataBindings.Count == 0)
-                mtxtCustomerContactNumber.DataBindings.Add(_customerContactNumberBinding);
+        #region Unbind With Controls
+        private void UnbindWithControls()
+        {
+            txtCustomerID.DataBindings.Clear();
+            txtCustomerFirstName.DataBindings.Clear();
+            txtCustomerLastName.DataBindings.Clear();
+            rdbFemale.DataBindings.Clear();
+            rdbMale.DataBindings.Clear();
+            dtpCustomerBirthDate.DataBindings.Clear();
+            txtCustomerIdentityCardNumber.DataBindings.Clear();
+            txtCustomerHouseNo.DataBindings.Clear();
+            txtCustomerStreetNo.DataBindings.Clear();
+            txtCustomerSangkat.DataBindings.Clear();
+            txtCustomerKhan.DataBindings.Clear();
+            cbCustomerCityOrProvince.DataBindings.Clear();
+            mtxtCustomerContactNumber.DataBindings.Clear();
         }
         #endregion
 
-        #region Unbind bindings
-        private void UnBindListBoxToOtherControl()
+        #region Handle ListBox SelectedValueChanged
+        private void HandleSelectedValueChanged(object? sender, EventArgs e)
         {
-            if (txtCustomerID.DataBindings.Count > 0)
-                txtCustomerID.DataBindings.Remove(_customerIDBinding);
+            if (!ContainsNewRow(_storeRentalDataSet.Tables[TABLE_NAME]!))
+            {
+                return;
+            }
+            else
+            {
+                btnCancelCustomer.PerformClick();
+            }
+        }
+        private bool ContainsNewRow(DataTable table)
+        {
+            DataTable? changes = table.GetChanges(DataRowState.Added);
 
-            if (txtCustomerFirstName.DataBindings.Count > 0)
-                txtCustomerFirstName.DataBindings.Remove(_customerFirstNameBinding);
-
-            if (txtCustomerLastName.DataBindings.Count > 0)
-                txtCustomerLastName.DataBindings.Remove(_customerLastNameBinding);
-
-            if (rdbFemale.DataBindings.Count > 0)
-                rdbFemale.DataBindings.Remove(_customerIsFemaleBinding);
-
-            if (rdbMale.DataBindings.Count > 0)
-                rdbMale.DataBindings.Remove(_customerIsMaleBinding);
-
-            if (dtpCustomerBirthDate.DataBindings.Count > 0)
-                dtpCustomerBirthDate.DataBindings.Remove(_customerBirthDateBinding);
-
-            if (txtCustomerIdentityCardNumber.DataBindings.Count > 0)
-                txtCustomerIdentityCardNumber.DataBindings.Remove(_customerIdentityCardNumberBinding);
-
-            if (txtCustomerHouseNo.DataBindings.Count > 0)
-                txtCustomerHouseNo.DataBindings.Remove(_customerHouseNoBinding);
-
-            if (txtCustomerStreetNo.DataBindings.Count > 0)
-                txtCustomerStreetNo.DataBindings.Remove(_customerStreetNoBinding);
-
-            if (txtCustomerSangkat.DataBindings.Count > 0)
-                txtCustomerSangkat.DataBindings.Remove(_customerSangkatBinding);
-
-            if (txtCustomerKhan.DataBindings.Count > 0)
-                txtCustomerKhan.DataBindings.Remove(_customerKhanBinding);
-
-            if (cbCustomerCityOrProvince.DataBindings.Count > 0)
-                cbCustomerCityOrProvince.DataBindings.Remove(_customerProvinceOrCityBinding);
-
-            if (mtxtCustomerContactNumber.DataBindings.Count > 0)
-                mtxtCustomerContactNumber.DataBindings.Remove(_customerContactNumberBinding);
-
+            return changes != null && changes.Rows.Count > 0;
         }
         #endregion
 
-        #region Error shutdown event handlers
-        private void HandleCustomerTxtKhanGotFocus(object? sender, EventArgs e)
+        #region Handle Search
+        private void HandleSearchCustomer(object? sender, EventArgs e)
         {
-            ShutDownError(txtCustomerKhan, epdCustomerKhan);
-        }
+            UnbindWithControls();
+            string searchText = txtSearchCustomer.Text.Trim().ToLower();
 
-        private void HandleCustomerTxtSangkatGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerSangkat, epdCustomerSangkat);
-        }
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                _customerBindingSource.Filter = string.Empty;
+            }
+            else
+            {
+                _customerBindingSource.Filter = "CustomerName LIKE '" + searchText + "%'";
 
-        private void HandleCustomerTxtStreetNoGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerStreetNo, epdCustomerStreetNo);
-        }
-
-        private void HandleCustomerTxtHouseNoGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerHouseNo, epdCustomerHouseNo);
-        }
-
-        private void HandleMTxtCustomerContactNumberGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(mtxtCustomerContactNumber, epdCustomerContactNumber);
-        }
-
-        private void HandleTxtIDCardNumberGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerIdentityCardNumber, epdCustomerIdentityCardNumber);
-        }
-
-        private void HandleTxtCustomerLastNameGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerLastName, epdCustomerLastName);
-        }
-
-        private void HandleTxtCustomerFirstNameGotFocus(object? sender, EventArgs e)
-        {
-            ShutDownError(txtCustomerFirstName, epdCustomerFirstName);
+            }
+            BindWithControls();
         }
         #endregion
 
-        #region Insert event handler
-        private void HandleBtnInsertCustomerClick(object? sender, EventArgs e)
+        #region Handle Validation
+        private void ValidateTextBox(object? sender, CancelEventArgs e)
         {
-            //if (ValidateTextBox(txtCustomerFirstName, epdCustomerFirstName) || ValidateTextBox(txtCustomerLastName, epdCustomerLastName) || ValidateTextBox(txtCustomerIdentityCardNumber, epdCustomerIdentityCardNumber) || ValidateMaskedTextBox(mtxtCustomerContactNumber, epdCustomerContactNumber) || ValidateTextBox(txtCustomerHouseNo, epdCustomerHouseNo) || ValidateTextBox(txtCustomerStreetNo, epdCustomerStreetNo) || ValidateTextBox(txtCustomerSangkat, epdCustomerSangkat) || ValidateTextBox(txtCustomerKhan, epdCustomerKhan))
-            //{
-            //    CustomerHelper.AddCustomer(Program.Connection, new Customer()
-            //    {
-            //        CustomerFirstName = txtCustomerFirstName.Text,
-            //        CustomerLastName = txtCustomerLastName.Text,
-            //        Sex = rdbFemale.Checked ? 'F' : 'M',
-            //        BirthDate = DateOnly.Parse(dtpCustomerBirthDate.Text),
-            //        IdentityCardNumber = txtCustomerIdentityCardNumber.Text,
-            //        HouseNo = txtCustomerHouseNo.Text,
-            //        StreetNo = txtCustomerStreetNo.Text,
-            //        Sangkat = txtCustomerSangkat.Text,
-            //        Khan = txtCustomerKhan.Text,
-            //        ProvinceOrCity = cbCustomerCityOrProvince.Text,
-            //        ContactNumber = mtxtCustomerContactNumber.Text,
-            //        Photo = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image)),
-            //    });
-            //    ReloadCustomers();
-            //    BindListBoxToOtherControl();
-            //}
+            ErrorHelper.ValidateTextBox((sender as TextBox)!, _errorProvider);
+        }
 
+        private void ValidateMaskedTextBox(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateMaskedTextBox((sender as MaskedTextBox)!, _errorProvider);
+        }
+        private void ValidateIdentityCardNumber(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateNineDigitNumber((sender as TextBox)!, _errorProvider);
+        }
+
+        private void ValidateDtpBirthDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDateBefore2005((sender as DateTimePicker)!, _errorProvider);
         }
         #endregion
 
-        #region New event handler
-        private void HandleBtnNewCustomerClick(object? sender, EventArgs e)
+        #region Handle New
+        private void HandleBtnNewCustomerClicked(object? sender, EventArgs e)
         {
-            ClearAllFields();
-            ConfigDefaultValues();
-            RenderInitialPicture();
-            UnBindListBoxToOtherControl();
-        }
-        #endregion
+            try
+            {
+                UnbindWithControls();
+                _customerBindingSource.AddNew();
 
-        #region Clear all input fields
-        private void ClearAllFields()
-        {
-            txtCustomerID.Text = string.Empty;
-            txtCustomerFirstName.Text = string.Empty;
-            txtCustomerLastName.Text = string.Empty;
-            rdbFemale.Checked = true;
-            rdbMale.Checked = false;
-            dtpCustomerBirthDate.Value = DateTime.Now;
-            txtCustomerIdentityCardNumber.Text = string.Empty;
-            mtxtCustomerContactNumber.Text = string.Empty;
-            txtCustomerHouseNo.Text = string.Empty;
-            txtCustomerStreetNo.Text = string.Empty;
-            txtCustomerSangkat.Text = string.Empty;
-            txtCustomerKhan.Text = string.Empty;
-            cbCustomerCityOrProvince.SelectedIndex = -1;
+                var newRowView = (_customerBindingSource.Current as DataRowView)!;
+
+                newRowView["IsFemale"] = 0;
+                newRowView["IsMale"] = 1;
+                newRowView["Sex"] = 'M';
+                newRowView["BirthDate"] = DateTime.Parse("2005-01-01");
+                cbCustomerCityOrProvince.SelectedIndex = 0;
+                newRowView["ProvinceOrCity"] = cbCustomerCityOrProvince.Text;
+                Bitmap initialImage = Properties.Resources.account_search;
+                newRowView["Photo"] = BitmapToByteArray(initialImage);
+
+                lbCustomer.DataSource = null;
+                lbCustomer.DataSource = _customerBindingSource;
+                lbCustomer.DisplayMember = "CustomerName";
+                lbCustomer.ValueMember = "CustomerID";
+
+                Console.WriteLine(newRowView);
+
+                RenderInitialPicture();
+
+                BindWithControls();
+
+                int lastRowIndex = lbCustomer.Items.Count - 1;
+                lbCustomer.SelectedIndex = lastRowIndex;
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             txtCustomerFirstName.Focus();
-
         }
         #endregion
 
-        #region Event handler for Customer photo click
-        private void HandleBtnCustomerPhotoClick(object? sender, EventArgs e)
+        #region Handle Insert
+        private void HandleBtnInsertCustomerClicked(object? sender, EventArgs e)
+        {
+            CauseValidation();
+
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
+
+            lbCustomer.SelectedValueChanged -= HandleSelectedValueChanged;
+            _customerBindingSource.EndEdit();
+            try
+            {
+                _customerDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
+                _customerBindingSource.ResetBindings(false);
+            }
+            catch (Exceptio​n ex)
+            {
+                MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            RefreshListBox();
+            BindWithControls();
+            lbCustomer.SelectedValueChanged += HandleSelectedValueChanged;
+        }
+        #endregion
+
+        #region Handle Update
+        private void HandleBtnUpdateCustomerClicked(object? sender, EventArgs e)
+        {
+            HandleBtnInsertCustomerClicked(null, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Handle Cancel
+        private void HandleBtnCancelCustomerClicked(object? sender, EventArgs e)
+        {
+            _errorProvider.Clear();
+            _storeRentalDataSet.RejectChanges();
+            RefreshListBox();
+        }
+        #endregion
+
+        #region Handle Customer Photo
+        private void HandleBtnCustomerPhotoClicked(object? sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
@@ -328,107 +352,147 @@ namespace Store_Rental_Management_Systems
                 // Load the selected image into the PictureBox
                 pbCustomerPhoto.Image = System.Drawing.Image.FromFile(selectedFilePath);
                 pbCustomerPhoto.SizeMode = PictureBoxSizeMode.StretchImage; //
+
+                var newRowView = (_customerBindingSource.Current as DataRowView)!;
+                newRowView["Photo"] = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image));
             }
         }
         #endregion
 
-        #region Event handler for loading all Customers and render initial picture
-        private void LoadAllCustomers(object? sender, EventArgs e)
+        //private void HandleBtnCustomerPhotoClicked(object? sender, EventArgs e)
+        //{
+        //    OpenFileDialog openFileDialog = new OpenFileDialog
+        //    {
+        //        InitialDirectory = "c:\\",
+        //        Filter = "Image Files|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tiff;*.svg",
+        //        FilterIndex = 1, // Default filter index
+        //        RestoreDirectory = true
+        //    };
+
+        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        try
+        //        {
+        //            // Get the path of the selected file
+        //            string selectedFilePath = openFileDialog.FileName;
+
+        //            // Load the selected image into the PictureBox
+        //            pbCustomerPhoto.Image = System.Drawing.Image.FromFile(selectedFilePath);
+        //            pbCustomerPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+
+        //            // Ensure _customerBindingSource.Current is not null and is a DataRowView
+        //            if (_customerBindingSource.Current is DataRowView newRowView)
+        //            {
+        //                // Check if the PictureBox image is not null
+        //                if (pbCustomerPhoto.Image != null)
+        //                {
+        //                    // Convert the PictureBox image to a Bitmap and then to a byte array
+        //                    newRowView["Photo"] = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image));
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Customer photo is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Current item is not a DataRowView.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Handle any unexpected exceptions
+        //            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
+
+
+        #region Cause Validation
+        private void CauseValidation()
         {
-            //RenderInitialPicture();
-            //var customers = CustomerHelper.GetAllCustomers(Program.Connection);
-            //CustomerBindingSource.DataSource = customers;
-            //lbCustomer.Items.Clear();
-            //lbCustomer.DataSource = CustomerBindingSource;
-            //lbCustomer.DisplayMember = "FullName";
-            //lbCustomer.ValueMember = "CustomerID";
-            //InstantiateBindings();
-            //BindListBoxToOtherControl();
+            foreach (var control in _validatingControls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals('d'))
+                        {
+                            ErrorHelper.ValidateTextBoxIntegerOneToHundred(textBox, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals('n'))
+                        {
+                            ErrorHelper.ValidateTextBoxNumber(textBox, _errorProvider);
+                        }
+                        else if (control.Tag.ToString()!.Equals("card"))
+                        {
+                            ErrorHelper.ValidateNineDigitNumber(textBox, _errorProvider);
+                        }
+                    }
+                    else
+                    {
+                        ErrorHelper.ValidateTextBox(textBox, _errorProvider);
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    ErrorHelper.ValidateMaskedTextBox(maskedTextBox, _errorProvider);
+                }
+                else if (control is DateTimePicker dtp)
+                {
+                    if (control.Tag != null)
+                    {
+                        if (control.Tag.ToString()!.Equals("bd"))
+                        {
+                            ErrorHelper.ValidateDateBefore2005(dtp, _errorProvider);
+                        }
+                    }
+                }
+            }
         }
         #endregion
 
-        #region Reload Customers
-        private void ReloadCustomers()
+        #region Load
+        private void LoadAllCustomers()
         {
-            //var customers = CustomerHelper.GetAllCustomers(Program.Connection);
-            //CustomerBindingSource.DataSource = customers;
-            //lbCustomer.DataSource = CustomerBindingSource;
-            //lbCustomer.DisplayMember = "FullName";
-            //lbCustomer.ValueMember = "CustomerID";
-            //BindListBoxToOtherControl();
+            _customerDataAdapter.TableMappings.Add("Table", TABLE_NAME);
+            try
+            {
+                _customerDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            _customerBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_NAME];
+            lbCustomer.DataSource = _customerBindingSource;
+            lbCustomer.DisplayMember = "CustomerName";
+            lbCustomer.ValueMember = "CustomerID";
+
+            HandleCurrentChanged(null, EventArgs.Empty);
         }
         #endregion
 
-        #region Validate textbox number input fields
-        private bool ValidateTextBoxNumber(TextBox txt, ErrorProvider errorProvider)
+        #region Refresh
+        private void RefreshListBox()
         {
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
-                return false;
-            }
-            else if (!double.TryParse(txt.Text, out double _))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} must be a number!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(txt, string.Empty);
-                return true;
-            }
-        }
+            UnbindWithControls();
 
-        #endregion
+            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
+            try
+            {
+                _customerDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-        #region Validate TextBox
-        private bool ValidateTextBox(TextBox txt, ErrorProvider errorProvider)
-        {
-            if (string.IsNullOrWhiteSpace(txt.Text))
-            {
-                errorProvider.SetError(txt, $"{nameof(txt)} cannot be empty!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(txt, string.Empty);
-                return true;
-            }
-        }
-        #endregion
-
-        #region Validate MaskedTextBox
-        private bool ValidateMaskedTextBox(MaskedTextBox mtxt, ErrorProvider errorProvider)
-        {
-            if (!mtxt.MaskCompleted)
-            {
-                errorProvider.SetError(mtxt, $"{nameof(mtxt)} cannot be empty!");
-                return false;
-            }
-            else
-            {
-                errorProvider.SetError(mtxt, string.Empty);
-                return true;
-            }
-        }
-        #endregion
-
-        #region Shutdown Error
-        private void ShutDownError(TextBoxBase txt, ErrorProvider errorProvider)
-        {
-            if (errorProvider != null)
-            {
-                errorProvider.Clear();
-            }
-        }
-        #endregion
-
-        #region Config Default Input values
-        private void ConfigDefaultValues()
-        {
-            rdbFemale.Checked = false;
-            rdbMale.Checked = true;
-            cbCustomerCityOrProvince.SelectedIndex = 0;
+            lbCustomer.SelectedIndex = 0;
+            BindWithControls();
+            txtSearchCustomer.Text = string.Empty;
         }
         #endregion
 
@@ -454,5 +518,6 @@ namespace Store_Rental_Management_Systems
             }
         }
         #endregion
+
     }
 }

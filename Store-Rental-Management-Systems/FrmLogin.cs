@@ -29,6 +29,17 @@ namespace Store_Rental_Management_Systems
             LoadAllUsers();
 
             btnLogin.Click += handleBtnLoginClick;
+            txtLoginPassword.KeyDown += HandleKeyDown;
+            txtLoginUserName.KeyDown += HandleKeyDown;
+        }
+
+        private void HandleKeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                handleBtnLoginClick(null, EventArgs.Empty);
+            }
+            
         }
 
         private void handleBtnLoginClick(object? sender, EventArgs e)
@@ -39,6 +50,7 @@ namespace Store_Rental_Management_Systems
             if (string.IsNullOrWhiteSpace(userNameInput) || string.IsNullOrWhiteSpace(passwordInput))
             {
                 MessageBox.Show("សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLoginUserName.Focus();
                 return;
             }
 
@@ -51,7 +63,7 @@ namespace Store_Rental_Management_Systems
                 }
             }
             MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            txtLoginUserName.Focus();
         }
 
         private void InitCommands()

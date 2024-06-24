@@ -16,10 +16,10 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT_NEW_USER = "sp_InsertNewUser";
-        private const string UPDATE_USER = "sp_UpdateUser";
-        private const string GET_ALL_USERS = "v_GetAllUsers";
-        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "v_GetAllStaffsForComboBox";
+        private const string INSERT_NEW_USER = "spInsertNewUser";
+        private const string UPDATE_USER = "spUpdateUser";
+        private const string GET_ALL_USERS = "vGetAllUsers";
+        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "vGetAllStaffsForComboBox";
         #endregion
 
         #region Generate Insert User Command

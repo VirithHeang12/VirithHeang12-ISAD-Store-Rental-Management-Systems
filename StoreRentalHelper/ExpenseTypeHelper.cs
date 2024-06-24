@@ -15,9 +15,9 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewExpenseType";
-        private const string UPDATE = "sp_UpdateExpenseType";
-        private const string GET_ALL = "v_GetAllExpenseTypes";
+        private const string INSERT = "spInsertNewExpenseType";
+        private const string UPDATE = "spUpdateExpenseType";
+        private const string GET_ALL = "vGetAllExpenseTypes";
         #endregion
 
         #region Generate Insert ExpenseType Command

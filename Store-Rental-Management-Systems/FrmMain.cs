@@ -1,11 +1,6 @@
 ﻿using StoreRentalLib;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,8 +8,8 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmMain : Form
     {
-
         public Form? FrmActive { get; set; } = null;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -27,7 +22,6 @@ namespace Store_Rental_Management_Systems
             FrmHome.NavButtonClicked += handleNavButtonClicked;
             FrmHome.ButtonLogoutClicked += handleButtonLogoutClick;
             OpenChildForm(new FrmLogin());
-
         }
 
         private void handleButtonLogoutClick(object? sender, EventArgs e)
@@ -112,20 +106,46 @@ namespace Store_Rental_Management_Systems
             child.Height = this.ClientSize.Height - 4;
         }
 
-        private void OpenChildForm(Form form)
+        private async Task FadeIn(Form form)
+        {
+            form.Opacity = 0;
+            form.Show();
+            form.BringToFront();
+
+            while (form.Opacity < 1.0)
+            {
+                await Task.Delay(1); // Adjust delay as needed
+                form.Opacity += 0.05;
+            }
+        }
+
+
+        private async Task FadeOut(Form form)
+        {
+            while (form.Opacity > 0.0)
+            {
+                await Task.Delay(1); // Adjust delay as needed
+                form.Opacity -= 0.05;
+            }
+            form.Hide(); // Hide instead of closing immediately
+        }
+
+        private async void OpenChildForm(Form form)
         {
             if (FrmActive != null)
             {
-                FrmActive.Close();
-                FrmActive.Dispose();
+                await FadeOut(FrmActive);
             }
 
             FrmActive = form;
             FrmActive.MdiParent = this;
-            FrmActive.Show();
-            AdjustChildFormSize(form);
+            FrmActive.StartPosition = FormStartPosition.Manual;
+            FrmActive.Location = new Point(0, 0);
+            FrmActive.Width = this.ClientSize.Width - 4;
+            FrmActive.Height = this.ClientSize.Height - 4;
+
+            await FadeIn(FrmActive);
         }
-
-
     }
+
 }

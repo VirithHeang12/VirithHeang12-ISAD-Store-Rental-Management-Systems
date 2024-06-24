@@ -15,9 +15,9 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT_STORE = "sp_InsertNewStore";
-        private const string UPDATE_STORE = "sp_UpdateStore";
-        private const string GET_ALL_STORES = "v_GetAllStores";
+        private const string INSERT_STORE = "spInsertNewStore";
+        private const string UPDATE_STORE = "spUpdateStore";
+        private const string GET_ALL_STORES = "vGetAllStores";
 
 
         private const string GET_ALL_STORETYPES_FOR_COMBO_BOX = "v_GetAllStoreTypesForComboBox";

@@ -16,10 +16,10 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewSalaryPayment";
-        private const string UPDATE = "sp_UpdateSalaryPayment";
-        private const string GET_ALL = "v_GetAllSalaryPayments";
-        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "v_GetAllStaffsForComboBox";
+        private const string INSERT = "spInsertNewSalaryPayment";
+        private const string UPDATE = "spUpdateSalaryPayment";
+        private const string GET_ALL = "vGetAllSalaryPayments";
+        private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "vGetAllStaffsForComboBox";
         #endregion
 
         #region Generate Insert SalaryPayment Command

@@ -48,9 +48,6 @@ namespace Store_Rental_Management_Systems
             #region Add controls for validations
             _errorProvider.ContainerControl = this;
             _validatingControls.Add(dtpContractDate);
-            _validatingControls.Add(dtpLeaseStartDate);
-            _validatingControls.Add(dtpLeaseEndDate);
-            _validatingControls.Add(dtpNextPaymentDate);
             #endregion
 
             LoadAllData();
@@ -63,7 +60,6 @@ namespace Store_Rental_Management_Systems
             btnCancelContract.Click += HandleBtnCancelContractClicked;
 
             dtpContractDate.Validating += ValidatePresentOrPast;
-            dtpLeaseStartDate.Validating += ValidatePresentOrFuture;
 
             lbContract.SelectedValueChanged += HandleSelectedValueChanged;
 
@@ -74,6 +70,8 @@ namespace Store_Rental_Management_Systems
             cbCustomerID.GotFocus += HandleGotFocusEN;
             cbInsuranceID.GotFocus += HandleGotFocusEN;
             cbStaffID.GotFocus += HandleGotFocusEN;
+
+            txtSearchContract.TextChanged += HandleSearchStaff;
 
             cbInsuranceID.SelectedIndexChanged += HandleCbInsuranceIDSelectedIndexChanged;
             cbStaffID.SelectedIndexChanged += HandleCbStaffIDSelectedIndexChanged;
@@ -95,9 +93,7 @@ namespace Store_Rental_Management_Systems
             // Insurance
             _insuranceDataAdapter.SelectCommand = ContractHelper.CreateGetAllInsurancesForComboBoxCommand();
             // Staff
-            _staffDataAdapter.SelectCommand = ContractHelper.CreateGetAllStaffsForComboBoxCommand();
-            
-            
+            _staffDataAdapter.SelectCommand = ContractHelper.CreateGetAllStaffsForComboBoxCommand();  
         }
         #endregion
 
@@ -143,12 +139,11 @@ namespace Store_Rental_Management_Systems
                 cbCustomerID.DataBindings.Add("SelectedValue", _contractBindingSource, "CustomerID");
                 cbStoreID.DataBindings.Add("SelectedValue", _contractBindingSource, "StoreID");
                 cbStaffID.DataBindings.Add("SelectedValue", _contractBindingSource, "StaffID");
-                cbInsuranceID.DataBindings.Add("SelectedValue", _contractBindingSource, "ContractID");
+                cbInsuranceID.DataBindings.Add("SelectedValue", _contractBindingSource, "InsuranceID");
                 txtInsuranceName.DataBindings.Add("Text", _contractBindingSource, "InsuranceName");
                 txtStaffName.DataBindings.Add("Text", _contractBindingSource, "StaffName");
                 txtStaffPosition.DataBindings.Add("Text", _contractBindingSource, "StaffPosition");
-                
-
+               
             }
         }
 
@@ -204,7 +199,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _contractBindingSource.Filter = "ContractID LIKE '" + searchText + "%'";
+                _contractBindingSource.Filter = "Convert(ContractID, 'System.String') LIKE '" + searchText + "%'";
 
             }
             BindWithControls();
@@ -212,11 +207,6 @@ namespace Store_Rental_Management_Systems
         #endregion
 
         #region Handle Validation
-        private void ValidatePresentOrFuture(object? sender, CancelEventArgs e)
-        {
-            ErrorHelper.ValidateDtpPresentOrFuture((sender as DateTimePicker)!, _errorProvider);
-        }
-
         private void ValidatePresentOrPast(object? sender, CancelEventArgs e)
         {
             ErrorHelper.ValidateDtpNowOrPast((sender as DateTimePicker)!, _errorProvider);
@@ -233,8 +223,8 @@ namespace Store_Rental_Management_Systems
 
                 var newRowView = (_contractBindingSource.Current as DataRowView)!;
 
-                newRowView["ContractDate"] = DateTime.Now;
-                newRowView["LeaseStartDate"] = DateTime.Now;
+                newRowView["ContractDate"] = DateTime.Now.AddHours(-1);
+                newRowView["LeaseStartDate"] = DateTime.Now.AddDays(1);
                 newRowView["LeaseEndDate"] = DateTime.Now.AddYears(1);
                 newRowView["NextPaymentDate"] = DateTime.Now.AddMonths(1);
                 cbStaffID.SelectedIndex = 0;
@@ -253,7 +243,7 @@ namespace Store_Rental_Management_Systems
                 newRowView["CustomerID"] = cbCustomerID.SelectedValue;
 
                 cbStoreID.SelectedIndex = 0;
-                newRowView["StoreID"] = dataRowView?["StoreID"];
+                newRowView["StoreID"] = cbStoreID.SelectedValue;
 
                 lbContract.DataSource = null;
                 lbContract.DataSource = _contractBindingSource;
@@ -267,7 +257,7 @@ namespace Store_Rental_Management_Systems
                 lbContract.SelectedIndex = lastRowIndex;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -284,10 +274,11 @@ namespace Store_Rental_Management_Systems
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
             lbContract.SelectedValueChanged -= HandleSelectedValueChanged;
+
             _contractBindingSource.EndEdit();
             try
             {
-                _staffDataAdapter.Update(_storeRentalDataSet, TABLE_CONTRACT_NAME);
+                _contractDataAdapter.Update(_storeRentalDataSet, TABLE_CONTRACT_NAME);
                 _contractBindingSource.ResetBindings(false);
             }
             catch (Exceptio​n)
@@ -324,18 +315,8 @@ namespace Store_Rental_Management_Systems
             {
                 if (control is DateTimePicker dtp)
                 {
-                    if (dtp.Tag != null)
-                    {
-                        if (dtp.Tag.ToString()!.Equals("pop"))
-                        {
-                            ErrorHelper.ValidateDtpNowOrPast(dtp, _errorProvider);
-                        }
-                        else
-                        {
-                            ErrorHelper.ValidateDtpPresentOrFuture(dtp, _errorProvider);
-                        }
-                    }
-                }
+                    ErrorHelper.ValidateDtpNowOrPast(dtp, _errorProvider);
+                }                    
             }
         }
         #endregion
@@ -403,7 +384,7 @@ namespace Store_Rental_Management_Systems
             _storeRentalDataSet.Tables[TABLE_CONTRACT_NAME]?.Clear();
             try
             {
-                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_CONTRACT_NAME);
+                _contractDataAdapter.Fill(_storeRentalDataSet, TABLE_CONTRACT_NAME);
             }
             catch (Exception)
             {

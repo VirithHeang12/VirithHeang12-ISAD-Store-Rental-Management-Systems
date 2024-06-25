@@ -15,7 +15,7 @@ namespace StoreRentalHelper
 
         #endregion
 
-        #region Count Rented Store 
+        #region Function COUNT
         private const string COUNT_RENTED_STORES = "dbo.fnCountRentedStores";
         private const string COUNT_ALL_STORES = "dbo.fnCountAllStores";
         private const string COUNT_ALL_STAFFS = "dbo.fnCountAllStaffs";

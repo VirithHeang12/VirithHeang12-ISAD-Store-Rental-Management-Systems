@@ -22,6 +22,7 @@ namespace Store_Rental_Management_Systems
 
             InitializeComponent();
 
+
             #region Get All Counts 
             GetRentedStores();
             GetAllStores();
@@ -31,7 +32,6 @@ namespace Store_Rental_Management_Systems
             #endregion
 
         }
-
 
         #region GetRentedStores
         private void GetRentedStores()
@@ -73,9 +73,5 @@ namespace Store_Rental_Management_Systems
             label11.Text = allCustomersCount;
         }
         #endregion
-
-
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Store_Rental_Management_Systems
 {
-    partial class HomeDesign
+    partial class FrmHomeDesign
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeDesign));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHomeDesign));
             label1 = new Label();
             panel4 = new Panel();
             label4 = new Label();

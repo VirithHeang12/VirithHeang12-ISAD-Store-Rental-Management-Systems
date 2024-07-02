@@ -307,7 +307,7 @@ namespace Store_Rental_Management_Systems
                 _customerDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
                 _customerBindingSource.ResetBindings(false);
             }
-            catch (Exceptio​n ex)
+            catch (Exceptio​n)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

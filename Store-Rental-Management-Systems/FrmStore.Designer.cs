@@ -166,7 +166,7 @@
             ElectricityLastRecord.MinimumWidth = 6;
             ElectricityLastRecord.Name = "ElectricityLastRecord";
             ElectricityLastRecord.ReadOnly = true;
-            ElectricityLastRecord.Width = 153;
+            ElectricityLastRecord.Width = 210;
             // 
             // WaterLastRecord
             // 
@@ -176,7 +176,7 @@
             WaterLastRecord.MinimumWidth = 6;
             WaterLastRecord.Name = "WaterLastRecord";
             WaterLastRecord.ReadOnly = true;
-            WaterLastRecord.Width = 132;
+            WaterLastRecord.Width = 161;
             // 
             // Status
             // 

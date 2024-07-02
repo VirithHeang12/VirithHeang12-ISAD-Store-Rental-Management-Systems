@@ -167,7 +167,7 @@ namespace Store_Rental_Management_Systems
             switch (e.Form)
             {
                 case FormTypes.FrmHome:
-                    OpenChildForm(new HomeDesign());
+                    OpenChildForm(new FrmHomeDesign());
                     break;
                 case FormTypes.FrmStaff:
                     OpenChildForm(new FrmStaff());

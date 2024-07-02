@@ -66,7 +66,7 @@ namespace Store_Rental_Management_Systems
         }
 
         #region HandleGotFocusKM
-       private void HandleGotFocusKM(object? sender, EventArgs e)
+        private void HandleGotFocusKM(object? sender, EventArgs e)
         {
             KeyboardLayoutHelper.SwitchToKhmerKeyboard();
         }
@@ -246,7 +246,7 @@ namespace Store_Rental_Management_Systems
         #region Refresh
         private void RefreshDataGridView()
         {
-            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();      
+            _storeRentalDataSet.Tables[TABLE_NAME]?.Clear();
             try
             {
                 _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);

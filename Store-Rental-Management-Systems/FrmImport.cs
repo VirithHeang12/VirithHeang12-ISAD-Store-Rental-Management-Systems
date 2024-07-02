@@ -26,7 +26,7 @@ namespace Store_Rental_Management_Systems
         private SqlDataAdapter _importDataAdapter = new();
         private SqlDataAdapter _importDetailDataAdapter = new();
         private SqlDataAdapter _supplierDataAdapter = new();
-        private SqlDataAdapter _staffDataAdapter =  new();
+        private SqlDataAdapter _staffDataAdapter = new();
         private SqlDataAdapter _itemDataAdapter = new();
 
         private BindingSource _importBindingSource = new();
@@ -310,8 +310,123 @@ namespace Store_Rental_Management_Systems
         }
 
         #endregion
+        private void HandleTextcbItemIDChanged(object? sender, EventArgs e)
+        {
+            string searchID = cbItemID.Text.Trim();
 
-        #region Init Commands
+            var dataView = _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.AsDataView();
+
+            if (string.IsNullOrEmpty(searchID))
+            {
+                dataView.RowFilter = string.Empty;
+                cbItemID.DroppedDown = true;
+            }
+            else
+            {
+                dataView.RowFilter = $"CONVERT(ItemID, 'System.String') LIKE '%{searchID}%'";
+
+                if (dataView.Count > 0)
+                {
+                    dataView.RowFilter = string.Empty;
+                }
+            }
+
+            if (dataView.Count > 0)
+            {
+                cbItemID.Select(cbItemID.Text.Length, 0); // Keep the caret at the end
+            }
+            else
+            {
+                cbItemID.DroppedDown = false;
+            }
+
+
+            // Set the original text back to the ComboBox (to keep the user input)
+            cbItemID.Text = searchID;
+            cbItemID.SelectionStart = searchID.Length;
+            cbItemID.SelectionLength = 0;
+
+            //_supplierBindingSource.DataSource = dataView;
+        }
+
+        private void HandleTextCbStaffIDChanged(object? sender, EventArgs e)
+        {
+            string searchID = cbStaffID.Text.Trim();
+
+            var dataView = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
+
+            if (string.IsNullOrEmpty(searchID))
+            {
+                dataView.RowFilter = string.Empty;
+                cbStaffID.DroppedDown = true;
+            }
+            else
+            {
+                dataView.RowFilter = $"CONVERT(StaffID, 'System.String') LIKE '%{searchID}%'";
+
+                if (dataView.Count > 0)
+                {
+                    dataView.RowFilter = string.Empty;
+                }
+            }
+
+            if (dataView.Count > 0)
+            {
+                cbStaffID.Select(cbStaffID.Text.Length, 0); // Keep the caret at the end
+            }
+            else
+            {
+                cbStaffID.DroppedDown = false;
+            }
+
+
+            // Set the original text back to the ComboBox (to keep the user input)
+            cbStaffID.Text = searchID;
+            cbStaffID.SelectionStart = searchID.Length;
+            cbStaffID.SelectionLength = 0;
+
+            //_supplierBindingSource.DataSource = dataView;
+        }
+
+        private void HandleTextCbSupplierIDChanged(object? sender, EventArgs e)
+        {
+            string searchID = cbSupplierID.Text.Trim();
+
+            var dataView = _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.AsDataView();
+
+            if (string.IsNullOrEmpty(searchID))
+            {
+                dataView.RowFilter = string.Empty;
+                cbSupplierID.DroppedDown = true;
+            }
+            else
+            {
+                dataView.RowFilter = $"CONVERT(SupplierID, 'System.String') LIKE '%{searchID}%'";
+
+                if (dataView.Count > 0)
+                {
+                    dataView.RowFilter = string.Empty;
+                }
+            }
+
+            if (dataView.Count > 0)
+            {
+                cbSupplierID.Select(cbSupplierID.Text.Length, 0); // Keep the caret at the end
+            }
+            else
+            {
+                cbSupplierID.DroppedDown = false;
+            }
+
+
+            // Set the original text back to the ComboBox (to keep the user input)
+            cbSupplierID.Text = searchID;
+            cbSupplierID.SelectionStart = searchID.Length;
+            cbSupplierID.SelectionLength = 0;
+
+            //_supplierBindingSource.DataSource = dataView;
+        }
+
         private void InitCommands()
         {
             // import
@@ -331,7 +446,6 @@ namespace Store_Rental_Management_Systems
             // item
             _itemDataAdapter.SelectCommand = ImportHelper.CreateGetAllItemsForComboBoxCommand();
         }
-        #endregion
 
         #region Bind To Controls
         private void BindToControls()

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbStaffAssignments = new GroupBox();
@@ -55,11 +57,11 @@
             btnInsertAppointment = new Button();
             pnlLeftSide = new Panel();
             dgvStaffAssignments = new DataGridView();
-            lblSearchAppointment = new Label();
-            txtSearchAppointment = new TextBox();
             StaffID = new DataGridViewTextBoxColumn();
             StaffName = new DataGridViewTextBoxColumn();
             StaffPosition = new DataGridViewTextBoxColumn();
+            lblSearchAppointment = new Label();
+            txtSearchAppointment = new TextBox();
             pnlRightSide.SuspendLayout();
             gbStaffAssignments.SuspendLayout();
             gbAppointmentInformation.SuspendLayout();
@@ -115,7 +117,7 @@
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffID.Location = new Point(212, 43);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(261, 44);
+            cbStaffID.Size = new Size(261, 51);
             cbStaffID.TabIndex = 36;
             // 
             // btnUpdateAppointmentStaff
@@ -148,7 +150,7 @@
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(922, 46);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(131, 36);
+            lblStaffPosition.Size = new Size(153, 43);
             lblStaffPosition.TabIndex = 22;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
@@ -158,7 +160,7 @@
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1084, 43);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(297, 44);
+            txtStaffPosition.Size = new Size(297, 51);
             txtStaffPosition.TabIndex = 21;
             // 
             // lblStaffName
@@ -167,7 +169,7 @@
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(502, 46);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(130, 36);
+            lblStaffName.Size = new Size(155, 43);
             lblStaffName.TabIndex = 20;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
@@ -177,7 +179,7 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(649, 43);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(237, 44);
+            txtStaffName.Size = new Size(237, 51);
             txtStaffName.TabIndex = 19;
             // 
             // lblStaffID
@@ -186,7 +188,7 @@
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(18, 46);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(183, 36);
+            lblStaffID.Size = new Size(214, 43);
             lblStaffID.TabIndex = 18;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -215,7 +217,7 @@
             cbCustomerID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbCustomerID.Location = new Point(960, 95);
             cbCustomerID.Name = "cbCustomerID";
-            cbCustomerID.Size = new Size(421, 44);
+            cbCustomerID.Size = new Size(421, 51);
             cbCustomerID.TabIndex = 35;
             // 
             // lblAppointmentID
@@ -224,7 +226,7 @@
             lblAppointmentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentID.Location = new Point(18, 41);
             lblAppointmentID.Name = "lblAppointmentID";
-            lblAppointmentID.Size = new Size(223, 36);
+            lblAppointmentID.Size = new Size(263, 43);
             lblAppointmentID.TabIndex = 34;
             lblAppointmentID.Text = "លេខសម្គាល់ការណាត់ជួប:";
             // 
@@ -236,7 +238,7 @@
             cbAppointmentStatus.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbAppointmentStatus.Location = new Point(261, 95);
             cbAppointmentStatus.Name = "cbAppointmentStatus";
-            cbAppointmentStatus.Size = new Size(371, 44);
+            cbAppointmentStatus.Size = new Size(371, 51);
             cbAppointmentStatus.TabIndex = 27;
             // 
             // dtpAppointmentDate
@@ -245,7 +247,7 @@
             dtpAppointmentDate.Format = DateTimePickerFormat.Short;
             dtpAppointmentDate.Location = new Point(960, 35);
             dtpAppointmentDate.Name = "dtpAppointmentDate";
-            dtpAppointmentDate.Size = new Size(421, 44);
+            dtpAppointmentDate.Size = new Size(421, 51);
             dtpAppointmentDate.TabIndex = 20;
             // 
             // lblAppointmentDate
@@ -254,7 +256,7 @@
             lblAppointmentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentDate.Location = new Point(760, 39);
             lblAppointmentDate.Name = "lblAppointmentDate";
-            lblAppointmentDate.Size = new Size(191, 36);
+            lblAppointmentDate.Size = new Size(225, 43);
             lblAppointmentDate.TabIndex = 19;
             lblAppointmentDate.Text = "កាលបរិច្ឆេទណាត់ជួប:";
             // 
@@ -264,7 +266,7 @@
             lblAppointmentStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentStatus.Location = new Point(19, 98);
             lblAppointmentStatus.Name = "lblAppointmentStatus";
-            lblAppointmentStatus.Size = new Size(171, 36);
+            lblAppointmentStatus.Size = new Size(201, 43);
             lblAppointmentStatus.TabIndex = 4;
             lblAppointmentStatus.Text = "ស្ថានភាពណាត់ជួប:";
             // 
@@ -274,7 +276,7 @@
             txtAppointmentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtAppointmentID.Location = new Point(261, 33);
             txtAppointmentID.Name = "txtAppointmentID";
-            txtAppointmentID.Size = new Size(371, 44);
+            txtAppointmentID.Size = new Size(371, 51);
             txtAppointmentID.TabIndex = 3;
             // 
             // lblCustomerID
@@ -283,7 +285,7 @@
             lblCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblCustomerID.Location = new Point(760, 98);
             lblCustomerID.Name = "lblCustomerID";
-            lblCustomerID.Size = new Size(191, 36);
+            lblCustomerID.Size = new Size(223, 43);
             lblCustomerID.TabIndex = 6;
             lblCustomerID.Text = "លេខសម្គាល់អតិថិជន:";
             // 
@@ -360,8 +362,25 @@
             // 
             dgvStaffAssignments.AllowUserToAddRows = false;
             dgvStaffAssignments.AllowUserToDeleteRows = false;
+            dgvStaffAssignments.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvStaffAssignments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvStaffAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { StaffID, StaffName, StaffPosition });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvStaffAssignments.DefaultCellStyle = dataGridViewCellStyle2;
             dgvStaffAssignments.Location = new Point(63, 74);
             dgvStaffAssignments.Name = "dgvStaffAssignments";
             dgvStaffAssignments.ReadOnly = true;
@@ -370,22 +389,6 @@
             dgvStaffAssignments.Size = new Size(1428, 303);
             dgvStaffAssignments.TabIndex = 3;
             // 
-            // lblSearchAppointment
-            // 
-            lblSearchAppointment.AutoSize = true;
-            lblSearchAppointment.Location = new Point(64, 17);
-            lblSearchAppointment.Name = "lblSearchAppointment";
-            lblSearchAppointment.Size = new Size(311, 36);
-            lblSearchAppointment.TabIndex = 1;
-            lblSearchAppointment.Text = "ស្វែងរក (លេខសម្គាល់ការណាត់ជួប):";
-            // 
-            // txtSearchAppointment
-            // 
-            txtSearchAppointment.Location = new Point(402, 11);
-            txtSearchAppointment.Name = "txtSearchAppointment";
-            txtSearchAppointment.Size = new Size(501, 44);
-            txtSearchAppointment.TabIndex = 2;
-            // 
             // StaffID
             // 
             StaffID.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -393,7 +396,7 @@
             StaffID.MinimumWidth = 6;
             StaffID.Name = "StaffID";
             StaffID.ReadOnly = true;
-            StaffID.Width = 206;
+            StaffID.Width = 243;
             // 
             // StaffName
             // 
@@ -410,6 +413,22 @@
             StaffPosition.MinimumWidth = 6;
             StaffPosition.Name = "StaffPosition";
             StaffPosition.ReadOnly = true;
+            // 
+            // lblSearchAppointment
+            // 
+            lblSearchAppointment.AutoSize = true;
+            lblSearchAppointment.Location = new Point(64, 17);
+            lblSearchAppointment.Name = "lblSearchAppointment";
+            lblSearchAppointment.Size = new Size(367, 43);
+            lblSearchAppointment.TabIndex = 1;
+            lblSearchAppointment.Text = "ស្វែងរក (លេខសម្គាល់ការណាត់ជួប):";
+            // 
+            // txtSearchAppointment
+            // 
+            txtSearchAppointment.Location = new Point(402, 11);
+            txtSearchAppointment.Name = "txtSearchAppointment";
+            txtSearchAppointment.Size = new Size(501, 51);
+            txtSearchAppointment.TabIndex = 2;
             // 
             // FrmAppointment
             // 

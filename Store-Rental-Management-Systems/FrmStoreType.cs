@@ -44,7 +44,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllStoreTypes();
             BindWithControls();
-     
+
 
             #region Event Registrations
             btnNewStoreType.Click += HandleBtnNewStoreTypeClicked;
@@ -96,7 +96,7 @@ namespace Store_Rental_Management_Systems
             txtOneYearPaymentDiscount.DataBindings.Add(new Binding("Text", _storetypeBindingSource, "OneYearPaymentDiscount"));
         }
         #endregion
-        
+
         #region Handle DataGridView SelectionChanged
         private void HandleSelectionChanged(object? sender, EventArgs e)
         {
@@ -158,11 +158,12 @@ namespace Store_Rental_Management_Systems
             try
             {
                 _storetypeBindingSource.AddNew();
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             txtStoreTypeDescription.Focus();
         }
         #endregion
@@ -261,10 +262,11 @@ namespace Store_Rental_Management_Systems
             try
             {
                 _storetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }       
+            }
         }
         #endregion
     }

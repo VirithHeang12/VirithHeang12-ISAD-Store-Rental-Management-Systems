@@ -347,9 +347,6 @@
         private Button btnNewInsurance;
         private Button btnUpdateInsurance;
         private DataGridView dgvInsurances;
-        private DataGridViewTextBoxColumn insuranceIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn insuranceNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn insuranceWebsiteDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn InsuranceID;
         private DataGridViewTextBoxColumn InsuranceName;
         private DataGridViewTextBoxColumn InsuranceWebsite;

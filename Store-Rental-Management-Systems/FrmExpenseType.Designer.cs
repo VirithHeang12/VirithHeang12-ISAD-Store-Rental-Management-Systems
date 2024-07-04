@@ -311,8 +311,6 @@
         private Button btnNewExpenseType;
         private Button btnUpdateExpenseType;
         private DataGridView dgvExpenseTypes;
-        private DataGridViewTextBoxColumn expenseTypeIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn expenseDescriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ExpenseTypeID;
         private DataGridViewTextBoxColumn ExpenseDescription;
     }

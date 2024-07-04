@@ -489,7 +489,6 @@
         private Label lblContractID;
         private TextBox txtContractID;
         private DateTimePicker dtpContractDate;
-        private ComboBox cbStaffPosition;
         private Label lblStaffPosition;
         private Label lblCustomerID;
         private GroupBox gbContractInformation;

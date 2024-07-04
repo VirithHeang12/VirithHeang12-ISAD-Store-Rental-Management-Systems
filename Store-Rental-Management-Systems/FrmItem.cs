@@ -140,7 +140,7 @@ namespace Store_Rental_Management_Systems
         }
         private void ValidateTextBoxInteger(object? sender, CancelEventArgs e)
         {
-            ErrorHelper.ValidateTextBoxInteger((sender as TextBox)!, _errorProvider);
+            ErrorHelper.ValidateTextBoxIntegerOrZero((sender as TextBox)!, _errorProvider);
         }
         #endregion
 

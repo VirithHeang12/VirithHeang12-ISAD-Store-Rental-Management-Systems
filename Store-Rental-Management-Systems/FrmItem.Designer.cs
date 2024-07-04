@@ -455,12 +455,6 @@
         private TextBox txtStockQty;
         private Label lblUnit;
         private DataGridView dgvItems;
-        private DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn itemDescriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn stockQtyDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn ItemDescription;
         private DataGridViewTextBoxColumn Category;

@@ -455,12 +455,6 @@
         private Label lblStaffPosition;
         private TextBox txtStaffPosition;
         private TextBox txtStaffName;
-        private DataGridViewTextBoxColumn userIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn UserID;
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn Password;

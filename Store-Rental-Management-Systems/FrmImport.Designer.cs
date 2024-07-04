@@ -33,6 +33,8 @@
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbImportDetails = new GroupBox();
+            btnCancelImportItem = new Button();
+            btnDeleteImportItem = new Button();
             txtAmount = new TextBox();
             lblAmount = new Label();
             cbItemID = new ComboBox();
@@ -109,6 +111,8 @@
             // 
             // gbImportDetails
             // 
+            gbImportDetails.Controls.Add(btnCancelImportItem);
+            gbImportDetails.Controls.Add(btnDeleteImportItem);
             gbImportDetails.Controls.Add(txtAmount);
             gbImportDetails.Controls.Add(lblAmount);
             gbImportDetails.Controls.Add(cbItemID);
@@ -129,6 +133,32 @@
             gbImportDetails.TabStop = false;
             gbImportDetails.Text = "សេចក្ដីលម្អិត";
             // 
+            // btnCancelImportItem
+            // 
+            btnCancelImportItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelImportItem.ForeColor = Color.White;
+            btnCancelImportItem.Location = new Point(1279, 85);
+            btnCancelImportItem.Name = "btnCancelImportItem";
+            btnCancelImportItem.Size = new Size(102, 52);
+            btnCancelImportItem.TabIndex = 34;
+            btnCancelImportItem.TabStop = false;
+            btnCancelImportItem.Text = "បោះបង់";
+            btnCancelImportItem.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteImportItem
+            // 
+            btnDeleteImportItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnDeleteImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeleteImportItem.ForeColor = Color.White;
+            btnDeleteImportItem.Location = new Point(1181, 86);
+            btnDeleteImportItem.Name = "btnDeleteImportItem";
+            btnDeleteImportItem.Size = new Size(87, 52);
+            btnDeleteImportItem.TabIndex = 33;
+            btnDeleteImportItem.TabStop = false;
+            btnDeleteImportItem.Text = "លុប";
+            btnDeleteImportItem.UseVisualStyleBackColor = false;
+            // 
             // txtAmount
             // 
             txtAmount.Enabled = false;
@@ -138,6 +168,7 @@
             txtAmount.ReadOnly = true;
             txtAmount.Size = new Size(219, 44);
             txtAmount.TabIndex = 32;
+            txtAmount.TabStop = false;
             // 
             // lblAmount
             // 
@@ -145,7 +176,7 @@
             lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAmount.Location = new Point(482, 101);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(66, 43);
+            lblAmount.Size = new Size(55, 36);
             lblAmount.TabIndex = 31;
             lblAmount.Text = "តម្លៃ:";
             // 
@@ -157,18 +188,19 @@
             cbItemID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbItemID.Location = new Point(199, 35);
             cbItemID.Name = "cbItemID";
-            cbItemID.Size = new Size(263, 51);
-            cbItemID.TabIndex = 30;
+            cbItemID.Size = new Size(263, 44);
+            cbItemID.TabIndex = 4;
             // 
             // btnUpdateImportItem
             // 
             btnUpdateImportItem.BackColor = Color.FromArgb(0, 28, 87);
             btnUpdateImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateImportItem.ForeColor = Color.White;
-            btnUpdateImportItem.Location = new Point(1281, 92);
+            btnUpdateImportItem.Location = new Point(1075, 86);
             btnUpdateImportItem.Name = "btnUpdateImportItem";
             btnUpdateImportItem.Size = new Size(100, 52);
             btnUpdateImportItem.TabIndex = 4;
+            btnUpdateImportItem.TabStop = false;
             btnUpdateImportItem.Text = "កែប្រែ";
             btnUpdateImportItem.UseVisualStyleBackColor = false;
             // 
@@ -177,10 +209,11 @@
             btnInsertImportItem.BackColor = Color.FromArgb(0, 28, 87);
             btnInsertImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertImportItem.ForeColor = Color.White;
-            btnInsertImportItem.Location = new Point(1151, 93);
+            btnInsertImportItem.Location = new Point(967, 86);
             btnInsertImportItem.Name = "btnInsertImportItem";
             btnInsertImportItem.Size = new Size(102, 52);
             btnInsertImportItem.TabIndex = 28;
+            btnInsertImportItem.TabStop = false;
             btnInsertImportItem.Text = "បញ្ចូល";
             btnInsertImportItem.UseVisualStyleBackColor = false;
             // 
@@ -190,7 +223,7 @@
             txtImportQty.Location = new Point(199, 98);
             txtImportQty.Name = "txtImportQty";
             txtImportQty.Size = new Size(263, 44);
-            txtImportQty.TabIndex = 25;
+            txtImportQty.TabIndex = 5;
             // 
             // lblItemDescription
             // 
@@ -198,7 +231,7 @@
             lblItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemDescription.Location = new Point(482, 38);
             lblItemDescription.Name = "lblItemDescription";
-            lblItemDescription.Size = new Size(225, 43);
+            lblItemDescription.Size = new Size(190, 36);
             lblItemDescription.TabIndex = 18;
             lblItemDescription.Text = "ពិព័ណ៌នារបស់សម្ភារៈ:";
             // 
@@ -210,8 +243,8 @@
             txtItemDescription.Name = "txtItemDescription";
             txtItemDescription.ReadOnly = true;
             txtItemDescription.Size = new Size(219, 44);
-
             txtItemDescription.TabIndex = 19;
+            txtItemDescription.TabStop = false;
             // 
             // lblImportQty
             // 
@@ -219,7 +252,7 @@
             lblImportQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblImportQty.Location = new Point(18, 101);
             lblImportQty.Name = "lblImportQty";
-            lblImportQty.Size = new Size(169, 43);
+            lblImportQty.Size = new Size(142, 36);
             lblImportQty.TabIndex = 24;
             lblImportQty.Text = "បរិមាណនាំចូល:";
             // 
@@ -229,7 +262,7 @@
             lblItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemID.Location = new Point(18, 38);
             lblItemID.Name = "lblItemID";
-            lblItemID.Size = new Size(207, 43);
+            lblItemID.Size = new Size(175, 36);
             lblItemID.TabIndex = 16;
             lblItemID.Text = "លេខសម្គាល់សម្ភារៈ:";
             // 
@@ -239,22 +272,21 @@
             lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnitPrice.Location = new Point(967, 38);
             lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(194, 43);
+            lblUnitPrice.Size = new Size(165, 36);
             lblUnitPrice.TabIndex = 20;
             lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
-
+            // txtUnitPrice
+            // 
+            txtUnitPrice.Enabled = false;
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnitPrice.Location = new Point(1151, 35);
-
-            txtUnitPrice.ReadOnly = true;
+            txtUnitPrice.Name = "txtUnitPrice";
             txtUnitPrice.Size = new Size(230, 44);
             txtUnitPrice.TabIndex = 21;
-
-            txtUnitPrice.Size = new Size(230, 51);
-            txtUnitPrice.TabIndex = 21;
- 
+            txtUnitPrice.TabStop = false;
             // 
+            // gbImportInformation
             // 
             gbImportInformation.Controls.Add(lblStaffID);
             gbImportInformation.Controls.Add(lblSupplierName);
@@ -286,7 +318,7 @@
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(18, 143);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(214, 43);
+            lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 39;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -296,7 +328,7 @@
             lblSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSupplierName.Location = new Point(482, 93);
             lblSupplierName.Name = "lblSupplierName";
-            lblSupplierName.Size = new Size(180, 43);
+            lblSupplierName.Size = new Size(152, 36);
             lblSupplierName.TabIndex = 38;
             lblSupplierName.Text = "ឈ្មោះអ្នកផ្គត់ផ្គង់:";
             // 
@@ -306,20 +338,19 @@
             lblSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblSupplierID.Location = new Point(18, 93);
             lblSupplierID.Name = "lblSupplierID";
-            lblSupplierID.Size = new Size(239, 43);
+            lblSupplierID.Size = new Size(205, 36);
             lblSupplierID.TabIndex = 37;
             lblSupplierID.Text = "លេខសម្គាល់អ្នកផ្គត់ផ្គង់:";
             // 
             // txtTotalAmount
             // 
+            txtTotalAmount.Enabled = false;
             txtTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTotalAmount.Location = new Point(1151, 33);
             txtTotalAmount.Name = "txtTotalAmount";
-
-            txtTotalAmount.ReadOnly = true;
             txtTotalAmount.Size = new Size(230, 44);
-
             txtTotalAmount.TabIndex = 36;
+            txtTotalAmount.TabStop = false;
             // 
             // lblTotalAmount
             // 
@@ -327,7 +358,7 @@
             lblTotalAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblTotalAmount.Location = new Point(928, 36);
             lblTotalAmount.Name = "lblTotalAmount";
-            lblTotalAmount.Size = new Size(201, 43);
+            lblTotalAmount.Size = new Size(171, 36);
             lblTotalAmount.TabIndex = 35;
             lblTotalAmount.Text = "ចំនួនទឹកប្រាក់សរុប:";
             // 
@@ -337,7 +368,7 @@
             lblImportID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblImportID.Location = new Point(18, 41);
             lblImportID.Name = "lblImportID";
-            lblImportID.Size = new Size(238, 43);
+            lblImportID.Size = new Size(201, 36);
             lblImportID.TabIndex = 34;
             lblImportID.Text = "លេខសម្គាល់ការនាំចូល:";
             // 
@@ -347,11 +378,10 @@
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1151, 140);
             txtStaffPosition.Name = "txtStaffPosition";
-
             txtStaffPosition.ReadOnly = true;
             txtStaffPosition.Size = new Size(230, 44);
-
             txtStaffPosition.TabIndex = 33;
+            txtStaffPosition.TabStop = false;
             // 
             // lblStaffPosition
             // 
@@ -359,7 +389,7 @@
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(928, 143);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(153, 43);
+            lblStaffPosition.Size = new Size(131, 36);
             lblStaffPosition.TabIndex = 32;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
@@ -369,10 +399,10 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(670, 145);
             txtStaffName.Name = "txtStaffName";
-
             txtStaffName.ReadOnly = true;
             txtStaffName.Size = new Size(237, 44);
             txtStaffName.TabIndex = 31;
+            txtStaffName.TabStop = false;
             // 
             // lblStaffName
             // 
@@ -380,7 +410,7 @@
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(482, 143);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(155, 43);
+            lblStaffName.Size = new Size(130, 36);
             lblStaffName.TabIndex = 30;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
@@ -392,8 +422,8 @@
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffID.Location = new Point(227, 135);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(235, 51);
-            cbStaffID.TabIndex = 29;
+            cbStaffID.Size = new Size(235, 44);
+            cbStaffID.TabIndex = 3;
             // 
             // txtSupplierName
             // 
@@ -401,10 +431,10 @@
             txtSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSupplierName.Location = new Point(670, 85);
             txtSupplierName.Name = "txtSupplierName";
-
             txtSupplierName.ReadOnly = true;
             txtSupplierName.Size = new Size(711, 44);
             txtSupplierName.TabIndex = 28;
+            txtSupplierName.TabStop = false;
             // 
             // cbSupplierID
             // 
@@ -414,8 +444,8 @@
             cbSupplierID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbSupplierID.Location = new Point(227, 85);
             cbSupplierID.Name = "cbSupplierID";
-            cbSupplierID.Size = new Size(235, 51);
-            cbSupplierID.TabIndex = 27;
+            cbSupplierID.Size = new Size(235, 44);
+            cbSupplierID.TabIndex = 2;
             // 
             // dtpImportDate
             // 
@@ -423,8 +453,8 @@
             dtpImportDate.Format = DateTimePickerFormat.Short;
             dtpImportDate.Location = new Point(670, 35);
             dtpImportDate.Name = "dtpImportDate";
-            dtpImportDate.Size = new Size(237, 51);
-            dtpImportDate.TabIndex = 20;
+            dtpImportDate.Size = new Size(237, 44);
+            dtpImportDate.TabIndex = 1;
             // 
             // lblImportDate
             // 
@@ -432,7 +462,7 @@
             lblImportDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblImportDate.Location = new Point(482, 41);
             lblImportDate.Name = "lblImportDate";
-            lblImportDate.Size = new Size(200, 43);
+            lblImportDate.Size = new Size(169, 36);
             lblImportDate.TabIndex = 19;
             lblImportDate.Text = "កាលបរិច្ឆេទនាំចូល:";
             // 
@@ -442,8 +472,9 @@
             txtImportID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtImportID.Location = new Point(227, 33);
             txtImportID.Name = "txtImportID";
-            txtImportID.Size = new Size(235, 51);
+            txtImportID.Size = new Size(235, 44);
             txtImportID.TabIndex = 3;
+            txtImportID.TabStop = false;
             // 
             // pnlImportManipulation
             // 
@@ -465,6 +496,7 @@
             btnCancelImport.Name = "btnCancelImport";
             btnCancelImport.Size = new Size(134, 52);
             btnCancelImport.TabIndex = 3;
+            btnCancelImport.TabStop = false;
             btnCancelImport.Text = "បោះបង់";
             btnCancelImport.UseVisualStyleBackColor = false;
             // 
@@ -477,6 +509,7 @@
             btnNewImport.Name = "btnNewImport";
             btnNewImport.Size = new Size(152, 52);
             btnNewImport.TabIndex = 2;
+            btnNewImport.TabStop = false;
             btnNewImport.Text = "បង្កើតថ្មី";
             btnNewImport.UseVisualStyleBackColor = false;
             // 
@@ -489,6 +522,7 @@
             btnUpdateImport.Name = "btnUpdateImport";
             btnUpdateImport.Size = new Size(152, 52);
             btnUpdateImport.TabIndex = 1;
+            btnUpdateImport.TabStop = false;
             btnUpdateImport.Text = "កែប្រែ";
             btnUpdateImport.UseVisualStyleBackColor = false;
             // 
@@ -501,6 +535,7 @@
             btnInsertImport.Name = "btnInsertImport";
             btnInsertImport.Size = new Size(152, 52);
             btnInsertImport.TabIndex = 0;
+            btnInsertImport.TabStop = false;
             btnInsertImport.Text = "បញ្ចូល";
             btnInsertImport.UseVisualStyleBackColor = false;
             // 
@@ -522,8 +557,9 @@
             cbSearchImport.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbSearchImport.Location = new Point(393, 9);
             cbSearchImport.Name = "cbSearchImport";
-            cbSearchImport.Size = new Size(342, 51);
+            cbSearchImport.Size = new Size(342, 44);
             cbSearchImport.TabIndex = 40;
+            cbSearchImport.TabStop = false;
             // 
             // dgvImportItems
             // 
@@ -556,6 +592,7 @@
             dgvImportItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvImportItems.Size = new Size(1427, 238);
             dgvImportItems.TabIndex = 3;
+            dgvImportItems.TabStop = false;
             // 
             // ItemID
             // 
@@ -565,7 +602,7 @@
             ItemID.MinimumWidth = 6;
             ItemID.Name = "ItemID";
             ItemID.ReadOnly = true;
-            ItemID.Width = 236;
+            ItemID.Width = 198;
             // 
             // ImportID
             // 
@@ -594,7 +631,7 @@
             UnitPrice.MinimumWidth = 6;
             UnitPrice.Name = "UnitPrice";
             UnitPrice.ReadOnly = true;
-            UnitPrice.Width = 153;
+            UnitPrice.Width = 188;
             // 
             // Quantity
             // 
@@ -604,7 +641,7 @@
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
             Quantity.ReadOnly = true;
-            Quantity.Width = 125;
+            Quantity.Width = 111;
             // 
             // Amount
             // 
@@ -620,7 +657,7 @@
             lblSearchImport.AutoSize = true;
             lblSearchImport.Location = new Point(64, 17);
             lblSearchImport.Name = "lblSearchImport";
-            lblSearchImport.Size = new Size(342, 43);
+            lblSearchImport.Size = new Size(289, 36);
             lblSearchImport.TabIndex = 1;
             lblSearchImport.Text = "ស្វែងរក (លេខសម្គាល់ការនាំចូល):";
             // 
@@ -690,10 +727,6 @@
         private TextBox txtTotalAmount;
         private Label lblTotalAmount;
         private Label lblStaffID;
-        private DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn DescriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn importQtyDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private ComboBox cbItemID;
         private TextBox txtAmount;
         private Label lblAmount;
@@ -704,5 +737,7 @@
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Amount;
+        private Button btnDeleteImportItem;
+        private Button btnCancelImportItem;
     }
 }

@@ -678,7 +678,6 @@
         private DateTimePicker dtpPaymentDate;
         private Label lblPaymentDate;
         private Panel pnlPaymentManipulation;
-        private ComboBox cbSupplierID;
         private TextBox txtSupplierName;
         private TextBox txtStaffName;
         private Label lblStaffPosition;

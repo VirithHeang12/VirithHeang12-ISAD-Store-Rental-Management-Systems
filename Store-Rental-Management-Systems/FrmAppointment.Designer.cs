@@ -487,9 +487,6 @@
         private Button btnUpdateAppointmentStaff;
         private Button btnInsertAppointmentStaff;
         private ComboBox cbCustomerID;
-        private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn StaffNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
         private ComboBox cbStaffID;
         private DataGridViewTextBoxColumn StaffID;
         private DataGridViewTextBoxColumn StaffName;

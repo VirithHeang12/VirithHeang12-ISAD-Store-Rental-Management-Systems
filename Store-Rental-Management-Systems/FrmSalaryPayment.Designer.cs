@@ -457,9 +457,6 @@
         private TextBox txtStaffPosition;
         private TextBox txtStaffName;
         private DateTimePicker dtpSalaryPaymentDate;
-        private DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn staffPositionDataGridViewTextBoxColumn;
         private DataGridView dgvSalaryPayments;
         private DataGridViewTextBoxColumn SalaryPaymentID;
         private DataGridViewTextBoxColumn SalaryPaymentDate;

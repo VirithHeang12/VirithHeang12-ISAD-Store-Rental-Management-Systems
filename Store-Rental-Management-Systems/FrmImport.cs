@@ -15,6 +15,9 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmImport : FrmHome
     {
+        private bool isAdding = false;
+        private const string RELATIONSHIP_NAME = "import_importDetail";
+
         private const string TABLE_IMPORT_NAME = "tblImport";
         private const string TABLE_IMPORT_DETAIL_NAME = "tblImportDetail";
         private const string TABLE_SUPPLIER_NAME = "tblSupplier";
@@ -51,8 +54,8 @@ namespace Store_Rental_Management_Systems
 
             #region Add controls for validation
             _errorProvider.ContainerControl = this;
-            //_validatingControls.Add(dtpImportDate);
-            //_validatingControls.Add(txtImportQty);
+            _validatingControls.Add(dtpImportDate);
+            _validatingControls.Add(txtImportQty);
             #endregion
 
             #region Event Registrations
@@ -61,9 +64,12 @@ namespace Store_Rental_Management_Systems
             cbItemID.SelectedIndexChanged += HandleCbItemIDSelectedIndexChanged;
 
             txtImportQty.TextChanged += HandleTxtImportQtyTextChanged;
+            txtUnitPrice.TextChanged += HandleTxtImportQtyTextChanged;
 
             btnInsertImportItem.Click += HandleBtnInsertImportItemClicked;
             btnUpdateImportItem.Click += HandleBtnUpdateImportItemClicked;
+            btnDeleteImportItem.Click += HandleBtnDeleteImportItemClicked;
+            btnCancelImportItem.Click += HandleBtnCancelImportItemClicked;
 
             btnNewImport.Click += HandleBtnNewImportClicked;
             btnInsertImport.Click += HandleBtnInsertImportClicked;
@@ -76,67 +82,105 @@ namespace Store_Rental_Management_Systems
             cbStaffID.GotFocus += HandleGotFocusEN;
             cbItemID.GotFocus += HandleGotFocusEN;
             txtImportQty.GotFocus += HandleGotFocusEN;
+
+            dgvImportItems.DataError += HandleDataError;
             #endregion
         }
 
-        private void HandleBtnUpdateImportItemClicked(object? sender, EventArgs e)
+
+        private void HandleDataError(object? sender, DataGridViewDataErrorEventArgs e)
         {
-            DataRowView currentItem = (_importDetailBindingSource.Current as DataRowView)!;
-
-            if (currentItem != null)
-            {
-                currentItem["ItemID"] = cbItemID.SelectedValue;
-                currentItem["Description"] = txtItemDescription.Text;
-                currentItem["UnitPrice"] = txtUnitPrice.Text;
-                currentItem["ImportQty"] = txtImportQty.Text;
-                currentItem["Amount"] = txtAmount.Text;
-            }
-
-            _importDetailBindingSource.EndEdit();
+            // do nothing just to fix bug on datagridview
         }
+
+        #region Init Commands
+        private void InitCommands()
+        {
+            // import
+            _importDataAdapter.InsertCommand = ImportHelper.CreateInsertOrUpdateImportCommand();
+            _importDataAdapter.SelectCommand = ImportHelper.CreateGetAllImportsCommand();
+            _importDataAdapter.UpdateCommand = ImportHelper.CreateInsertOrUpdateImportCommand();
+
+            // import detail
+            _importDetailDataAdapter.SelectCommand = ImportHelper.CreateGetAllImportDetailsCommand();
+
+            // supplier
+            _supplierDataAdapter.SelectCommand = ImportHelper.CreateGetAllSuppliersForComboBoxCommand();
+
+            // staff
+            _staffDataAdapter.SelectCommand = ImportHelper.CreateGetAllStaffsForComboBoxCommand();
+
+            // item
+            _itemDataAdapter.SelectCommand = ImportHelper.CreateGetAllItemsForComboBoxCommand();
+        }
+        #endregion
+
+        #region Bind To Controls
+        private void BindToControls()
+        {
+            txtImportID.DataBindings.Add(new Binding("Text", _importBindingSource, "ImportID"));
+            dtpImportDate.DataBindings.Add(new Binding("Value", _importBindingSource, "ImportDate"));
+            txtTotalAmount.DataBindings.Add(new Binding("Text", _importBindingSource, "TotalAmount"));
+            cbSupplierID.DataBindings.Add(new Binding("SelectedValue", _importBindingSource, "SupplierID"));
+            txtSupplierName.DataBindings.Add(new Binding("Text", _importBindingSource, "SupplierName"));
+            cbStaffID.DataBindings.Add(new Binding("SelectedValue", _importBindingSource, "StaffID"));
+            txtStaffName.DataBindings.Add(new Binding("Text", _importBindingSource, "StaffName"));
+            txtStaffPosition.DataBindings.Add(new Binding("Text", _importBindingSource, "StaffPosition"));
+
+            cbItemID.DataBindings.Add(new Binding("SelectedValue", _importDetailBindingSource, "ItemID"));
+            txtItemDescription.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "Description"));
+            txtImportQty.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "ImportQty"));
+            txtUnitPrice.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "UnitPrice"));
+            txtAmount.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "Amount"));
+        }
+        #endregion
+
+        #region Unbind with controls
+        private void UnbindWithControls()
+        {
+            txtImportID.DataBindings.Clear();
+            dtpImportDate.DataBindings.Clear();
+            txtTotalAmount.DataBindings.Clear();
+            cbSupplierID.DataBindings.Clear();
+            txtSupplierName.DataBindings.Clear();
+            cbStaffID.DataBindings.Clear();
+            txtStaffName.DataBindings.Clear();
+            txtStaffPosition.DataBindings.Clear();
+
+            cbItemID.DataBindings.Clear();
+            txtItemDescription.DataBindings.Clear();
+            txtImportQty.DataBindings.Clear();
+            txtUnitPrice.DataBindings.Clear();
+            txtAmount.DataBindings.Clear();
+        }
+        #endregion
 
         #region Handle Cancel
         private void HandleBtnCancelImportClicked(object? sender, EventArgs e)
         {
-            cbSearchImport.SelectedIndexChanged -= HandleSearchImport;
             _errorProvider.Clear();
-            _storeRentalDataSet.RejectChanges();
             RefreshComboBox();
-            cbSearchImport.SelectedIndexChanged += HandleSearchImport;
         }
         #endregion
 
         #region Handle Update
         private void HandleBtnUpdateImportClicked(object? sender, EventArgs e)
         {
-            HandleBtnInsertImportClicked(null, EventArgs.Empty);    
-        }
-        #endregion
-
-        #region Handle Search
-        private void HandleSearchImport(object? sender, EventArgs e)
-        {
-            
-            UnbindWithControls();
-
-            _importDetailBindingSource.Filter = $"Convert(ImportID, 'System.String') = '{cbSearchImport.SelectedValue}'";
-
-            BindToControls();
-
+            HandleBtnInsertImportClicked(null, EventArgs.Empty);
         }
         #endregion
 
         #region Handle Insert
         private void HandleBtnInsertImportClicked(object? sender, EventArgs e)
         {
-            cbSearchImport.SelectedIndexChanged -= HandleSearchImport;
 
-            CauseValidation();
-
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
             decimal totalAmount = 0;
 
-            if (tempDetails == null) return;
+            if (tempDetails == null || tempDetails.Count == 0)
+            {
+                MessageBox.Show("សូមបញ្ចូលសម្ភារៈ", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             foreach (DataRowView r in tempDetails)
             {
@@ -149,6 +193,7 @@ namespace Store_Rental_Management_Systems
             }
 
             _importDataAdapter.InsertCommand.Parameters["@ImportDetails"].Value = tempDetails.ToTable();
+            _importDataAdapter.UpdateCommand.Parameters["@ImportDetails"].Value = tempDetails.ToTable();
 
             _importBindingSource.EndEdit();
             try
@@ -162,68 +207,45 @@ namespace Store_Rental_Management_Systems
             }
 
             RefreshComboBox();
-            cbSearchImport.SelectedIndexChanged += HandleSearchImport;
         }
 
-        #endregion
-
-        #region Cause Validation
-        private void CauseValidation()
-        {
-            foreach (var control in _validatingControls)
-            {
-                if (control is TextBox textBox)
-                {
-                    ErrorHelper.ValidateTextBoxInteger(textBox, _errorProvider);
-                }
-                else if (control is DateTimePicker dtp)
-                {
-                    ErrorHelper.ValidateDtpNowOrPast(dtp, _errorProvider);
-                }
-            }
-        }
         #endregion
 
         #region Handle New
         private void HandleBtnNewImportClicked(object? sender, EventArgs e)
         {
+            UnbindWithControls();
+            cbSearchImport.SelectedIndexChanged -= HandleSearchImport;
+
             try
             {
-                cbSearchImport.SelectedIndexChanged -= HandleSearchImport;
-                UnbindWithControls();
-
                 _importBindingSource.AddNew();
 
                 DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
 
+                masterRowView.BeginEdit();
+
                 masterRowView["ImportID"] = -1;
+
                 masterRowView["ImportDate"] = DateTime.Now;
 
                 cbStaffID.SelectedIndex = 0;
-
                 var dataRowView = cbStaffID.SelectedItem as DataRowView;
                 masterRowView["StaffID"] = cbStaffID.SelectedValue;
                 masterRowView["StaffName"] = dataRowView?["StaffName"];
                 masterRowView["StaffPosition"] = dataRowView?["StaffPosition"];
-
 
                 cbSupplierID.SelectedIndex = 0;
                 masterRowView["SupplierID"] = cbSupplierID.SelectedValue;
                 dataRowView = cbSupplierID.SelectedItem as DataRowView;
                 masterRowView["SupplierName"] = dataRowView?["SupplierName"];
 
-                BindToControls();
+                masterRowView.EndEdit();
 
-                int lastRowIndex = cbSearchImport.Items.Count - 1;
-                cbSearchImport.SelectedIndex = lastRowIndex;
-
-                
-                tempDetails = _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.Clone().AsDataView();
+                tempDetails = masterRowView.CreateChildView(RELATIONSHIP_NAME);
 
                 _importDetailBindingSource.DataSource = tempDetails;
-                dgvImportItems.DataSource = _importDetailBindingSource;  
-
-                cbSearchImport.SelectedIndexChanged += HandleSearchImport;
+                dgvImportItems.DataSource = _importDetailBindingSource;
 
                 txtImportQty.Text = string.Empty;
                 cbItemID.SelectedIndex = 0;
@@ -233,29 +255,110 @@ namespace Store_Rental_Management_Systems
             {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            BindToControls();
+            cbSearchImport.SelectedIndexChanged += HandleSearchImport;
+        }
+        #endregion
+
+        #region Handle Search
+        private void HandleSearchImport(object? sender, EventArgs e)
+        {
+            DataRowView? selectedImport = (cbSearchImport.SelectedItem as DataRowView);
+            if (selectedImport != null)
+            {
+                tempDetails = selectedImport.CreateChildView(RELATIONSHIP_NAME);
+
+                _importDetailBindingSource.DataSource = tempDetails;
+                dgvImportItems.DataSource = _importDetailBindingSource;
+            }
+        }
+        #endregion
+
+        #region Handle Cancel Item
+        private void HandleBtnCancelImportItemClicked(object? sender, EventArgs e)
+        {
+            _importDetailBindingSource.CancelEdit();
+        }
+        #endregion
+
+        #region Handle Delete Item
+        private void HandleBtnDeleteImportItemClicked(object? sender, EventArgs e)
+        {
+            if (_importDetailBindingSource.Count == 0) return;
+            if (_importDetailBindingSource.Current == null) return;
+
+            _importDetailBindingSource.RemoveCurrent();
+
+            _importDetailBindingSource.EndEdit();
+        }
+        #endregion
+
+        #region Handle Update Item
+        private void HandleBtnUpdateImportItemClicked(object? sender, EventArgs e)
+        {
+            DataRowView currentItem = (_importDetailBindingSource.Current as DataRowView)!;
+
+            if (currentItem != null)
+            {
+                currentItem["ItemID"] = cbItemID.SelectedValue;
+                currentItem["Description"] = txtItemDescription.Text;
+                currentItem["UnitPrice"] = txtUnitPrice.Text;
+                currentItem["ImportQty"] = txtImportQty.Text;
+                currentItem["Amount"] = txtAmount.Text;
+            }
+
+            try
+            {
+                _importDetailBindingSource.EndEdit();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("សម្ភារៈស្ទួន", "បញ្ខូលសម្ភារៈ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvImportItems.Refresh();
+            }
         }
         #endregion
 
         #region Handle Insert Item
         private void HandleBtnInsertImportItemClicked(object? sender, EventArgs e)
         {
+            DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
+
             object itemID = cbItemID.SelectedValue;
             string description = txtItemDescription.Text;
             string unitPrice = txtUnitPrice.Text;
             string importQty = txtImportQty.Text;
             string amount = txtAmount.Text;
 
-            DataRowView dataRowView = tempDetails!.AddNew();
+            // validate when insert item
+            ErrorHelper.ValidateTextBoxInteger(txtImportQty, _errorProvider);
+            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
-            dataRowView["ImportID"] = -1;
-            
-            dataRowView["Description"] = description;
+            DataRowView? dataRowView = tempDetails?.AddNew();
+                     
+            if (dataRowView == null) return;
+            // reject changes made to existing rows when insert new row otherwise unique constraint violation occurs
+            tempDetails!.Table!.RejectChanges();
+
+            dataRowView.BeginEdit();
+            dataRowView["ImportID"] = masterRowView["ImportID"];
             dataRowView["ItemID"] = itemID;
+            dataRowView["Description"] = description;         
             dataRowView["UnitPrice"] = unitPrice;
             dataRowView["ImportQty"] = importQty;
             dataRowView["Amount"] = amount;
-
-            dataRowView.EndEdit();
+      
+            try
+            {
+                dataRowView.EndEdit();
+            }
+            catch (Exception)
+            {
+                dataRowView.Delete();
+                MessageBox.Show("សម្ភារៈស្ទួន", "បញ្ខូលសម្ភារៈ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvImportItems.Refresh();
+            }
+            tempDetails!.Table!.AcceptChanges();
 
             txtImportQty.Text = string.Empty;
             cbItemID.SelectedIndex = 0;
@@ -310,186 +413,6 @@ namespace Store_Rental_Management_Systems
         }
 
         #endregion
-        private void HandleTextcbItemIDChanged(object? sender, EventArgs e)
-        {
-            string searchID = cbItemID.Text.Trim();
-
-            var dataView = _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.AsDataView();
-
-            if (string.IsNullOrEmpty(searchID))
-            {
-                dataView.RowFilter = string.Empty;
-                cbItemID.DroppedDown = true;
-            }
-            else
-            {
-                dataView.RowFilter = $"CONVERT(ItemID, 'System.String') LIKE '%{searchID}%'";
-
-                if (dataView.Count > 0)
-                {
-                    dataView.RowFilter = string.Empty;
-                }
-            }
-
-            if (dataView.Count > 0)
-            {
-                cbItemID.Select(cbItemID.Text.Length, 0); // Keep the caret at the end
-            }
-            else
-            {
-                cbItemID.DroppedDown = false;
-            }
-
-
-            // Set the original text back to the ComboBox (to keep the user input)
-            cbItemID.Text = searchID;
-            cbItemID.SelectionStart = searchID.Length;
-            cbItemID.SelectionLength = 0;
-
-            //_supplierBindingSource.DataSource = dataView;
-        }
-
-        private void HandleTextCbStaffIDChanged(object? sender, EventArgs e)
-        {
-            string searchID = cbStaffID.Text.Trim();
-
-            var dataView = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
-
-            if (string.IsNullOrEmpty(searchID))
-            {
-                dataView.RowFilter = string.Empty;
-                cbStaffID.DroppedDown = true;
-            }
-            else
-            {
-                dataView.RowFilter = $"CONVERT(StaffID, 'System.String') LIKE '%{searchID}%'";
-
-                if (dataView.Count > 0)
-                {
-                    dataView.RowFilter = string.Empty;
-                }
-            }
-
-            if (dataView.Count > 0)
-            {
-                cbStaffID.Select(cbStaffID.Text.Length, 0); // Keep the caret at the end
-            }
-            else
-            {
-                cbStaffID.DroppedDown = false;
-            }
-
-
-            // Set the original text back to the ComboBox (to keep the user input)
-            cbStaffID.Text = searchID;
-            cbStaffID.SelectionStart = searchID.Length;
-            cbStaffID.SelectionLength = 0;
-
-            //_supplierBindingSource.DataSource = dataView;
-        }
-
-        private void HandleTextCbSupplierIDChanged(object? sender, EventArgs e)
-        {
-            string searchID = cbSupplierID.Text.Trim();
-
-            var dataView = _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.AsDataView();
-
-            if (string.IsNullOrEmpty(searchID))
-            {
-                dataView.RowFilter = string.Empty;
-                cbSupplierID.DroppedDown = true;
-            }
-            else
-            {
-                dataView.RowFilter = $"CONVERT(SupplierID, 'System.String') LIKE '%{searchID}%'";
-
-                if (dataView.Count > 0)
-                {
-                    dataView.RowFilter = string.Empty;
-                }
-            }
-
-            if (dataView.Count > 0)
-            {
-                cbSupplierID.Select(cbSupplierID.Text.Length, 0); // Keep the caret at the end
-            }
-            else
-            {
-                cbSupplierID.DroppedDown = false;
-            }
-
-
-            // Set the original text back to the ComboBox (to keep the user input)
-            cbSupplierID.Text = searchID;
-            cbSupplierID.SelectionStart = searchID.Length;
-            cbSupplierID.SelectionLength = 0;
-
-            //_supplierBindingSource.DataSource = dataView;
-        }
-
-        private void InitCommands()
-        {
-            // import
-            _importDataAdapter.InsertCommand = ImportHelper.CreateInsertOrUpdateImportCommand();
-            _importDataAdapter.SelectCommand = ImportHelper.CreateGetAllImportsCommand();
-            _importDataAdapter.UpdateCommand = ImportHelper.CreateInsertOrUpdateImportCommand();
-
-            // import detail
-            _importDetailDataAdapter.SelectCommand = ImportHelper.CreateGetAllImportDetailsCommand();
-
-            // supplier
-            _supplierDataAdapter.SelectCommand = ImportHelper.CreateGetAllSuppliersForComboBoxCommand();
-
-            // staff
-            _staffDataAdapter.SelectCommand = ImportHelper.CreateGetAllStaffsForComboBoxCommand();
-
-            // item
-            _itemDataAdapter.SelectCommand = ImportHelper.CreateGetAllItemsForComboBoxCommand();
-        }
-
-        #region Bind To Controls
-        private void BindToControls()
-        {
-            if (txtImportID.DataBindings.Count == 0)
-            {
-                txtImportID.DataBindings.Add(new Binding("Text", _importBindingSource, "ImportID"));
-                dtpImportDate.DataBindings.Add(new Binding("Value", _importBindingSource, "ImportDate"));
-                txtTotalAmount.DataBindings.Add(new Binding("Text", _importBindingSource, "TotalAmount"));
-                cbSupplierID.DataBindings.Add(new Binding("SelectedValue", _importBindingSource, "SupplierID"));
-                txtSupplierName.DataBindings.Add(new Binding("Text", _importBindingSource, "SupplierName"));
-                cbStaffID.DataBindings.Add(new Binding("Text", _importBindingSource, "StaffID"));
-                txtStaffName.DataBindings.Add(new Binding("Text", _importBindingSource, "StaffName"));
-                txtStaffPosition.DataBindings.Add(new Binding("Text", _importBindingSource, "StaffPosition"));
-
-                cbItemID.DataBindings.Add(new Binding("SelectedValue", _importDetailBindingSource, "ItemID"));
-                txtItemDescription.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "Description"));
-                txtImportQty.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "ImportQty"));
-                txtUnitPrice.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "UnitPrice"));
-                txtAmount.DataBindings.Add(new Binding("Text", _importDetailBindingSource, "Amount"));
-            }
-            
-        }
-        #endregion
-
-        #region Unbind with controls
-        private void UnbindWithControls()
-        {
-            txtImportID.DataBindings.Clear();
-            dtpImportDate.DataBindings.Clear();
-            txtTotalAmount.DataBindings.Clear();
-            cbSupplierID.DataBindings.Clear();
-            txtSupplierName.DataBindings.Clear();
-            cbStaffID.DataBindings.Clear();
-            txtStaffName.DataBindings.Clear();
-            txtStaffPosition.DataBindings.Clear();
-
-            cbItemID.DataBindings.Clear();
-            txtItemDescription.DataBindings.Clear();
-            txtImportQty.DataBindings.Clear();
-            txtUnitPrice.DataBindings.Clear();
-            txtAmount.DataBindings.Clear();
-        }
-        #endregion
 
         #region Load All Data
         private void LoadAllData()
@@ -512,39 +435,56 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // setting primary keys on tables
+            _storeRentalDataSet.Tables[TABLE_IMPORT_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_IMPORT_NAME]!.Columns["ImportID"]!,
+            };
+            _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.Columns["ImportID"]!,
+                _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.Columns["ItemID"]!,
+            };
+            _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.Columns["SupplierID"]!,
+            };
+            _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]!,
+            };
+            _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.PrimaryKey = new DataColumn[]
+            {
+                _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.Columns["ItemID"]!,
+            };
+
+
             _importBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_IMPORT_NAME]!.AsDataView();
             cbSearchImport.DataSource = _importBindingSource;
             cbSearchImport.DisplayMember = "ImportID";
             cbSearchImport.ValueMember = "ImportID";
 
-            _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.PrimaryKey = new DataColumn[]
-            {
-                _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.Columns["SupplierID"]!,
-            };
+            _importDetailBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.AsDataView();
+   
             _supplierBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_SUPPLIER_NAME]!.AsDataView();
             cbSupplierID.DataSource = _supplierBindingSource;
             cbSupplierID.DisplayMember = "SupplierID";
             cbSupplierID.ValueMember = "SupplierID";
 
-
-            _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[]
-            {
-                _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.Columns["StaffID"]!,
-            };
             _staffBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.AsDataView();
             cbStaffID.DataSource = _staffBindingSource;
             cbStaffID.DisplayMember = "StaffID";
             cbStaffID.ValueMember = "StaffID";
-
-            _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.PrimaryKey = new DataColumn[]
-            {
-                _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.Columns["ItemID"]!,
-            };
+   
             _itemBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_ITEM_NAME]!.AsDataView();
             cbItemID.DataSource = _itemBindingSource;
             cbItemID.DisplayMember = "ItemID";
             cbItemID.ValueMember = "ItemID";
 
+            // create and add relation
+            DataRelation relation = new DataRelation(RELATIONSHIP_NAME, _storeRentalDataSet.Tables[TABLE_IMPORT_NAME]!.Columns["ImportID"]!, _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.Columns["ImportID"]!);
+
+            _storeRentalDataSet.Relations.Add(relation);
 
             HandleCbItemIDSelectedIndexChanged(null, EventArgs.Empty);
             HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
@@ -556,12 +496,6 @@ namespace Store_Rental_Management_Systems
             }
 
             HandleSearchImport(null, EventArgs.Empty);
-
-            tempDetails = _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.AsDataView();
-
-            _importDetailBindingSource.DataSource = tempDetails;
-            dgvImportItems.DataSource = _importDetailBindingSource;
-
         }
         #endregion
 
@@ -589,12 +523,7 @@ namespace Store_Rental_Management_Systems
             }
 
             HandleSearchImport(null, EventArgs.Empty);
-
             BindToControls();
-
-            tempDetails = _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]!.AsDataView();
-            _importDetailBindingSource.DataSource = tempDetails;
-            dgvImportItems.DataSource = _importDetailBindingSource;
         }
         #endregion
     }

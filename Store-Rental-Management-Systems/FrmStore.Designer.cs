@@ -450,12 +450,6 @@
         private Label lblStoreTypeID;
         private TextBox txtWaterLastRecord;
         private ComboBox cbStoreTypeID;
-        private DataGridViewTextBoxColumn storeIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn floorNumberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn electricityLastRecordDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn waterLastRecordDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
-        private DataGridViewTextBoxColumn storeTypeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn StoreID;
         private DataGridViewTextBoxColumn FloorNumber;
         private DataGridViewTextBoxColumn ElectricityLastRecord;

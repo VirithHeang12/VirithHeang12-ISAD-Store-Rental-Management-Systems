@@ -52,7 +52,7 @@ namespace Store_Rental_Management_Systems
             _validatingControls.Add(txtStaffSangkat);
             _validatingControls.Add(txtStaffKhan);
             #endregion
-            
+
             LoadAllStaffs();
             BindWithControls();
 
@@ -506,5 +506,6 @@ namespace Store_Rental_Management_Systems
             }
         }
         #endregion
+
     }
 }

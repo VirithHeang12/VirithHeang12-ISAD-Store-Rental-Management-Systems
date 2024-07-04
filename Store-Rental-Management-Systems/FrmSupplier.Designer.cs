@@ -381,10 +381,6 @@
         private Button btnUpdateSupplier;
         private Label lblSupplierAddress;
         private DataGridView dgvSuppliers;
-        private DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn supplierNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn contactNumberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn supplierAddressDataGridViewTextBoxColumn;
         private MaskedTextBox mtxtContactNumber;
         private DataGridViewTextBoxColumn SupplierID;
         private DataGridViewTextBoxColumn SupplierName;

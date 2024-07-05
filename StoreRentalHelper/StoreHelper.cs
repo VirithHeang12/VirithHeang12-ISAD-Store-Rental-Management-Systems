@@ -20,7 +20,7 @@ namespace StoreRentalHelper
         private const string GET_ALL_STORES = "vGetAllStores";
 
 
-        private const string GET_ALL_STORETYPES_FOR_COMBO_BOX = "v_GetAllStoreTypesForComboBox";
+        private const string GET_ALL_STORETYPES_FOR_COMBO_BOX = "vGetAllStoreTypesForComboBox";
         #endregion
 
         #region Generate Insert Store Command

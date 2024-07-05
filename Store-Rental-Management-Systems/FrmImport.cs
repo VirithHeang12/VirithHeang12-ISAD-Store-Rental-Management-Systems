@@ -15,7 +15,6 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmImport : FrmHome
     {
-        private bool isAdding = false;
         private const string RELATIONSHIP_NAME = "import_importDetail";
 
         private const string TABLE_IMPORT_NAME = "tblImport";

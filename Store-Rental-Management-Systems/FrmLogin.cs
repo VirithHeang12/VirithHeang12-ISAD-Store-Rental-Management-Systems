@@ -65,7 +65,7 @@ namespace Store_Rental_Management_Systems
             {
                 _userDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

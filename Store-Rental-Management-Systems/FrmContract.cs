@@ -35,7 +35,7 @@ namespace Store_Rental_Management_Systems
         private ErrorProvider _errorProvider = new();
 
         private List<Control> _validatingControls = new();
-      
+
         public FrmContract() : base()
         {
 
@@ -93,7 +93,7 @@ namespace Store_Rental_Management_Systems
             // Insurance
             _insuranceDataAdapter.SelectCommand = ContractHelper.CreateGetAllInsurancesForComboBoxCommand();
             // Staff
-            _staffDataAdapter.SelectCommand = ContractHelper.CreateGetAllStaffsForComboBoxCommand();  
+            _staffDataAdapter.SelectCommand = ContractHelper.CreateGetAllStaffsForComboBoxCommand();
         }
         #endregion
 
@@ -133,8 +133,8 @@ namespace Store_Rental_Management_Systems
             {
                 txtContractID.DataBindings.Add("Text", _contractBindingSource, "ContractID");
                 dtpContractDate.DataBindings.Add("Value", _contractBindingSource, "ContractDate");
-                dtpLeaseStartDate.DataBindings.Add("Value", _contractBindingSource, "LeaseStartDate");
-                dtpLeaseEndDate.DataBindings.Add("Value", _contractBindingSource, "LeaseEndDate");
+                dtpLeaseStartDate.DataBindings.Add("Value", _contractBindingSource, "ContractStartDate");
+                dtpLeaseEndDate.DataBindings.Add("Value", _contractBindingSource, "ContractEndDate");
                 dtpNextPaymentDate.DataBindings.Add("Value", _contractBindingSource, "NextPaymentDate");
                 cbCustomerID.DataBindings.Add("SelectedValue", _contractBindingSource, "CustomerID");
                 cbStoreID.DataBindings.Add("SelectedValue", _contractBindingSource, "StoreID");
@@ -143,7 +143,7 @@ namespace Store_Rental_Management_Systems
                 txtInsuranceName.DataBindings.Add("Text", _contractBindingSource, "InsuranceName");
                 txtStaffName.DataBindings.Add("Text", _contractBindingSource, "StaffName");
                 txtStaffPosition.DataBindings.Add("Text", _contractBindingSource, "StaffPosition");
-               
+
             }
         }
 
@@ -157,7 +157,7 @@ namespace Store_Rental_Management_Systems
             dtpLeaseStartDate.DataBindings.Clear();
             dtpLeaseEndDate.DataBindings.Clear();
             dtpNextPaymentDate.DataBindings.Clear();
-            cbCustomerID.DataBindings.Clear();                  
+            cbCustomerID.DataBindings.Clear();
             cbStoreID.DataBindings.Clear();
             cbStaffID.DataBindings.Clear();
             cbInsuranceID.DataBindings.Clear();
@@ -316,7 +316,7 @@ namespace Store_Rental_Management_Systems
                 if (control is DateTimePicker dtp)
                 {
                     ErrorHelper.ValidateDtpNowOrPast(dtp, _errorProvider);
-                }                    
+                }
             }
         }
         #endregion

@@ -33,20 +33,23 @@
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbPaymentDetails = new GroupBox();
-            cbExpenseTypeID = new ComboBox();
-            btnUpdateExpenseType = new Button();
-            btnInsertExpenseType = new Button();
-            txtExpenseQty = new TextBox();
-            lblExpenseQty = new Label();
+            txtAmount = new TextBox();
+            lblAmount = new Label();
+            txtExpenseTypeQty = new TextBox();
+            label3 = new Label();
             txtUnitPrice = new TextBox();
-            lblUnitPrice = new Label();
+            label2 = new Label();
+            btnCancelPaymentExpenseType = new Button();
+            btnDeletePaymentExpenseType = new Button();
+            cbExpenseTypeID = new ComboBox();
+            btnUpdatePaymentExpenseType = new Button();
+            btnInsertPaymentExpenseType = new Button();
             lblExpenseDescription = new Label();
             txtExpenseDescription = new TextBox();
             lblExpenseTypeID = new Label();
-            txtAmount = new TextBox();
-            lblAmount = new Label();
             gbPaymentInformation = new GroupBox();
-            txtStoreID = new TextBox();
+            cbStoreID = new ComboBox();
+            label1 = new Label();
             cbStaffID = new ComboBox();
             txtStaffName = new TextBox();
             lblStaffName = new Label();
@@ -60,26 +63,25 @@
             txtTotalAmount = new TextBox();
             lblTotalAmount = new Label();
             lblPaymentID = new Label();
-            lblStoreID = new Label();
             cbContractID = new ComboBox();
             txtPaidAmount = new TextBox();
             dtpPaymentDate = new DateTimePicker();
             lblPaymentDate = new Label();
             txtPaymentID = new TextBox();
             pnlPaymentManipulation = new Panel();
-            btnCloseFormPayment = new Button();
+            btnCancelPayment = new Button();
             btnNewPayment = new Button();
             btnUpdatePayment = new Button();
             btnInsertPayment = new Button();
             pnlLeftSide = new Panel();
+            cbSearchPayment = new ComboBox();
             dgvExpenses = new DataGridView();
             ExpenseTypeID = new DataGridViewTextBoxColumn();
-            ExpenseDescription = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             UnitPrice = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
+            ExpenseTypeQty = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
             lblSearchPayment = new Label();
-            txtSearchPayment = new TextBox();
             pnlRightSide.SuspendLayout();
             gbPaymentDetails.SuspendLayout();
             gbPaymentInformation.SuspendLayout();
@@ -112,18 +114,20 @@
             // 
             // gbPaymentDetails
             // 
-            gbPaymentDetails.Controls.Add(cbExpenseTypeID);
-            gbPaymentDetails.Controls.Add(btnUpdateExpenseType);
-            gbPaymentDetails.Controls.Add(btnInsertExpenseType);
-            gbPaymentDetails.Controls.Add(txtExpenseQty);
-            gbPaymentDetails.Controls.Add(lblExpenseQty);
+            gbPaymentDetails.Controls.Add(txtAmount);
+            gbPaymentDetails.Controls.Add(lblAmount);
+            gbPaymentDetails.Controls.Add(txtExpenseTypeQty);
+            gbPaymentDetails.Controls.Add(label3);
             gbPaymentDetails.Controls.Add(txtUnitPrice);
-            gbPaymentDetails.Controls.Add(lblUnitPrice);
+            gbPaymentDetails.Controls.Add(label2);
+            gbPaymentDetails.Controls.Add(btnCancelPaymentExpenseType);
+            gbPaymentDetails.Controls.Add(btnDeletePaymentExpenseType);
+            gbPaymentDetails.Controls.Add(cbExpenseTypeID);
+            gbPaymentDetails.Controls.Add(btnUpdatePaymentExpenseType);
+            gbPaymentDetails.Controls.Add(btnInsertPaymentExpenseType);
             gbPaymentDetails.Controls.Add(lblExpenseDescription);
             gbPaymentDetails.Controls.Add(txtExpenseDescription);
             gbPaymentDetails.Controls.Add(lblExpenseTypeID);
-            gbPaymentDetails.Controls.Add(txtAmount);
-            gbPaymentDetails.Controls.Add(lblAmount);
             gbPaymentDetails.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbPaymentDetails.Location = new Point(63, 212);
             gbPaymentDetails.Name = "gbPaymentDetails";
@@ -132,82 +136,126 @@
             gbPaymentDetails.TabStop = false;
             gbPaymentDetails.Text = "សេចក្ដីលម្អិត";
             // 
-            // cbExpenseTypeID
+            // txtAmount
             // 
-            cbExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbExpenseTypeID.FormattingEnabled = true;
-            cbExpenseTypeID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbExpenseTypeID.Location = new Point(267, 38);
-            cbExpenseTypeID.Name = "cbExpenseTypeID";
-            cbExpenseTypeID.Size = new Size(177, 51);
-            cbExpenseTypeID.TabIndex = 49;
+            txtAmount.Enabled = false;
+            txtAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAmount.Location = new Point(730, 93);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(183, 51);
+            txtAmount.TabIndex = 57;
             // 
-            // btnUpdateExpenseType
+            // lblAmount
             // 
-            btnUpdateExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdateExpenseType.ForeColor = Color.White;
-            btnUpdateExpenseType.Location = new Point(1298, 90);
-            btnUpdateExpenseType.Name = "btnUpdateExpenseType";
-            btnUpdateExpenseType.Size = new Size(100, 52);
-            btnUpdateExpenseType.TabIndex = 4;
-            btnUpdateExpenseType.Text = "កែប្រែ";
-            btnUpdateExpenseType.UseVisualStyleBackColor = false;
+            lblAmount.AutoSize = true;
+            lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAmount.Location = new Point(498, 102);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(113, 43);
+            lblAmount.TabIndex = 56;
+            lblAmount.Text = "តម្លៃសរុប:";
             // 
-            // btnInsertExpenseType
+            // txtExpenseTypeQty
             // 
-            btnInsertExpenseType.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnInsertExpenseType.ForeColor = Color.White;
-            btnInsertExpenseType.Location = new Point(1120, 93);
-            btnInsertExpenseType.Name = "btnInsertExpenseType";
-            btnInsertExpenseType.Size = new Size(102, 52);
-            btnInsertExpenseType.TabIndex = 28;
-            btnInsertExpenseType.Text = "បញ្ចូល";
-            btnInsertExpenseType.UseVisualStyleBackColor = false;
+            txtExpenseTypeQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtExpenseTypeQty.Location = new Point(310, 94);
+            txtExpenseTypeQty.Name = "txtExpenseTypeQty";
+            txtExpenseTypeQty.Size = new Size(170, 51);
+            txtExpenseTypeQty.TabIndex = 55;
             // 
-            // txtExpenseQty
+            // label3
             // 
-            txtExpenseQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtExpenseQty.Location = new Point(267, 98);
-            txtExpenseQty.Name = "txtExpenseQty";
-            txtExpenseQty.Size = new Size(177, 51);
-            txtExpenseQty.TabIndex = 27;
-            // 
-            // lblExpenseQty
-            // 
-            lblExpenseQty.AutoSize = true;
-            lblExpenseQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblExpenseQty.Location = new Point(18, 101);
-            lblExpenseQty.Name = "lblExpenseQty";
-            lblExpenseQty.Size = new Size(106, 43);
-            lblExpenseQty.TabIndex = 26;
-            lblExpenseQty.Text = "បរិមាណ:";
+            label3.AutoSize = true;
+            label3.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(18, 96);
+            label3.Name = "label3";
+            label3.Size = new Size(106, 43);
+            label3.TabIndex = 54;
+            label3.Text = "បរិមាណ:";
             // 
             // txtUnitPrice
             // 
             txtUnitPrice.Enabled = false;
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUnitPrice.Location = new Point(1120, 38);
+            txtUnitPrice.Location = new Point(1194, 29);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(278, 51);
-            txtUnitPrice.TabIndex = 21;
+            txtUnitPrice.Size = new Size(204, 51);
+            txtUnitPrice.TabIndex = 53;
             // 
-            // lblUnitPrice
+            // label2
             // 
-            lblUnitPrice.AutoSize = true;
-            lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnitPrice.Location = new Point(947, 46);
-            lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(194, 43);
-            lblUnitPrice.TabIndex = 20;
-            lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
+            label2.AutoSize = true;
+            label2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(955, 34);
+            label2.Name = "label2";
+            label2.Size = new Size(194, 43);
+            label2.TabIndex = 52;
+            label2.Text = "តម្លៃក្នុងមួយឯកតា:";
+            // 
+            // btnCancelPaymentExpenseType
+            // 
+            btnCancelPaymentExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelPaymentExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelPaymentExpenseType.ForeColor = Color.White;
+            btnCancelPaymentExpenseType.Location = new Point(1274, 96);
+            btnCancelPaymentExpenseType.Name = "btnCancelPaymentExpenseType";
+            btnCancelPaymentExpenseType.Size = new Size(124, 52);
+            btnCancelPaymentExpenseType.TabIndex = 51;
+            btnCancelPaymentExpenseType.TabStop = false;
+            btnCancelPaymentExpenseType.Text = "បោះបង់";
+            btnCancelPaymentExpenseType.UseVisualStyleBackColor = false;
+            // 
+            // btnDeletePaymentExpenseType
+            // 
+            btnDeletePaymentExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnDeletePaymentExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeletePaymentExpenseType.ForeColor = Color.White;
+            btnDeletePaymentExpenseType.Location = new Point(1170, 96);
+            btnDeletePaymentExpenseType.Name = "btnDeletePaymentExpenseType";
+            btnDeletePaymentExpenseType.Size = new Size(87, 52);
+            btnDeletePaymentExpenseType.TabIndex = 50;
+            btnDeletePaymentExpenseType.TabStop = false;
+            btnDeletePaymentExpenseType.Text = "លុប";
+            btnDeletePaymentExpenseType.UseVisualStyleBackColor = false;
+            // 
+            // cbExpenseTypeID
+            // 
+            cbExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbExpenseTypeID.FormattingEnabled = true;
+            cbExpenseTypeID.Location = new Point(310, 31);
+            cbExpenseTypeID.Name = "cbExpenseTypeID";
+            cbExpenseTypeID.Size = new Size(170, 51);
+            cbExpenseTypeID.TabIndex = 49;
+            // 
+            // btnUpdatePaymentExpenseType
+            // 
+            btnUpdatePaymentExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnUpdatePaymentExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdatePaymentExpenseType.ForeColor = Color.White;
+            btnUpdatePaymentExpenseType.Location = new Point(1052, 96);
+            btnUpdatePaymentExpenseType.Name = "btnUpdatePaymentExpenseType";
+            btnUpdatePaymentExpenseType.Size = new Size(100, 52);
+            btnUpdatePaymentExpenseType.TabIndex = 4;
+            btnUpdatePaymentExpenseType.Text = "កែប្រែ";
+            btnUpdatePaymentExpenseType.UseVisualStyleBackColor = false;
+            // 
+            // btnInsertPaymentExpenseType
+            // 
+            btnInsertPaymentExpenseType.BackColor = Color.FromArgb(0, 28, 87);
+            btnInsertPaymentExpenseType.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertPaymentExpenseType.ForeColor = Color.White;
+            btnInsertPaymentExpenseType.Location = new Point(935, 96);
+            btnInsertPaymentExpenseType.Name = "btnInsertPaymentExpenseType";
+            btnInsertPaymentExpenseType.Size = new Size(102, 52);
+            btnInsertPaymentExpenseType.TabIndex = 28;
+            btnInsertPaymentExpenseType.Text = "បញ្ចូល";
+            btnInsertPaymentExpenseType.UseVisualStyleBackColor = false;
             // 
             // lblExpenseDescription
             // 
             lblExpenseDescription.AutoSize = true;
             lblExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblExpenseDescription.Location = new Point(482, 47);
+            lblExpenseDescription.Location = new Point(498, 39);
             lblExpenseDescription.Name = "lblExpenseDescription";
             lblExpenseDescription.Size = new Size(226, 43);
             lblExpenseDescription.TabIndex = 18;
@@ -217,9 +265,9 @@
             // 
             txtExpenseDescription.Enabled = false;
             txtExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtExpenseDescription.Location = new Point(681, 38);
+            txtExpenseDescription.Location = new Point(730, 31);
             txtExpenseDescription.Name = "txtExpenseDescription";
-            txtExpenseDescription.Size = new Size(219, 51);
+            txtExpenseDescription.Size = new Size(183, 51);
             txtExpenseDescription.TabIndex = 19;
             // 
             // lblExpenseTypeID
@@ -232,28 +280,10 @@
             lblExpenseTypeID.TabIndex = 16;
             lblExpenseTypeID.Text = "លេខសម្គាល់ប្រភេទចំណាយ:";
             // 
-            // txtAmount
-            // 
-            txtAmount.Enabled = false;
-            txtAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAmount.Location = new Point(681, 98);
-            txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(219, 51);
-            txtAmount.TabIndex = 23;
-            // 
-            // lblAmount
-            // 
-            lblAmount.AutoSize = true;
-            lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAmount.Location = new Point(482, 101);
-            lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(66, 43);
-            lblAmount.TabIndex = 22;
-            lblAmount.Text = "តម្លៃ:";
-            // 
             // gbPaymentInformation
             // 
-            gbPaymentInformation.Controls.Add(txtStoreID);
+            gbPaymentInformation.Controls.Add(cbStoreID);
+            gbPaymentInformation.Controls.Add(label1);
             gbPaymentInformation.Controls.Add(cbStaffID);
             gbPaymentInformation.Controls.Add(txtStaffName);
             gbPaymentInformation.Controls.Add(lblStaffName);
@@ -267,7 +297,6 @@
             gbPaymentInformation.Controls.Add(txtTotalAmount);
             gbPaymentInformation.Controls.Add(lblTotalAmount);
             gbPaymentInformation.Controls.Add(lblPaymentID);
-            gbPaymentInformation.Controls.Add(lblStoreID);
             gbPaymentInformation.Controls.Add(cbContractID);
             gbPaymentInformation.Controls.Add(txtPaidAmount);
             gbPaymentInformation.Controls.Add(dtpPaymentDate);
@@ -281,30 +310,41 @@
             gbPaymentInformation.TabStop = false;
             gbPaymentInformation.Text = "ព័ត៌មានការបង់ថ្លៃ";
             // 
-            // txtStoreID
+            // cbStoreID
             // 
-            txtStoreID.Enabled = false;
-            txtStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStoreID.Location = new Point(188, 140);
-            txtStoreID.Name = "txtStoreID";
-            txtStoreID.Size = new Size(161, 51);
-            txtStoreID.TabIndex = 49;
+            cbStoreID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStoreID.FormattingEnabled = true;
+            cbStoreID.Location = new Point(188, 140);
+            cbStoreID.Name = "cbStoreID";
+            cbStoreID.Size = new Size(128, 51);
+            cbStoreID.TabIndex = 50;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(18, 147);
+            label1.Name = "label1";
+            label1.Size = new Size(175, 43);
+            label1.TabIndex = 49;
+            label1.Text = "លេខសម្គាល់តូប:";
             // 
             // cbStaffID
             // 
+            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
-            cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
-            cbStaffID.Location = new Point(555, 140);
+            cbStaffID.Location = new Point(521, 140);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(166, 51);
+            cbStaffID.Size = new Size(154, 51);
             cbStaffID.TabIndex = 48;
             // 
             // txtStaffName
             // 
             txtStaffName.Enabled = false;
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffName.Location = new Point(928, 140);
+            txtStaffName.Location = new Point(908, 140);
             txtStaffName.Name = "txtStaffName";
             txtStaffName.Size = new Size(161, 51);
             txtStaffName.TabIndex = 47;
@@ -313,7 +353,7 @@
             // 
             lblStaffName.AutoSize = true;
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffName.Location = new Point(730, 143);
+            lblStaffName.Location = new Point(676, 143);
             lblStaffName.Name = "lblStaffName";
             lblStaffName.Size = new Size(226, 43);
             lblStaffName.TabIndex = 46;
@@ -323,16 +363,16 @@
             // 
             txtStaffPosition.Enabled = false;
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtStaffPosition.Location = new Point(1241, 140);
+            txtStaffPosition.Location = new Point(1229, 140);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(157, 51);
+            txtStaffPosition.Size = new Size(169, 51);
             txtStaffPosition.TabIndex = 45;
             // 
             // lblStaffPosition
             // 
             lblStaffPosition.AutoSize = true;
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffPosition.Location = new Point(1104, 143);
+            lblStaffPosition.Location = new Point(1070, 147);
             lblStaffPosition.Name = "lblStaffPosition";
             lblStaffPosition.Size = new Size(153, 43);
             lblStaffPosition.TabIndex = 44;
@@ -342,7 +382,7 @@
             // 
             lblStaffID.AutoSize = true;
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStaffID.Location = new Point(366, 143);
+            lblStaffID.Location = new Point(310, 143);
             lblStaffID.Name = "lblStaffID";
             lblStaffID.Size = new Size(214, 43);
             lblStaffID.TabIndex = 42;
@@ -415,21 +455,11 @@
             lblPaymentID.TabIndex = 34;
             lblPaymentID.Text = "លេខសម្គាល់ការបង់ថ្លៃ:";
             // 
-            // lblStoreID
-            // 
-            lblStoreID.AutoSize = true;
-            lblStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblStoreID.Location = new Point(18, 143);
-            lblStoreID.Name = "lblStoreID";
-            lblStoreID.Size = new Size(175, 43);
-            lblStoreID.TabIndex = 30;
-            lblStoreID.Text = "លេខសម្គាល់តូប:";
-            // 
             // cbContractID
             // 
+            cbContractID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbContractID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbContractID.FormattingEnabled = true;
-            cbContractID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbContractID.Location = new Point(1109, 85);
             cbContractID.Name = "cbContractID";
             cbContractID.Size = new Size(289, 51);
@@ -473,7 +503,7 @@
             // 
             // pnlPaymentManipulation
             // 
-            pnlPaymentManipulation.Controls.Add(btnCloseFormPayment);
+            pnlPaymentManipulation.Controls.Add(btnCancelPayment);
             pnlPaymentManipulation.Controls.Add(btnNewPayment);
             pnlPaymentManipulation.Controls.Add(btnUpdatePayment);
             pnlPaymentManipulation.Controls.Add(btnInsertPayment);
@@ -482,17 +512,17 @@
             pnlPaymentManipulation.Size = new Size(1427, 62);
             pnlPaymentManipulation.TabIndex = 5;
             // 
-            // btnCloseFormPayment
+            // btnCancelPayment
             // 
-            btnCloseFormPayment.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormPayment.ForeColor = Color.White;
-            btnCloseFormPayment.Location = new Point(1246, 7);
-            btnCloseFormPayment.Name = "btnCloseFormPayment";
-            btnCloseFormPayment.Size = new Size(152, 52);
-            btnCloseFormPayment.TabIndex = 3;
-            btnCloseFormPayment.Text = "បិទ";
-            btnCloseFormPayment.UseVisualStyleBackColor = false;
+            btnCancelPayment.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelPayment.ForeColor = Color.White;
+            btnCancelPayment.Location = new Point(1246, 7);
+            btnCancelPayment.Name = "btnCancelPayment";
+            btnCancelPayment.Size = new Size(152, 52);
+            btnCancelPayment.TabIndex = 3;
+            btnCancelPayment.Text = "បោះបង់";
+            btnCancelPayment.UseVisualStyleBackColor = false;
             // 
             // btnNewPayment
             // 
@@ -532,13 +562,25 @@
             // 
             // pnlLeftSide
             // 
+            pnlLeftSide.Controls.Add(cbSearchPayment);
             pnlLeftSide.Controls.Add(dgvExpenses);
             pnlLeftSide.Controls.Add(lblSearchPayment);
-            pnlLeftSide.Controls.Add(txtSearchPayment);
             pnlLeftSide.Location = new Point(266, 643);
             pnlLeftSide.Name = "pnlLeftSide";
             pnlLeftSide.Size = new Size(1800, 354);
             pnlLeftSide.TabIndex = 6;
+            // 
+            // cbSearchPayment
+            // 
+            cbSearchPayment.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSearchPayment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSearchPayment.FormattingEnabled = true;
+            cbSearchPayment.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbSearchPayment.Location = new Point(396, 9);
+            cbSearchPayment.Name = "cbSearchPayment";
+            cbSearchPayment.Size = new Size(342, 51);
+            cbSearchPayment.TabIndex = 41;
+            cbSearchPayment.TabStop = false;
             // 
             // dgvExpenses
             // 
@@ -554,7 +596,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvExpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvExpenses.Columns.AddRange(new DataGridViewColumn[] { ExpenseTypeID, ExpenseDescription, UnitPrice, Quantity, Amount });
+            dgvExpenses.Columns.AddRange(new DataGridViewColumn[] { ExpenseTypeID, Description, UnitPrice, ExpenseTypeQty, Amount });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -581,43 +623,41 @@
             ExpenseTypeID.ReadOnly = true;
             ExpenseTypeID.Width = 201;
             // 
-            // ExpenseDescription
+            // Description
             // 
-            ExpenseDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ExpenseDescription.DataPropertyName = "ExpenseDescription";
-            ExpenseDescription.HeaderText = "ពិព័ណ៌នាការចំណាយ";
-            ExpenseDescription.MinimumWidth = 6;
-            ExpenseDescription.Name = "ExpenseDescription";
-            ExpenseDescription.ReadOnly = true;
+            Description.DataPropertyName = "Description";
+            Description.HeaderText = "ពិព័ណ៌នាការចំណាយ";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            Description.Width = 650;
             // 
             // UnitPrice
             // 
-            UnitPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             UnitPrice.DataPropertyName = "UnitPrice";
             UnitPrice.HeaderText = "តម្លៃក្នុងមួយឯកតា";
-            UnitPrice.MinimumWidth = 6;
+            UnitPrice.MinimumWidth = 8;
             UnitPrice.Name = "UnitPrice";
             UnitPrice.ReadOnly = true;
-            UnitPrice.Width = 153;
+            UnitPrice.Width = 230;
             // 
-            // Quantity
+            // ExpenseTypeQty
             // 
-            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Quantity.DataPropertyName = "Quantity";
-            Quantity.HeaderText = "បរិមាណ";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
-            Quantity.Width = 125;
+            ExpenseTypeQty.DataPropertyName = "ExpenseTypeQty";
+            ExpenseTypeQty.HeaderText = "បរិមាណ";
+            ExpenseTypeQty.MinimumWidth = 8;
+            ExpenseTypeQty.Name = "ExpenseTypeQty";
+            ExpenseTypeQty.ReadOnly = true;
+            ExpenseTypeQty.Width = 150;
             // 
             // Amount
             // 
-            Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Amount.DataPropertyName = "Amount";
-            Amount.HeaderText = "តម្លៃ";
-            Amount.MinimumWidth = 6;
+            Amount.HeaderText = "តម្លៃសរុប";
+            Amount.MinimumWidth = 8;
             Amount.Name = "Amount";
             Amount.ReadOnly = true;
+            Amount.Width = 150;
             // 
             // lblSearchPayment
             // 
@@ -627,13 +667,6 @@
             lblSearchPayment.Size = new Size(335, 43);
             lblSearchPayment.TabIndex = 1;
             lblSearchPayment.Text = "ស្វែងរក (លេខសម្គាល់ការបង់ថ្លៃ):";
-            // 
-            // txtSearchPayment
-            // 
-            txtSearchPayment.Location = new Point(365, 11);
-            txtSearchPayment.Name = "txtSearchPayment";
-            txtSearchPayment.Size = new Size(370, 51);
-            txtSearchPayment.TabIndex = 2;
             // 
             // FrmPayment
             // 
@@ -670,10 +703,6 @@
         private TextBox txtExpenseDescription;
         private Label lblExpenseDescription;
         private Label lblExpenseTypeID;
-        private Label lblAmount;
-        private TextBox txtUnitPrice;
-        private Label lblUnitPrice;
-        private TextBox txtAmount;
         private GroupBox gbPaymentInformation;
         private DateTimePicker dtpPaymentDate;
         private Label lblPaymentDate;
@@ -683,13 +712,10 @@
         private Label lblStaffPosition;
         private TextBox txtStaffPosition;
         private Label lblPaymentID;
-        private TextBox txtExpenseQty;
-        private Label lblExpenseQty;
-        private Button btnUpdateExpenseType;
-        private Button btnInsertExpenseType;
+        private Button btnUpdatePaymentExpenseType;
+        private Button btnInsertPaymentExpenseType;
         private Panel pnlLeftSide;
         private Label lblSearchPayment;
-        private TextBox txtSearchPayment;
         private Label lblPaidAmount;
         private Label lblOwedAmount;
         private TextBox txtTotalAmount;
@@ -698,7 +724,6 @@
         private TextBox txtOwedAmount;
         private GroupBox gbPaymentDetails;
         private TextBox txtPaidAmount;
-        private Label lblStoreID;
         private ComboBox cbContractID;
         private Label lblStaffID;
         private Label lblStaffName;
@@ -706,14 +731,24 @@
         private Button btnUpdatePayment;
         private Button btnInsertPayment;
         private ComboBox cbStaffID;
-        private Button btnCloseFormPayment;
+        private Button btnCancelPayment;
         private DataGridView dgvExpenses;
-        private TextBox txtStoreID;
-        private DataGridViewTextBoxColumn ExpenseTypeID;
-        private DataGridViewTextBoxColumn ExpenseDescription;
-        private DataGridViewTextBoxColumn UnitPrice;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Amount;
         private ComboBox cbExpenseTypeID;
+        private Button btnDeletePaymentExpenseType;
+        private Button btnCancelPaymentExpenseType;
+        private ComboBox cbSearchPayment;
+        private Label label1;
+        private Label label3;
+        private TextBox txtUnitPrice;
+        private Label label2;
+        private TextBox txtAmount;
+        private Label lblAmount;
+        private TextBox txtExpenseTypeQty;
+        private DataGridViewTextBoxColumn ExpenseTypeID;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn UnitPrice;
+        private DataGridViewTextBoxColumn ExpenseTypeQty;
+        private DataGridViewTextBoxColumn Amount;
+        private ComboBox cbStoreID;
     }
 }

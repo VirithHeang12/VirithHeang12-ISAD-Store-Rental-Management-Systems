@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             cbAppointmentStatus = new ComboBox();
             lblTitle = new Label();
             pnlRightSide = new Panel();
@@ -75,19 +75,19 @@
             // cbAppointmentStatus
             // 
             cbAppointmentStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbAppointmentStatus.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbAppointmentStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbAppointmentStatus.FormattingEnabled = true;
             cbAppointmentStatus.Items.AddRange(new object[] { "បានកក់ការណាត់ជួប", "កុំពុងធ្វើការណាតជួប", "លុបការណាត់ជួប" });
             cbAppointmentStatus.Location = new Point(261, 95);
             cbAppointmentStatus.Name = "cbAppointmentStatus";
-            cbAppointmentStatus.Size = new Size(371, 33);
+            cbAppointmentStatus.Size = new Size(371, 44);
             cbAppointmentStatus.TabIndex = 27;
             // 
             // lblTitle
             // 
             lblTitle.BackColor = Color.FromArgb(0, 28, 87);
             lblTitle.Dock = DockStyle.Top;
-            lblTitle.Font = new Font("Microsoft Sans Serif", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("!Khmer OS Siemreap", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
             lblTitle.Location = new Point(266, 80);
             lblTitle.Name = "lblTitle";
@@ -117,7 +117,7 @@
             gbStaffAssignments.Controls.Add(lblStaffName);
             gbStaffAssignments.Controls.Add(txtStaffName);
             gbStaffAssignments.Controls.Add(lblStaffID);
-            gbStaffAssignments.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbStaffAssignments.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             gbStaffAssignments.Location = new Point(63, 164);
             gbStaffAssignments.Name = "gbStaffAssignments";
             gbStaffAssignments.Size = new Size(1427, 147);
@@ -128,7 +128,7 @@
             // btnCancelAppointmentStaff
             // 
             btnCancelAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelAppointmentStaff.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelAppointmentStaff.ForeColor = Color.White;
             btnCancelAppointmentStaff.Location = new Point(1274, 98);
             btnCancelAppointmentStaff.Name = "btnCancelAppointmentStaff";
@@ -141,7 +141,7 @@
             // btnDeleteAppointmentStaff
             // 
             btnDeleteAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
-            btnDeleteAppointmentStaff.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeleteAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteAppointmentStaff.ForeColor = Color.White;
             btnDeleteAppointmentStaff.Location = new Point(1161, 100);
             btnDeleteAppointmentStaff.Name = "btnDeleteAppointmentStaff";
@@ -153,18 +153,18 @@
             // 
             // cbStaffID
             // 
-            cbStaffID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffID.Location = new Point(212, 43);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(261, 33);
+            cbStaffID.Size = new Size(261, 44);
             cbStaffID.TabIndex = 36;
             // 
             // btnUpdateAppointmentStaff
             // 
             btnUpdateAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateAppointmentStaff.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdateAppointmentStaff.ForeColor = Color.White;
             btnUpdateAppointmentStaff.Location = new Point(1048, 100);
             btnUpdateAppointmentStaff.Name = "btnUpdateAppointmentStaff";
@@ -176,7 +176,7 @@
             // btnInsertAppointmentStaff
             // 
             btnInsertAppointmentStaff.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertAppointmentStaff.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertAppointmentStaff.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnInsertAppointmentStaff.ForeColor = Color.White;
             btnInsertAppointmentStaff.Location = new Point(925, 99);
             btnInsertAppointmentStaff.Name = "btnInsertAppointmentStaff";
@@ -188,48 +188,48 @@
             // lblStaffPosition
             // 
             lblStaffPosition.AutoSize = true;
-            lblStaffPosition.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(922, 46);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(110, 25);
+            lblStaffPosition.Size = new Size(131, 36);
             lblStaffPosition.TabIndex = 22;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
             // txtStaffPosition
             // 
             txtStaffPosition.Enabled = false;
-            txtStaffPosition.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1084, 43);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(297, 30);
+            txtStaffPosition.Size = new Size(297, 44);
             txtStaffPosition.TabIndex = 21;
             // 
             // lblStaffName
             // 
             lblStaffName.AutoSize = true;
-            lblStaffName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(502, 46);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(103, 25);
+            lblStaffName.Size = new Size(130, 36);
             lblStaffName.TabIndex = 20;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
             // txtStaffName
             // 
             txtStaffName.Enabled = false;
-            txtStaffName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(649, 43);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(237, 30);
+            txtStaffName.Size = new Size(237, 44);
             txtStaffName.TabIndex = 19;
             // 
             // lblStaffID
             // 
             lblStaffID.AutoSize = true;
-            lblStaffID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(18, 46);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(147, 25);
+            lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 18;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -243,7 +243,7 @@
             gbAppointmentInformation.Controls.Add(lblAppointmentStatus);
             gbAppointmentInformation.Controls.Add(txtAppointmentID);
             gbAppointmentInformation.Controls.Add(lblCustomerID);
-            gbAppointmentInformation.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            gbAppointmentInformation.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             gbAppointmentInformation.Location = new Point(64, 4);
             gbAppointmentInformation.Name = "gbAppointmentInformation";
             gbAppointmentInformation.Size = new Size(1427, 155);
@@ -253,69 +253,69 @@
             // 
             // cbCustomerID
             // 
-            cbCustomerID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbCustomerID.FormattingEnabled = true;
             cbCustomerID.Items.AddRange(new object[] { "202400", "202401" });
             cbCustomerID.Location = new Point(960, 95);
             cbCustomerID.Name = "cbCustomerID";
-            cbCustomerID.Size = new Size(421, 33);
+            cbCustomerID.Size = new Size(421, 44);
             cbCustomerID.TabIndex = 35;
             // 
             // lblAppointmentID
             // 
             lblAppointmentID.AutoSize = true;
-            lblAppointmentID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAppointmentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentID.Location = new Point(18, 41);
             lblAppointmentID.Name = "lblAppointmentID";
-            lblAppointmentID.Size = new Size(176, 25);
+            lblAppointmentID.Size = new Size(223, 36);
             lblAppointmentID.TabIndex = 34;
             lblAppointmentID.Text = "លេខសម្គាល់ការណាត់ជួប:";
             // 
             // dtpAppointmentDate
             // 
-            dtpAppointmentDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpAppointmentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpAppointmentDate.Format = DateTimePickerFormat.Short;
             dtpAppointmentDate.Location = new Point(960, 35);
             dtpAppointmentDate.Name = "dtpAppointmentDate";
-            dtpAppointmentDate.Size = new Size(421, 30);
+            dtpAppointmentDate.Size = new Size(421, 44);
             dtpAppointmentDate.TabIndex = 20;
             // 
             // lblAppointmentDate
             // 
             lblAppointmentDate.AutoSize = true;
-            lblAppointmentDate.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAppointmentDate.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentDate.Location = new Point(760, 39);
             lblAppointmentDate.Name = "lblAppointmentDate";
-            lblAppointmentDate.Size = new Size(155, 25);
+            lblAppointmentDate.Size = new Size(191, 36);
             lblAppointmentDate.TabIndex = 19;
             lblAppointmentDate.Text = "កាលបរិច្ឆេទណាត់ជួប:";
             // 
             // lblAppointmentStatus
             // 
             lblAppointmentStatus.AutoSize = true;
-            lblAppointmentStatus.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAppointmentStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblAppointmentStatus.Location = new Point(19, 98);
             lblAppointmentStatus.Name = "lblAppointmentStatus";
-            lblAppointmentStatus.Size = new Size(136, 25);
+            lblAppointmentStatus.Size = new Size(171, 36);
             lblAppointmentStatus.TabIndex = 4;
             lblAppointmentStatus.Text = "ស្ថានភាពណាត់ជួប:";
             // 
             // txtAppointmentID
             // 
             txtAppointmentID.Enabled = false;
-            txtAppointmentID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAppointmentID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtAppointmentID.Location = new Point(261, 33);
             txtAppointmentID.Name = "txtAppointmentID";
-            txtAppointmentID.Size = new Size(371, 30);
+            txtAppointmentID.Size = new Size(371, 44);
             txtAppointmentID.TabIndex = 3;
             // 
             // lblCustomerID
             // 
             lblCustomerID.AutoSize = true;
-            lblCustomerID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblCustomerID.Location = new Point(760, 98);
             lblCustomerID.Name = "lblCustomerID";
-            lblCustomerID.Size = new Size(157, 25);
+            lblCustomerID.Size = new Size(191, 36);
             lblCustomerID.TabIndex = 6;
             lblCustomerID.Text = "លេខសម្គាល់អតិថិជន:";
             // 
@@ -333,7 +333,7 @@
             // btnCancelFormAppointment
             // 
             btnCancelFormAppointment.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelFormAppointment.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelFormAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelFormAppointment.ForeColor = Color.White;
             btnCancelFormAppointment.Location = new Point(1231, 0);
             btnCancelFormAppointment.Name = "btnCancelFormAppointment";
@@ -345,7 +345,7 @@
             // btnNewAppointment
             // 
             btnNewAppointment.BackColor = Color.FromArgb(0, 28, 87);
-            btnNewAppointment.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewAppointment.ForeColor = Color.White;
             btnNewAppointment.Location = new Point(835, 3);
             btnNewAppointment.Name = "btnNewAppointment";
@@ -357,7 +357,7 @@
             // btnUpdateAppointment
             // 
             btnUpdateAppointment.BackColor = Color.FromArgb(0, 28, 87);
-            btnUpdateAppointment.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdateAppointment.ForeColor = Color.White;
             btnUpdateAppointment.Location = new Point(442, 3);
             btnUpdateAppointment.Name = "btnUpdateAppointment";
@@ -369,7 +369,7 @@
             // btnInsertAppointment
             // 
             btnInsertAppointment.BackColor = Color.FromArgb(0, 28, 87);
-            btnInsertAppointment.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInsertAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnInsertAppointment.ForeColor = Color.White;
             btnInsertAppointment.Location = new Point(49, 0);
             btnInsertAppointment.Name = "btnInsertAppointment";
@@ -391,12 +391,12 @@
             // cbSearchAppointment
             // 
             cbSearchAppointment.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSearchAppointment.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSearchAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbSearchAppointment.FormattingEnabled = true;
             cbSearchAppointment.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbSearchAppointment.Location = new Point(338, 14);
             cbSearchAppointment.Name = "cbSearchAppointment";
-            cbSearchAppointment.Size = new Size(342, 33);
+            cbSearchAppointment.Size = new Size(342, 44);
             cbSearchAppointment.TabIndex = 41;
             cbSearchAppointment.TabStop = false;
             // 
@@ -405,24 +405,24 @@
             dgvStaffAssignments.AllowUserToAddRows = false;
             dgvStaffAssignments.AllowUserToDeleteRows = false;
             dgvStaffAssignments.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvStaffAssignments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvStaffAssignments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvStaffAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { StaffID, StaffName, StaffPosition });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvStaffAssignments.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvStaffAssignments.DefaultCellStyle = dataGridViewCellStyle4;
             dgvStaffAssignments.Location = new Point(63, 74);
             dgvStaffAssignments.Name = "dgvStaffAssignments";
             dgvStaffAssignments.ReadOnly = true;
@@ -464,7 +464,7 @@
             lblSearchAppointment.AutoSize = true;
             lblSearchAppointment.Location = new Point(64, 17);
             lblSearchAppointment.Name = "lblSearchAppointment";
-            lblSearchAppointment.Size = new Size(241, 25);
+            lblSearchAppointment.Size = new Size(311, 36);
             lblSearchAppointment.TabIndex = 1;
             lblSearchAppointment.Text = "ស្វែងរក (លេខសម្គាល់ការណាត់ជួប):";
             // 

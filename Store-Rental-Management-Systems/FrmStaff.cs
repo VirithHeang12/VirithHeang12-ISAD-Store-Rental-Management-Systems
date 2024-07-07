@@ -52,7 +52,7 @@ namespace Store_Rental_Management_Systems
             _validatingControls.Add(txtStaffSangkat);
             _validatingControls.Add(txtStaffKhan);
             #endregion
-            
+
             LoadAllStaffs();
             BindWithControls();
 
@@ -339,7 +339,7 @@ namespace Store_Rental_Management_Systems
                 _staffDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
                 _staffBindingSource.ResetBindings(false);
             }
-            catch (Exceptio​n ex)
+            catch (Exceptio​n)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -478,6 +478,7 @@ namespace Store_Rental_Management_Systems
             }
 
             lbStaff.SelectedIndex = 0;
+
             BindWithControls();
             txtSearchStaff.Text = string.Empty;
         }
@@ -505,5 +506,6 @@ namespace Store_Rental_Management_Systems
             }
         }
         #endregion
+
     }
 }

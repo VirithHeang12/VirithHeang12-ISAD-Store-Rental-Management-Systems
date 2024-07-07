@@ -15,9 +15,9 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewInsurance";
-        private const string UPDATE = "sp_UpdateInsurance";
-        private const string GET_ALL = "v_GetAllInsurances";
+        private const string INSERT = "spInsertNewInsurance";
+        private const string UPDATE = "spUpdateInsurance";
+        private const string GET_ALL = "vGetAllInsurances";
         #endregion
 
         #region Generate Insert Insurance Command

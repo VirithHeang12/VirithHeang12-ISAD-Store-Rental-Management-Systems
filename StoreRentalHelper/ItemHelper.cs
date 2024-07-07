@@ -16,9 +16,9 @@ namespace StoreRentalHelper
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewItem";
-        private const string UPDATE = "sp_UpdateItem";
-        private const string GET_ALL = "v_GetAllItems";
+        private const string INSERT = "spInsertNewItem";
+        private const string UPDATE = "spUpdateItem";
+        private const string GET_ALL = "vGetAllItems";
         #endregion
 
         #region Generate Insert Item Command

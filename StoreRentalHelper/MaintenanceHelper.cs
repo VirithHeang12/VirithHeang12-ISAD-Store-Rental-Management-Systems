@@ -8,40 +8,41 @@ using System.Threading.Tasks;
 
 namespace StoreRentalHelper
 {
-    public static class ImportHelper
+    public static class MaintenanceHelper
     {
         #region Connection
         public static SqlConnection Connection { get; set; } = default!;
         #endregion
 
         #region Procedure and View Names
-        private const string INSERT_IMPORT = "spInsertNewOrUpdateImport";
-        private const string GET_ALL_IMPORTS = "vGetAllImports";
-        private const string GET_ALL_IMPORT_DETAILS = "vGetAllImportDetails";
+        private const string INSERT_MAINTENANCE = "spInsertNewOrUpdateMaintenance";
+        private const string GET_ALL_MAINTENANCES = "vGetAllMaintenances";
+        private const string GET_ALL_MAINTENANCE_DETAILS = "vGetAllMaintenanceDetails";
 
-        private const string GET_ALL_SUPPLIERS_FOR_COMBO_BOX = "vGetAllSuppliersForComboBox";
+        private const string GET_ALL_STORES_FOR_COMBO_BOX = "vGetAllStoresForComboBox";
+        private const string GET_ALL_CONTRACTS_FOR_COMBO_BOX = "vGetAllContractsForComboBox";
         private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "vGetAllStaffsForComboBox";
         private const string GET_ALL_ITEMS_FOR_COMBO_BOX = "vGetAllItemsForComboBox";
         #endregion
 
-        #region Generate Insert or Update Import Command
-        public static SqlCommand CreateInsertOrUpdateImportCommand()
+        #region Generate Insert or Update Maintenance Command
+        public static SqlCommand CreateInsertOrUpdateMaintenanceCommand()
         {
-            var cmd = new SqlCommand(INSERT_IMPORT, Connection);
+            var cmd = new SqlCommand(INSERT_MAINTENANCE, Connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@ImportID", SqlDbType.Int)
+            cmd.Parameters.Add(new SqlParameter("@MaintenanceID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ImportID"
+                SourceColumn = "MaintenanceID"
             });
-            cmd.Parameters.Add(new SqlParameter("@ImportDate", SqlDbType.Date)
+            cmd.Parameters.Add(new SqlParameter("@MaintenanceDate", SqlDbType.Date)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "ImportDate"
+                SourceColumn = "MaintenanceDate"
             });
             cmd.Parameters.Add(new SqlParameter("@TotalAmount", SqlDbType.Money)
             {
@@ -50,20 +51,35 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "TotalAmount"
             });
-            cmd.Parameters.Add(new SqlParameter("@SupplierID", SqlDbType.Int)
+            cmd.Parameters.Add(new SqlParameter("@PaidAmount", SqlDbType.Money)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SupplierID"
+                SourceColumn = "PaidAmount"
             });
-            cmd.Parameters.Add(new SqlParameter("@SupplierName", SqlDbType.NVarChar, 50)
+            cmd.Parameters.Add(new SqlParameter("@OwedAmount", SqlDbType.Money)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "SupplierName"
+                SourceColumn = "OwedAmount"
             });
+            cmd.Parameters.Add(new SqlParameter("@StoreID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "StoreID"
+            });
+            cmd.Parameters.Add(new SqlParameter("@ContractID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Input,
+                IsNullable = false,
+                SourceVersion = DataRowVersion.Current,
+                SourceColumn = "ContractID"
+            });
+
             cmd.Parameters.Add(new SqlParameter("@StaffID", SqlDbType.Int)
             {
                 Direction = ParameterDirection.Input,
@@ -85,7 +101,7 @@ namespace StoreRentalHelper
                 SourceVersion = DataRowVersion.Current,
                 SourceColumn = "StaffPosition"
             });
-            cmd.Parameters.Add(new SqlParameter("@ImportDetails", SqlDbType.Structured)
+            cmd.Parameters.Add(new SqlParameter("@MaintenanceDetails", SqlDbType.Structured)
             {
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
@@ -94,32 +110,42 @@ namespace StoreRentalHelper
         }
         #endregion
 
-        #region Generate Get All Imports Command
-        public static SqlCommand CreateGetAllImportsCommand()
+        #region Generate Get All Maintenances Command
+        public static SqlCommand CreateGetAllMaintenancesCommand()
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_IMPORTS}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_MAINTENANCES}";
             return cmd;
         }
         #endregion
 
-        #region Generate Get All Import Details Command
-        public static SqlCommand CreateGetAllImportDetailsCommand()
+        #region Generate Get All Maintenance Details Command
+        public static SqlCommand CreateGetAllMaintenanceDetailsCommand()
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_IMPORT_DETAILS}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_MAINTENANCE_DETAILS}";
             return cmd;
         }
         #endregion
 
-        #region Generate Get All Suppliers For Combo Box Command
-        public static SqlCommand CreateGetAllSuppliersForComboBoxCommand()
+        #region Generate Get All Stores For Combo Box Command
+        public static SqlCommand CreateGetAllStoresForComboBoxCommand()
         {
             var cmd = new SqlCommand();
             cmd.Connection = Connection;
-            cmd.CommandText = $"SELECT * FROM {GET_ALL_SUPPLIERS_FOR_COMBO_BOX}";
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_STORES_FOR_COMBO_BOX}";
+            return cmd;
+        }
+        #endregion
+
+        #region Generate Get All Contracts For Combo Box Command
+        public static SqlCommand CreateGetAllContractsForComboBoxCommand()
+        {
+            var cmd = new SqlCommand();
+            cmd.Connection = Connection;
+            cmd.CommandText = $"SELECT * FROM {GET_ALL_CONTRACTS_FOR_COMBO_BOX}";
             return cmd;
         }
         #endregion

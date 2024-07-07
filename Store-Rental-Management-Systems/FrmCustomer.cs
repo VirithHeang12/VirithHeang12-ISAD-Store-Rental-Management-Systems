@@ -307,7 +307,7 @@ namespace Store_Rental_Management_Systems
                 _customerDataAdapter.Update(_storeRentalDataSet, TABLE_NAME);
                 _customerBindingSource.ResetBindings(false);
             }
-            catch (Exceptio​n ex)
+            catch (Exceptio​n)
             {
                 MessageBox.Show("ការបញ្ខូលឬកែប្រែមិនបានសម្រេច", "បញ្ខូលឬកែប្រែ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -358,55 +358,6 @@ namespace Store_Rental_Management_Systems
             }
         }
         #endregion
-
-        //private void HandleBtnCustomerPhotoClicked(object? sender, EventArgs e)
-        //{
-        //    OpenFileDialog openFileDialog = new OpenFileDialog
-        //    {
-        //        InitialDirectory = "c:\\",
-        //        Filter = "Image Files|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tiff;*.svg",
-        //        FilterIndex = 1, // Default filter index
-        //        RestoreDirectory = true
-        //    };
-
-        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        try
-        //        {
-        //            // Get the path of the selected file
-        //            string selectedFilePath = openFileDialog.FileName;
-
-        //            // Load the selected image into the PictureBox
-        //            pbCustomerPhoto.Image = System.Drawing.Image.FromFile(selectedFilePath);
-        //            pbCustomerPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //            // Ensure _customerBindingSource.Current is not null and is a DataRowView
-        //            if (_customerBindingSource.Current is DataRowView newRowView)
-        //            {
-        //                // Check if the PictureBox image is not null
-        //                if (pbCustomerPhoto.Image != null)
-        //                {
-        //                    // Convert the PictureBox image to a Bitmap and then to a byte array
-        //                    newRowView["Photo"] = BitmapToByteArray(new Bitmap(pbCustomerPhoto.Image));
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show("Customer photo is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Current item is not a DataRowView.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            // Handle any unexpected exceptions
-        //            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //}
-
 
         #region Cause Validation
         private void CauseValidation()

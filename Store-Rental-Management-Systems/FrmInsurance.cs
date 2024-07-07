@@ -41,7 +41,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllInsurances();
             BindWithControls();
-            
+
 
             #region Event Registrations
             btnNewInsurance.Click += HandleBtnNewInsuranceClicked;
@@ -201,7 +201,8 @@ namespace Store_Rental_Management_Systems
             try
             {
                 _insuranceDataAdapter.Fill(_storeRentalDataSet);
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -223,7 +224,7 @@ namespace Store_Rental_Management_Systems
             catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }         
+            }
         }
         #endregion
     }

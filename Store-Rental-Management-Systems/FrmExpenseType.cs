@@ -39,7 +39,7 @@ namespace Store_Rental_Management_Systems
 
             LoadAllExpenseTypes();
             BindWithControls();
-            
+
 
             #region Event Registrations
             btnNewExpenseType.Click += HandleBtnNewExpenseTypeClicked;
@@ -62,7 +62,7 @@ namespace Store_Rental_Management_Systems
         {
             KeyboardLayoutHelper.SwitchToKhmerKeyboard();
         }
-     
+
         #endregion
 
         #region Bind With Controls

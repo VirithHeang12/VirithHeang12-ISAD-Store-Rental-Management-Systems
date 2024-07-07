@@ -186,7 +186,7 @@ namespace Store_Rental_Management_Systems
                 dgvStores.CurrentCell = dgvStores.Rows[lastRowIndex].Cells[0];
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

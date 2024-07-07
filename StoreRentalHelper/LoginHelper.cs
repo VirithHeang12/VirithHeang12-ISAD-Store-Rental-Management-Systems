@@ -16,7 +16,7 @@ namespace StoreRentalHelper
         #endregion
 
         #region View Name
-        private const string GET_ALL = "v_GetAllUsersForAuthentication";
+        private const string GET_ALL = "vGetAllUsersForAuthentication";
         #endregion
 
         #region Generate Get All Users Command

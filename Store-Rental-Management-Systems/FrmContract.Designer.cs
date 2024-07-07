@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchContract = new Label();
             txtSearchContract = new TextBox();
@@ -36,7 +35,7 @@
             lbContract = new ListBox();
             pnlRightSide = new Panel();
             pnlContractManipulation = new Panel();
-            btnCloseFormContract = new Button();
+            btnCancelContract = new Button();
             btnNewContract = new Button();
             btnUpdateContract = new Button();
             btnInsertContract = new Button();
@@ -130,7 +129,7 @@
             // 
             // pnlContractManipulation
             // 
-            pnlContractManipulation.Controls.Add(btnCloseFormContract);
+            pnlContractManipulation.Controls.Add(btnCancelContract);
             pnlContractManipulation.Controls.Add(btnNewContract);
             pnlContractManipulation.Controls.Add(btnUpdateContract);
             pnlContractManipulation.Controls.Add(btnInsertContract);
@@ -139,17 +138,17 @@
             pnlContractManipulation.Size = new Size(1069, 101);
             pnlContractManipulation.TabIndex = 5;
             // 
-            // btnCloseFormContract
+            // btnCancelContract
             // 
-            btnCloseFormContract.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormContract.ForeColor = Color.White;
-            btnCloseFormContract.Location = new Point(871, 20);
-            btnCloseFormContract.Name = "btnCloseFormContract";
-            btnCloseFormContract.Size = new Size(152, 52);
-            btnCloseFormContract.TabIndex = 3;
-            btnCloseFormContract.Text = "បិទ";
-            btnCloseFormContract.UseVisualStyleBackColor = false;
+            btnCancelContract.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelContract.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelContract.ForeColor = Color.White;
+            btnCancelContract.Location = new Point(871, 20);
+            btnCancelContract.Name = "btnCancelContract";
+            btnCancelContract.Size = new Size(152, 52);
+            btnCancelContract.TabIndex = 3;
+            btnCancelContract.Text = "បោះបង់";
+            btnCancelContract.UseVisualStyleBackColor = false;
             // 
             // btnNewContract
             // 
@@ -223,19 +222,19 @@
             // 
             // txtStaffPosition
             // 
-            txtStaffPosition.Enabled = false;
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(805, 338);
             txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.ReadOnly = true;
             txtStaffPosition.Size = new Size(220, 44);
             txtStaffPosition.TabIndex = 39;
             // 
             // txtStaffName
             // 
-            txtStaffName.Enabled = false;
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(256, 338);
             txtStaffName.Name = "txtStaffName";
+            txtStaffName.ReadOnly = true;
             txtStaffName.Size = new Size(242, 44);
             txtStaffName.TabIndex = 38;
             // 
@@ -261,9 +260,9 @@
             // 
             // cbInsuranceID
             // 
+            cbInsuranceID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbInsuranceID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbInsuranceID.FormattingEnabled = true;
-            cbInsuranceID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbInsuranceID.Location = new Point(805, 215);
             cbInsuranceID.Name = "cbInsuranceID";
             cbInsuranceID.Size = new Size(220, 44);
@@ -281,9 +280,9 @@
             // 
             // cbCustomerID
             // 
+            cbCustomerID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCustomerID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbCustomerID.FormattingEnabled = true;
-            cbCustomerID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbCustomerID.Location = new Point(256, 215);
             cbCustomerID.Name = "cbCustomerID";
             cbCustomerID.Size = new Size(242, 44);
@@ -297,6 +296,7 @@
             dtpNextPaymentDate.Name = "dtpNextPaymentDate";
             dtpNextPaymentDate.Size = new Size(242, 44);
             dtpNextPaymentDate.TabIndex = 32;
+            dtpNextPaymentDate.Tag = "pof";
             // 
             // lblNextPaymentDate
             // 
@@ -316,6 +316,7 @@
             dtpLeaseEndDate.Name = "dtpLeaseEndDate";
             dtpLeaseEndDate.Size = new Size(220, 44);
             dtpLeaseEndDate.TabIndex = 30;
+            dtpLeaseEndDate.Tag = "pof";
             // 
             // lblLeaseEndDate
             // 
@@ -335,6 +336,7 @@
             dtpLeaseStartDate.Name = "dtpLeaseStartDate";
             dtpLeaseStartDate.Size = new Size(242, 44);
             dtpLeaseStartDate.TabIndex = 28;
+            dtpLeaseStartDate.Tag = "pof";
             // 
             // lblLeaseStartDate
             // 
@@ -368,10 +370,10 @@
             // 
             // txtInsuranceName
             // 
-            txtInsuranceName.Enabled = false;
             txtInsuranceName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtInsuranceName.Location = new Point(256, 276);
             txtInsuranceName.Name = "txtInsuranceName";
+            txtInsuranceName.ReadOnly = true;
             txtInsuranceName.Size = new Size(242, 44);
             txtInsuranceName.TabIndex = 17;
             // 
@@ -387,9 +389,9 @@
             // 
             // cbStoreID
             // 
+            cbStoreID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStoreID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStoreID.FormattingEnabled = true;
-            cbStoreID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbStoreID.Location = new Point(805, 154);
             cbStoreID.Name = "cbStoreID";
             cbStoreID.Size = new Size(220, 44);
@@ -442,6 +444,7 @@
             dtpContractDate.Name = "dtpContractDate";
             dtpContractDate.Size = new Size(220, 44);
             dtpContractDate.TabIndex = 11;
+            dtpContractDate.Tag = "pop";
             // 
             // lblCustomerID
             // 
@@ -486,7 +489,6 @@
         private Label lblContractID;
         private TextBox txtContractID;
         private DateTimePicker dtpContractDate;
-        private ComboBox cbStaffPosition;
         private Label lblStaffPosition;
         private Label lblCustomerID;
         private GroupBox gbContractInformation;
@@ -495,7 +497,7 @@
         private Label lblStaffName;
         private Panel pnlContractManipulation;
         private Button btnInsertContract;
-        private Button btnCloseFormContract;
+        private Button btnCancelContract;
         private Button btnNewContract;
         private Button btnUpdateContract;
         private Label lblContractStartDate;

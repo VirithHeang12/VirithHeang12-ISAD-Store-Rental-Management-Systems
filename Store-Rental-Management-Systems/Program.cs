@@ -53,8 +53,11 @@ namespace Store_Rental_Management_Systems
             SalaryPaymentHelper.Connection = Connection;
             StoreHelper.Connection = Connection;
             LoginHelper.Connection = Connection;
+            ContractHelper.Connection = Connection;
             CustomerHelper.Connection = Connection;
-
+            HomeDesignHelper.Connection = Connection;
+            MaintenanceHelper.Connection = Connection;  
+            StaffAssignmentHelper.Connection = Connection;
         }
     }
 }

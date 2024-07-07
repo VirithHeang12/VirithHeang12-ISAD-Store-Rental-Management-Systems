@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             pnlRightSide = new Panel();
             gbImportDetails = new GroupBox();
+            btnCancelImportItem = new Button();
+            btnDeleteImportItem = new Button();
             txtAmount = new TextBox();
             lblAmount = new Label();
             cbItemID = new ComboBox();
@@ -42,9 +46,7 @@
             lblImportQty = new Label();
             lblItemID = new Label();
             lblUnitPrice = new Label();
-            txtCategory = new TextBox();
             txtUnitPrice = new TextBox();
-            lblCategory = new Label();
             gbImportInformation = new GroupBox();
             lblStaffID = new Label();
             lblSupplierName = new Label();
@@ -63,7 +65,7 @@
             lblImportDate = new Label();
             txtImportID = new TextBox();
             pnlImportManipulation = new Panel();
-            btnCloseFormImport = new Button();
+            btnCancelImport = new Button();
             btnNewImport = new Button();
             btnUpdateImport = new Button();
             btnInsertImport = new Button();
@@ -109,6 +111,8 @@
             // 
             // gbImportDetails
             // 
+            gbImportDetails.Controls.Add(btnCancelImportItem);
+            gbImportDetails.Controls.Add(btnDeleteImportItem);
             gbImportDetails.Controls.Add(txtAmount);
             gbImportDetails.Controls.Add(lblAmount);
             gbImportDetails.Controls.Add(cbItemID);
@@ -120,9 +124,7 @@
             gbImportDetails.Controls.Add(lblImportQty);
             gbImportDetails.Controls.Add(lblItemID);
             gbImportDetails.Controls.Add(lblUnitPrice);
-            gbImportDetails.Controls.Add(txtCategory);
             gbImportDetails.Controls.Add(txtUnitPrice);
-            gbImportDetails.Controls.Add(lblCategory);
             gbImportDetails.Font = new Font("!Khmer OS Siemreap", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             gbImportDetails.Location = new Point(63, 214);
             gbImportDetails.Name = "gbImportDetails";
@@ -131,20 +133,48 @@
             gbImportDetails.TabStop = false;
             gbImportDetails.Text = "សេចក្ដីលម្អិត";
             // 
+            // btnCancelImportItem
+            // 
+            btnCancelImportItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelImportItem.ForeColor = Color.White;
+            btnCancelImportItem.Location = new Point(1279, 85);
+            btnCancelImportItem.Name = "btnCancelImportItem";
+            btnCancelImportItem.Size = new Size(102, 52);
+            btnCancelImportItem.TabIndex = 34;
+            btnCancelImportItem.TabStop = false;
+            btnCancelImportItem.Text = "បោះបង់";
+            btnCancelImportItem.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteImportItem
+            // 
+            btnDeleteImportItem.BackColor = Color.FromArgb(0, 28, 87);
+            btnDeleteImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDeleteImportItem.ForeColor = Color.White;
+            btnDeleteImportItem.Location = new Point(1181, 86);
+            btnDeleteImportItem.Name = "btnDeleteImportItem";
+            btnDeleteImportItem.Size = new Size(87, 52);
+            btnDeleteImportItem.TabIndex = 33;
+            btnDeleteImportItem.TabStop = false;
+            btnDeleteImportItem.Text = "លុប";
+            btnDeleteImportItem.UseVisualStyleBackColor = false;
+            // 
             // txtAmount
             // 
             txtAmount.Enabled = false;
             txtAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAmount.Location = new Point(843, 98);
+            txtAmount.Location = new Point(710, 98);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(280, 44);
+            txtAmount.ReadOnly = true;
+            txtAmount.Size = new Size(219, 44);
             txtAmount.TabIndex = 32;
+            txtAmount.TabStop = false;
             // 
             // lblAmount
             // 
             lblAmount.AutoSize = true;
             lblAmount.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAmount.Location = new Point(762, 101);
+            lblAmount.Location = new Point(482, 101);
             lblAmount.Name = "lblAmount";
             lblAmount.Size = new Size(55, 36);
             lblAmount.TabIndex = 31;
@@ -152,23 +182,25 @@
             // 
             // cbItemID
             // 
+            cbItemID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbItemID.FormattingEnabled = true;
             cbItemID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbItemID.Location = new Point(199, 35);
             cbItemID.Name = "cbItemID";
             cbItemID.Size = new Size(263, 44);
-            cbItemID.TabIndex = 30;
+            cbItemID.TabIndex = 4;
             // 
             // btnUpdateImportItem
             // 
             btnUpdateImportItem.BackColor = Color.FromArgb(0, 28, 87);
             btnUpdateImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateImportItem.ForeColor = Color.White;
-            btnUpdateImportItem.Location = new Point(1281, 93);
+            btnUpdateImportItem.Location = new Point(1075, 86);
             btnUpdateImportItem.Name = "btnUpdateImportItem";
             btnUpdateImportItem.Size = new Size(100, 52);
             btnUpdateImportItem.TabIndex = 4;
+            btnUpdateImportItem.TabStop = false;
             btnUpdateImportItem.Text = "កែប្រែ";
             btnUpdateImportItem.UseVisualStyleBackColor = false;
             // 
@@ -177,20 +209,21 @@
             btnInsertImportItem.BackColor = Color.FromArgb(0, 28, 87);
             btnInsertImportItem.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnInsertImportItem.ForeColor = Color.White;
-            btnInsertImportItem.Location = new Point(1151, 93);
+            btnInsertImportItem.Location = new Point(967, 86);
             btnInsertImportItem.Name = "btnInsertImportItem";
             btnInsertImportItem.Size = new Size(102, 52);
             btnInsertImportItem.TabIndex = 28;
+            btnInsertImportItem.TabStop = false;
             btnInsertImportItem.Text = "បញ្ចូល";
             btnInsertImportItem.UseVisualStyleBackColor = false;
             // 
             // txtImportQty
             // 
             txtImportQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtImportQty.Location = new Point(482, 98);
+            txtImportQty.Location = new Point(199, 98);
             txtImportQty.Name = "txtImportQty";
-            txtImportQty.Size = new Size(190, 44);
-            txtImportQty.TabIndex = 25;
+            txtImportQty.Size = new Size(263, 44);
+            txtImportQty.TabIndex = 5;
             // 
             // lblItemDescription
             // 
@@ -208,14 +241,16 @@
             txtItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemDescription.Location = new Point(710, 35);
             txtItemDescription.Name = "txtItemDescription";
+            txtItemDescription.ReadOnly = true;
             txtItemDescription.Size = new Size(219, 44);
             txtItemDescription.TabIndex = 19;
+            txtItemDescription.TabStop = false;
             // 
             // lblImportQty
             // 
             lblImportQty.AutoSize = true;
             lblImportQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblImportQty.Location = new Point(330, 101);
+            lblImportQty.Location = new Point(18, 101);
             lblImportQty.Name = "lblImportQty";
             lblImportQty.Size = new Size(142, 36);
             lblImportQty.TabIndex = 24;
@@ -241,15 +276,6 @@
             lblUnitPrice.TabIndex = 20;
             lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
-            // txtCategory
-            // 
-            txtCategory.Enabled = false;
-            txtCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCategory.Location = new Point(126, 98);
-            txtCategory.Name = "txtCategory";
-            txtCategory.Size = new Size(164, 44);
-            txtCategory.TabIndex = 23;
-            // 
             // txtUnitPrice
             // 
             txtUnitPrice.Enabled = false;
@@ -258,16 +284,7 @@
             txtUnitPrice.Name = "txtUnitPrice";
             txtUnitPrice.Size = new Size(230, 44);
             txtUnitPrice.TabIndex = 21;
-            // 
-            // lblCategory
-            // 
-            lblCategory.AutoSize = true;
-            lblCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCategory.Location = new Point(18, 101);
-            lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(75, 36);
-            lblCategory.TabIndex = 22;
-            lblCategory.Text = "ប្រភេទ:";
+            txtUnitPrice.TabStop = false;
             // 
             // gbImportInformation
             // 
@@ -333,6 +350,7 @@
             txtTotalAmount.Name = "txtTotalAmount";
             txtTotalAmount.Size = new Size(230, 44);
             txtTotalAmount.TabIndex = 36;
+            txtTotalAmount.TabStop = false;
             // 
             // lblTotalAmount
             // 
@@ -360,8 +378,10 @@
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(1151, 140);
             txtStaffPosition.Name = "txtStaffPosition";
+            txtStaffPosition.ReadOnly = true;
             txtStaffPosition.Size = new Size(230, 44);
             txtStaffPosition.TabIndex = 33;
+            txtStaffPosition.TabStop = false;
             // 
             // lblStaffPosition
             // 
@@ -379,8 +399,10 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(670, 145);
             txtStaffName.Name = "txtStaffName";
+            txtStaffName.ReadOnly = true;
             txtStaffName.Size = new Size(237, 44);
             txtStaffName.TabIndex = 31;
+            txtStaffName.TabStop = false;
             // 
             // lblStaffName
             // 
@@ -394,13 +416,14 @@
             // 
             // cbStaffID
             // 
+            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbStaffID.Location = new Point(227, 135);
             cbStaffID.Name = "cbStaffID";
             cbStaffID.Size = new Size(235, 44);
-            cbStaffID.TabIndex = 29;
+            cbStaffID.TabIndex = 3;
             // 
             // txtSupplierName
             // 
@@ -408,18 +431,21 @@
             txtSupplierName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtSupplierName.Location = new Point(670, 85);
             txtSupplierName.Name = "txtSupplierName";
+            txtSupplierName.ReadOnly = true;
             txtSupplierName.Size = new Size(711, 44);
             txtSupplierName.TabIndex = 28;
+            txtSupplierName.TabStop = false;
             // 
             // cbSupplierID
             // 
+            cbSupplierID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSupplierID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbSupplierID.FormattingEnabled = true;
             cbSupplierID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
             cbSupplierID.Location = new Point(227, 85);
             cbSupplierID.Name = "cbSupplierID";
             cbSupplierID.Size = new Size(235, 44);
-            cbSupplierID.TabIndex = 27;
+            cbSupplierID.TabIndex = 2;
             // 
             // dtpImportDate
             // 
@@ -428,7 +454,7 @@
             dtpImportDate.Location = new Point(670, 35);
             dtpImportDate.Name = "dtpImportDate";
             dtpImportDate.Size = new Size(237, 44);
-            dtpImportDate.TabIndex = 20;
+            dtpImportDate.TabIndex = 1;
             // 
             // lblImportDate
             // 
@@ -448,10 +474,11 @@
             txtImportID.Name = "txtImportID";
             txtImportID.Size = new Size(235, 44);
             txtImportID.TabIndex = 3;
+            txtImportID.TabStop = false;
             // 
             // pnlImportManipulation
             // 
-            pnlImportManipulation.Controls.Add(btnCloseFormImport);
+            pnlImportManipulation.Controls.Add(btnCancelImport);
             pnlImportManipulation.Controls.Add(btnNewImport);
             pnlImportManipulation.Controls.Add(btnUpdateImport);
             pnlImportManipulation.Controls.Add(btnInsertImport);
@@ -460,17 +487,18 @@
             pnlImportManipulation.Size = new Size(1427, 62);
             pnlImportManipulation.TabIndex = 5;
             // 
-            // btnCloseFormImport
+            // btnCancelImport
             // 
-            btnCloseFormImport.BackColor = Color.FromArgb(0, 28, 87);
-            btnCloseFormImport.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCloseFormImport.ForeColor = Color.White;
-            btnCloseFormImport.Location = new Point(1231, 7);
-            btnCloseFormImport.Name = "btnCloseFormImport";
-            btnCloseFormImport.Size = new Size(134, 52);
-            btnCloseFormImport.TabIndex = 3;
-            btnCloseFormImport.Text = "បិទ";
-            btnCloseFormImport.UseVisualStyleBackColor = false;
+            btnCancelImport.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelImport.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelImport.ForeColor = Color.White;
+            btnCancelImport.Location = new Point(1231, 7);
+            btnCancelImport.Name = "btnCancelImport";
+            btnCancelImport.Size = new Size(134, 52);
+            btnCancelImport.TabIndex = 3;
+            btnCancelImport.TabStop = false;
+            btnCancelImport.Text = "បោះបង់";
+            btnCancelImport.UseVisualStyleBackColor = false;
             // 
             // btnNewImport
             // 
@@ -481,6 +509,7 @@
             btnNewImport.Name = "btnNewImport";
             btnNewImport.Size = new Size(152, 52);
             btnNewImport.TabIndex = 2;
+            btnNewImport.TabStop = false;
             btnNewImport.Text = "បង្កើតថ្មី";
             btnNewImport.UseVisualStyleBackColor = false;
             // 
@@ -493,6 +522,7 @@
             btnUpdateImport.Name = "btnUpdateImport";
             btnUpdateImport.Size = new Size(152, 52);
             btnUpdateImport.TabIndex = 1;
+            btnUpdateImport.TabStop = false;
             btnUpdateImport.Text = "កែប្រែ";
             btnUpdateImport.UseVisualStyleBackColor = false;
             // 
@@ -505,6 +535,7 @@
             btnInsertImport.Name = "btnInsertImport";
             btnInsertImport.Size = new Size(152, 52);
             btnInsertImport.TabIndex = 0;
+            btnInsertImport.TabStop = false;
             btnInsertImport.Text = "បញ្ចូល";
             btnInsertImport.UseVisualStyleBackColor = false;
             // 
@@ -520,6 +551,7 @@
             // 
             // cbSearchImport
             // 
+            cbSearchImport.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSearchImport.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbSearchImport.FormattingEnabled = true;
             cbSearchImport.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
@@ -527,20 +559,40 @@
             cbSearchImport.Name = "cbSearchImport";
             cbSearchImport.Size = new Size(342, 44);
             cbSearchImport.TabIndex = 40;
+            cbSearchImport.TabStop = false;
             // 
             // dgvImportItems
             // 
             dgvImportItems.AllowUserToAddRows = false;
             dgvImportItems.AllowUserToDeleteRows = false;
+            dgvImportItems.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvImportItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvImportItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvImportItems.Columns.AddRange(new DataGridViewColumn[] { ItemID, ImportID, Description, UnitPrice, Quantity, Amount });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvImportItems.DefaultCellStyle = dataGridViewCellStyle2;
             dgvImportItems.Location = new Point(63, 74);
             dgvImportItems.Name = "dgvImportItems";
             dgvImportItems.ReadOnly = true;
             dgvImportItems.RowHeadersWidth = 51;
             dgvImportItems.RowTemplate.Height = 29;
+            dgvImportItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvImportItems.Size = new Size(1427, 238);
             dgvImportItems.TabIndex = 3;
+            dgvImportItems.TabStop = false;
             // 
             // ItemID
             // 
@@ -645,17 +697,15 @@
         private Label lblItemDescription;
         private Label lblItemID;
         private Label lblImportQty;
-        private Label lblCategory;
         private TextBox txtUnitPrice;
         private Label lblUnitPrice;
-        private TextBox txtCategory;
         private GroupBox gbImportInformation;
         private GroupBox gbImportDetails;
         private DateTimePicker dtpImportDate;
         private Label lblImportDate;
         private Panel pnlImportManipulation;
         private Button btnInsertImport;
-        private Button btnCloseFormImport;
+        private Button btnCancelImport;
         private Button btnNewImport;
         private Button btnUpdateImport;
         private ComboBox cbSupplierID;
@@ -677,10 +727,6 @@
         private TextBox txtTotalAmount;
         private Label lblTotalAmount;
         private Label lblStaffID;
-        private DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn DescriptionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn importQtyDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private ComboBox cbItemID;
         private TextBox txtAmount;
         private Label lblAmount;
@@ -691,5 +737,7 @@
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Amount;
+        private Button btnDeleteImportItem;
+        private Button btnCancelImportItem;
     }
 }

@@ -14,9 +14,9 @@ namespace StoreRentalHelper
     {
         public static SqlConnection Connection { get; set; } = default!;
         #region Procedure and View Names
-        private const string INSERT = "sp_InsertNewStaff";
-        private const string UPDATE = "sp_UpdateStaff";
-        private const string GET_ALL = "v_GetAllStaffs";
+        private const string INSERT = "spInsertNewStaff";
+        private const string UPDATE = "spUpdateStaff";
+        private const string GET_ALL = "vGetAllStaffs";
         #endregion
 
         #region Generate Insert Staff Command

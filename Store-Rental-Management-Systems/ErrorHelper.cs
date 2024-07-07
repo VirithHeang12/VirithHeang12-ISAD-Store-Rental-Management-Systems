@@ -37,7 +37,7 @@ namespace Store_Rental_Management_Systems
                 errorProvider.SetError(txt, NOT_EMPTY_MSG);
                 return false;
             }
-            if (!double.TryParse(txt.Text, out double _))
+            if (!double.TryParse(txt.Text, out double n) || n <= 0 || n > 100000)
             {
                 errorProvider.SetError(txt, errMsg);
                 return false;
@@ -82,6 +82,28 @@ namespace Store_Rental_Management_Systems
                 errorProvider.SetError(txt, NOT_EMPTY_MSG);
                 return false;
             }
+            if (!int.TryParse(txt.Text, out int x) || x <= 0 || x > 100000)
+            {
+                errorProvider.SetError(txt, errMsg);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txt, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Validate textbox integer input fields (accept 0)
+        public static bool ValidateTextBoxIntegerOrZero(TextBox txt, ErrorProvider errorProvider)
+        {
+            string errMsg = "Only integeter from 1 to 100,000!";
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                errorProvider.SetError(txt, NOT_EMPTY_MSG);
+                return false;
+            }
             if (!int.TryParse(txt.Text, out int x) || x < 0 || x > 100000)
             {
                 errorProvider.SetError(txt, errMsg);
@@ -115,6 +137,22 @@ namespace Store_Rental_Management_Systems
         public static bool ValidateDtpNowOrPast(DateTimePicker dtp, ErrorProvider errorProvider)
         {
             if (dtp.Value > DateTime.Now)
+            {
+                errorProvider.SetError(dtp, NOT_FUTURE_MSG);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(dtp, string.Empty);
+                return true;
+            }
+        }
+        #endregion
+
+        #region Validate Dtp Present or Future
+        public static bool ValidateDtpPresentOrFuture(DateTimePicker dtp, ErrorProvider errorProvider)
+        {
+            if (dtp.Value <= DateTime.Now)
             {
                 errorProvider.SetError(dtp, NOT_FUTURE_MSG);
                 return false;

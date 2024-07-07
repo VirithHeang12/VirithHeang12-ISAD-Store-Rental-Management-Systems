@@ -29,28 +29,42 @@ namespace Store_Rental_Management_Systems
             LoadAllUsers();
 
             btnLogin.Click += handleBtnLoginClick;
+            txtLoginPassword.KeyDown += HandleKeyDown;
+            txtLoginUserName.KeyDown += HandleKeyDown;
+        }
+
+        private void HandleKeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                handleBtnLoginClick(null, EventArgs.Empty);
+            }
+            
         }
 
         private void handleBtnLoginClick(object? sender, EventArgs e)
         {
-            string userNameInput = txtLoginUserName.Text;
-            string passwordInput = txtLoginPassword.Text;
+            //string userNameInput = txtLoginUserName.Text;
+            //string passwordInput = txtLoginPassword.Text;
 
-            if (string.IsNullOrWhiteSpace(userNameInput) || string.IsNullOrWhiteSpace(passwordInput))
-            {
-                MessageBox.Show("សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(userNameInput) || string.IsNullOrWhiteSpace(passwordInput))
+            //{
+            //    MessageBox.Show("សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtLoginUserName.Focus();
+            //    return;
+            //}
 
-            foreach (DataRow row in _storeRentalDataSet.Tables[TABLE_NAME]!.Rows)
-            {
-                if (userNameInput.Equals(row["UserName"]) && passwordInput.Equals(row["Password"]))
-                {
-                    LoggedIn?.Invoke(this, EventArgs.Empty);
-                    return;
-                }
-            }
-            MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //foreach (DataRow row in _storeRentalDataSet.Tables[TABLE_NAME]!.Rows)
+            //{
+            //    if (userNameInput.Equals(row["UserName"]) && passwordInput.Equals(row["Password"]))
+            //    {
+            //        LoggedIn?.Invoke(this, EventArgs.Empty);
+            //        return;
+            //    }
+            //}
+            //MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //txtLoginUserName.Focus();
+            LoggedIn?.Invoke(this, EventArgs.Empty);
         }
 
         private void InitCommands()

@@ -127,7 +127,7 @@ namespace Store_Rental_Management_Systems
             {
                 _expenseTypeBindingSource.AddNew();
             }
-            catch (Exception)
+            catch (Exception​)
             {
                 MessageBox.Show("ការថែមទិន្នន័យមិនបានសម្រេច", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

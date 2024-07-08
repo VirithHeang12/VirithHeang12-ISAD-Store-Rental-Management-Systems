@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblTitle = new Label();
             lblSearchExpenseType = new Label();
             txtSearchExpenseType = new TextBox();
@@ -73,7 +73,7 @@
             lblSearchExpenseType.AutoSize = true;
             lblSearchExpenseType.Location = new Point(82, 19);
             lblSearchExpenseType.Name = "lblSearchExpenseType";
-            lblSearchExpenseType.Size = new Size(362, 43);
+            lblSearchExpenseType.Size = new Size(306, 36);
             lblSearchExpenseType.TabIndex = 1;
             lblSearchExpenseType.Text = "ស្វែងរក (ពិពណ៌នាប្រភេទចំណាយ):";
             // 
@@ -81,7 +81,7 @@
             // 
             txtSearchExpenseType.Location = new Point(436, 11);
             txtSearchExpenseType.Name = "txtSearchExpenseType";
-            txtSearchExpenseType.Size = new Size(556, 51);
+            txtSearchExpenseType.Size = new Size(556, 44);
             txtSearchExpenseType.TabIndex = 2;
             txtSearchExpenseType.TabStop = false;
             // 
@@ -100,29 +100,30 @@
             dgvExpenseTypes.AllowUserToAddRows = false;
             dgvExpenseTypes.AllowUserToDeleteRows = false;
             dgvExpenseTypes.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 28, 87);
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvExpenseTypes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvExpenseTypes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvExpenseTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExpenseTypes.Columns.AddRange(new DataGridViewColumn[] { ExpenseTypeID, ExpenseDescription });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 28, 87);
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvExpenseTypes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 28, 87);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvExpenseTypes.DefaultCellStyle = dataGridViewCellStyle2;
             dgvExpenseTypes.Location = new Point(82, 74);
             dgvExpenseTypes.Name = "dgvExpenseTypes";
             dgvExpenseTypes.ReadOnly = true;
             dgvExpenseTypes.RowHeadersWidth = 51;
             dgvExpenseTypes.RowTemplate.Height = 29;
+            dgvExpenseTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvExpenseTypes.Size = new Size(1362, 369);
             dgvExpenseTypes.TabIndex = 3;
             dgvExpenseTypes.TabStop = false;
@@ -135,7 +136,7 @@
             ExpenseTypeID.MinimumWidth = 6;
             ExpenseTypeID.Name = "ExpenseTypeID";
             ExpenseTypeID.ReadOnly = true;
-            ExpenseTypeID.Width = 201;
+            ExpenseTypeID.Width = 266;
             // 
             // ExpenseDescription
             // 
@@ -239,17 +240,17 @@
             lblExpenseTypeID.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseTypeID.Location = new Point(18, 41);
             lblExpenseTypeID.Name = "lblExpenseTypeID";
-            lblExpenseTypeID.Size = new Size(287, 43);
+            lblExpenseTypeID.Size = new Size(243, 36);
             lblExpenseTypeID.TabIndex = 0;
             lblExpenseTypeID.Text = "លេខសម្គាល់ប្រភេទចំណាយ:";
             // 
             // txtExpenseTypeID
             // 
             txtExpenseTypeID.Enabled = false;
-            txtExpenseTypeID.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtExpenseTypeID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseTypeID.Location = new Point(300, 33);
             txtExpenseTypeID.Name = "txtExpenseTypeID";
-            txtExpenseTypeID.Size = new Size(363, 35);
+            txtExpenseTypeID.Size = new Size(363, 44);
             txtExpenseTypeID.TabIndex = 3;
             // 
             // lblExpenseDescription
@@ -258,16 +259,16 @@
             lblExpenseDescription.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblExpenseDescription.Location = new Point(18, 111);
             lblExpenseDescription.Name = "lblExpenseDescription";
-            lblExpenseDescription.Size = new Size(258, 43);
+            lblExpenseDescription.Size = new Size(218, 36);
             lblExpenseDescription.TabIndex = 6;
             lblExpenseDescription.Text = "ពិព័ណ៌នាប្រភេទចំណាយ:";
             // 
             // txtExpenseDescription
             // 
-            txtExpenseDescription.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtExpenseDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtExpenseDescription.Location = new Point(300, 111);
             txtExpenseDescription.Name = "txtExpenseDescription";
-            txtExpenseDescription.Size = new Size(970, 35);
+            txtExpenseDescription.Size = new Size(970, 44);
             txtExpenseDescription.TabIndex = 13;
             // 
             // FrmExpenseType

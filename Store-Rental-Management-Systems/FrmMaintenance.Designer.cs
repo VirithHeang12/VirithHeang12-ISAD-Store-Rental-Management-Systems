@@ -76,13 +76,13 @@
             pnlLeftSide = new Panel();
             cbSearchMaintenance = new ComboBox();
             dgvMaintenanceItems = new DataGridView();
-            lblSearchMaintenance = new Label();
             ItemID = new DataGridViewTextBoxColumn();
             MaintenanceID = new DataGridViewTextBoxColumn();
             Description = new DataGridViewTextBoxColumn();
             UnitPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
+            lblSearchMaintenance = new Label();
             pnlRightSide.SuspendLayout();
             gbMaintenanceDetails.SuspendLayout();
             gbMaintenanceInformation.SuspendLayout();
@@ -630,18 +630,10 @@
             dgvMaintenanceItems.ReadOnly = true;
             dgvMaintenanceItems.RowHeadersWidth = 51;
             dgvMaintenanceItems.RowTemplate.Height = 29;
+            dgvMaintenanceItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMaintenanceItems.Size = new Size(1427, 238);
             dgvMaintenanceItems.TabIndex = 3;
             dgvMaintenanceItems.TabStop = false;
-            // 
-            // lblSearchMaintenance
-            // 
-            lblSearchMaintenance.AutoSize = true;
-            lblSearchMaintenance.Location = new Point(64, 17);
-            lblSearchMaintenance.Name = "lblSearchMaintenance";
-            lblSearchMaintenance.Size = new Size(275, 36);
-            lblSearchMaintenance.TabIndex = 1;
-            lblSearchMaintenance.Text = "ស្វែងរក (លេខសម្គាល់ការថែទាំ):";
             // 
             // ItemID
             // 
@@ -700,6 +692,15 @@
             Amount.MinimumWidth = 6;
             Amount.Name = "Amount";
             Amount.ReadOnly = true;
+            // 
+            // lblSearchMaintenance
+            // 
+            lblSearchMaintenance.AutoSize = true;
+            lblSearchMaintenance.Location = new Point(64, 17);
+            lblSearchMaintenance.Name = "lblSearchMaintenance";
+            lblSearchMaintenance.Size = new Size(275, 36);
+            lblSearchMaintenance.TabIndex = 1;
+            lblSearchMaintenance.Text = "ស្វែងរក (លេខសម្គាល់ការថែទាំ):";
             // 
             // FrmMaintenance
             // 

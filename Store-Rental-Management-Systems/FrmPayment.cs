@@ -31,14 +31,14 @@ namespace Store_Rental_Management_Systems
         private SqlDataAdapter _storeDataAdapter = new();
         private SqlDataAdapter _contractDataAdapter = new();
         private SqlDataAdapter _staffDataAdapter = new();
-        private SqlDataAdapter _expensetypeDataAdapter = new();
+        private SqlDataAdapter _expenseTypeDataAdapter = new();
 
         private BindingSource _paymentBindingSource = new();
         private BindingSource _paymentDetailBindingSource = new();
         private BindingSource _storeBindingSource = new();
         private BindingSource _contractBindingSource = new();
         private BindingSource _staffBindingSource = new();
-        private BindingSource _expensetypeBindingSource = new();
+        private BindingSource _expenseTypeBindingSource = new();
 
         private ErrorProvider _errorProvider = new();
 
@@ -48,6 +48,7 @@ namespace Store_Rental_Management_Systems
         public FrmPayment() : base()
         {
             InitializeComponent();
+
             InitCommands();
             LoadAllData();
             BindToControls();
@@ -55,12 +56,13 @@ namespace Store_Rental_Management_Systems
             #region Add controls for validation
             _errorProvider.ContainerControl = this;
             _validatingControls.Add(dtpPaymentDate);
-            _validatingControls.Add(txtExpenseTypeQty);
+            _validatingControls.Add(txtExpenseTypeQty);           
             #endregion
 
             #region Event Registrations
 
             cbStaffID.SelectedIndexChanged += HandleCbStaffIDSelectedIndexChanged;
+            cbExpenseTypeID.SelectedIndexChanged += HandleCbExpenseTypeIDSelectedIndexChanged;
 
             txtTotalAmount.TextChanged += HandleTxtPaidAmountTextChanged;
             txtPaidAmount.TextChanged += HandleTxtPaidAmountTextChanged;
@@ -89,7 +91,6 @@ namespace Store_Rental_Management_Systems
 
             dgvExpenses.DataError += HandleDataError;
             #endregion
-
 
         }
 
@@ -256,9 +257,9 @@ namespace Store_Rental_Management_Systems
             if (currentItem != null)
             {
                 currentItem["ExpenseTypeID"] = cbExpenseTypeID.SelectedValue;
-                currentItem["Description"] = txtExpenseDescription.Text;
+                currentItem["ExpenseDescription"] = txtExpenseDescription.Text;
                 currentItem["UnitPrice"] = txtUnitPrice.Text;
-                currentItem["ExpenseTypeQty"] = txtExpenseTypeQty.Text;
+                currentItem["Quantity"] = txtExpenseTypeQty.Text;
                 currentItem["Amount"] = txtAmount.Text;
             }
 
@@ -288,6 +289,8 @@ namespace Store_Rental_Management_Systems
 
             // validate when insert item
             ErrorHelper.ValidateTextBoxInteger(txtExpenseTypeQty, _errorProvider);
+            ErrorHelper.ValidateTextBoxNumber(txtUnitPrice, _errorProvider);
+  
             if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
             DataRowView? dataRowView = tempDetails?.AddNew();
@@ -299,10 +302,11 @@ namespace Store_Rental_Management_Systems
             dataRowView.BeginEdit();
             dataRowView["PaymentID"] = masterRowView["PaymentID"];
             dataRowView["ExpenseTypeID"] = expensetypeID;
-            dataRowView["Description"] = description;
+            
             dataRowView["UnitPrice"] = unitPrice;
-            dataRowView["ExpenseTypeQty"] = expensetypeQty;
+            dataRowView["Quantity"] = expensetypeQty;
             dataRowView["Amount"] = amount;
+            dataRowView["ExpenseDescription"] = description;
 
             try
             {
@@ -318,6 +322,7 @@ namespace Store_Rental_Management_Systems
 
             txtExpenseTypeQty.Text = string.Empty;
             cbExpenseTypeID.SelectedIndex = 0;
+
             UpdateTotalAmount();
         }
         #endregion
@@ -388,7 +393,7 @@ namespace Store_Rental_Management_Systems
             _staffDataAdapter.SelectCommand = PaymentHelper.CreateGetAllStaffsForComboBoxCommand();
 
             // expansetype
-            _expensetypeDataAdapter.SelectCommand = PaymentHelper.CreateGetAllExpenseTypesForComboBoxCommand();
+            _expenseTypeDataAdapter.SelectCommand = PaymentHelper.CreateGetAllExpenseTypesForComboBoxCommand();
         }
         #endregion
 
@@ -406,11 +411,11 @@ namespace Store_Rental_Management_Systems
             txtStaffName.DataBindings.Add(new Binding("Text", _paymentBindingSource, "StaffName"));
             txtStaffPosition.DataBindings.Add(new Binding("Text", _paymentBindingSource, "StaffPosition"));
 
-            //cbExpenseTypeID.DataBindings.Add(new Binding("SelectedValue", _paymentDetailBindingSource, "ExpenseTypeID"));
-            //txtExpenseDescription.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "Description"));
-            //txtExpenseTypeQty.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "ExpenseTypeQty"));
-            //txtUnitPrice.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "UnitPrice"));
-            //txtAmount.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "Amount"));
+            cbExpenseTypeID.DataBindings.Add(new Binding("SelectedValue", _paymentDetailBindingSource, "ExpenseTypeID"));
+            txtExpenseDescription.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "ExpenseDescription"));
+            txtExpenseTypeQty.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "Quantity"));
+            txtUnitPrice.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "UnitPrice"));
+            txtAmount.DataBindings.Add(new Binding("Text", _paymentDetailBindingSource, "Amount"));
 
         }
         #endregion
@@ -459,7 +464,7 @@ namespace Store_Rental_Management_Systems
             _storeDataAdapter.TableMappings.Add("Table", TABLE_STORE_NAME);
             _contractDataAdapter.TableMappings.Add("Table", TABLE_CONTRACT_NAME);
             _staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
-            _expensetypeDataAdapter.TableMappings.Add("Table", TABLE_EXPENSETYPE_NAME);
+            _expenseTypeDataAdapter.TableMappings.Add("Table", TABLE_EXPENSETYPE_NAME);
 
             try
             {
@@ -468,7 +473,7 @@ namespace Store_Rental_Management_Systems
                 _storeDataAdapter.Fill(_storeRentalDataSet, TABLE_STORE_NAME);
                 _contractDataAdapter.Fill(_storeRentalDataSet, TABLE_CONTRACT_NAME);
                 _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
-                _expensetypeDataAdapter.Fill(_storeRentalDataSet, TABLE_EXPENSETYPE_NAME);
+                _expenseTypeDataAdapter.Fill(_storeRentalDataSet, TABLE_EXPENSETYPE_NAME);
             }
             catch (Exception)
             {
@@ -525,8 +530,8 @@ namespace Store_Rental_Management_Systems
             cbStaffID.DisplayMember = "StaffID";
             cbStaffID.ValueMember = "StaffID";
 
-            _expensetypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_EXPENSETYPE_NAME]!.AsDataView();
-            cbExpenseTypeID.DataSource = _expensetypeBindingSource;
+            _expenseTypeBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_EXPENSETYPE_NAME]!.AsDataView();
+            cbExpenseTypeID.DataSource = _expenseTypeBindingSource;
             cbExpenseTypeID.DisplayMember = "ExpenseTypeID";
             cbExpenseTypeID.ValueMember = "ExpenseTypeID";
 

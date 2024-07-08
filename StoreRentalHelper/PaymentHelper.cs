@@ -17,6 +17,7 @@ namespace StoreRentalHelper
         #region Procedure and View Names
         private const string INSERT_PAYMENT = "spInsertNewOrUpdatePayment";
         private const string GET_ALL_PAYMENTS = "vGetAllPayments";
+
         private const string GET_ALL_PAYMENT_DETAILS = "vGetAllPaymentDetails";
 
         private const string GET_ALL_STORES_FOR_COMBO_BOX = "vGetAllStoresForComboBox";
@@ -42,7 +43,7 @@ namespace StoreRentalHelper
                 Direction = ParameterDirection.Input,
                 IsNullable = false,
                 SourceVersion = DataRowVersion.Current,
-                SourceColumn = "PaymenteDate"
+                SourceColumn = "PaymentDate"
             });
             cmd.Parameters.Add(new SqlParameter("@TotalAmount", SqlDbType.Money)
             {

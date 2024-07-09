@@ -133,8 +133,8 @@ namespace Store_Rental_Management_Systems
             {
                 txtContractID.DataBindings.Add("Text", _contractBindingSource, "ContractID");
                 dtpContractDate.DataBindings.Add("Value", _contractBindingSource, "ContractDate");
-                dtpLeaseStartDate.DataBindings.Add("Value", _contractBindingSource, "ContractStartDate");
-                dtpLeaseEndDate.DataBindings.Add("Value", _contractBindingSource, "ContractEndDate");
+                dtpLeaseStartDate.DataBindings.Add("Value", _contractBindingSource, "LeaseStartDate");
+                dtpLeaseEndDate.DataBindings.Add("Value", _contractBindingSource, "LeaseEndDate");
                 dtpNextPaymentDate.DataBindings.Add("Value", _contractBindingSource, "NextPaymentDate");
                 cbCustomerID.DataBindings.Add("SelectedValue", _contractBindingSource, "CustomerID");
                 cbStoreID.DataBindings.Add("SelectedValue", _contractBindingSource, "StoreID");

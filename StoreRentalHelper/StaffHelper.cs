@@ -13,6 +13,7 @@ namespace StoreRentalHelper
     public static class StaffHelper
     {
         public static SqlConnection Connection { get; set; } = default!;
+
         #region Procedure and View Names
         private const string INSERT = "spInsertNewStaff";
         private const string UPDATE = "spUpdateStaff";

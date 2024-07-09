@@ -85,15 +85,15 @@
             lblSearchItem.AutoSize = true;
             lblSearchItem.Location = new Point(82, 19);
             lblSearchItem.Name = "lblSearchItem";
-            lblSearchItem.Size = new Size(311, 43);
+            lblSearchItem.Size = new Size(278, 36);
             lblSearchItem.TabIndex = 1;
-            lblSearchItem.Text = "ស្វែងរក (លេខសម្គាល់សម្ភារៈ):";
+            lblSearchItem.Text = "ស្វែងរក (ពិព័ណ៌នារបស់សម្ភារៈ):";
             // 
             // txtSearchItem
             // 
             txtSearchItem.Location = new Point(377, 11);
             txtSearchItem.Name = "txtSearchItem";
-            txtSearchItem.Size = new Size(452, 51);
+            txtSearchItem.Size = new Size(452, 44);
             txtSearchItem.TabIndex = 2;
             txtSearchItem.TabStop = false;
             // 
@@ -148,7 +148,7 @@
             ItemID.MinimumWidth = 6;
             ItemID.Name = "ItemID";
             ItemID.ReadOnly = true;
-            ItemID.Width = 236;
+            ItemID.Width = 198;
             // 
             // ItemDescription
             // 
@@ -185,7 +185,7 @@
             UnitPrice.MinimumWidth = 6;
             UnitPrice.Name = "UnitPrice";
             UnitPrice.ReadOnly = true;
-            UnitPrice.Width = 153;
+            UnitPrice.Width = 188;
             // 
             // StockQty
             // 
@@ -195,7 +195,7 @@
             StockQty.MinimumWidth = 6;
             StockQty.Name = "StockQty";
             StockQty.ReadOnly = true;
-            StockQty.Width = 139;
+            StockQty.Width = 173;
             // 
             // pnlRightSide
             // 
@@ -297,7 +297,7 @@
             txtStockQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStockQty.Location = new Point(907, 169);
             txtStockQty.Name = "txtStockQty";
-            txtStockQty.Size = new Size(412, 51);
+            txtStockQty.Size = new Size(412, 44);
             txtStockQty.TabIndex = 5;
             txtStockQty.Tag = "d";
             // 
@@ -307,7 +307,7 @@
             lblUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnit.Location = new Point(711, 111);
             lblUnit.Name = "lblUnit";
-            lblUnit.Size = new Size(82, 43);
+            lblUnit.Size = new Size(69, 36);
             lblUnit.TabIndex = 27;
             lblUnit.Text = "ឯកតា:";
             // 
@@ -319,7 +319,7 @@
             cbCategory.Items.AddRange(new object[] { "សម្ភារៈសំណង់", "គ្រឿងអេឡិចត្រូនិច", "គ្រឿងបន្លាស់" });
             cbCategory.Location = new Point(209, 103);
             cbCategory.Name = "cbCategory";
-            cbCategory.Size = new Size(454, 51);
+            cbCategory.Size = new Size(454, 44);
             cbCategory.TabIndex = 2;
             // 
             // lblItemID
@@ -328,7 +328,7 @@
             lblItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemID.Location = new Point(18, 41);
             lblItemID.Name = "lblItemID";
-            lblItemID.Size = new Size(207, 43);
+            lblItemID.Size = new Size(175, 36);
             lblItemID.TabIndex = 0;
             lblItemID.Text = "លេខសម្គាល់សម្ភារៈ:";
             // 
@@ -338,7 +338,7 @@
             lblStockQty.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStockQty.Location = new Point(711, 177);
             lblStockQty.Name = "lblStockQty";
-            lblStockQty.Size = new Size(177, 43);
+            lblStockQty.Size = new Size(150, 36);
             lblStockQty.TabIndex = 14;
             lblStockQty.Text = "បរិមាណក្នុងស្តុក:";
             // 
@@ -347,7 +347,7 @@
             txtItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemDescription.Location = new Point(907, 33);
             txtItemDescription.Name = "txtItemDescription";
-            txtItemDescription.Size = new Size(412, 51);
+            txtItemDescription.Size = new Size(412, 44);
             txtItemDescription.TabIndex = 1;
             // 
             // lblItemDescription
@@ -356,7 +356,7 @@
             lblItemDescription.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblItemDescription.Location = new Point(711, 41);
             lblItemDescription.Name = "lblItemDescription";
-            lblItemDescription.Size = new Size(225, 43);
+            lblItemDescription.Size = new Size(190, 36);
             lblItemDescription.TabIndex = 4;
             lblItemDescription.Text = "ពិពណ៌នារបស់សម្ភារៈ:";
             // 
@@ -366,7 +366,7 @@
             txtItemID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtItemID.Location = new Point(209, 33);
             txtItemID.Name = "txtItemID";
-            txtItemID.Size = new Size(454, 51);
+            txtItemID.Size = new Size(454, 44);
             txtItemID.TabIndex = 3;
             // 
             // lblCategory
@@ -375,7 +375,7 @@
             lblCategory.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblCategory.Location = new Point(18, 111);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(90, 43);
+            lblCategory.Size = new Size(75, 36);
             lblCategory.TabIndex = 6;
             lblCategory.Text = "ប្រភេទ:";
             // 
@@ -384,7 +384,7 @@
             txtUnit.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnit.Location = new Point(907, 103);
             txtUnit.Name = "txtUnit";
-            txtUnit.Size = new Size(412, 51);
+            txtUnit.Size = new Size(412, 44);
             txtUnit.TabIndex = 3;
             // 
             // lblUnitPrice
@@ -393,7 +393,7 @@
             lblUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnitPrice.Location = new Point(18, 177);
             lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(194, 43);
+            lblUnitPrice.Size = new Size(165, 36);
             lblUnitPrice.TabIndex = 12;
             lblUnitPrice.Text = "តម្លៃក្នុងមួយឯកតា:";
             // 
@@ -402,7 +402,7 @@
             txtUnitPrice.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUnitPrice.Location = new Point(209, 169);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(454, 51);
+            txtUnitPrice.Size = new Size(454, 44);
             txtUnitPrice.TabIndex = 4;
             txtUnitPrice.Tag = "n";
             // 

@@ -14,21 +14,21 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmAppointment : FrmHome
     {
-        private const string RELATIONSHIP_NAME = "appointment_appointmentDetail";
+        private const string RELATIONSHIP_NAME = "appointment_staffAssignment";
         private const string TABLE_APPOINTMENT_NAME = "tblAppointment";
-        private const string TABLE_APPOINTMENT_DETAIL_NAME = "tblStaffAssignment";
+        private const string TABLE_STAFF_ASSIGNMENT_NAME = "tblStaffAssignment";
         private const string TABLE_CUSTOMER_NAME = "tblCustomer";
         private const string TABLE_STAFF_NAME = "tblStaff";
 
         private DataSet _storeRentalDataSet = new();
 
         private SqlDataAdapter _appointmentDataAdapter = new();
-        private SqlDataAdapter _appointmentDetailDataAdapter = new();
+        private SqlDataAdapter _staffAssignmentDataAdapter = new();
         private SqlDataAdapter _customerDataAdapter = new();
         private SqlDataAdapter _staffDataAdapter = new();
 
         private BindingSource _appointmentBindingSource = new();
-        private BindingSource _appointmentDetailBindingSource = new();
+        private BindingSource _staffAssignmentBindingSource = new();
         private BindingSource _customerBindingSource = new();
         private BindingSource _staffBindingSource = new();
 
@@ -44,11 +44,6 @@ namespace Store_Rental_Management_Systems
             InitCommands();
             LoadAllData();
             BindToControls();
-
-            dtpAppointmentDate.GotFocus += HandleGotFocusEN;
-            //cbAppointmentStatus.GotFocus += HandleGotFocusKM;
-            cbCustomerID.GotFocus += HandleGotFocusEN;
-            cbStaffID.GotFocus += HandleGotFocusEN;
 
             #region Event Registrations
             //cbAppointmentStatus.SelectedIndexChanged += HandleCbAppointmentStatusSelectedIndexChanged;
@@ -75,16 +70,6 @@ namespace Store_Rental_Management_Systems
             #endregion
         }
 
-        private void HandleGotFocusKM(object? sender, EventArgs e)
-        {
-            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
-        }
-
-        private void HandleGotFocusEN(object? sender, EventArgs e)
-        {
-            KeyboardLayoutHelper.SwitchToEnglishKeyboard();
-        }
-
         #region Handle cbStaffIDSelectedIndexChanged
         private void HandleCbStaffIDSelectedIndexChanged(object? sender, EventArgs e)
         {
@@ -103,11 +88,10 @@ namespace Store_Rental_Management_Systems
             _appointmentDataAdapter.UpdateCommand = StaffAssignmentHelper.CreateInsertOrUpdateAppointmentCommand();
 
             // appointment detail
-            _appointmentDetailDataAdapter.SelectCommand = StaffAssignmentHelper.CreateGetAllAppointmentDetailsCommand();
+            _staffAssignmentDataAdapter.SelectCommand = StaffAssignmentHelper.CreateGetAllAppointmentDetailsCommand();
 
             // customer
             _customerDataAdapter.SelectCommand = StaffAssignmentHelper.CreateGetAllCustomersForComboBoxCommand();
-            //_appointmentDataAdapter.SelectCommand = StaffAssignmentHelper.CreateGetAllCustomersForComboBoxCommand();
 
             // staff
             _staffDataAdapter.SelectCommand = StaffAssignmentHelper.CreateGetAllStaffsForComboBoxCommand();
@@ -120,15 +104,13 @@ namespace Store_Rental_Management_Systems
         {
             txtAppointmentID.DataBindings.Add(new Binding("Text", _appointmentBindingSource, "AppointmentID"));
             dtpAppointmentDate.DataBindings.Add(new Binding("Value", _appointmentBindingSource, "AppointmentDate"));
-            //cbCustomerID.DataBindings.Add(new Binding("SelectedValue", _appointmentBindingSource, "CustomerID"));
-            cbCustomerID.DataBindings.Add(new Binding("SelectedValue", _customerBindingSource, "CustomerID"));
-            //cbAppointmentStatus.DataBindings.Add(new Binding("SelectedValue", _appointmentBindingSource, "AppointmentStatus"));
-            //txtStaffName.DataBindings.Add(new Binding("Text", _appointmentBindingSource, "StaffName"));
-            //txtStaffPosition.DataBindings.Add(new Binding("Text", _appointmentBindingSource, "StaffPosition"));
-            txtStaffPosition.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffPosition"));
-            txtStaffName.DataBindings.Add(new Binding("Text", _staffBindingSource, "StaffName"));
-            cbStaffID.DataBindings.Add(new Binding("SelectedValue", _staffBindingSource, "StaffID"));
-            //cbStaffID.DataBindings.Add(new Binding("SelectedValue", _appointmentDetailBindingSource, "StaffID"));
+            cbAppointmentStatus.DataBindings.Add(new Binding("SelectedValue", _appointmentBindingSource, "AppointmentStatus"));
+            cbCustomerID.DataBindings.Add(new Binding("SelectedValue", _appointmentBindingSource, "CustomerID"));
+
+            cbStaffID.DataBindings.Add(new Binding("SelectedValue", _staffAssignmentBindingSource, "StaffID"));
+            txtStaffPosition.DataBindings.Add(new Binding("Text", _staffAssignmentBindingSource, "StaffPosition"));
+            txtStaffName.DataBindings.Add(new Binding("Text", _staffAssignmentBindingSource, "StaffName"));
+            
 
         }
         #endregion
@@ -137,7 +119,7 @@ namespace Store_Rental_Management_Systems
         private void LoadAllData()
         {
             _appointmentDataAdapter.TableMappings.Add("Table", TABLE_APPOINTMENT_NAME);
-            _appointmentDetailDataAdapter.TableMappings.Add("Table", TABLE_APPOINTMENT_DETAIL_NAME);
+            _staffAssignmentDataAdapter.TableMappings.Add("Table", TABLE_STAFF_ASSIGNMENT_NAME);
             _customerDataAdapter.TableMappings.Add("Table", TABLE_CUSTOMER_NAME);
             _staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
 
@@ -145,12 +127,12 @@ namespace Store_Rental_Management_Systems
             try
             {
                 _appointmentDataAdapter.Fill(_storeRentalDataSet, TABLE_APPOINTMENT_NAME);
-                _appointmentDetailDataAdapter.Fill(_storeRentalDataSet, TABLE_APPOINTMENT_DETAIL_NAME);
+                _staffAssignmentDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_ASSIGNMENT_NAME);
                 _customerDataAdapter.Fill(_storeRentalDataSet, TABLE_CUSTOMER_NAME);
                 _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -160,18 +142,14 @@ namespace Store_Rental_Management_Systems
             {
                 _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]!.Columns["AppointmentID"]!,
             };
-            _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]!.PrimaryKey = new DataColumn[]
+            _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.PrimaryKey = new DataColumn[]
             {
-                _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]!.Columns["AppointmentID"]!,
-                _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]!.Columns["StaffID"]!,
+                _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.Columns["AppointmentID"]!,
+                _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.Columns["StaffID"]!,
             };
             _storeRentalDataSet.Tables[TABLE_CUSTOMER_NAME]!.PrimaryKey = new DataColumn[]
             {
                 _storeRentalDataSet.Tables[TABLE_CUSTOMER_NAME]!.Columns["CustomerID"]!,
-            };
-            _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]!.PrimaryKey = new DataColumn[]
-            {
-                _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]!.Columns["AppointmentStatus"]!,
             };
             _storeRentalDataSet.Tables[TABLE_STAFF_NAME]!.PrimaryKey = new DataColumn[]
            {
@@ -185,7 +163,7 @@ namespace Store_Rental_Management_Systems
             cbSearchAppointment.DisplayMember = "AppointmentID";
             cbSearchAppointment.ValueMember = "AppointmentID";
 
-            _appointmentDetailBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]!.AsDataView();
+            _staffAssignmentBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.AsDataView();
 
             _customerBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_CUSTOMER_NAME]!.AsDataView();
             cbCustomerID.DataSource = _customerBindingSource;
@@ -197,12 +175,8 @@ namespace Store_Rental_Management_Systems
             cbStaffID.DisplayMember = "StaffID";
             cbStaffID.ValueMember = "StaffID";
 
-            _appointmentBindingSource.DataSource = _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]!.AsDataView();
-            //cbAppointmentStatus.DataSource = _appointmentBindingSource;
-
-
             // create and add relation
-            DataRelation relation = new DataRelation(RELATIONSHIP_NAME, _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]!.Columns["AppointmentID"]!, _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]!.Columns["AppointmentID"]!);
+            DataRelation relation = new DataRelation(RELATIONSHIP_NAME, _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.Columns["AppointmentID"]!, _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]!.Columns["StaffID"]!);
 
             _storeRentalDataSet.Relations.Add(relation);
 
@@ -224,12 +198,12 @@ namespace Store_Rental_Management_Systems
         {
             txtAppointmentID.DataBindings.Clear();
             dtpAppointmentDate.DataBindings.Clear();
+            cbAppointmentStatus.DataBindings.Clear();
             cbCustomerID.DataBindings.Clear();
-            //cbAppointmentStatus.DataBindings.Clear();
 
             cbStaffID.DataBindings.Clear();
-            txtStaffName.DataBindings.Clear();
             txtStaffPosition.DataBindings.Clear();
+            txtStaffName.DataBindings.Clear();
         }
         #endregion
 
@@ -249,8 +223,8 @@ namespace Store_Rental_Management_Systems
             {
                 tempDetails = selectedAppointment.CreateChildView(RELATIONSHIP_NAME);
 
-                _appointmentDetailBindingSource.DataSource = tempDetails;
-                dgvStaffAssignments.DataSource = _appointmentDetailBindingSource;
+                _staffAssignmentBindingSource.DataSource = tempDetails;
+                dgvStaffAssignments.DataSource = _staffAssignmentBindingSource;
             }
         }
         #endregion
@@ -340,8 +314,8 @@ namespace Store_Rental_Management_Systems
 
                 tempDetails = masterRowView.CreateChildView(RELATIONSHIP_NAME);
 
-                _appointmentDetailBindingSource.DataSource = tempDetails;
-                dgvStaffAssignments.DataSource = _appointmentDetailBindingSource;
+                _staffAssignmentBindingSource.DataSource = tempDetails;
+                dgvStaffAssignments.DataSource = _staffAssignmentBindingSource;
 
 
                 cbStaffID.SelectedIndex = 0;
@@ -359,26 +333,26 @@ namespace Store_Rental_Management_Systems
         #region Handle Cancel Staff
         private void HandleBtnCancelAppointmentStaffClicked(object? sender, EventArgs e)
         {
-            _appointmentDetailBindingSource.CancelEdit();
+            _staffAssignmentBindingSource.CancelEdit();
         }
         #endregion
 
         #region Handle Delete Staff
         private void HandleBtnDeleteAppointmentStaffClicked(object? sender, EventArgs e)
         {
-            if (_appointmentDetailBindingSource.Count == 0) return;
-            if (_appointmentDetailBindingSource.Current == null) return;
+            if (_staffAssignmentBindingSource.Count == 0) return;
+            if (_staffAssignmentBindingSource.Current == null) return;
 
-            _appointmentDetailBindingSource.RemoveCurrent();
+            _staffAssignmentBindingSource.RemoveCurrent();
 
-            _appointmentDetailBindingSource.EndEdit();
+            _staffAssignmentBindingSource.EndEdit();
         }
         #endregion
 
         #region Handle Update Staff
         private void HandleBtnUpdateAppointmentStaffClicked(object? sender, EventArgs e)
         {
-            DataRowView currentStaff = (_appointmentDetailBindingSource.Current as DataRowView)!;
+            DataRowView currentStaff = (_staffAssignmentBindingSource.Current as DataRowView)!;
 
             if (currentStaff != null)
             {
@@ -389,7 +363,7 @@ namespace Store_Rental_Management_Systems
 
                 try
                 {
-                    _appointmentDetailBindingSource.EndEdit();
+                    _staffAssignmentBindingSource.EndEdit();
                 }
                 catch (Exception)
                 {
@@ -468,13 +442,13 @@ namespace Store_Rental_Management_Systems
         {
             UnbindWithControls();
 
-            _storeRentalDataSet.Tables[TABLE_APPOINTMENT_DETAIL_NAME]?.Clear();
+            _storeRentalDataSet.Tables[TABLE_STAFF_ASSIGNMENT_NAME]?.Clear();
             _storeRentalDataSet.Tables[TABLE_APPOINTMENT_NAME]?.Clear();
 
             try
             {
                 _appointmentDataAdapter.Fill(_storeRentalDataSet, TABLE_APPOINTMENT_NAME);
-                _appointmentDetailDataAdapter.Fill(_storeRentalDataSet, TABLE_APPOINTMENT_DETAIL_NAME);
+                _staffAssignmentDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_ASSIGNMENT_NAME);
             }
             catch (Exception)
             {

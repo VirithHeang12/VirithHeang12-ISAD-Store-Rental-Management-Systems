@@ -46,7 +46,7 @@ namespace Store_Rental_Management_Systems
             btnUpdateStore.Click += HandleBtnUpdateStoreClicked;
             btnCancelStore.Click += HandleBtnCancelStoreClicked;
 
-            txtFloorNumber.Validating += ValidateTextBoxNumber;
+            txtFloorNumber.Validating += ValidateTextBoxInteger;
             txtElectricityLastRecord.Validating += ValidateTextBoxNumber;
             txtWaterLastRecord.Validating += ValidateTextBoxNumber;
 
@@ -63,6 +63,7 @@ namespace Store_Rental_Management_Systems
 
         }
 
+       
         #region HandleGotFocusKM
         private void HandleGotFocusKM(object? sender, EventArgs e)
         {
@@ -146,7 +147,12 @@ namespace Store_Rental_Management_Systems
         #region Handle Validation
         private void ValidateTextBoxNumber(object? sender, CancelEventArgs e)
         {
-            ErrorHelper.ValidateTextBoxNumber((sender as TextBox)!, _errorProvider);
+            ErrorHelper.ValidateTextBoxNumberOrZero((sender as TextBox)!, _errorProvider);
+        }
+
+        private void ValidateTextBoxInteger(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxInteger((sender as TextBox)!, _errorProvider);
         }
 
         #endregion

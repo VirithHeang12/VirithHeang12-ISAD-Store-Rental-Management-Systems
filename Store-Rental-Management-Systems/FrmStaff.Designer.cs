@@ -429,7 +429,7 @@
             cbStaffPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffPosition.FormattingEnabled = true;
-            cbStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
+            cbStaffPosition.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនេយ្យករ", "រដ្ឋបាល", "អ្នកទទួលភ្ញៀវ", "អ្នកទីផ្សារ", "អ្នកពិគ្រោះយោបល់" });
             cbStaffPosition.Location = new Point(531, 218);
             cbStaffPosition.Name = "cbStaffPosition";
             cbStaffPosition.Size = new Size(219, 44);

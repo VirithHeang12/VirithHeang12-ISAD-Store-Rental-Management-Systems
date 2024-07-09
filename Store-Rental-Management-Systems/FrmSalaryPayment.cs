@@ -115,6 +115,7 @@ namespace Store_Rental_Management_Systems
             var dataRowView = cbStaffID.SelectedItem as DataRowView;
             txtStaffName.Text = dataRowView?["StaffName"] as string ?? string.Empty;
             txtStaffPosition.Text = dataRowView?["StaffPosition"] as string ?? string.Empty;
+            txtSalaryPaymentAmount.Text = dataRowView?["Salary"].ToString() ?? string.Empty;
         }
         #endregion
 
@@ -187,6 +188,8 @@ namespace Store_Rental_Management_Systems
                 var dataRowView = cbStaffID.SelectedItem as DataRowView;
                 newRowView["StaffName"] = dataRowView?["StaffName"];
                 newRowView["StaffPosition"] = dataRowView?["StaffPosition"];
+                newRowView["SalaryPaymentAmount"] = decimal.Parse(dataRowView?["Salary"].ToString()!);
+
 
                 newRowView["SalaryPaymentDate"] = DateTime.Now;
 

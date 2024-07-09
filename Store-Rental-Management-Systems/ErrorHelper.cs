@@ -51,6 +51,29 @@ namespace Store_Rental_Management_Systems
 
         #endregion
 
+        #region Validate textbox number input fields or zero
+        public static bool ValidateTextBoxNumberOrZero(TextBox txt, ErrorProvider errorProvider)
+        {
+            string errMsg = "Only numbers are allowed!";
+            if (string.IsNullOrWhiteSpace(txt.Text))
+            {
+                errorProvider.SetError(txt, NOT_EMPTY_MSG);
+                return false;
+            }
+            if (!double.TryParse(txt.Text, out double n) || n < 0 || n > 100000)
+            {
+                errorProvider.SetError(txt, errMsg);
+                return false;
+            }
+            else
+            {
+                errorProvider.SetError(txt, string.Empty);
+                return true;
+            }
+        }
+
+        #endregion
+
         #region Validate textbox integer from 1 to 100 input fields
         public static bool ValidateTextBoxIntegerOneToHundred(TextBox txt, ErrorProvider errorProvider)
         {

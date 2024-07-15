@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoreRentalHelper
 {
-    public class StaffAssignmentHelper
+    public class AppointmentHelper
     {
         #region Connection
         public static SqlConnection Connection { get; set; } = default!;

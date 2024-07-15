@@ -319,14 +319,14 @@ namespace Store_Rental_Management_Systems
 
             DataRowView currentItem = (_paymentDetailBindingSource.Current as DataRowView)!;
 
-            if (currentItem != null)
-            {
-                currentItem["ExpenseTypeID"] = cbExpenseTypeID.SelectedValue;
-                currentItem["ExpenseDescription"] = txtExpenseDescription.Text;
-                currentItem["UnitPrice"] = txtUnitPrice.Text;
-                currentItem["Quantity"] = txtExpenseTypeQty.Text;
-                currentItem["Amount"] = txtAmount.Text;
-            }
+            if (currentItem == null) return;
+            
+            currentItem["ExpenseTypeID"] = cbExpenseTypeID.SelectedValue;
+            currentItem["ExpenseDescription"] = txtExpenseDescription.Text;
+            currentItem["UnitPrice"] = txtUnitPrice.Text;
+            currentItem["Quantity"] = txtExpenseTypeQty.Text;
+            currentItem["Amount"] = txtAmount.Text;
+            
 
             try
             {
@@ -646,7 +646,8 @@ namespace Store_Rental_Management_Systems
             {
                 cbSearchPayment.SelectedIndex = 0;
             }
-
+            HandleCbExpenseTypeIDSelectedIndexChanged(null, EventArgs.Empty);
+            HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
             HandleSearchPayment(null, EventArgs.Empty);
             BindToControls();
         }

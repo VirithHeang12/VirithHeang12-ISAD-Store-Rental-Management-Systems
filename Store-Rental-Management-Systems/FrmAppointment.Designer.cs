@@ -54,7 +54,7 @@
             txtAppointmentID = new TextBox();
             lblCustomerID = new Label();
             pnlAppointmentManipulation = new Panel();
-            btnCancelFormAppointment = new Button();
+            btnCancelAppointment = new Button();
             btnNewAppointment = new Button();
             btnUpdateAppointment = new Button();
             btnInsertAppointment = new Button();
@@ -62,6 +62,7 @@
             cbSearchAppointment = new ComboBox();
             dgvStaffAssignments = new DataGridView();
             StaffID = new DataGridViewTextBoxColumn();
+            AppointmentID = new DataGridViewTextBoxColumn();
             StaffName = new DataGridViewTextBoxColumn();
             StaffPosition = new DataGridViewTextBoxColumn();
             lblSearchAppointment = new Label();
@@ -78,7 +79,7 @@
             cbAppointmentStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbAppointmentStatus.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbAppointmentStatus.FormattingEnabled = true;
-            cbAppointmentStatus.Items.AddRange(new object[] { "បានកក់ការណាត់ជួប", "កំពុងធ្វើការណាតជួប", "លុបការណាត់ជួប" });
+            cbAppointmentStatus.Items.AddRange(new object[] { "កំពុងរង់ចាំណាត់ជួប", "បានណាត់ជួបរួចរាល់", "ការណាត់ជួបបានលុបចោល" });
             cbAppointmentStatus.Location = new Point(261, 95);
             cbAppointmentStatus.Name = "cbAppointmentStatus";
             cbAppointmentStatus.Size = new Size(371, 44);
@@ -154,6 +155,7 @@
             // 
             // cbStaffID
             // 
+            cbStaffID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffID.FormattingEnabled = true;
             cbStaffID.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
@@ -171,6 +173,7 @@
             btnUpdateAppointmentStaff.Name = "btnUpdateAppointmentStaff";
             btnUpdateAppointmentStaff.Size = new Size(107, 42);
             btnUpdateAppointmentStaff.TabIndex = 24;
+            btnUpdateAppointmentStaff.TabStop = false;
             btnUpdateAppointmentStaff.Text = "កែប្រែ";
             btnUpdateAppointmentStaff.UseVisualStyleBackColor = false;
             // 
@@ -183,6 +186,7 @@
             btnInsertAppointmentStaff.Name = "btnInsertAppointmentStaff";
             btnInsertAppointmentStaff.Size = new Size(107, 43);
             btnInsertAppointmentStaff.TabIndex = 23;
+            btnInsertAppointmentStaff.TabStop = false;
             btnInsertAppointmentStaff.Text = "បញ្ចូល";
             btnInsertAppointmentStaff.UseVisualStyleBackColor = false;
             // 
@@ -204,6 +208,7 @@
             txtStaffPosition.Name = "txtStaffPosition";
             txtStaffPosition.Size = new Size(297, 44);
             txtStaffPosition.TabIndex = 21;
+            txtStaffPosition.TabStop = false;
             // 
             // lblStaffName
             // 
@@ -223,6 +228,7 @@
             txtStaffName.Name = "txtStaffName";
             txtStaffName.Size = new Size(237, 44);
             txtStaffName.TabIndex = 19;
+            txtStaffName.TabStop = false;
             // 
             // lblStaffID
             // 
@@ -310,6 +316,7 @@
             txtAppointmentID.Name = "txtAppointmentID";
             txtAppointmentID.Size = new Size(371, 44);
             txtAppointmentID.TabIndex = 3;
+            txtAppointmentID.TabStop = false;
             // 
             // lblCustomerID
             // 
@@ -323,7 +330,7 @@
             // 
             // pnlAppointmentManipulation
             // 
-            pnlAppointmentManipulation.Controls.Add(btnCancelFormAppointment);
+            pnlAppointmentManipulation.Controls.Add(btnCancelAppointment);
             pnlAppointmentManipulation.Controls.Add(btnNewAppointment);
             pnlAppointmentManipulation.Controls.Add(btnUpdateAppointment);
             pnlAppointmentManipulation.Controls.Add(btnInsertAppointment);
@@ -332,17 +339,18 @@
             pnlAppointmentManipulation.Size = new Size(1427, 57);
             pnlAppointmentManipulation.TabIndex = 5;
             // 
-            // btnCancelFormAppointment
+            // btnCancelAppointment
             // 
-            btnCancelFormAppointment.BackColor = Color.FromArgb(0, 28, 87);
-            btnCancelFormAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelFormAppointment.ForeColor = Color.White;
-            btnCancelFormAppointment.Location = new Point(1231, 0);
-            btnCancelFormAppointment.Name = "btnCancelFormAppointment";
-            btnCancelFormAppointment.Size = new Size(152, 52);
-            btnCancelFormAppointment.TabIndex = 3;
-            btnCancelFormAppointment.Text = "បោះបង់";
-            btnCancelFormAppointment.UseVisualStyleBackColor = false;
+            btnCancelAppointment.BackColor = Color.FromArgb(0, 28, 87);
+            btnCancelAppointment.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelAppointment.ForeColor = Color.White;
+            btnCancelAppointment.Location = new Point(1231, 0);
+            btnCancelAppointment.Name = "btnCancelAppointment";
+            btnCancelAppointment.Size = new Size(152, 52);
+            btnCancelAppointment.TabIndex = 3;
+            btnCancelAppointment.TabStop = false;
+            btnCancelAppointment.Text = "បោះបង់";
+            btnCancelAppointment.UseVisualStyleBackColor = false;
             // 
             // btnNewAppointment
             // 
@@ -353,6 +361,7 @@
             btnNewAppointment.Name = "btnNewAppointment";
             btnNewAppointment.Size = new Size(152, 52);
             btnNewAppointment.TabIndex = 2;
+            btnNewAppointment.TabStop = false;
             btnNewAppointment.Text = "បង្កើតថ្មី";
             btnNewAppointment.UseVisualStyleBackColor = false;
             // 
@@ -365,6 +374,7 @@
             btnUpdateAppointment.Name = "btnUpdateAppointment";
             btnUpdateAppointment.Size = new Size(152, 52);
             btnUpdateAppointment.TabIndex = 1;
+            btnUpdateAppointment.TabStop = false;
             btnUpdateAppointment.Text = "កែប្រែ";
             btnUpdateAppointment.UseVisualStyleBackColor = false;
             // 
@@ -377,6 +387,7 @@
             btnInsertAppointment.Name = "btnInsertAppointment";
             btnInsertAppointment.Size = new Size(152, 52);
             btnInsertAppointment.TabIndex = 0;
+            btnInsertAppointment.TabStop = false;
             btnInsertAppointment.Text = "បញ្ចូល";
             btnInsertAppointment.UseVisualStyleBackColor = false;
             // 
@@ -416,10 +427,10 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvStaffAssignments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvStaffAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { StaffID, StaffName, StaffPosition });
+            dgvStaffAssignments.Columns.AddRange(new DataGridViewColumn[] { StaffID, AppointmentID, StaffName, StaffPosition });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 28, 87);
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -430,8 +441,10 @@
             dgvStaffAssignments.ReadOnly = true;
             dgvStaffAssignments.RowHeadersWidth = 51;
             dgvStaffAssignments.RowTemplate.Height = 29;
+            dgvStaffAssignments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStaffAssignments.Size = new Size(1428, 303);
             dgvStaffAssignments.TabIndex = 3;
+            dgvStaffAssignments.TabStop = false;
             // 
             // StaffID
             // 
@@ -444,6 +457,16 @@
             StaffID.Name = "StaffID";
             StaffID.ReadOnly = true;
             StaffID.Width = 206;
+            // 
+            // AppointmentID
+            // 
+            AppointmentID.DataPropertyName = "AppointmentID";
+            AppointmentID.HeaderText = "លេខសម្គាល់ការណាត់ជួបពិភាក្សា";
+            AppointmentID.MinimumWidth = 6;
+            AppointmentID.Name = "AppointmentID";
+            AppointmentID.ReadOnly = true;
+            AppointmentID.Visible = false;
+            AppointmentID.Width = 125;
             // 
             // StaffName
             // 
@@ -512,7 +535,7 @@
         private Label lblAppointmentDate;
         private Panel pnlAppointmentManipulation;
         private Button btnInsertAppointment;
-        private Button btnCancelFormAppointment;
+        private Button btnCancelAppointment;
         private Button btnNewAppointment;
         private Button btnUpdateAppointment;
         private ComboBox cbAppointmentStatus;
@@ -533,6 +556,7 @@
         private Button btnDeleteAppointmentStaff;
         private ComboBox cbSearchAppointment;
         private DataGridViewTextBoxColumn StaffID;
+        private DataGridViewTextBoxColumn AppointmentID;
         private DataGridViewTextBoxColumn StaffName;
         private DataGridViewTextBoxColumn StaffPosition;
     }

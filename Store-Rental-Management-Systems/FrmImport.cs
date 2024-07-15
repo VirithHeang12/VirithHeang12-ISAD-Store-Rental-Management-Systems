@@ -346,14 +346,13 @@ namespace Store_Rental_Management_Systems
 
             DataRowView currentItem = (_importDetailBindingSource.Current as DataRowView)!;
 
-            if (currentItem != null)
-            {
-                currentItem["ItemID"] = cbItemID.SelectedValue;
-                currentItem["Description"] = txtItemDescription.Text;
-                currentItem["UnitPrice"] = txtUnitPrice.Text;
-                currentItem["ImportQty"] = txtImportQty.Text;
-                currentItem["Amount"] = txtAmount.Text;
-            }
+            if (currentItem == null) return;
+
+            currentItem["ItemID"] = cbItemID.SelectedValue;
+            currentItem["Description"] = txtItemDescription.Text;
+            currentItem["UnitPrice"] = txtUnitPrice.Text;
+            currentItem["ImportQty"] = txtImportQty.Text;
+            currentItem["Amount"] = txtAmount.Text;
 
             try
             {
@@ -582,6 +581,9 @@ namespace Store_Rental_Management_Systems
                 cbSearchImport.SelectedIndex = 0;
             }
 
+            HandleCbItemIDSelectedIndexChanged(null, EventArgs.Empty);
+            HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
+            HandleCbSupplierIDSelectedIndexChanged(null, EventArgs.Empty);
             HandleSearchImport(null, EventArgs.Empty);
             BindToControls();
         }

@@ -62,7 +62,7 @@ namespace Store_Rental_Management_Systems
             PaymentHelper.Connection = Connection;
 
             MaintenanceHelper.Connection = Connection;  
-            StaffAssignmentHelper.Connection = Connection;
+            AppointmentHelper.Connection = Connection;
 
         }
     }

@@ -223,7 +223,7 @@ namespace Store_Rental_Management_Systems
             }
             if (cbStoreID.Items.Count < 1)
             {
-                MessageBox.Show("សូមបញ្ចូលតូបជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("គ្មានតូបទំនេរសម្រាប់ជួល", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
                 
             }

@@ -664,8 +664,7 @@ namespace Store_Rental_Management_Systems
             {
                 cbSearchMaintenance.SelectedIndex = 0;
             }
-            HandleCbItemIDSelectedIndexChanged(null, EventArgs.Empty);
-            HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
+
             HandleSearchMaintenance(null, EventArgs.Empty);
             BindToControls();
         }

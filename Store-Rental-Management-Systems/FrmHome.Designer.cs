@@ -86,7 +86,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(0, 28, 87);
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -97,9 +97,9 @@
             // 
             pictureBox1.BackColor = Color.FromArgb(0, 28, 87);
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(58, 0);
+            pictureBox1.Location = new Point(78, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(149, 80);
+            pictureBox1.Size = new Size(97, 80);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -399,7 +399,7 @@
             // 
             // FrmHome
             // 
-            AutoScaleDimensions = new SizeF(13F, 43F);
+            AutoScaleDimensions = new SizeF(11F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1800, 1000);

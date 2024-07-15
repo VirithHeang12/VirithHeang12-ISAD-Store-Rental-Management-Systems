@@ -29,9 +29,19 @@ namespace Store_Rental_Management_Systems
             GetAllStaffs();
             GetAllCustomers();
             GetAllInsurances();
+            GetAllContracts();
             #endregion
 
         }
+
+        #region GetAllContracts
+        private void GetAllContracts()
+        {
+            string contractCount = HomeDesignHelper.GetAllContracts(Program.Connection);
+            lblCountContract.Text = contractCount;
+        }
+
+        #endregion
 
         #region GetRentedStores
         private void GetRentedStores()

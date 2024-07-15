@@ -21,6 +21,7 @@ namespace StoreRentalHelper
         private const string COUNT_ALL_STAFFS = "dbo.fnCountAllStaffs";
         private const string COUNT_ALL_CUSTOMERS = "dbo.fnCountAllCustomers";
         private const string COUNT_ALL_INSURANCES = "dbo.fnCountAllInsurances";
+        private const string COUNT_ALL_CONTRACTS = "dbo.fnCountAllContracts";
         #endregion
 
         #region GetAllCountRentedStore
@@ -99,6 +100,24 @@ namespace StoreRentalHelper
         public static string GetAllInsurances(SqlConnection connection)
         {
             using var command = new SqlCommand($"SELECT {COUNT_ALL_INSURANCES}()", connection);
+            var dataSet = new DataSet();
+            using var adapter = new SqlDataAdapter(command);
+            adapter.Fill(dataSet);
+
+            if (dataSet.Tables.Count > 0 && dataSet.Tables[0].Rows.Count > 0)
+            {
+                return dataSet.Tables[0]!.Rows[0][0]!.ToString()!;
+            }
+
+            return string.Empty;
+        }
+
+        #endregion
+
+        #region GetAllCountAllInsurances
+        public static string GetAllContracts(SqlConnection connection)
+        {
+            using var command = new SqlCommand($"SELECT {COUNT_ALL_CONTRACTS}()", connection);
             var dataSet = new DataSet();
             using var adapter = new SqlDataAdapter(command);
             adapter.Fill(dataSet);

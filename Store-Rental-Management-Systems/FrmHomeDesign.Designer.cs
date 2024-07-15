@@ -50,6 +50,10 @@
             label10 = new Label();
             label11 = new Label();
             pictureBox6 = new PictureBox();
+            panel8 = new Panel();
+            label3 = new Label();
+            lblCountContract = new Label();
+            pictureBox7 = new PictureBox();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel5.SuspendLayout();
@@ -60,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -70,9 +76,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(266, 80);
             label1.Name = "label1";
-            label1.Size = new Size(1257, 79);
+            label1.Size = new Size(1534, 79);
             label1.TabIndex = 2;
-            label1.Text = "ទិន្នន័យ នៃប្រព័ន្ធគ្រប់គ្រងការជួលតូប";
+            label1.Text = "ទិន្នន័យនៃប្រព័ន្ធគ្រប់គ្រងការជួលតូប";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -81,7 +87,7 @@
             panel4.Controls.Add(label4);
             panel4.Controls.Add(lblStoreRentedCount);
             panel4.Controls.Add(pictureBox3);
-            panel4.Location = new Point(1108, 213);
+            panel4.Location = new Point(850, 257);
             panel4.Name = "panel4";
             panel4.Size = new Size(351, 133);
             panel4.TabIndex = 4;
@@ -124,7 +130,7 @@
             panel5.Controls.Add(label6);
             panel5.Controls.Add(label7);
             panel5.Controls.Add(pictureBox4);
-            panel5.Location = new Point(433, 423);
+            panel5.Location = new Point(1336, 257);
             panel5.Name = "panel5";
             panel5.Size = new Size(351, 133);
             panel5.TabIndex = 4;
@@ -167,7 +173,7 @@
             panel6.Controls.Add(label8);
             panel6.Controls.Add(label9);
             panel6.Controls.Add(pictureBox5);
-            panel6.Location = new Point(1108, 423);
+            panel6.Location = new Point(347, 604);
             panel6.Name = "panel6";
             panel6.Size = new Size(351, 133);
             panel6.TabIndex = 4;
@@ -210,7 +216,7 @@
             panel3.Controls.Add(label2);
             panel3.Controls.Add(lblStoreCount);
             panel3.Controls.Add(pictureBox2);
-            panel3.Location = new Point(433, 213);
+            panel3.Location = new Point(347, 257);
             panel3.Name = "panel3";
             panel3.Size = new Size(351, 133);
             panel3.TabIndex = 5;
@@ -253,7 +259,7 @@
             panel7.Controls.Add(label10);
             panel7.Controls.Add(label11);
             panel7.Controls.Add(pictureBox6);
-            panel7.Location = new Point(776, 631);
+            panel7.Location = new Point(850, 604);
             panel7.Name = "panel7";
             panel7.Size = new Size(351, 133);
             panel7.TabIndex = 5;
@@ -290,11 +296,54 @@
             pictureBox6.TabIndex = 0;
             pictureBox6.TabStop = false;
             // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(0, 28, 87);
+            panel8.Controls.Add(label3);
+            panel8.Controls.Add(lblCountContract);
+            panel8.Controls.Add(pictureBox7);
+            panel8.Location = new Point(1336, 604);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(351, 133);
+            panel8.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Khmer OS Siemreap", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(143, 67);
+            label3.Name = "label3";
+            label3.Size = new Size(183, 36);
+            label3.TabIndex = 2;
+            label3.Text = "ចំនួនកិច្ចសន្យាសរុប";
+            // 
+            // lblCountContract
+            // 
+            lblCountContract.AutoSize = true;
+            lblCountContract.Font = new Font("Khmer OS Siemreap", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCountContract.ForeColor = Color.White;
+            lblCountContract.Location = new Point(143, 25);
+            lblCountContract.Name = "lblCountContract";
+            lblCountContract.Size = new Size(46, 43);
+            lblCountContract.TabIndex = 1;
+            lblCountContract.Text = "10";
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(0, 25);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(140, 94);
+            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox7.TabIndex = 0;
+            pictureBox7.TabStop = false;
+            // 
             // FrmHomeDesign
             // 
-            AutoScaleDimensions = new SizeF(11F, 36F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1523, 837);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(1800, 1000);
+            Controls.Add(panel8);
             Controls.Add(panel7);
             Controls.Add(panel3);
             Controls.Add(panel6);
@@ -309,6 +358,7 @@
             Controls.SetChildIndex(panel6, 0);
             Controls.SetChildIndex(panel3, 0);
             Controls.SetChildIndex(panel7, 0);
+            Controls.SetChildIndex(panel8, 0);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -324,6 +374,9 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
         }
 
@@ -350,5 +403,9 @@
         private Label label10;
         private Label label11;
         private PictureBox pictureBox6;
+        private Panel panel8;
+        private Label label3;
+        private Label lblCountContract;
+        private PictureBox pictureBox7;
     }
 }

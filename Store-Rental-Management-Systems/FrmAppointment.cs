@@ -442,8 +442,7 @@ namespace Store_Rental_Management_Systems
             {
                 cbSearchAppointment.SelectedIndex = 0;
             }
-            cbAppointmentStatus.SelectedIndex = 0;
-            HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
+
             HandleSearchAppointment(null, EventArgs.Empty);
             BindToControls();
         }

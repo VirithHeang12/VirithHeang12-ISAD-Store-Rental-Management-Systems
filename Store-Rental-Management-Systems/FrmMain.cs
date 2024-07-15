@@ -13,23 +13,23 @@ namespace Store_Rental_Management_Systems
         public FrmMain()
         {
             InitializeComponent();
-            this.Resize += handleFormResize;
+            this.Resize += HandleFormResize;
 
             this.MaximizeBox = false;
             this.WindowState = FormWindowState.Maximized;
 
-            FrmLogin.LoggedIn += handleLoggedIn;
-            FrmHome.NavButtonClicked += handleNavButtonClicked;
-            FrmHome.ButtonLogoutClicked += handleButtonLogoutClick;
+            FrmLogin.LoggedIn += HandleLoggedIn;
+            FrmHome.NavButtonClicked += HandleNavButtonClicked;
+            FrmHome.ButtonLogoutClicked += HandleButtonLogoutClick;
             OpenChildForm(new FrmLogin());
         }
 
-        private void handleButtonLogoutClick(object? sender, EventArgs e)
+        private void HandleButtonLogoutClick(object? sender, EventArgs e)
         {
             OpenChildForm(new FrmLogin());
         }
 
-        private void handleNavButtonClicked(object? sender, FormEventArgs e)
+        private void HandleNavButtonClicked(object? sender, FormEventArgs e)
         {
             switch (e.Form)
             {
@@ -85,12 +85,12 @@ namespace Store_Rental_Management_Systems
             }
         }
 
-        private void handleLoggedIn(object? sender, EventArgs e)
+        private void HandleLoggedIn(object? sender, EventArgs e)
         {
             OpenChildForm(new FrmHome());
         }
 
-        private void handleFormResize(object? sender, EventArgs e)
+        private void HandleFormResize(object? sender, EventArgs e)
         {
             if (this.MdiChildren.Length > 0)
             {

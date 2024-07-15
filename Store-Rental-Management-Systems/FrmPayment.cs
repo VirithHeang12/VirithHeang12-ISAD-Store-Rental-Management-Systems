@@ -646,8 +646,7 @@ namespace Store_Rental_Management_Systems
             {
                 cbSearchPayment.SelectedIndex = 0;
             }
-            HandleCbExpenseTypeIDSelectedIndexChanged(null, EventArgs.Empty);
-            HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
+
             HandleSearchPayment(null, EventArgs.Empty);
             BindToControls();
         }

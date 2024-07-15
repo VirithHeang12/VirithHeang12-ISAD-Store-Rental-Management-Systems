@@ -216,6 +216,28 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewContractClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbStoreID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលតូបជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                
+            }
+            if (cbCustomerID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលអតិថិជនជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            if (cbInsuranceID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលក្រុមហ៊ុនធានារ៉ាប់រងជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 UnbindWithControls();

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblTitle = new Label();
             lblSearchCustomer = new Label();
             txtSearchCustomer = new TextBox();
@@ -69,28 +68,12 @@
             btnNewCustomer = new Button();
             btnUpdateCustomer = new Button();
             btnInsertCustomer = new Button();
-            epdCustomerFirstName = new ErrorProvider(components);
-            epdCustomerLastName = new ErrorProvider(components);
-            epdCustomerIdentityCardNumber = new ErrorProvider(components);
-            epdCustomerContactNumber = new ErrorProvider(components);
-            epdCustomerHouseNo = new ErrorProvider(components);
-            epdCustomerStreetNo = new ErrorProvider(components);
-            epdCustomerSangkat = new ErrorProvider(components);
-            epdCustomerKhan = new ErrorProvider(components);
             pnlLeftSide.SuspendLayout();
             pnlRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbCustomerPhoto).BeginInit();
             gbCustomerAddress.SuspendLayout();
             gbCustomerInformation.SuspendLayout();
             pnlCustomerManipulation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerIdentityCardNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerContactNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerHouseNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerStreetNo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerSangkat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerKhan).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -198,8 +181,9 @@
             // 
             cbCustomerCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbCustomerCityOrProvince.FormattingEnabled = true;
-            cbCustomerCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbCustomerCityOrProvince.Items.AddRange(new object[] { "ខេត្តបាត់ដំបង", "ខេត្តកំពង់ចាម", "ខេត្តកំពង់ឆ្នាំង", "ខេត្តព្រះសីហនុ (កំពង់សោម)", "ខេត្តកំពង់ស្ពឺ", "ខេត្តកំពង់ធំ", "ខេត្តកំពត", "ខេត្តកោះកុង", "ខេត្តក្រចេះ", "ខេត្តប៉ៃលិន", "រាជធានីភ្នំពេញ", "ខេត្តតាកែវ", "ខេត្តព្រៃវែង", "ខេត្តពោធិ៍សាត់", "ខេត្តសៀមរាប", "ខេត្តស្ទឹងត្រែង", "ខេត្តស្វាយរៀង", "ខេត្តឧត្ដរមានជ័យ", "ខេត្តព្រះវិហារ", "ខេត្តបន្ទាយមានជ័យ", "ខេត្តកណ្តាល", "ខេត្តរតនៈគិរី", "ខេត្តមណ្ឌលគិរី", "ខេត្តត្បូងឃ្មុំ", "ខេត្តកែប" });
             cbCustomerCityOrProvince.Location = new Point(154, 174);
+            cbCustomerCityOrProvince.MaxDropDownItems = 2;
             cbCustomerCityOrProvince.Name = "cbCustomerCityOrProvince";
             cbCustomerCityOrProvince.Size = new Size(198, 44);
             cbCustomerCityOrProvince.TabIndex = 25;
@@ -515,38 +499,6 @@
             btnInsertCustomer.Text = "បញ្ចូល";
             btnInsertCustomer.UseVisualStyleBackColor = false;
             // 
-            // epdCustomerFirstName
-            // 
-            epdCustomerFirstName.ContainerControl = this;
-            // 
-            // epdCustomerLastName
-            // 
-            epdCustomerLastName.ContainerControl = this;
-            // 
-            // epdCustomerIdentityCardNumber
-            // 
-            epdCustomerIdentityCardNumber.ContainerControl = this;
-            // 
-            // epdCustomerContactNumber
-            // 
-            epdCustomerContactNumber.ContainerControl = this;
-            // 
-            // epdCustomerHouseNo
-            // 
-            epdCustomerHouseNo.ContainerControl = this;
-            // 
-            // epdCustomerStreetNo
-            // 
-            epdCustomerStreetNo.ContainerControl = this;
-            // 
-            // epdCustomerSangkat
-            // 
-            epdCustomerSangkat.ContainerControl = this;
-            // 
-            // epdCustomerKhan
-            // 
-            epdCustomerKhan.ContainerControl = this;
-            // 
             // FrmCustomer
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -571,14 +523,6 @@
             gbCustomerInformation.ResumeLayout(false);
             gbCustomerInformation.PerformLayout();
             pnlCustomerManipulation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)epdCustomerFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerIdentityCardNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerContactNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerHouseNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerStreetNo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerSangkat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)epdCustomerKhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -623,14 +567,6 @@
         private Button btnCancelCustomer;
         private Button btnNewCustomer;
         private Button btnUpdateCustomer;
-        private ErrorProvider epdCustomerFirstName;
-        private ErrorProvider epdCustomerLastName;
-        private ErrorProvider epdCustomerIdentityCardNumber;
         private MaskedTextBox mtxtCustomerContactNumber;
-        private ErrorProvider epdCustomerContactNumber;
-        private ErrorProvider epdCustomerHouseNo;
-        private ErrorProvider epdCustomerStreetNo;
-        private ErrorProvider epdCustomerSangkat;
-        private ErrorProvider epdCustomerKhan;
     }
 }

@@ -138,7 +138,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _storeBindingSource.Filter = "SupplierName LIKE '" + searchText + "%'";
+                _storeBindingSource.Filter = "CONVERT(StoreID, 'System.String') LIKE '%" + searchText + "%'";
 
             }
         }
@@ -160,6 +160,11 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewStoreClicked(object? sender, EventArgs e)
         {
+            if (cbStoreTypeID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលប្រភេទតូបជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 if (cbStoreTypeID.DataBindings.Count != 0)

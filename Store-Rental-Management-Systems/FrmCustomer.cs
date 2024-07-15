@@ -214,7 +214,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _customerBindingSource.Filter = "CustomerName LIKE '" + searchText + "%'";
+                _customerBindingSource.Filter = "CustomerName LIKE '%" + searchText + "%'";
 
             }
             BindWithControls();
@@ -433,8 +433,16 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            lbCustomer.SelectedIndex = 0;
-            BindWithControls();
+            if (lbCustomer.Items.Count > 0)
+            {
+                lbCustomer.SelectedIndex = 0;
+            }
+            
+
+            if (_customerBindingSource.Count > 0)
+            {
+                BindWithControls();
+            }      
             txtSearchCustomer.Text = string.Empty;
         }
         #endregion

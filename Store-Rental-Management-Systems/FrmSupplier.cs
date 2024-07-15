@@ -112,7 +112,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _supplierBindingSource.Filter = "SupplierName LIKE '" + searchText + "%'";
+                _supplierBindingSource.Filter = "SupplierName LIKE '%" + searchText + "%'";
 
             }
         }

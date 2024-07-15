@@ -14,7 +14,6 @@ namespace Store_Rental_Management_Systems
 {
     public partial class FrmPayment : FrmHome
     {
-
         private const string RELATIONSHIP_NAME = "payment_paymentDetail";
 
         private const string TABLE_PAYMENT_NAME = "tblPayment";
@@ -42,8 +41,6 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private List<Control> _validatingControls = new();
-
         private DataView? tempDetails = null;
         public FrmPayment() : base()
         {
@@ -52,12 +49,6 @@ namespace Store_Rental_Management_Systems
             InitCommands();
             LoadAllData();
             BindToControls();
-
-            #region Add controls for validation
-            _errorProvider.ContainerControl = this;
-            _validatingControls.Add(dtpPaymentDate);
-            _validatingControls.Add(txtExpenseTypeQty);           
-            #endregion
 
             #region Event Registrations
 
@@ -81,25 +72,56 @@ namespace Store_Rental_Management_Systems
 
             cbSearchPayment.SelectedIndexChanged += HandleSearchPayment;
 
-            txtTotalAmount.GotFocus += HandleGotFocusEN;
             txtPaidAmount.GotFocus += HandleGotFocusEN;
-            txtOwedAmount.GotFocus += HandleGotFocusEN;
-            txtExpenseDescription.GotFocus += HandleGotFocusKM;
             txtUnitPrice.GotFocus += HandleGotFocusEN;
             txtExpenseTypeQty.GotFocus += HandleGotFocusEN;
-            txtAmount.GotFocus += HandleGotFocusEN;
 
             dgvExpenses.DataError += HandleDataError;
+
+            dtpPaymentDate.Validating += HandleValidatePaymentDate;
+            txtPaidAmount.Validating += HandleValidatePaidAmount;
+            txtExpenseTypeQty.Validating += HandleValidateQty;
+            txtUnitPrice.Validating += HandleValidateUnitPrice;
             #endregion
 
         }
 
-        #region HandleGotFocusKM
-        private void HandleGotFocusKM(object? sender, EventArgs e)
+        private void HandleValidateUnitPrice(object? sender, CancelEventArgs e)
         {
-            KeyboardLayoutHelper.SwitchToKhmerKeyboard();
+            ErrorHelper.ValidateTextBoxNumber(txtUnitPrice, _errorProvider);
         }
-        #endregion
+
+        private void HandleValidateQty(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxInteger(txtExpenseTypeQty, _errorProvider);
+        }
+
+        private void HandleValidatePaidAmount(object? sender, CancelEventArgs e)
+        {
+            string errMsg = "Only numbers are allowed!";
+            if (string.IsNullOrWhiteSpace(txtPaidAmount.Text))
+            {
+                _errorProvider.SetError(txtPaidAmount, "Cannot be empty!");
+                return;
+            }
+            if (!double.TryParse(txtPaidAmount.Text, out double n) || n <= 0)
+            {
+                _errorProvider.SetError(txtPaidAmount, errMsg);
+                return;
+            }
+            if (!double.TryParse(txtTotalAmount.Text, out double t) || n > t)
+            {
+                _errorProvider.SetError(txtPaidAmount, "Cannot be greater than TotalAmount");
+                return;
+            }
+
+            _errorProvider.SetError(txtPaidAmount, string.Empty);
+        }
+
+        private void HandleValidatePaymentDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDtpNowOrPast(dtpPaymentDate, _errorProvider);
+        }
 
         #region HandleGotFocusEN
         private void HandleGotFocusEN(object? sender, EventArgs e)
@@ -114,7 +136,6 @@ namespace Store_Rental_Management_Systems
             DataRowView masterRowView = (_paymentBindingSource.Current as DataRowView)!;
 
             if (tempDetails == null) return;
-            if (tempDetails.Count == 0) return;
 
             decimal totalAmount = 0;
 
@@ -152,6 +173,9 @@ namespace Store_Rental_Management_Systems
         #region Handle Insert
         private void HandleBtnInsertPaymentClicked(object? sender, EventArgs e)
         {
+            HandleValidatePaidAmount(null, null!);
+            HandleValidatePaymentDate(null, null!);
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(dtpPaymentDate)) || !string.IsNullOrEmpty(_errorProvider.GetError(txtPaidAmount))) return;
 
             if (tempDetails == null || tempDetails.Count == 0)
             {
@@ -180,6 +204,29 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewPaymentClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbContractID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលកិច្ចសន្យាជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            if (cbStoreID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលតូបជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            if (cbExpenseTypeID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលប្រភេទចំណាយជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             UnbindWithControls();
             cbSearchPayment.SelectedIndexChanged -= HandleSearchPayment;
 
@@ -232,7 +279,10 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnCancelPaymentExpenseTypeClicked(object? sender, EventArgs e)
         {
             _paymentDetailBindingSource.CancelEdit();
+            tempDetails!.Table!.AcceptChanges();
+
             UpdateTotalAmount();
+            cbExpenseTypeID.SelectedIndex = 0;
         }
         #endregion
 
@@ -242,16 +292,31 @@ namespace Store_Rental_Management_Systems
             if (_paymentDetailBindingSource.Count == 0) return;
             if (_paymentDetailBindingSource.Current == null) return;
 
+            DataRowView masterRowView = (_paymentBindingSource.Current as DataRowView)!;
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["PaymentID"].ToString()!) != -1) return;
+
             _paymentDetailBindingSource.RemoveCurrent();
 
             _paymentDetailBindingSource.EndEdit();
+            tempDetails!.Table!.AcceptChanges();
+
             UpdateTotalAmount();
+            cbExpenseTypeID.SelectedIndex = 0;
         }
         #endregion
 
         #region Handle Update ExpenseType
         private void HandleBtnUpdatePaymentExpenseTypeClicked(object? sender, EventArgs e)
         {
+            DataRowView masterRowView = (_paymentBindingSource.Current as DataRowView)!;
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["PaymentID"].ToString()!) != -1) return;
+
+            HandleValidateQty(null, null!);
+            HandleValidateUnitPrice(null, null!);
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtExpenseTypeQty)) || !string.IsNullOrEmpty(_errorProvider.GetError(txtUnitPrice))) return;
+
             DataRowView currentItem = (_paymentDetailBindingSource.Current as DataRowView)!;
 
             if (currentItem != null)
@@ -272,7 +337,10 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ប្រភេទចំណាយស្ទួន", "បញ្ខូលប្រភេទចំណាយ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvExpenses.Refresh();
             }
+            tempDetails!.Table!.AcceptChanges();
+
             UpdateTotalAmount();
+            cbExpenseTypeID.SelectedIndex = 0;
         }
         #endregion
 
@@ -280,18 +348,18 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnInsertPaymentExpenseTypeClicked(object? sender, EventArgs e)
         {
             DataRowView masterRowView = (_paymentBindingSource.Current as DataRowView)!;
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["PaymentID"].ToString()!) != -1) return;
+
+            HandleValidateQty(null, null!);
+            HandleValidateUnitPrice(null, null!);
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtExpenseTypeQty)) || !string.IsNullOrEmpty(_errorProvider.GetError(txtUnitPrice))) return;
 
             object expensetypeID = cbExpenseTypeID.SelectedValue;
             string description = txtExpenseDescription.Text;
             string unitPrice = txtUnitPrice.Text;
             string expensetypeQty = txtExpenseTypeQty.Text;
             string amount = txtAmount.Text;
-
-            // validate when insert item
-            ErrorHelper.ValidateTextBoxInteger(txtExpenseTypeQty, _errorProvider);
-            ErrorHelper.ValidateTextBoxNumber(txtUnitPrice, _errorProvider);
-  
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
             DataRowView? dataRowView = tempDetails?.AddNew();
 
@@ -320,10 +388,10 @@ namespace Store_Rental_Management_Systems
             }
             tempDetails!.Table!.AcceptChanges();
 
-            txtExpenseTypeQty.Text = string.Empty;
-            cbExpenseTypeID.SelectedIndex = 0;
-
             UpdateTotalAmount();
+            cbExpenseTypeID.SelectedIndex = 0;
+            txtExpenseTypeQty.Text = string.Empty;
+            txtUnitPrice.Text = string.Empty;
         }
         #endregion
 
@@ -558,13 +626,16 @@ namespace Store_Rental_Management_Systems
         {
             UnbindWithControls();
 
-            _storeRentalDataSet.Tables[TABLE_PAYMENT_DETAIL_NAME]?.Clear();
-            _storeRentalDataSet.Tables[TABLE_PAYMENT_NAME]?.Clear();
+            _storeRentalDataSet.Clear();
 
             try
             {
                 _paymentDataAdapter.Fill(_storeRentalDataSet, TABLE_PAYMENT_NAME);
                 _paymentDetailDataAdapter.Fill(_storeRentalDataSet, TABLE_PAYMENT_DETAIL_NAME);
+                _storeDataAdapter.Fill(_storeRentalDataSet, TABLE_STORE_NAME);
+                _contractDataAdapter.Fill(_storeRentalDataSet, TABLE_CONTRACT_NAME);
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+                _expenseTypeDataAdapter.Fill(_storeRentalDataSet, TABLE_EXPENSETYPE_NAME);
             }
             catch (Exception)
             {

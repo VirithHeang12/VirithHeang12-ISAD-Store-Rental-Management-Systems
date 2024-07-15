@@ -44,27 +44,26 @@ namespace Store_Rental_Management_Systems
 
         private void handleBtnLoginClick(object? sender, EventArgs e)
         {
-            //string userNameInput = txtLoginUserName.Text;
-            //string passwordInput = txtLoginPassword.Text;
+            string userNameInput = txtLoginUserName.Text;
+            string passwordInput = txtLoginPassword.Text;
 
-            //if (string.IsNullOrWhiteSpace(userNameInput) || string.IsNullOrWhiteSpace(passwordInput))
-            //{
-            //    MessageBox.Show("សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    txtLoginUserName.Focus();
-            //    return;
-            //}
+            if (string.IsNullOrWhiteSpace(userNameInput) || string.IsNullOrWhiteSpace(passwordInput))
+            {
+                MessageBox.Show("សូមបញ្ចូលឈ្មោះនិងលេខសម្ងាត់", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLoginUserName.Focus();
+                return;
+            }
 
-            //foreach (DataRow row in _storeRentalDataSet.Tables[TABLE_NAME]!.Rows)
-            //{
-            //    if (userNameInput.Equals(row["UserName"]) && passwordInput.Equals(row["Password"]))
-            //    {
-            //        LoggedIn?.Invoke(this, EventArgs.Empty);
-            //        return;
-            //    }
-            //}
-            //MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //txtLoginUserName.Focus();
-            LoggedIn?.Invoke(this, EventArgs.Empty);
+            foreach (DataRow row in _storeRentalDataSet.Tables[TABLE_NAME]!.Rows)
+            {
+                if (userNameInput.Equals(row["UserName"]) && passwordInput.Equals(row["Password"]))
+                {
+                    LoggedIn?.Invoke(this, EventArgs.Empty);
+                    return;
+                }
+            }
+            MessageBox.Show("ឈ្មោះឬលេខសម្ងាត់មិនត្រឹមត្រូវ", "ចូលក្នុងប្រព័ន្ធ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            txtLoginUserName.Focus();
         }
 
         private void InitCommands()
@@ -79,16 +78,19 @@ namespace Store_Rental_Management_Systems
             {
                 _userDataAdapter.Fill(_storeRentalDataSet, TABLE_NAME);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            var newRow = _storeRentalDataSet.Tables[TABLE_NAME]!.NewRow();
-            newRow["UserName"] = "abc";
-            newRow["Password"] = "12345678";
-
-            _storeRentalDataSet.Tables[TABLE_NAME]!.Rows.Add(newRow);
+            if (_storeRentalDataSet.Tables[TABLE_NAME]!.Rows.Count == 0)
+            {
+                var newRow = _storeRentalDataSet.Tables[TABLE_NAME]!.NewRow();
+                newRow["UserName"] = "abc";
+                newRow["Password"] = "12345678";
+                _storeRentalDataSet.Tables[TABLE_NAME]!.Rows.Add(newRow);
+            }
+            
         }
     }
 }

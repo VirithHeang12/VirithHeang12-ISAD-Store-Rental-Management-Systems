@@ -118,7 +118,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _insuranceBindingSource.Filter = "InsuranceName LIKE '" + searchText + "%'";
+                _insuranceBindingSource.Filter = "InsuranceName LIKE '%" + searchText + "%'";
             }
         }
         #endregion

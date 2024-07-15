@@ -81,7 +81,7 @@
             panel4.Controls.Add(label4);
             panel4.Controls.Add(lblStoreRentedCount);
             panel4.Controls.Add(pictureBox3);
-            panel4.Location = new Point(967, 213);
+            panel4.Location = new Point(1108, 213);
             panel4.Name = "panel4";
             panel4.Size = new Size(351, 133);
             panel4.TabIndex = 4;
@@ -167,7 +167,7 @@
             panel6.Controls.Add(label8);
             panel6.Controls.Add(label9);
             panel6.Controls.Add(pictureBox5);
-            panel6.Location = new Point(967, 423);
+            panel6.Location = new Point(1108, 423);
             panel6.Name = "panel6";
             panel6.Size = new Size(351, 133);
             panel6.TabIndex = 4;
@@ -253,7 +253,7 @@
             panel7.Controls.Add(label10);
             panel7.Controls.Add(label11);
             panel7.Controls.Add(pictureBox6);
-            panel7.Location = new Point(694, 630);
+            panel7.Location = new Point(776, 631);
             panel7.Name = "panel7";
             panel7.Size = new Size(351, 133);
             panel7.TabIndex = 5;
@@ -290,7 +290,7 @@
             pictureBox6.TabIndex = 0;
             pictureBox6.TabStop = false;
             // 
-            // HomeDesign
+            // FrmHomeDesign
             // 
             AutoScaleDimensions = new SizeF(11F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -301,7 +301,7 @@
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(label1);
-            Name = "HomeDesign";
+            Name = "FrmHomeDesign";
             Text = "HomeDesign";
             Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(panel4, 0);

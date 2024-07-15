@@ -18,7 +18,7 @@ namespace StoreRentalHelper
         private const string GET_ALL = "vGetAllContracts";
         private const string GET_ALL_STAFFS_FOR_COMBO_BOX = "vGetAllStaffsForComboBox";
         private const string GET_ALL_INSURANCES_FOR_COMBO_BOX = "vGetAllInsurancesForComboBox";
-        private const string GET_ALL_STORES_FOR_COMBO_BOX = "vGetAllStoresForComboBox";
+        private const string GET_ALL_STORES_FOR_COMBO_BOX = "vGetAllFreeStoresForComboBox";
         private const string GET_ALL_CUSTOMERS_FOR_COMBO_BOX = "vGetAllCustomersForComboBox";
         #endregion
 

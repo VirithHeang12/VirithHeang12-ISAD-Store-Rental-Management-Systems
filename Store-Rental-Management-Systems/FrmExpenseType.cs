@@ -107,7 +107,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _expenseTypeBindingSource.Filter = "ExpenseDescription LIKE '" + searchText + "%'";
+                _expenseTypeBindingSource.Filter = "ExpenseDescription LIKE '%" + searchText + "%'";
             }
         }
         #endregion

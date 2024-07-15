@@ -123,7 +123,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _itemBindingSource.Filter = "ItemDescription LIKE '" + searchText + "%'";
+                _itemBindingSource.Filter = "ItemDescription LIKE '%" + searchText + "%'";
             }
         }
         #endregion

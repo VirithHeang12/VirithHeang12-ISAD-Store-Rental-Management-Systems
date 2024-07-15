@@ -85,15 +85,15 @@
             lblSearchUser.AutoSize = true;
             lblSearchUser.Location = new Point(82, 29);
             lblSearchUser.Name = "lblSearchUser";
-            lblSearchUser.Size = new Size(366, 43);
+            lblSearchUser.Size = new Size(256, 36);
             lblSearchUser.TabIndex = 1;
-            lblSearchUser.Text = "ស្វែងរក (លេខសម្គាល់អ្នកប្រើប្រាស់):";
+            lblSearchUser.Text = "ស្វែងរក (ឈ្មោះអ្នកប្រើប្រាស់):";
             // 
             // txtSearchUser
             // 
             txtSearchUser.Location = new Point(411, 26);
             txtSearchUser.Name = "txtSearchUser";
-            txtSearchUser.Size = new Size(334, 51);
+            txtSearchUser.Size = new Size(334, 44);
             txtSearchUser.TabIndex = 2;
             txtSearchUser.TabStop = false;
             // 
@@ -148,7 +148,7 @@
             UserID.MinimumWidth = 6;
             UserID.Name = "UserID";
             UserID.ReadOnly = true;
-            UserID.Width = 291;
+            UserID.Width = 244;
             // 
             // UserName
             // 
@@ -176,7 +176,7 @@
             StaffID.MinimumWidth = 6;
             StaffID.Name = "StaffID";
             StaffID.ReadOnly = true;
-            StaffID.Width = 158;
+            StaffID.Width = 206;
             // 
             // StaffName
             // 
@@ -233,7 +233,7 @@
             lblStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffPosition.Location = new Point(711, 185);
             lblStaffPosition.Name = "lblStaffPosition";
-            lblStaffPosition.Size = new Size(153, 43);
+            lblStaffPosition.Size = new Size(131, 36);
             lblStaffPosition.TabIndex = 32;
             lblStaffPosition.Text = "តួនាទីបុគ្គលិក:";
             // 
@@ -243,7 +243,7 @@
             txtStaffPosition.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffPosition.Location = new Point(907, 177);
             txtStaffPosition.Name = "txtStaffPosition";
-            txtStaffPosition.Size = new Size(412, 51);
+            txtStaffPosition.Size = new Size(412, 44);
             txtStaffPosition.TabIndex = 31;
             // 
             // txtStaffName
@@ -252,7 +252,7 @@
             txtStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(245, 182);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(418, 51);
+            txtStaffName.Size = new Size(418, 44);
             txtStaffName.TabIndex = 30;
             // 
             // lblStaffName
@@ -261,7 +261,7 @@
             lblStaffName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffName.Location = new Point(18, 185);
             lblStaffName.Name = "lblStaffName";
-            lblStaffName.Size = new Size(155, 43);
+            lblStaffName.Size = new Size(130, 36);
             lblStaffName.TabIndex = 29;
             lblStaffName.Text = "ឈ្មោះបុគ្គលិក:";
             // 
@@ -273,7 +273,7 @@
             cbStaffID.Items.AddRange(new object[] { "អ្នកគ្រប់គ្រង", "គណនីករ" });
             cbStaffID.Location = new Point(906, 108);
             cbStaffID.Name = "cbStaffID";
-            cbStaffID.Size = new Size(412, 51);
+            cbStaffID.Size = new Size(412, 44);
             cbStaffID.TabIndex = 3;
             // 
             // pnlUserManipulation
@@ -346,7 +346,7 @@
             lblStaffID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblStaffID.Location = new Point(711, 111);
             lblStaffID.Name = "lblStaffID";
-            lblStaffID.Size = new Size(214, 43);
+            lblStaffID.Size = new Size(183, 36);
             lblStaffID.TabIndex = 27;
             lblStaffID.Text = "លេខសម្គាល់បុគ្គលិក:";
             // 
@@ -356,7 +356,7 @@
             lblUserID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUserID.Location = new Point(18, 41);
             lblUserID.Name = "lblUserID";
-            lblUserID.Size = new Size(262, 43);
+            lblUserID.Size = new Size(221, 36);
             lblUserID.TabIndex = 0;
             lblUserID.Text = "លេខសម្គាល់អ្នកប្រើប្រាស់:";
             // 
@@ -365,7 +365,7 @@
             txtUserName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUserName.Location = new Point(907, 33);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(412, 51);
+            txtUserName.Size = new Size(412, 44);
             txtUserName.TabIndex = 1;
             // 
             // lblUserName
@@ -374,7 +374,7 @@
             lblUserName.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblUserName.Location = new Point(711, 41);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(203, 43);
+            lblUserName.Size = new Size(168, 36);
             lblUserName.TabIndex = 4;
             lblUserName.Text = "ឈ្មោះអ្នកប្រើប្រាស់:";
             // 
@@ -384,7 +384,7 @@
             txtUserID.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtUserID.Location = new Point(245, 33);
             txtUserID.Name = "txtUserID";
-            txtUserID.Size = new Size(418, 51);
+            txtUserID.Size = new Size(418, 44);
             txtUserID.TabIndex = 3;
             // 
             // lblPassword
@@ -393,7 +393,7 @@
             lblPassword.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblPassword.Location = new Point(18, 111);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(136, 43);
+            lblPassword.Size = new Size(115, 36);
             lblPassword.TabIndex = 6;
             lblPassword.Text = "លេខសម្ងាត់:";
             // 
@@ -402,7 +402,7 @@
             txtPassword.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(245, 111);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(418, 51);
+            txtPassword.Size = new Size(418, 44);
             txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             // 

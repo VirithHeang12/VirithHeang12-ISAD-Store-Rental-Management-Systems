@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,8 +38,6 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private List<Control> _validatingControls = new();
-
         private DataView? tempDetails = null;
 
         public FrmImport() : base()
@@ -50,12 +47,6 @@ namespace Store_Rental_Management_Systems
             InitCommands();
             LoadAllData();
             BindToControls();
-
-            #region Add controls for validation
-            _errorProvider.ContainerControl = this;
-            _validatingControls.Add(dtpImportDate);
-            _validatingControls.Add(txtImportQty);
-            #endregion
 
             #region Event Registrations
             cbSupplierID.SelectedIndexChanged += HandleCbSupplierIDSelectedIndexChanged;
@@ -83,13 +74,44 @@ namespace Store_Rental_Management_Systems
             txtImportQty.GotFocus += HandleGotFocusEN;
 
             dgvImportItems.DataError += HandleDataError;
+
+            txtImportQty.Validating += HandleValidateImportQty;
+            dtpImportDate.Validating += HandleValidateImportDate;
             #endregion
         }
 
+        private void HandleValidateImportDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDtpNowOrPast(dtpImportDate, _errorProvider);
+        }
+
+        private void HandleValidateImportQty(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateTextBoxInteger(txtImportQty, _errorProvider);
+        }
 
         private void HandleDataError(object? sender, DataGridViewDataErrorEventArgs e)
         {
             // do nothing just to fix bug on datagridview
+        }
+
+        private void UpdateTotalAmount()
+        {
+            DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
+
+            if (tempDetails == null) return;
+
+            decimal totalAmount = 0;
+
+            foreach (DataRowView r in tempDetails)
+            {
+                totalAmount += decimal.Parse(r["Amount"].ToString()!);
+            }
+
+            if (masterRowView != null)
+            {
+                masterRowView["TotalAmount"] = totalAmount;
+            }
         }
 
         #region Init Commands
@@ -172,23 +194,13 @@ namespace Store_Rental_Management_Systems
         #region Handle Insert
         private void HandleBtnInsertImportClicked(object? sender, EventArgs e)
         {
-
-            decimal totalAmount = 0;
+            HandleValidateImportDate(null, null!);
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(dtpImportDate))) return;
 
             if (tempDetails == null || tempDetails.Count == 0)
             {
                 MessageBox.Show("សូមបញ្ចូលសម្ភារៈ", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-
-            foreach (DataRowView r in tempDetails)
-            {
-                totalAmount += decimal.Parse(r["Amount"].ToString()!);
-            }
-            DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
-            if (masterRowView != null)
-            {
-                masterRowView["TotalAmount"] = totalAmount;
             }
 
             _importDataAdapter.InsertCommand.Parameters["@ImportDetails"].Value = tempDetails.ToTable();
@@ -213,6 +225,23 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewImportClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbSupplierID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលអ្នកផ្គត់ផ្គង់ជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            if (cbItemID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលសម្ភារៈជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             UnbindWithControls();
             cbSearchImport.SelectedIndexChanged -= HandleSearchImport;
 
@@ -277,6 +306,10 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnCancelImportItemClicked(object? sender, EventArgs e)
         {
             _importDetailBindingSource.CancelEdit();
+            tempDetails!.Table!.AcceptChanges();
+
+            UpdateTotalAmount();
+            cbItemID.SelectedIndex = 0;
         }
         #endregion
 
@@ -286,15 +319,31 @@ namespace Store_Rental_Management_Systems
             if (_importDetailBindingSource.Count == 0) return;
             if (_importDetailBindingSource.Current == null) return;
 
+            DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["ImportID"].ToString()!) != -1) return;
+
             _importDetailBindingSource.RemoveCurrent();
 
             _importDetailBindingSource.EndEdit();
+            tempDetails!.Table!.AcceptChanges();
+
+            UpdateTotalAmount();
+            cbItemID.SelectedIndex = 0;        
         }
         #endregion
 
         #region Handle Update Item
         private void HandleBtnUpdateImportItemClicked(object? sender, EventArgs e)
         {
+            DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["ImportID"].ToString()!) != -1) return;
+
+            HandleValidateImportQty(null, null!);
+
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtImportQty))) return;
+
             DataRowView currentItem = (_importDetailBindingSource.Current as DataRowView)!;
 
             if (currentItem != null)
@@ -315,6 +364,10 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("សម្ភារៈស្ទួន", "បញ្ខូលសម្ភារៈ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvImportItems.Refresh();
             }
+            tempDetails!.Table!.AcceptChanges();
+
+            UpdateTotalAmount();
+            cbItemID.SelectedIndex = 0;
         }
         #endregion
 
@@ -323,15 +376,19 @@ namespace Store_Rental_Management_Systems
         {
             DataRowView masterRowView = (_importBindingSource.Current as DataRowView)!;
 
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["ImportID"].ToString()!) != -1) return;
+
+            HandleValidateImportQty(null, null!);
+
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtImportQty))) return;
+
+
             object itemID = cbItemID.SelectedValue;
             string description = txtItemDescription.Text;
             string unitPrice = txtUnitPrice.Text;
             string importQty = txtImportQty.Text;
             string amount = txtAmount.Text;
-
-            // validate when insert item
-            ErrorHelper.ValidateTextBoxInteger(txtImportQty, _errorProvider);
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
             DataRowView? dataRowView = tempDetails?.AddNew();
                      
@@ -359,8 +416,10 @@ namespace Store_Rental_Management_Systems
             }
             tempDetails!.Table!.AcceptChanges();
 
+            UpdateTotalAmount();
+
             txtImportQty.Text = string.Empty;
-            cbItemID.SelectedIndex = 0;
+            cbItemID.SelectedIndex = 0; 
         }
 
         #endregion
@@ -503,13 +562,15 @@ namespace Store_Rental_Management_Systems
         {
             UnbindWithControls();
 
-            _storeRentalDataSet.Tables[TABLE_IMPORT_DETAIL_NAME]?.Clear();
-            _storeRentalDataSet.Tables[TABLE_IMPORT_NAME]?.Clear();
-            
+            _storeRentalDataSet.Clear();
+
             try
             {
                 _importDataAdapter.Fill(_storeRentalDataSet, TABLE_IMPORT_NAME);
                 _importDetailDataAdapter.Fill(_storeRentalDataSet, TABLE_IMPORT_DETAIL_NAME);
+                _supplierDataAdapter.Fill(_storeRentalDataSet, TABLE_SUPPLIER_NAME);
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+                _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_ITEM_NAME);
             }
             catch (Exception)
             {

@@ -174,6 +174,11 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewSalaryPaymentClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 UnbindWithControls();
@@ -181,6 +186,7 @@ namespace Store_Rental_Management_Systems
                 _salaryPaymentBindingSource.AddNew();
 
                 var newRowView = (_salaryPaymentBindingSource.Current as DataRowView)!;
+                if (newRowView == null) return;
 
                 cbStaffID.SelectedIndex = 0;
                 newRowView["StaffID"] = cbStaffID.SelectedValue;

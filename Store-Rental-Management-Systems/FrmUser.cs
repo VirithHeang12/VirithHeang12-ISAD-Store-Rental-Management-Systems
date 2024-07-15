@@ -65,9 +65,7 @@ namespace Store_Rental_Management_Systems
 
             #endregion
 
-
         }
-
         private void HandleGotFocusEN(object? sender, EventArgs e)
         {
             KeyboardLayoutHelper.SwitchToEnglishKeyboard();
@@ -144,7 +142,7 @@ namespace Store_Rental_Management_Systems
         }
         #endregion
 
-        #region Handle SearchUser
+        #region Handle Search
         private void HandleSearchUser(object? sender, EventArgs e)
         {
             UnbindWithControls();
@@ -173,6 +171,11 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewUserClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1) 
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 UnbindWithControls();
@@ -180,6 +183,7 @@ namespace Store_Rental_Management_Systems
                 _userBindingSource.AddNew();
 
                 var newRowView = (_userBindingSource.Current as DataRowView)!;
+                if (newRowView == null) return;
 
                 cbStaffID.SelectedIndex = 0;
                 newRowView["StaffID"] = cbStaffID.SelectedValue;
@@ -259,6 +263,7 @@ namespace Store_Rental_Management_Systems
         private void LoadAllData()
         {
             _userDataAdapter.TableMappings.Add("Table", TABLE_NAME);
+
             _staffDataAdapter.TableMappings.Add("Table", TABLE_STAFF_NAME);
             try
             {

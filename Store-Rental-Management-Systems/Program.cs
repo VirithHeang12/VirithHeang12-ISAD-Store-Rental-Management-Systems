@@ -25,6 +25,7 @@ namespace Store_Rental_Management_Systems
             StoreRentalLib.Connection.ConnectionStringKey = "ConnectionString";
             try
             {
+             
                 StoreRentalLib.Connection.LoadConfiguration("appsettings.json");
                 StoreRentalLib.Connection.Conn = Connection;
                 Connection = StoreRentalLib.Connection.OpenConnection();

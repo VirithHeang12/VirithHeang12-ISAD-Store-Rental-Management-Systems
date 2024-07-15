@@ -238,7 +238,7 @@ namespace Store_Rental_Management_Systems
             }
             else
             {
-                _staffBindingSource.Filter = "StaffName LIKE '" + searchText + "%'";
+                _staffBindingSource.Filter = "StaffName LIKE '%" + searchText + "%'";
 
             }
             BindWithControls();
@@ -312,6 +312,7 @@ namespace Store_Rental_Management_Systems
                 BindWithControls();
 
                 int lastRowIndex = lbStaff.Items.Count - 1;
+
                 lbStaff.SelectedIndex = lastRowIndex;
 
             }
@@ -476,9 +477,16 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("ការទាញទិន្នន័យមិនបានសម្រេច", "ទាញទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            lbStaff.SelectedIndex = 0;
-
-            BindWithControls();
+            if (lbStaff.Items.Count > 0)
+            {
+                lbStaff.SelectedIndex = 0;
+                
+            }
+            if (_staffBindingSource.Count > 0)
+            {
+                BindWithControls();
+            }
+            
             txtSearchStaff.Text = string.Empty;
         }
         #endregion

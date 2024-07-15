@@ -192,8 +192,10 @@
             cbStaffCityOrProvince.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStaffCityOrProvince.Font = new Font("!Khmer OS Siemreap", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbStaffCityOrProvince.FormattingEnabled = true;
-            cbStaffCityOrProvince.Items.AddRange(new object[] { "ភ្នំពេញ", "តាកែវ" });
+            cbStaffCityOrProvince.Items.AddRange(new object[] { "ខេត្តបាត់ដំបង", "ខេត្តកំពង់ចាម", "ខេត្តកំពង់ឆ្នាំង", "ខេត្តព្រះសីហនុ (កំពង់សោម)", "ខេត្តកំពង់ស្ពឺ", "ខេត្តកំពង់ធំ", "ខេត្តកំពត", "ខេត្តកោះកុង", "ខេត្តក្រចេះ", "ខេត្តប៉ៃលិន", "រាជធានីភ្នំពេញ", "ខេត្តតាកែវ", "ខេត្តព្រៃវែង", "ខេត្តពោធិ៍សាត់", "ខេត្តសៀមរាប", "ខេត្តស្ទឹងត្រែង", "ខេត្តស្វាយរៀង", "ខេត្តឧត្ដរមានជ័យ", "ខេត្តព្រះវិហារ", "ខេត្តបន្ទាយមានជ័យ", "ខេត្តកណ្តាល", "ខេត្តរតនៈគិរី", "ខេត្តមណ្ឌលគិរី", "ខេត្តត្បូងឃ្មុំ", "ខេត្តកែប" });
             cbStaffCityOrProvince.Location = new Point(485, 100);
+            cbStaffCityOrProvince.MaxDropDownItems = 3;
+            cbStaffCityOrProvince.MaxLength = 3;
             cbStaffCityOrProvince.Name = "cbStaffCityOrProvince";
             cbStaffCityOrProvince.Size = new Size(219, 44);
             cbStaffCityOrProvince.TabIndex = 16;

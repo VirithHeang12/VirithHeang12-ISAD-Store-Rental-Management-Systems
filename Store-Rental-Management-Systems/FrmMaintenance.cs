@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Store_Rental_Management_Systems
 {
@@ -41,8 +43,6 @@ namespace Store_Rental_Management_Systems
 
         private ErrorProvider _errorProvider = new();
 
-        private List<Control> _validatingControls = new();
-
         private DataView? tempDetails = null;
         public FrmMaintenance() : base()
         {
@@ -51,12 +51,6 @@ namespace Store_Rental_Management_Systems
             InitCommands();
             LoadAllData();
             BindToControls();
-
-            #region Add controls for validation
-            _errorProvider.ContainerControl = this;
-            _validatingControls.Add(dtpMaintenanceDate);
-            _validatingControls.Add(txtMaintenanceQty);
-            #endregion
 
             #region Event Registrations
 
@@ -85,7 +79,61 @@ namespace Store_Rental_Management_Systems
 
             dgvMaintenanceItems.DataError += HandleDataError;
 
+            dtpMaintenanceDate.Validating += HandleValidateMaintenanceDate;
+            txtPaidAmount.Validating += HandleValidatePaidAmount;
+            txtMaintenanceQty.Validating += HandleValidateQty;
+
             #endregion
+        }
+
+        private void HandleValidateMaintenanceDate(object? sender, CancelEventArgs e)
+        {
+            ErrorHelper.ValidateDtpNowOrPast(dtpMaintenanceDate, _errorProvider);
+        }
+
+        private void HandleValidateQty(object? sender, CancelEventArgs e)
+        {
+            var dataRowView = cbItemID.SelectedItem as DataRowView;
+            if (dataRowView == null) return;
+
+            int stockQty = int.Parse(dataRowView["StockQty"].ToString()!);
+            string errMsg = $"Only {stockQty} left in stock!";
+            if (string.IsNullOrWhiteSpace(txtMaintenanceQty.Text))
+            {
+                _errorProvider.SetError(txtMaintenanceQty, "Cannot be empty!");
+                return;
+            }
+            if (!int.TryParse(txtMaintenanceQty.Text, out int x) || x <= 0 || x > stockQty)
+            {
+                _errorProvider.SetError(txtMaintenanceQty, errMsg);
+                return;
+            }
+
+            _errorProvider.SetError(txtMaintenanceQty, string.Empty);
+
+        }
+
+        private void HandleValidatePaidAmount(object? sender, CancelEventArgs e)
+        {
+            string errMsg = "Only numbers are allowed!";
+            if (string.IsNullOrWhiteSpace(txtPaidAmount.Text))
+            {
+                _errorProvider.SetError(txtPaidAmount, "Cannot be empty!");
+                return;
+            }
+            if (!double.TryParse(txtPaidAmount.Text, out double n) || n <= 0)
+            {
+                _errorProvider.SetError(txtPaidAmount, errMsg);
+                return;
+            }
+            if (!double.TryParse(txtTotalAmount.Text, out double t) || n > t)
+            {
+                _errorProvider.SetError(txtPaidAmount, "Cannot be greater than TotalAmount");
+                return;
+            }
+
+            _errorProvider.SetError(txtPaidAmount, string.Empty);
+
         }
 
         private void UpdateTotalAmount()
@@ -93,8 +141,7 @@ namespace Store_Rental_Management_Systems
             DataRowView masterRowView = (_maintenanceBindingSource.Current as DataRowView)!;
 
             if (tempDetails == null) return;
-            if (tempDetails.Count == 0) return;
-
+            
             decimal totalAmount = 0;
 
             foreach (DataRowView r in tempDetails)
@@ -112,6 +159,7 @@ namespace Store_Rental_Management_Systems
         {
             // do nothing just to fix bug on datagridview
         }
+
 
         #region Handle Cancel
         private void HandleBtnCancelMaintenanceClicked(object? sender, EventArgs e)
@@ -131,6 +179,10 @@ namespace Store_Rental_Management_Systems
         #region Handle Insert
         private void HandleBtnInsertMaintenanceClicked(object? sender, EventArgs e)
         {
+            HandleValidatePaidAmount(null, null!);
+            HandleValidateMaintenanceDate(null, null!);
+
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtPaidAmount)) || !string.IsNullOrEmpty(_errorProvider.GetError(dtpMaintenanceDate))) return;
 
             if (tempDetails == null || tempDetails.Count == 0)
             {
@@ -159,6 +211,28 @@ namespace Store_Rental_Management_Systems
         #region Handle New
         private void HandleBtnNewMaintenanceClicked(object? sender, EventArgs e)
         {
+            if (cbStaffID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលបុគ្គលិកជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cbStoreID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលតូបជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            if (cbContractID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលកិច្ចសន្យាជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+            if (cbItemID.Items.Count < 1)
+            {
+                MessageBox.Show("សូមបញ្ចូលសម្ភារៈជាមុនសិន", "ថែមទិន្នន័យ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             UnbindWithControls();
             cbSearchMaintenance.SelectedIndexChanged -= HandleSearchMaintenance;
 
@@ -211,26 +285,48 @@ namespace Store_Rental_Management_Systems
         private void HandleBtnCancelMaintenanceItemClicked(object? sender, EventArgs e)
         {
             _maintenanceDetailBindingSource.CancelEdit();
+            tempDetails!.Table!.AcceptChanges();
             UpdateTotalAmount();
+
+            cbItemID.SelectedIndex = 0;
         }
         #endregion
 
         #region Handle Delete Item
         private void HandleBtnDeleteMaintenanceItemClicked(object? sender, EventArgs e)
         {
+            DataRowView masterRowView = (_maintenanceBindingSource.Current as DataRowView)!;
+
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["MaintenanceID"].ToString()!) != -1) return;
+
             if (_maintenanceDetailBindingSource.Count == 0) return;
             if (_maintenanceDetailBindingSource.Current == null) return;
-
+            
             _maintenanceDetailBindingSource.RemoveCurrent();
 
             _maintenanceDetailBindingSource.EndEdit();
+
+            tempDetails!.Table!.AcceptChanges();
             UpdateTotalAmount();
+
+            cbItemID.SelectedIndex = 0;
         }
         #endregion
 
         #region Handle Update Item
         private void HandleBtnUpdateMaintenanceItemClicked(object? sender, EventArgs e)
         {
+            DataRowView masterRowView = (_maintenanceBindingSource.Current as DataRowView)!;
+
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["MaintenanceID"].ToString()!) != -1) return;
+
+            HandleValidateQty(null, null!);
+
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtMaintenanceQty))) return;
+            
+
             DataRowView currentItem = (_maintenanceDetailBindingSource.Current as DataRowView)!;
 
             if (currentItem != null)
@@ -251,7 +347,11 @@ namespace Store_Rental_Management_Systems
                 MessageBox.Show("សម្ភារៈស្ទួន", "បញ្ខូលសម្ភារៈ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvMaintenanceItems.Refresh();
             }
+
+            tempDetails!.Table!.AcceptChanges();
             UpdateTotalAmount();
+
+            cbItemID.SelectedIndex = 0;
         }
         #endregion
 
@@ -260,15 +360,18 @@ namespace Store_Rental_Management_Systems
         {
             DataRowView masterRowView = (_maintenanceBindingSource.Current as DataRowView)!;
 
+            if (masterRowView == null) return;
+            if (int.Parse(masterRowView["MaintenanceID"].ToString()!) != -1) return;
+
+            HandleValidateQty(null, null!);
+
+            if (!string.IsNullOrEmpty(_errorProvider.GetError(txtMaintenanceQty))) return;
+
             object itemID = cbItemID.SelectedValue;
             string description = txtItemDescription.Text;
             string unitPrice = txtUnitPrice.Text;
             string maintenanceQty = txtMaintenanceQty.Text;
             string amount = txtAmount.Text;
-
-            // validate when insert item
-            ErrorHelper.ValidateTextBoxInteger(txtMaintenanceQty, _errorProvider);
-            if (ErrorHelper.HasErrors(_validatingControls, _errorProvider)) return;
 
             DataRowView? dataRowView = tempDetails?.AddNew();
 
@@ -295,10 +398,11 @@ namespace Store_Rental_Management_Systems
                 dgvMaintenanceItems.Refresh();
             }
             tempDetails!.Table!.AcceptChanges();
+            UpdateTotalAmount();
 
             txtMaintenanceQty.Text = string.Empty;
             cbItemID.SelectedIndex = 0;
-            UpdateTotalAmount();
+            
         }
         #endregion
 
@@ -525,7 +629,6 @@ namespace Store_Rental_Management_Systems
             HandleCbItemIDSelectedIndexChanged(null, EventArgs.Empty);
             HandleCbStaffIDSelectedIndexChanged(null, EventArgs.Empty);
 
-
             if (cbSearchMaintenance.Items.Count > 0)
             {
                 cbSearchMaintenance.SelectedIndex = 0;
@@ -540,13 +643,17 @@ namespace Store_Rental_Management_Systems
         {
             UnbindWithControls();
 
-            _storeRentalDataSet.Tables[TABLE_MAINTENANCE_DETAIL_NAME]?.Clear();
-            _storeRentalDataSet.Tables[TABLE_MAINTENANCE_NAME]?.Clear();
+            _storeRentalDataSet.Clear();
 
             try
             {
                 _maintenanceDataAdapter.Fill(_storeRentalDataSet, TABLE_MAINTENANCE_NAME);
                 _maintenanceDetailDataAdapter.Fill(_storeRentalDataSet, TABLE_MAINTENANCE_DETAIL_NAME);
+                _contractDataAdapter.Fill(_storeRentalDataSet, TABLE_CONTRACT_NAME);
+                _storeDataAdapter.Fill(_storeRentalDataSet, TABLE_STORE_NAME);
+                _staffDataAdapter.Fill(_storeRentalDataSet, TABLE_STAFF_NAME);
+                _itemDataAdapter.Fill(_storeRentalDataSet, TABLE_ITEM_NAME);
+
             }
             catch (Exception)
             {
